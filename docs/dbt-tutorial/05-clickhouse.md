@@ -253,9 +253,55 @@ GROUP BY event_date
 | **Airflow 필요** | 불필요 | 불필요 |
 | **적합한 경우** | 단순 집계, 실시간 | 복잡한 변환, 주기적 |
 
+### 두 MV 동작 비교 데모
+
+source 테이블에 데이터가 들어올 때, 두 MV가 각각 어떻게 반응하는지 비교해보세요.
+
+<div class="flow-demo" id="ch-mv-compare" markdown="0">
+  <div class="flow-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Incremental MV vs Refreshable MV</span>
+  </div>
+  <div class="flow-panels">
+    <div class="flow-panel" style="border-right: 2px solid #45475a;">
+      <div class="flow-panel-label" style="background:#89b4fa33;color:#89b4fa;">Source 테이블 (events_local)</div>
+      <div id="ch-mv-source-area"></div>
+    </div>
+    <div class="flow-panel" style="flex:1.5;">
+      <div style="display:flex; gap:8px;">
+        <div style="flex:1;">
+          <div class="flow-panel-label" style="background:#a6e3a133;color:#a6e3a1;">Incremental MV</div>
+          <div style="font-size:9px;color:#6c7086;margin-bottom:4px;">INSERT 시 즉시 트리거 · 새 배치만 처리</div>
+          <div id="ch-mv-inc-area"></div>
+        </div>
+        <div style="flex:1;">
+          <div class="flow-panel-label" style="background:#cba6f733;color:#cba6f7;">Refreshable MV</div>
+          <div style="font-size:9px;color:#6c7086;margin-bottom:4px;">1시간마다 전체 재계산 · JOIN/FINAL 가능</div>
+          <div id="ch-mv-ref-area"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flow-controls">
+    <button class="btn-prev" onclick="chMVPrev()">◀ 이전</button>
+    <button class="btn-next" onclick="chMVNext()">다음 ▶</button>
+    <button class="btn-reset" onclick="chMVReset()">처음으로</button>
+    <span class="flow-step-counter" id="ch-mv-counter"></span>
+    <div class="flow-note" id="ch-mv-note"></div>
+  </div>
+</div>
+
+!!! warning "dbt에서 MV를 쓸 때 주의"
+    dbt의 `materialized='materialized_view'`는 **Incremental MV만** 생성합니다.
+    Refreshable MV는 dbt에서 지원하지 않으므로, 필요하면 raw SQL로 직접 생성해야 합니다.
+
+    복잡한 변환(JOIN, FINAL, Window 함수)이 필요하다면 → MV 대신 **dbt의 `incremental` 모델**을 사용하세요.
+
 !!! tip "어떤 MV를 써야 할까?"
-    - **단순 집계** (count, sum 등) → Incremental MV
-    - **JOIN이나 FINAL이 필요한 복잡한 변환** → Refreshable MV 또는 dbt incremental 모델
+    - **단순 집계** (count, sum 등) → Incremental MV (dbt `materialized_view`)
+    - **JOIN이나 FINAL이 필요한 복잡한 변환** → Refreshable MV (raw SQL) 또는 dbt `incremental` 모델
 
 ---
 

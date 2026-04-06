@@ -533,6 +533,175 @@ function chLocalDistUpdateUI() {
 
 
 /* ================================================================
+   DEMO 3: Incremental MV vs Refreshable MV
+   ================================================================ */
+var chMVState = { step: -1, playing: false };
+
+var chMVSteps = [
+  {
+    action: function() {
+      document.getElementById('ch-mv-source-area').innerHTML =
+        chBuildTable('events_local', ['event_date', 'user_id', 'action'], [
+          { event_date: '04-01', user_id: 'u1', action: 'click' },
+          { event_date: '04-01', user_id: 'u2', action: 'view' },
+        ], { id: 'ch-mv-src' });
+      document.getElementById('ch-mv-inc-area').innerHTML =
+        chBuildTable('mv_daily_count', ['event_date', 'cnt'], [
+          { event_date: '04-01', cnt: 2 },
+        ], { id: 'ch-mv-inc' });
+      document.getElementById('ch-mv-ref-area').innerHTML =
+        chBuildTable('mv_daily_summary', ['event_date', 'cnt'], [
+          { event_date: '04-01', cnt: 2 },
+        ], { id: 'ch-mv-ref' });
+    },
+    note: '초기 상태: source에 4/1 데이터 2건. 두 MV 모두 동일한 결과(cnt=2)를 가지고 있습니다.',
+  },
+  {
+    action: function() {
+      // Add new rows to source
+      var src = document.getElementById('ch-mv-src');
+      if (src) {
+        var tbody = src.querySelector('tbody');
+        var rows = [
+          { event_date: '04-02', user_id: 'u1', action: 'click' },
+          { event_date: '04-02', user_id: 'u3', action: 'signup' },
+          { event_date: '04-02', user_id: 'u2', action: 'click' },
+        ];
+        rows.forEach(function(r, i) {
+          setTimeout(function() {
+            var tr = document.createElement('tr');
+            tr.className = 'row-fadein';
+            tr.innerHTML = '<td>' + r.event_date + '</td><td>' + r.user_id + '</td><td>' + r.action + '</td>';
+            tbody.appendChild(tr);
+          }, i * 200);
+        });
+      }
+    },
+    note: 'source에 4/2 데이터 3건이 INSERT됩니다. 두 MV가 어떻게 반응할까요?',
+  },
+  {
+    action: function() {
+      // Incremental MV: immediately triggered, add new row
+      var inc = document.getElementById('ch-mv-inc');
+      if (inc) {
+        var tbody = inc.querySelector('tbody');
+        var tr = document.createElement('tr');
+        tr.className = 'row-fadein';
+        tr.innerHTML = '<td>04-02</td><td>3</td>';
+        tbody.appendChild(tr);
+      }
+    },
+    note: '⚡ Incremental MV: INSERT 즉시 트리거! 새 배치(4/2 3건)만 집계해서 행 추가. 기존 4/1 데이터는 건드리지 않음.',
+  },
+  {
+    action: function() {
+      // Refreshable MV: still old data, show waiting
+      var ref = document.getElementById('ch-mv-ref');
+      if (ref) {
+        ref.style.opacity = '0.5';
+      }
+    },
+    note: '⏳ Refreshable MV: 아직 변화 없음! 다음 스케줄 시간(예: 매 정시)까지 기다려야 합니다.',
+  },
+  {
+    action: function() {
+      // Refreshable MV: schedule fires, full recalculate
+      var refArea = document.getElementById('ch-mv-ref-area');
+      if (refArea) {
+        refArea.innerHTML = chBuildTable('mv_daily_summary (전체 재계산)', ['event_date', 'cnt'], [
+          { event_date: '04-01', cnt: 2 },
+          { event_date: '04-02', cnt: 3 },
+        ], { id: 'ch-mv-ref2', rowClass: 'row-fadein' });
+      }
+    },
+    note: '🔄 Refreshable MV: 스케줄 시간 도달 → 전체 데이터를 처음부터 재계산! 결과는 같지만 처리 방식이 다릅니다.',
+  },
+  {
+    action: function() {
+      // Add more data
+      var src = document.getElementById('ch-mv-src');
+      if (src) {
+        var tbody = src.querySelector('tbody');
+        var tr = document.createElement('tr');
+        tr.className = 'row-fadein';
+        tr.innerHTML = '<td>04-02</td><td>u4</td><td>view</td>';
+        tbody.appendChild(tr);
+      }
+      // Incremental immediately updates
+      var inc = document.getElementById('ch-mv-inc');
+      if (inc) {
+        // The existing 04-02 row shows cnt=3, but incremental adds batch separately
+        // In reality with SummingMergeTree it would eventually merge
+        var tbody = inc.querySelector('tbody');
+        var tr = document.createElement('tr');
+        tr.className = 'row-fadein';
+        tr.innerHTML = '<td>04-02</td><td>1</td>';
+        tbody.appendChild(tr);
+      }
+    },
+    note: '⚡ 또 INSERT! Incremental MV는 즉시 반응 — 하지만 이전 배치와 별도 행으로 추가됨 (나중에 merge). Refreshable MV는 아직 반영 안 됨.',
+  },
+  {
+    action: function() {},
+    note: '💡 핵심 차이: Incremental은 빠르지만 배치 단위로만 처리(JOIN 불가). Refreshable은 느리지만 전체 재계산이라 복잡한 쿼리도 가능. dbt에서는 Incremental MV만 지원!',
+  },
+];
+
+function chMVNext() {
+  if (chMVState.playing) return;
+  var nextIdx = chMVState.step + 1;
+  if (nextIdx >= chMVSteps.length) return;
+  chMVState.playing = true;
+  chMVState.step = nextIdx;
+  chMVSteps[nextIdx].action();
+  var noteEl = document.getElementById('ch-mv-note');
+  if (noteEl && chMVSteps[nextIdx].note) { noteEl.textContent = chMVSteps[nextIdx].note; noteEl.classList.add('visible'); }
+  chMVUpdateUI();
+  setTimeout(function() { chMVState.playing = false; }, 400);
+}
+
+function chMVPrev() {
+  if (chMVState.playing) return;
+  if (chMVState.step < 0) return;
+  var target = chMVState.step - 1;
+  chMVReset();
+  for (var i = 0; i <= target; i++) {
+    chMVState.step = i;
+    chMVSteps[i].action();
+    var noteEl = document.getElementById('ch-mv-note');
+    if (noteEl && chMVSteps[i].note) { noteEl.textContent = chMVSteps[i].note; noteEl.classList.add('visible'); }
+  }
+  chMVUpdateUI();
+}
+
+function chMVReset() {
+  chMVState.step = -1;
+  chMVState.playing = false;
+  document.getElementById('ch-mv-source-area').innerHTML = '';
+  document.getElementById('ch-mv-inc-area').innerHTML = '';
+  document.getElementById('ch-mv-ref-area').innerHTML = '';
+  var noteEl = document.getElementById('ch-mv-note');
+  if (noteEl) { noteEl.textContent = ''; noteEl.classList.remove('visible'); }
+  chMVUpdateUI();
+}
+
+function chMVUpdateUI() {
+  var counter = document.getElementById('ch-mv-counter');
+  if (counter) {
+    var cur = chMVState.step + 1;
+    counter.textContent = cur > 0 ? 'Step ' + cur + ' / ' + chMVSteps.length : '0 / ' + chMVSteps.length;
+  }
+  var container = document.getElementById('ch-mv-compare');
+  if (container) {
+    var btnNext = container.querySelector('.btn-next');
+    var btnPrev = container.querySelector('.btn-prev');
+    if (btnNext) btnNext.disabled = chMVState.step >= chMVSteps.length - 1;
+    if (btnPrev) btnPrev.disabled = chMVState.step < 0;
+  }
+}
+
+
+/* ================================================================
    AUTO-INIT
    ================================================================ */
 document.addEventListener('DOMContentLoaded', function() {
@@ -541,5 +710,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   if (document.getElementById('ch-local-dist')) {
     chLocalDistReset();
+  }
+  if (document.getElementById('ch-mv-compare')) {
+    chMVReset();
   }
 });
