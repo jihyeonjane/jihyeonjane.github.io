@@ -36,6 +36,7 @@ materialization 타입을 선택하고, **다음 ▶** 버튼으로 한 단계�
     </div>
   </div>
   <div class="flow-controls">
+    <button class="btn-prev" onclick="prevStep('flow-run')">◀ 이전</button>
     <button class="btn-next" onclick="nextStep('flow-run')">다음 ▶</button>
     <button class="btn-reset" onclick="resetFlow('flow-run')">처음으로</button>
     <span class="flow-step-counter"></span>
@@ -72,6 +73,7 @@ materialization 타입을 선택하고, **다음 ▶** 버튼으로 한 단계�
     </div>
   </div>
   <div class="flow-controls">
+    <button class="btn-prev" onclick="prevStep('flow-query')">◀ 이전</button>
     <button class="btn-next" onclick="nextStep('flow-query')">다음 ▶</button>
     <button class="btn-reset" onclick="resetFlow('flow-query')">처음으로</button>
     <span class="flow-step-counter"></span>

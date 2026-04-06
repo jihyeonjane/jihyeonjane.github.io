@@ -236,6 +236,25 @@
   align-items: center;
   border-top: 1px solid #45475a;
 }
+.flow-controls .btn-prev {
+  background: #585b70;
+  color: #cdd6f4;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.flow-controls .btn-prev:hover {
+  background: #7f849c;
+}
+.flow-controls .btn-prev:disabled {
+  background: #45475a;
+  color: #585b70;
+  cursor: not-allowed;
+}
 .flow-controls .btn-next {
   background: #a6e3a1;
   color: #1e1e2e;

@@ -39,11 +39,11 @@ const SOURCE_SQL = {
 /* ---------- sample data ---------- */
 const SAMPLE = {
   source: [
-    { event_id: 101, user_id: 'u1', event_type: 'click',  event_date: '2025-04-01' },
-    { event_id: 102, user_id: 'u2', event_type: 'view',   event_date: '2025-04-01' },
-    { event_id: 103, user_id: 'u1', event_type: 'click',  event_date: '2025-04-02' },
-    { event_id: 104, user_id: 'u3', event_type: 'signup', event_date: '2025-04-02' },
-    { event_id: 105, user_id: 'u2', event_type: 'click',  event_date: '2025-04-03' },
+    { event_id: 101, user_id: 'u1', event_type: 'click',  event_date: '2026-03-30' },
+    { event_id: 102, user_id: 'u2', event_type: 'view',   event_date: '2026-03-30' },
+    { event_id: 103, user_id: 'u1', event_type: 'click',  event_date: '2026-03-31' },
+    { event_id: 104, user_id: 'u3', event_type: 'signup', event_date: '2026-03-31' },
+    { event_id: 105, user_id: 'u2', event_type: 'click',  event_date: '2026-04-01' },
   ],
   result: [
     { user_id: 'u1', event_count: 2 },
@@ -51,20 +51,20 @@ const SAMPLE = {
     { user_id: 'u3', event_count: 1 },
   ],
   resultIncOld: [
-    { user_id: 'u1', event_date: '2025-04-01', cnt: 1 },
-    { user_id: 'u2', event_date: '2025-04-01', cnt: 1 },
-    { user_id: 'u1', event_date: '2025-04-02', cnt: 1 },
-    { user_id: 'u3', event_date: '2025-04-02', cnt: 1 },
+    { user_id: 'u1', event_date: '2026-03-30', cnt: 1 },
+    { user_id: 'u2', event_date: '2026-03-30', cnt: 1 },
+    { user_id: 'u1', event_date: '2026-03-31', cnt: 1 },
+    { user_id: 'u3', event_date: '2026-03-31', cnt: 1 },
   ],
   resultIncNew: [
-    { user_id: 'u2', event_date: '2025-04-03', cnt: 1 },
+    { user_id: 'u2', event_date: '2026-04-01', cnt: 1 },
   ],
   resultMV: [
-    { event_date: '2025-04-01', dau: 2 },
-    { event_date: '2025-04-02', dau: 2 },
+    { event_date: '2026-03-30', dau: 2 },
+    { event_date: '2026-03-31', dau: 2 },
   ],
   resultMVNew: [
-    { event_date: '2025-04-03', dau: 1 },
+    { event_date: '2026-04-01', dau: 1 },
   ],
 };
 
@@ -243,7 +243,7 @@ function buildRunSteps(type, demoId) {
       },
       {
         dbt: { num: 3, cls: 'send', text: '임시 테이블에 새 데이터만 계산하도록 전송' },
-        db: { num: 4, cls: 'receive', text: '새 데이터 → 임시 테이블에 저장', code: 'CREATE TABLE analytics.daily_events__dbt_tmp AS\nSELECT user_id, event_date, count(*) AS cnt\nFROM raw.events\nWHERE event_date >= \'2025-04-03\'\nGROUP BY user_id, event_date' },
+        db: { num: 4, cls: 'receive', text: '새 데이터 → 임시 테이블에 저장', code: 'CREATE TABLE analytics.daily_events__dbt_tmp AS\nSELECT user_id, event_date, count(*) AS cnt\nFROM raw.events\nWHERE event_date >= \'2026-04-01\'\nGROUP BY user_id, event_date' },
         tableAction: { type: 'showTmp', target: tmpId + '-wrap', html: '' },
       },
       {
@@ -473,9 +473,8 @@ function loadFlow(id) {
   const noteEl = container.querySelector('.flow-note');
   if (noteEl) { noteEl.textContent = ''; noteEl.classList.remove('visible'); }
 
-  // Enable next button
-  const btn = container.querySelector('.btn-next');
-  if (btn) btn.disabled = false;
+  // Update button states
+  updateButtons(id);
 }
 
 function updateCounter(id) {
@@ -542,14 +541,117 @@ async function nextStep(id) {
     }
   }
 
-  // Disable button if done
-  if (state.currentStep >= state.steps.length - 1) {
-    const btn = container.querySelector('.btn-next');
-    if (btn) btn.disabled = true;
-  }
-
+  // Update button states
+  updateButtons(id);
   updateCounter(id);
   state.playing = false;
+}
+
+function prevStep(id) {
+  const state = getDemoState(id);
+  if (state.playing) return;
+  if (state.currentStep < 0) return;
+
+  // Easiest reliable way: go back to step N-1 by replaying from start
+  const targetStep = state.currentStep - 1;
+  loadFlow(id);
+
+  if (targetStep >= 0) {
+    // Replay steps synchronously (instant, no animation)
+    const container = document.getElementById(id);
+    for (let i = 0; i <= targetStep; i++) {
+      const step = state.steps[i];
+      state.currentStep = i;
+
+      if (step.dbt) {
+        const panel = container.querySelector('.flow-panel-dbt .flow-steps');
+        const div = document.createElement('div');
+        div.className = `flow-step ${step.dbt.cls} visible`;
+        div.innerHTML = `<span class="step-num">${step.dbt.num}</span>${step.dbt.text}`;
+        panel.appendChild(div);
+      }
+      if (step.db) {
+        const panel = container.querySelector('.flow-panel-db .flow-steps');
+        const div = document.createElement('div');
+        div.className = `flow-step ${step.db.cls} visible`;
+        let html = `<span class="step-num">${step.db.num}</span>${step.db.text}`;
+        if (step.db.code) html += `<code>${step.db.code}</code>`;
+        div.innerHTML = html;
+        panel.appendChild(div);
+      }
+      if (step.tableAction) {
+        executeTableActionSync(step.tableAction, id);
+      }
+      if (step.note) {
+        const noteEl = container.querySelector('.flow-note');
+        if (noteEl) { noteEl.textContent = step.note; noteEl.classList.add('visible'); }
+      }
+    }
+    updateButtons(id);
+    updateCounter(id);
+  }
+}
+
+function executeTableActionSync(action, demoId) {
+  switch (action.type) {
+    case 'setHtml': {
+      const wrap = document.getElementById(action.target);
+      if (wrap) wrap.innerHTML = action.html;
+      break;
+    }
+    case 'clear': {
+      const tbl = document.getElementById(action.target);
+      if (tbl) {
+        const tbody = tbl.querySelector('tbody');
+        if (tbody) tbody.innerHTML = `<tr><td colspan="${action.cols}" class="empty-msg">(데이터 없음)</td></tr>`;
+      }
+      break;
+    }
+    case 'addRows': {
+      const tbl = document.getElementById(action.target);
+      if (tbl) {
+        const tbody = tbl.querySelector('tbody');
+        const emptyRow = tbody.querySelector('.empty-msg');
+        if (emptyRow) emptyRow.closest('tr').remove();
+        action.rows.forEach(r => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = action.cols.map(c => `<td>${r[c] != null ? r[c] : ''}</td>`).join('');
+          tbody.appendChild(tr);
+        });
+      }
+      break;
+    }
+    case 'showTmp': {
+      const wrap = document.getElementById(action.target);
+      if (wrap) {
+        const tmpTblId = demoId + '-tmp';
+        wrap.innerHTML = buildTable('__dbt_tmp (임시 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncNew, { id: tmpTblId });
+      }
+      break;
+    }
+    case 'hideTmp': {
+      const wrap = document.getElementById(action.target);
+      if (wrap) wrap.innerHTML = '';
+      break;
+    }
+    case 'glow':
+    case 'scan':
+    case 'deleteRows':
+    case 'deleteNote':
+    default:
+      break;
+  }
+}
+
+function updateButtons(id) {
+  const state = getDemoState(id);
+  const container = document.getElementById(id);
+  if (!container) return;
+
+  const btnNext = container.querySelector('.btn-next');
+  const btnPrev = container.querySelector('.btn-prev');
+  if (btnNext) btnNext.disabled = state.currentStep >= state.steps.length - 1;
+  if (btnPrev) btnPrev.disabled = state.currentStep < 0;
 }
 
 async function executeTableAction(action, demoId) {
