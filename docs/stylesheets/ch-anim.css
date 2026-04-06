@@ -63,7 +63,34 @@
   font-size: 12px;
   font-weight: bold;
   color: #cdd6f4;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+}
+.ch-node-tags, .ch-tag-group {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.ch-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: bold;
+}
+.ch-tag-shard {
+  background: #89b4fa22;
+  color: #89b4fa;
+  border: 1px solid #89b4fa55;
+}
+.ch-tag-shard2 {
+  background: #f5c0e822;
+  color: #f5c0e8;
+  border: 1px solid #f5c0e855;
+}
+.ch-tag-replica {
+  background: #a6e3a122;
+  color: #a6e3a1;
+  border: 1px solid #a6e3a155;
 }
 .ch-node-role {
   font-size: 9px;
