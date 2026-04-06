@@ -2,46 +2,83 @@
 
 dbt로 SQL을 실행하면 결과물이 DB에 저장됩니다. 이때 **어떤 방식으로 저장할지**를 `materialization`이라고 부릅니다.
 
-## dbt ↔ DB 상호작용 시각화
+## dbt run 실행 과정
 
-아래에서 materialization 타입을 선택하고 **▶ 실행**을 누르면, dbt와 DB가 주고받는 과정을 단계별로 확인할 수 있습니다.
+materialization 타입을 선택하고, **다음 ▶** 버튼으로 한 단계씩 진행하며 dbt와 DB 사이에서 벌어지는 일을 확인하세요.
 
-<div class="flow-demo" id="flow-mat" markdown="0">
+<div class="flow-demo" id="flow-run" data-mode="run" markdown="0">
   <div class="flow-header">
     <span class="dot red"></span>
     <span class="dot yellow"></span>
     <span class="dot green"></span>
-    <span class="terminal-title">Materialization Flow</span>
+    <span class="terminal-title">dbt run 실행 과정</span>
   </div>
-  <div class="flow-source">
-    <div class="flow-source-label">dbt 모델 (SQL)</div>
-    <code></code>
+  <div class="flow-type-bar">
+    <button class="mat-btn active" data-type="view" onclick="selectFlowType('flow-run','view')">View</button>
+    <button class="mat-btn" data-type="table" onclick="selectFlowType('flow-run','table')">Table</button>
+    <button class="mat-btn" data-type="incremental" onclick="selectFlowType('flow-run','incremental')">Incremental</button>
+    <button class="mat-btn" data-type="mv" onclick="selectFlowType('flow-run','mv')">Materialized View</button>
   </div>
   <div class="flow-panels">
     <div class="flow-panel flow-panel-dbt">
-      <div class="flow-panel-label label-dbt">🔧 dbt</div>
+      <div class="flow-panel-label label-dbt">dbt</div>
       <div class="flow-steps"></div>
     </div>
     <div class="flow-panel flow-panel-db">
-      <div class="flow-panel-label label-db">🗄️ Database</div>
+      <div class="flow-panel-label label-db">Database</div>
       <div class="flow-steps"></div>
+      <div class="flow-table-area"></div>
+      <div class="flow-tmp-area"></div>
     </div>
   </div>
-  <div class="flow-buttons">
-    <button class="mat-btn active" data-type="view" onclick="selectMatType('flow-mat','view')">View</button>
-    <button class="mat-btn" data-type="table" onclick="selectMatType('flow-mat','table')">Table</button>
-    <button class="mat-btn" data-type="incremental" onclick="selectMatType('flow-mat','incremental')">Incremental</button>
-    <button class="mat-btn" data-type="mv" onclick="selectMatType('flow-mat','mv')">Materialized View</button>
-    <button class="btn-play" onclick="playFlow('flow-mat')">▶ 실행</button>
-    <span class="flow-status"></span>
-    <button class="btn-reset" onclick="resetFlow('flow-mat')">Reset</button>
+  <div class="flow-controls">
+    <button class="btn-next" onclick="nextStep('flow-run')">다음 ▶</button>
+    <button class="btn-reset" onclick="resetFlow('flow-run')">처음으로</button>
+    <span class="flow-step-counter"></span>
+    <div class="flow-note"></div>
+  </div>
+</div>
+
+## BI 도구에서 조회할 때
+
+테이블이 만들어진 후, BI 도구(Superset, Metabase 등)에서 조회하면 DB에서는 어떤 일이 벌어질까요?
+
+<div class="flow-demo" id="flow-query" data-mode="query" markdown="0">
+  <div class="flow-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">BI 도구 조회 과정</span>
+  </div>
+  <div class="flow-type-bar">
+    <button class="mat-btn active" data-type="view" onclick="selectFlowType('flow-query','view')">View</button>
+    <button class="mat-btn" data-type="table" onclick="selectFlowType('flow-query','table')">Table</button>
+    <button class="mat-btn" data-type="incremental" onclick="selectFlowType('flow-query','incremental')">Incremental</button>
+    <button class="mat-btn" data-type="mv" onclick="selectFlowType('flow-query','mv')">Materialized View</button>
+  </div>
+  <div class="flow-panels">
+    <div class="flow-panel flow-panel-dbt">
+      <div class="flow-panel-label label-dbt">BI 도구</div>
+      <div class="flow-steps"></div>
+    </div>
+    <div class="flow-panel flow-panel-db">
+      <div class="flow-panel-label label-db">Database</div>
+      <div class="flow-steps"></div>
+      <div class="flow-table-area"></div>
+    </div>
+  </div>
+  <div class="flow-controls">
+    <button class="btn-next" onclick="nextStep('flow-query')">다음 ▶</button>
+    <button class="btn-reset" onclick="resetFlow('flow-query')">처음으로</button>
+    <span class="flow-step-counter"></span>
+    <div class="flow-note"></div>
   </div>
 </div>
 
 !!! tip "사용법"
-    1. 위에서 materialization 타입 버튼을 선택하세요
-    2. **▶ 실행** 버튼을 누르면 dbt와 DB 간의 상호작용이 순서대로 표시됩니다
-    3. 각 단계의 번호 순서대로 따라가면 됩니다
+    1. 위에서 materialization 타입 버튼(View / Table / Incremental / MV)을 선택하세요
+    2. **다음 ▶** 버튼을 눌러 한 단계씩 진행하며 흐름을 따라가세요
+    3. **처음으로** 버튼으로 언제든 리셋할 수 있습니다
 
 ---
 
