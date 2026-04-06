@@ -37,30 +37,9 @@ ClickHouse는 단일 서버로도 빠르지만, 대규모 데이터를 처리할
 | **Replica (레플리카)** | 같은 데이터를 여러 노드에 복제 (고가용성) |
 | **Distributed Table** | 모든 샤드를 묶어서 조회하는 가상 테이블 |
 
-### 전체 구조 한눈에 보기
+### 클러스터 동작 데모
 
-![ClickHouse 클러스터 구조](assets/ch-cluster-structure.gif)
-
-- 각 **Shard**는 데이터의 일부를 담당하고, **Replica**가 동일 데이터를 복제하여 장애에 대비합니다
-- **Distributed Table**은 모든 Shard를 묶어 하나의 테이블처럼 조회할 수 있게 해줍니다
-
-### INSERT 데이터 분배
-
-![INSERT 데이터 분배](assets/ch-insert-flow.gif)
-
-- `user_id % 2`와 같은 **shard key**를 기준으로 데이터가 자동 분배됩니다
-- 짝수 user_id → Shard 1, 홀수 → Shard 2
-
-### Local vs Distributed 조회 차이
-
-![Local vs Distributed 조회](assets/ch-select-flow.gif)
-
-- **Local 테이블** 조회 → 해당 노드의 데이터만 반환 (불완전!)
-- **Distributed 테이블** 조회 → 모든 Shard 데이터를 합쳐서 반환 (완전한 결과)
-
-### 클러스터 동작 데모 (인터랙티브)
-
-INSERT/SELECT가 클러스터에서 어떻게 처리되는지 단계별로 확인하세요.
+**다음 ▶** 버튼으로 INSERT 데이터 분배와 SELECT 조회 과정을 단계별로 확인하세요.
 
 <div class="flow-demo" id="ch-cluster" data-mode="ch-cluster" markdown="0">
   <div class="flow-header">
