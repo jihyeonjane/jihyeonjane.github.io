@@ -65,6 +65,7 @@ materialization 타입을 선택하고, **다음 ▶** 버튼으로 한 단계�
     <div class="flow-panel flow-panel-dbt">
       <div class="flow-panel-label label-dbt">BI 도구</div>
       <div class="flow-steps"></div>
+      <div class="flow-bi-result"></div>
     </div>
     <div class="flow-panel flow-panel-db">
       <div class="flow-panel-label label-db">Database</div>

@@ -325,7 +325,7 @@ function buildRunSteps(type, demoId) {
 function buildQuerySteps(type, demoId) {
   const tblId = demoId + '-tbl';
 
-  const biResultId = demoId + '-bi-result';
+  const biWrapId = demoId + '-bi-wrap';
 
   const flows = {
     view: [
@@ -347,12 +347,12 @@ function buildQuerySteps(type, demoId) {
       {
         dbt: null,
         db: { num: 4, cls: 'receive', text: '집계 완료 → 결과를 BI 도구로 반환' },
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('DB 계산 결과', ['user_id', 'event_count'], SAMPLE.result, { id: tblId }) },
+        tableAction: null,
       },
       {
         dbt: { num: 5, cls: 'info', text: '결과 수신 → 대시보드에 표시' },
         db: null,
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['user_id', 'event_count'], SAMPLE.result, { id: tblId, rowClass: 'row-fadein' }) },
+        tableAction: { type: 'setHtml', target: biWrapId, html: buildTable('📊 BI 대시보드 출력', ['user_id', 'event_count'], SAMPLE.result, { id: demoId + '-bi-tbl', rowClass: 'row-fadein' }) },
         note: 'VIEW는 조회할 때마다 원천 데이터를 처음부터 다시 계산 → 데이터가 많으면 느림',
       },
     ],
@@ -375,7 +375,7 @@ function buildQuerySteps(type, demoId) {
       {
         dbt: { num: 4, cls: 'info', text: '결과 즉시 수신 → 대시보드에 표시' },
         db: null,
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['user_id', 'event_count'], SAMPLE.result, { id: tblId, rowClass: 'row-fadein' }) },
+        tableAction: { type: 'setHtml', target: biWrapId, html: buildTable('📊 BI 대시보드 출력', ['user_id', 'event_count'], SAMPLE.result, { id: demoId + '-bi-tbl', rowClass: 'row-fadein' }) },
         note: 'TABLE은 이미 계산된 결과를 바로 반환 → 빠름. 단, 마지막 dbt run 시점의 데이터.',
       },
     ],
@@ -398,7 +398,7 @@ function buildQuerySteps(type, demoId) {
       {
         dbt: { num: 4, cls: 'info', text: '결과 즉시 수신 → 대시보드에 표시' },
         db: null,
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncAll, { id: tblId, rowClass: 'row-fadein' }) },
+        tableAction: { type: 'setHtml', target: biWrapId, html: buildTable('📊 BI 대시보드 출력', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncAll, { id: demoId + '-bi-tbl', rowClass: 'row-fadein' }) },
         note: 'incremental도 물리 테이블 → 조회 성능은 TABLE과 동일. dbt run으로 신규 데이터만 추가됨.',
       },
     ],
@@ -421,7 +421,7 @@ function buildQuerySteps(type, demoId) {
       {
         dbt: { num: 4, cls: 'info', text: '결과 즉시 수신 → 대시보드에 표시' },
         db: null,
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['event_date', 'dau'], SAMPLE.resultMV.concat(SAMPLE.resultMVNew), { id: tblId, rowClass: 'row-fadein' }) },
+        tableAction: { type: 'setHtml', target: biWrapId, html: buildTable('📊 BI 대시보드 출력', ['event_date', 'dau'], SAMPLE.resultMV.concat(SAMPLE.resultMVNew), { id: demoId + '-bi-tbl', rowClass: 'row-fadein' }) },
         note: 'MV는 source INSERT 시 자동 갱신 → 항상 최신 데이터를 빠르게 반환',
       },
     ],
@@ -512,6 +512,13 @@ function loadFlow(id) {
   if (tmpWrap) {
     tmpWrap.id = id + '-tmp-wrap';
     tmpWrap.innerHTML = '';
+  }
+
+  // Clear BI result area
+  const biWrap = container.querySelector('.flow-bi-result');
+  if (biWrap) {
+    biWrap.id = id + '-bi-wrap';
+    biWrap.innerHTML = '';
   }
 
   // Update counter + note
