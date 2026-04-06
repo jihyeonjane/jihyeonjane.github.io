@@ -315,29 +315,29 @@ var chClusterSteps = [
   {
     action: function() {
       chAddStep('ch-cluster-client-steps', '<span class="step-num">1</span>INSERT INTO users — 6명의 데이터를 넣습니다', 'send');
-      chAddStep('ch-cluster-client-steps', '<code>shard_key: user_id % 2\n짝수 → Shard 1 / 홀수 → Shard 2</code>', 'info');
-      document.getElementById('ch-cluster-shard1-area').innerHTML = chBuildTable('Shard 1 — users_local', ['user_id', 'name'], [], { id: 'ch-cl-s1' });
-      document.getElementById('ch-cluster-shard2-area').innerHTML = chBuildTable('Shard 2 — users_local', ['user_id', 'name'], [], { id: 'ch-cl-s2' });
+      chAddStep('ch-cluster-client-steps', '<code>shard_key: user_id % 2\n짝수 → Node 1,2 (Shard 1) / 홀수 → Node 3,4 (Shard 2)</code>', 'info');
+      document.getElementById('ch-cluster-shard1-area').innerHTML = chBuildTable('Node 1 — users_local (Shard 1)', ['user_id', 'name'], [], { id: 'ch-cl-s1' });
+      document.getElementById('ch-cluster-shard2-area').innerHTML = chBuildTable('Node 3 — users_local (Shard 2)', ['user_id', 'name'], [], { id: 'ch-cl-s2' });
     },
-    note: '아직 데이터가 없는 빈 Shard 2개가 준비되어 있습니다',
+    note: '아직 데이터가 없는 빈 Node들이 준비되어 있습니다. 복제본(Node 2, 4)은 자동 sync됩니다.',
   },
   {
     action: function() {
-      chAddStep('ch-cluster-client-steps', '<span class="step-num">2</span>user_id=1 (alice) → 1%2=1 홀수 → Shard 2', 'send');
+      chAddStep('ch-cluster-client-steps', '<span class="step-num">2</span>user_id=1 (alice) → 1%2=1 홀수 → Node 3 (Shard 2)', 'send');
       chAddRowToShard('ch-cl-s2', { user_id: 1, name: 'alice' });
     },
-    note: 'alice(user_id=1)는 홀수이므로 Shard 2로 라우팅됩니다',
+    note: 'alice(user_id=1)는 홀수이므로 Node 3(Shard 2)으로 라우팅. Node 4(Replica B)에 자동 복제됩니다.',
   },
   {
     action: function() {
-      chAddStep('ch-cluster-client-steps', '<span class="step-num">3</span>user_id=2 (bob) → 2%2=0 짝수 → Shard 1', 'send');
+      chAddStep('ch-cluster-client-steps', '<span class="step-num">3</span>user_id=2 (bob) → 2%2=0 짝수 → Node 1 (Shard 1)', 'send');
       chAddRowToShard('ch-cl-s1', { user_id: 2, name: 'bob' });
     },
-    note: 'bob(user_id=2)는 짝수이므로 Shard 1로 라우팅됩니다',
+    note: 'bob(user_id=2)는 짝수이므로 Node 1(Shard 1)으로 라우팅. Node 2(Replica B)에 자동 복제됩니다.',
   },
   {
     action: function() {
-      chAddStep('ch-cluster-client-steps', '<span class="step-num">4</span>user_id=3 (charlie) → Shard 2 / user_id=4 (dave) → Shard 1', 'send');
+      chAddStep('ch-cluster-client-steps', '<span class="step-num">4</span>charlie → Node 3 (Shard 2) / dave → Node 1 (Shard 1)', 'send');
       chAddRowToShard('ch-cl-s2', { user_id: 3, name: 'charlie' });
       chAddRowToShard('ch-cl-s1', { user_id: 4, name: 'dave' });
     },
@@ -345,16 +345,16 @@ var chClusterSteps = [
   },
   {
     action: function() {
-      chAddStep('ch-cluster-client-steps', '<span class="step-num">5</span>user_id=5 (eve) → Shard 2 / user_id=6 (frank) → Shard 1', 'send');
+      chAddStep('ch-cluster-client-steps', '<span class="step-num">5</span>eve → Node 3 (Shard 2) / frank → Node 1 (Shard 1)', 'send');
       chAddRowToShard('ch-cl-s2', { user_id: 5, name: 'eve' });
       chAddRowToShard('ch-cl-s1', { user_id: 6, name: 'frank' });
     },
-    note: 'INSERT 완료! Shard 1에 3건(짝수), Shard 2에 3건(홀수). 각 Replica는 자동 동기화됩니다.',
+    note: 'INSERT 완료! Node 1,2(Shard 1)에 짝수 3건, Node 3,4(Shard 2)에 홀수 3건. 같은 Shard의 Replica끼리 자동 동기화.',
   },
   {
     action: function() {
       chAddStep('ch-cluster-client-steps', '<span class="step-num">6</span>SELECT * FROM users_distributed', 'send');
-      chAddStep('ch-cluster-client-steps', '<code>-- Distributed 테이블이 모든 Shard에 동시 조회</code>', 'info');
+      chAddStep('ch-cluster-client-steps', '<code>-- Distributed: 각 Shard에서 Node 하나씩 선택하여 조회</code>', 'info');
       chGlowRows('ch-cl-s1');
       chGlowRows('ch-cl-s2');
     },
@@ -434,43 +434,43 @@ var chLDState = { step: -1, playing: false };
 var chLDSteps = [
   {
     action: function() {
-      // Show initial shard data
       document.getElementById('ch-ld-shard1-area').innerHTML = chBuildTable('users_local', ['user_id', 'name'], SHARD1_DATA, { id: 'ch-ld-s1' });
       document.getElementById('ch-ld-shard2-area').innerHTML = chBuildTable('users_local', ['user_id', 'name'], SHARD2_DATA, { id: 'ch-ld-s2' });
-      chAddStep('ch-local-dist-query-steps', '<span class="step-num">1</span>현재 클러스터에 6명의 데이터가 샤드별로 분산 저장되어 있습니다', 'info');
+      chAddStep('ch-local-dist-query-steps', '<span class="step-num">1</span>현재 4개 Node에 6명의 데이터가 분산 저장되어 있습니다', 'info');
     },
-    note: 'Shard 1: bob, dave, frank (짝수) / Shard 2: alice, charlie, eve (홀수)',
+    note: 'Node 1,2 (Shard 1): bob, dave, frank / Node 3,4 (Shard 2): alice, charlie, eve',
   },
   {
     action: function() {
       chAddStep('ch-local-dist-query-steps', '<span class="step-num">2</span>SELECT * FROM users_local (Local 테이블 직접 조회)', 'send');
-      chAddStep('ch-local-dist-query-steps', '<code>-- 접속한 노드(Shard 1)의 데이터만 보임!</code>', 'warn');
+      chAddStep('ch-local-dist-query-steps', '<code>-- 접속한 Node 1의 데이터만 보임!</code>', 'warn');
       chDimBox('ch-ld-shard2-box');
       chGlowRows('ch-ld-s1');
-      document.getElementById('ch-ld-result-area').innerHTML = chBuildTable('결과: 3건만 반환 (Shard 1만)', ['user_id', 'name'], SHARD1_DATA, { id: 'ch-ld-r1' });
+      document.getElementById('ch-ld-result-area').innerHTML = chBuildTable('결과: 3건만 반환 (Node 1만)', ['user_id', 'name'], SHARD1_DATA, { id: 'ch-ld-r1' });
       chGlowRows('ch-ld-r1');
     },
-    note: 'Local 테이블 조회 → 접속한 샤드의 데이터만 보입니다. 나머지 3건은 누락!',
+    note: 'Local 테이블 조회 → 접속한 Node의 데이터만 보입니다. 나머지 Node의 3건은 누락!',
   },
   {
     action: function() {
       chLightBox('ch-ld-shard2-box');
       chAddStep('ch-local-dist-query-steps', '<span class="step-num">3</span>SELECT * FROM users_distributed (Distributed 테이블 조회)', 'send');
+      chAddStep('ch-local-dist-query-steps', '<code>-- 각 Shard에서 Node 하나씩 선택 → 합산</code>', 'info');
       chGlowRows('ch-ld-s1');
       chGlowRows('ch-ld-s2');
-      document.getElementById('ch-ld-result-area').innerHTML = chBuildTable('결과: 6건 전체 반환 (모든 Shard)', ['user_id', 'name'], CH_USERS, { id: 'ch-ld-r2' });
+      document.getElementById('ch-ld-result-area').innerHTML = chBuildTable('결과: 6건 전체 반환 (Node 1 + Node 3 조합)', ['user_id', 'name'], CH_USERS, { id: 'ch-ld-r2' });
       chGlowRows('ch-ld-r2');
     },
-    note: 'Distributed 테이블 조회 → 모든 샤드의 데이터가 합쳐져 전체 6건 반환!',
+    note: 'Distributed: 각 Shard에서 Node 하나씩 골라 합침 → 완전한 테이블 6건!',
   },
   {
     action: function() {
-      chAddStep('ch-local-dist-query-steps', '<span class="step-num">4</span>SELECT * FROM users_view (View FINAL — 중복 제거)', 'send');
-      chAddStep('ch-local-dist-query-steps', '<code>-- Distributed + FINAL → 전체 데이터 + 중복 제거</code>', 'receive');
+      chAddStep('ch-local-dist-query-steps', '<span class="step-num">4</span>SELECT * FROM users_view (View FINAL)', 'send');
+      chAddStep('ch-local-dist-query-steps', '<code>-- Distributed + FINAL → 전체 데이터 + 중복 제거\n-- CREATE VIEW users_view AS\n--   SELECT * FROM users_distributed FINAL</code>', 'receive');
       document.getElementById('ch-ld-result-area').innerHTML = chBuildTable('결과: 6건 (중복 제거 완료)', ['user_id', 'name'], CH_USERS, { id: 'ch-ld-r3' });
       chGlowRows('ch-ld-r3');
     },
-    note: 'View (FINAL) = Distributed + 중복 제거. 가장 안전하고 정확한 조회 방법입니다.',
+    note: 'View (FINAL) = Distributed + 중복 제거. dbt에서 source로 쓰기에 가장 안전한 방법.',
   },
 ];
 
