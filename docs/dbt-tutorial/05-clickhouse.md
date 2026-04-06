@@ -37,6 +37,72 @@ ClickHouse는 단일 서버로도 빠르지만, 대규모 데이터를 처리할
 | **Replica (레플리카)** | 같은 데이터를 여러 노드에 복제 (고가용성) |
 | **Distributed Table** | 모든 샤드를 묶어서 조회하는 가상 테이블 |
 
+### INSERT 데이터 분배 과정
+
+아래 애니메이션은 자동으로 반복됩니다. 6명의 사용자 데이터가 shard key(`user_id % 2`)에 따라 각 Shard의 Replica로 분배되는 과정을 보여줍니다.
+
+<div class="ch-anim" markdown="0">
+  <div class="ch-anim-title">INSERT 시 데이터 분배 흐름 (자동 반복)</div>
+  <div class="ch-anim-client">
+    <div class="ch-anim-client-box">💻 INSERT INTO users VALUES (...) — shard_key: user_id % 2</div>
+  </div>
+  <div class="ch-anim-packets">
+    <div class="ch-packet ch-packet-s2">user_id=1 alice → 홀수</div>
+    <div class="ch-packet ch-packet-s1">user_id=2 bob → 짝수</div>
+    <div class="ch-packet ch-packet-s2">user_id=3 charlie → 홀수</div>
+    <div class="ch-packet ch-packet-s1">user_id=4 dave → 짝수</div>
+    <div class="ch-packet ch-packet-s2">user_id=5 eve → 홀수</div>
+    <div class="ch-packet ch-packet-s1">user_id=6 frank → 짝수</div>
+  </div>
+  <div class="ch-anim-shards">
+    <div class="ch-anim-shard ch-anim-shard1">
+      <div class="ch-anim-shard-title">Shard 1 (짝수: user_id % 2 = 0)</div>
+      <div class="ch-anim-replicas">
+        <div class="ch-anim-replica">
+          <div class="ch-anim-replica-title">Replica A</div>
+          <div class="ch-anim-row">bob (id=2)</div>
+          <div class="ch-anim-row">dave (id=4)</div>
+          <div class="ch-anim-row">frank (id=6)</div>
+        </div>
+        <div class="ch-anim-sync">
+          <div class="ch-anim-sync-arrow">⟷ sync</div>
+        </div>
+        <div class="ch-anim-replica">
+          <div class="ch-anim-replica-title">Replica B</div>
+          <div class="ch-anim-row">bob (id=2)</div>
+          <div class="ch-anim-row">dave (id=4)</div>
+          <div class="ch-anim-row">frank (id=6)</div>
+        </div>
+      </div>
+    </div>
+    <div class="ch-anim-shard ch-anim-shard2">
+      <div class="ch-anim-shard-title">Shard 2 (홀수: user_id % 2 = 1)</div>
+      <div class="ch-anim-replicas">
+        <div class="ch-anim-replica">
+          <div class="ch-anim-replica-title">Replica A</div>
+          <div class="ch-anim-row">alice (id=1)</div>
+          <div class="ch-anim-row">charlie (id=3)</div>
+          <div class="ch-anim-row">eve (id=5)</div>
+        </div>
+        <div class="ch-anim-sync">
+          <div class="ch-anim-sync-arrow">⟷ sync</div>
+        </div>
+        <div class="ch-anim-replica">
+          <div class="ch-anim-replica-title">Replica B</div>
+          <div class="ch-anim-row">alice (id=1)</div>
+          <div class="ch-anim-row">charlie (id=3)</div>
+          <div class="ch-anim-row">eve (id=5)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ch-anim-legend">
+    <div class="ch-anim-legend-item"><strong>Shard</strong>: 데이터를 나눠 저장 (수평 확장)</div>
+    <div class="ch-anim-legend-item"><strong>Replica</strong>: 같은 데이터 복제 (장애 대비)</div>
+    <div class="ch-anim-legend-item"><strong>sync</strong>: Replica 간 자동 동기화</div>
+  </div>
+</div>
+
 ### 전체 구조 다이어그램
 
 <div class="ch-diagram" markdown="0">

@@ -41,6 +41,7 @@ extra_css:
   - stylesheets/custom.css
   - stylesheets/terminal.css
   - stylesheets/flow.css
+  - stylesheets/ch-anim.css
 
 extra_javascript:
   - javascripts/terminal.js
