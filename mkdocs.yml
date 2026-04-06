@@ -28,8 +28,7 @@ theme:
         name: 라이트 모드로 전환
   features:
     - navigation.tabs
-    - navigation.sections
-    - navigation.expand
+    - navigation.indexes
     - navigation.top
     - search.suggest
     - search.highlight
@@ -84,7 +83,7 @@ nav:
     - 4. 모델 작성: dbt-tutorial/04-models.md
     - 5. Materialization 심화:
       - dbt-tutorial/05-materialization.md
-      - "[참고] ClickHouse 구조": dbt-tutorial/05-clickhouse.md
+      - "[참고] ClickHouse 구조의 이해": dbt-tutorial/05-clickhouse.md
     - 6. 테스트와 문서화: dbt-tutorial/06-tests-and-docs.md
     - 7. 실전 팁: dbt-tutorial/07-tips.md
     - 8. 데모: dbt-tutorial/07-demo.md
