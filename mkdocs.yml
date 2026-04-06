@@ -5,9 +5,11 @@ site_description: Data Engineering & SRE 기술 블로그
 
 repo_url: https://github.com/jihyeonjane/jihyeonjane.github.io
 repo_name: jihyeonjane.github.io
+edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: overrides
   language: ko
   palette:
     - media: "(prefers-color-scheme: light)"
