@@ -40,57 +40,45 @@ ClickHouse는 단일 서버로도 빠르지만, 대규모 데이터를 처리할
 ### 클러스터 구조 한눈에 보기
 
 !!! info "핵심 개념 정리"
-    - **Node** = 물리 서버 1대. **장애는 노드 단위**로 발생합니다.
-    - **Shard** = 같은 데이터 파티션을 담당하는 노드 그룹. **서로 다른 Shard는 서로 다른 데이터**를 가집니다.
-    - **Replica** = 같은 Shard 내에서 **동일한 데이터의 복사본**. Node 1이 죽으면 Node 2가 대신 응답합니다.
-    - **Distributed Table** = 모든 Shard를 묶어 하나의 테이블처럼 조회하는 **가상 테이블** (데이터 없음, 라우터 역할)
+    - **Node** = 독립된 물리 서버 1대. 각각 다른 위치에 있을 수 있음.
+    - **Shard** = 논리적 그룹 (물리적으로 묶인 게 아님!). "이 Node들은 같은 데이터를 담당해"라는 **설정**일 뿐.
+    - **Replica** = 같은 Shard 내 Node끼리 동일한 데이터를 자동 복제. Node 1이 죽으면 Node 2가 대신 응답.
+    - **Distributed Table** = 서로 다른 Shard의 Node를 조합해서 **완전한 테이블**을 만들어주는 가상 테이블.
 
 <div class="ch-nodes-diagram" markdown="0">
-  <div class="ch-nodes-title">ClickHouse 클러스터 — 4 Nodes (2 Shards × 2 Replicas)</div>
-  <div class="ch-nodes-grid">
-    <div class="ch-node-group ch-shard-group-1">
-      <div class="ch-shard-label">Shard 1 (짝수 user_id)</div>
-      <div class="ch-node-pair">
-        <div class="ch-node" id="ch-node1">
-          <div class="ch-node-header">🖥️ Node 1</div>
-          <div class="ch-node-role">Shard 1 · Replica A</div>
-          <div class="ch-node-data" id="ch-n1-data"></div>
-        </div>
-        <div class="ch-node-sync">⟷<br><span>자동 복제</span></div>
-        <div class="ch-node" id="ch-node2">
-          <div class="ch-node-header">🖥️ Node 2</div>
-          <div class="ch-node-role">Shard 1 · Replica B</div>
-          <div class="ch-node-data" id="ch-n2-data"></div>
-        </div>
-      </div>
+  <div class="ch-nodes-title">ClickHouse 클러스터 — 4개의 독립 Node</div>
+  <div class="ch-nodes-grid ch-nodes-flat">
+    <div class="ch-node" id="ch-node1">
+      <div class="ch-node-header">🖥️ Node 1</div>
+      <div class="ch-node-role">짝수 데이터 보유</div>
+      <div class="ch-node-data" id="ch-n1-data"></div>
     </div>
-    <div class="ch-node-group ch-shard-group-2">
-      <div class="ch-shard-label">Shard 2 (홀수 user_id)</div>
-      <div class="ch-node-pair">
-        <div class="ch-node" id="ch-node3">
-          <div class="ch-node-header">🖥️ Node 3</div>
-          <div class="ch-node-role">Shard 2 · Replica A</div>
-          <div class="ch-node-data" id="ch-n3-data"></div>
-        </div>
-        <div class="ch-node-sync">⟷<br><span>자동 복제</span></div>
-        <div class="ch-node" id="ch-node4">
-          <div class="ch-node-header">🖥️ Node 4</div>
-          <div class="ch-node-role">Shard 2 · Replica B</div>
-          <div class="ch-node-data" id="ch-n4-data"></div>
-        </div>
-      </div>
+    <div class="ch-node" id="ch-node2">
+      <div class="ch-node-header">🖥️ Node 2</div>
+      <div class="ch-node-role">짝수 데이터 보유 (Node 1 복제본)</div>
+      <div class="ch-node-data" id="ch-n2-data"></div>
+    </div>
+    <div class="ch-node" id="ch-node3">
+      <div class="ch-node-header">🖥️ Node 3</div>
+      <div class="ch-node-role">홀수 데이터 보유</div>
+      <div class="ch-node-data" id="ch-n3-data"></div>
+    </div>
+    <div class="ch-node" id="ch-node4">
+      <div class="ch-node-header">🖥️ Node 4</div>
+      <div class="ch-node-role">홀수 데이터 보유 (Node 3 복제본)</div>
+      <div class="ch-node-data" id="ch-n4-data"></div>
     </div>
   </div>
+  <div class="ch-nodes-combo" id="ch-combo-area"></div>
   <div class="ch-nodes-dist">
     <div class="ch-dist-label">🔀 Distributed Table (users_distributed)</div>
-    <div class="ch-dist-desc">데이터 없음 — Shard 1 + Shard 2에 쿼리를 분산하는 라우터 역할</div>
+    <div class="ch-dist-desc">Node 1(또는 2) + Node 3(또는 4) 를 조합 → 완전한 테이블</div>
   </div>
   <div class="ch-nodes-scenarios">
     <div class="ch-scenario-title">시나리오 선택:</div>
     <button class="ch-scenario-btn ch-sc-active" onclick="chShowScenario('insert')">INSERT 분배</button>
     <button class="ch-scenario-btn" onclick="chShowScenario('select')">Distributed 조회</button>
-    <button class="ch-scenario-btn" onclick="chShowScenario('failure')">Node 장애</button>
-    <button class="ch-scenario-btn" onclick="chShowScenario('shard-failure')">Shard 전체 장애</button>
+    <button class="ch-scenario-btn" onclick="chShowScenario('failure')">Node 장애 시</button>
   </div>
   <div class="ch-nodes-explanation" id="ch-scenario-text"></div>
 </div>

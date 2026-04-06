@@ -6,12 +6,18 @@
    NODE DIAGRAM — Scenario-based visualization
    ================================================================ */
 
-var chScenarioTimer = null;
+var chTimers = [];
+
+function chClearTimers() {
+  chTimers.forEach(function(t) { clearTimeout(t); });
+  chTimers = [];
+}
 
 function chResetNodes() {
+  chClearTimers();
   ['ch-node1','ch-node2','ch-node3','ch-node4'].forEach(function(id) {
     var el = document.getElementById(id);
-    if (el) { el.className = 'ch-node'; }
+    if (el) el.className = 'ch-node';
   });
   ['ch-n1-data','ch-n2-data','ch-n3-data','ch-n4-data'].forEach(function(id) {
     var el = document.getElementById(id);
@@ -19,21 +25,22 @@ function chResetNodes() {
   });
   var dist = document.querySelector('.ch-nodes-dist');
   if (dist) dist.className = 'ch-nodes-dist';
+  var combo = document.getElementById('ch-combo-area');
+  if (combo) combo.innerHTML = '';
   var text = document.getElementById('ch-scenario-text');
   if (text) text.innerHTML = '';
-  if (chScenarioTimer) { clearTimeout(chScenarioTimer); chScenarioTimer = null; }
 }
 
 function chSetNodeData(nodeDataId, rows, cls) {
   var el = document.getElementById(nodeDataId);
   if (!el) return;
   rows.forEach(function(r, i) {
-    setTimeout(function() {
+    chTimers.push(setTimeout(function() {
       var div = document.createElement('div');
       div.className = 'ch-data-row ' + (cls || '');
       div.textContent = r;
       el.appendChild(div);
-    }, i * 200);
+    }, i * 200));
   });
 }
 
@@ -46,184 +53,173 @@ function chAddExp(text, cls) {
   el.appendChild(div);
 }
 
+function chSetCombo(html) {
+  var el = document.getElementById('ch-combo-area');
+  if (el) el.innerHTML = html;
+}
+
 function chShowScenario(type) {
   chResetNodes();
-
-  // Update active button
   document.querySelectorAll('.ch-scenario-btn').forEach(function(b) { b.classList.remove('ch-sc-active'); });
   var btns = document.querySelectorAll('.ch-scenario-btn');
-  var idx = { insert: 0, select: 1, failure: 2, 'shard-failure': 3 }[type];
+  var idx = { insert: 0, select: 1, failure: 2 }[type];
   if (btns[idx]) btns[idx].classList.add('ch-sc-active');
 
   switch(type) {
     case 'insert': chScenarioInsert(); break;
     case 'select': chScenarioSelect(); break;
     case 'failure': chScenarioFailure(); break;
-    case 'shard-failure': chScenarioShardFailure(); break;
   }
 }
 
 /* --- INSERT 분배 --- */
 function chScenarioInsert() {
-  var shard1 = ['bob (id=2)', 'dave (id=4)', 'frank (id=6)'];
-  var shard2 = ['alice (id=1)', 'charlie (id=3)', 'eve (id=5)'];
+  var even = ['bob (id=2)', 'dave (id=4)', 'frank (id=6)'];
+  var odd = ['alice (id=1)', 'charlie (id=3)', 'eve (id=5)'];
 
   chAddExp('INSERT INTO users_distributed — shard_key: user_id % 2', 'exp-send');
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('① user_id=1 (alice) → 1%2=<strong>1 홀수</strong> → Node 3 (Shard 2)', 'exp-info');
+  chTimers.push(setTimeout(function() {
+    chAddExp('① alice (id=1) → 1%2=1 홀수 → <strong>Node 3</strong>에 저장', 'exp-info');
     document.getElementById('ch-node3').classList.add('node-active');
-    chSetNodeData('ch-n3-data', [shard2[0]], 'row-new');
-    // Replica sync to Node 4
-    setTimeout(function() {
-      chSetNodeData('ch-n4-data', [shard2[0]], 'row-sync');
-    }, 500);
-  }, 600);
+    chSetNodeData('ch-n3-data', [odd[0]], 'row-new');
+    chTimers.push(setTimeout(function() {
+      chAddExp('　 → Node 3의 복제본인 <strong>Node 4</strong>에 자동 sync', 'exp-info');
+      document.getElementById('ch-node4').classList.add('node-active');
+      chSetNodeData('ch-n4-data', [odd[0]], 'row-sync');
+    }, 600));
+  }, 600));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('② user_id=2 (bob) → 2%2=<strong>0 짝수</strong> → Node 1 (Shard 1)', 'exp-info');
+  chTimers.push(setTimeout(function() {
+    chAddExp('② bob (id=2) → 2%2=0 짝수 → <strong>Node 1</strong>에 저장', 'exp-info');
     document.getElementById('ch-node1').classList.add('node-active');
-    chSetNodeData('ch-n1-data', [shard1[0]], 'row-new');
-    setTimeout(function() {
-      chSetNodeData('ch-n2-data', [shard1[0]], 'row-sync');
-    }, 500);
-  }, 2000);
+    chSetNodeData('ch-n1-data', [even[0]], 'row-new');
+    chTimers.push(setTimeout(function() {
+      chAddExp('　 → Node 1의 복제본인 <strong>Node 2</strong>에 자동 sync', 'exp-info');
+      document.getElementById('ch-node2').classList.add('node-active');
+      chSetNodeData('ch-n2-data', [even[0]], 'row-sync');
+    }, 600));
+  }, 2400));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('③ user_id=3 (charlie) → Shard 2 / user_id=4 (dave) → Shard 1', 'exp-info');
-    chSetNodeData('ch-n3-data', [shard2[1]], 'row-new');
-    chSetNodeData('ch-n1-data', [shard1[1]], 'row-new');
-    setTimeout(function() {
-      chSetNodeData('ch-n4-data', [shard2[1]], 'row-sync');
-      chSetNodeData('ch-n2-data', [shard1[1]], 'row-sync');
-    }, 500);
-  }, 3400);
+  chTimers.push(setTimeout(function() {
+    chAddExp('③ charlie → Node 3, dave → Node 1 (+ 각각 복제본에 sync)', 'exp-info');
+    chSetNodeData('ch-n3-data', [odd[1]], 'row-new');
+    chSetNodeData('ch-n1-data', [even[1]], 'row-new');
+    chTimers.push(setTimeout(function() {
+      chSetNodeData('ch-n4-data', [odd[1]], 'row-sync');
+      chSetNodeData('ch-n2-data', [even[1]], 'row-sync');
+    }, 500));
+  }, 4200));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('④ user_id=5 (eve) → Shard 2 / user_id=6 (frank) → Shard 1', 'exp-info');
-    chSetNodeData('ch-n3-data', [shard2[2]], 'row-new');
-    chSetNodeData('ch-n1-data', [shard1[2]], 'row-new');
-    setTimeout(function() {
-      chSetNodeData('ch-n4-data', [shard2[2]], 'row-sync');
-      chSetNodeData('ch-n2-data', [shard1[2]], 'row-sync');
-    }, 500);
-  }, 4800);
+  chTimers.push(setTimeout(function() {
+    chAddExp('④ eve → Node 3, frank → Node 1 (+ 각각 복제본에 sync)', 'exp-info');
+    chSetNodeData('ch-n3-data', [odd[2]], 'row-new');
+    chSetNodeData('ch-n1-data', [even[2]], 'row-new');
+    chTimers.push(setTimeout(function() {
+      chSetNodeData('ch-n4-data', [odd[2]], 'row-sync');
+      chSetNodeData('ch-n2-data', [even[2]], 'row-sync');
+    }, 500));
+  }, 5600));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('✓ INSERT 완료! Node 1,2는 같은 데이터(짝수) / Node 3,4는 같은 데이터(홀수)', 'exp-good');
-    document.getElementById('ch-node2').classList.add('node-active');
-    document.getElementById('ch-node4').classList.add('node-active');
-  }, 6200);
+  chTimers.push(setTimeout(function() {
+    chAddExp('✓ 완료! Node 1 = Node 2 (짝수 복제본) / Node 3 = Node 4 (홀수 복제본)', 'exp-good');
+    chAddExp('💡 각 Node는 독립된 물리 서버. 복제본끼리 같은 데이터를 가질 뿐, 물리적으로 묶이진 않음', 'exp-info');
+  }, 7000));
 }
 
 /* --- Distributed 조회 --- */
 function chScenarioSelect() {
-  var shard1 = ['bob (id=2)', 'dave (id=4)', 'frank (id=6)'];
-  var shard2 = ['alice (id=1)', 'charlie (id=3)', 'eve (id=5)'];
+  var even = ['bob (id=2)', 'dave (id=4)', 'frank (id=6)'];
+  var odd = ['alice (id=1)', 'charlie (id=3)', 'eve (id=5)'];
 
-  // Pre-fill all nodes
-  chSetNodeData('ch-n1-data', shard1, '');
-  chSetNodeData('ch-n2-data', shard1, '');
-  chSetNodeData('ch-n3-data', shard2, '');
-  chSetNodeData('ch-n4-data', shard2, '');
+  chSetNodeData('ch-n1-data', even, '');
+  chSetNodeData('ch-n2-data', even, '');
+  chSetNodeData('ch-n3-data', odd, '');
+  chSetNodeData('ch-n4-data', odd, '');
 
-  chScenarioTimer = setTimeout(function() {
+  chTimers.push(setTimeout(function() {
     chAddExp('SELECT * FROM users_distributed', 'exp-send');
     var dist = document.querySelector('.ch-nodes-dist');
     if (dist) dist.classList.add('dist-active');
-  }, 400);
+  }, 400));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('① Distributed 테이블이 각 Shard에서 Replica 1개씩 선택하여 쿼리', 'exp-info');
-    document.getElementById('ch-node1').classList.add('node-highlight');
-    document.getElementById('ch-node3').classList.add('node-highlight');
-    // Glow rows on selected replicas
-    document.querySelectorAll('#ch-n1-data .ch-data-row, #ch-n3-data .ch-data-row').forEach(function(r) { r.classList.add('row-glow'); });
-  }, 1400);
+  chTimers.push(setTimeout(function() {
+    chAddExp('① 짝수 데이터 담당 Node 중 하나 선택 → <strong>Node 1</strong> 선택', 'exp-info');
+    document.getElementById('ch-node1').classList.add('node-selected');
+    document.getElementById('ch-node2').classList.add('node-dim');
+    document.querySelectorAll('#ch-n1-data .ch-data-row').forEach(function(r) { r.classList.add('row-glow'); });
+  }, 1400));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('② Shard 1에서 3건 + Shard 2에서 3건 → 합쳐서 <strong>총 6건</strong> 반환', 'exp-good');
-  }, 2800);
+  chTimers.push(setTimeout(function() {
+    chAddExp('② 홀수 데이터 담당 Node 중 하나 선택 → <strong>Node 3</strong> 선택', 'exp-info');
+    document.getElementById('ch-node3').classList.add('node-selected');
+    document.getElementById('ch-node4').classList.add('node-dim');
+    document.querySelectorAll('#ch-n3-data .ch-data-row').forEach(function(r) { r.classList.add('row-glow'); });
+  }, 2400));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('💡 Node 2, 4는 이번엔 쿼리 안 받음 — 다음 요청에 로드밸런싱될 수 있음', 'exp-info');
-  }, 3800);
+  chTimers.push(setTimeout(function() {
+    chSetCombo(
+      '<span class="ch-combo-label ch-combo-node">Node 1 (짝수 3건)</span>' +
+      '<span class="ch-combo-plus">+</span>' +
+      '<span class="ch-combo-label ch-combo-node">Node 3 (홀수 3건)</span>' +
+      '<span class="ch-combo-eq">=</span>' +
+      '<span class="ch-combo-label ch-combo-result">완전한 테이블 (6건)</span>'
+    );
+    chAddExp('✓ Node 1 + Node 3 = <strong>완전한 테이블 6건!</strong>', 'exp-good');
+  }, 3400));
+
+  chTimers.push(setTimeout(function() {
+    chAddExp('💡 Node 2 + Node 3 조합도, Node 1 + Node 4 조합도, Node 2 + Node 4 조합도 모두 완전한 테이블이 됨', 'exp-info');
+  }, 4400));
 }
 
 /* --- Node 1대 장애 --- */
 function chScenarioFailure() {
-  var shard1 = ['bob (id=2)', 'dave (id=4)', 'frank (id=6)'];
-  var shard2 = ['alice (id=1)', 'charlie (id=3)', 'eve (id=5)'];
+  var even = ['bob (id=2)', 'dave (id=4)', 'frank (id=6)'];
+  var odd = ['alice (id=1)', 'charlie (id=3)', 'eve (id=5)'];
 
-  chSetNodeData('ch-n1-data', shard1, '');
-  chSetNodeData('ch-n2-data', shard1, '');
-  chSetNodeData('ch-n3-data', shard2, '');
-  chSetNodeData('ch-n4-data', shard2, '');
+  chSetNodeData('ch-n1-data', even, '');
+  chSetNodeData('ch-n2-data', even, '');
+  chSetNodeData('ch-n3-data', odd, '');
+  chSetNodeData('ch-n4-data', odd, '');
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('⚡ Node 1 장애 발생! (Shard 1 · Replica A)', 'exp-bad');
+  chTimers.push(setTimeout(function() {
+    chAddExp('⚡ Node 1 장애 발생!', 'exp-bad');
     document.getElementById('ch-node1').classList.add('node-dead');
-  }, 600);
+  }, 600));
 
-  chScenarioTimer = setTimeout(function() {
+  chTimers.push(setTimeout(function() {
     chAddExp('SELECT * FROM users_distributed 실행...', 'exp-send');
     var dist = document.querySelector('.ch-nodes-dist');
     if (dist) dist.classList.add('dist-active');
-  }, 1600);
+  }, 1600));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('① Shard 1: Node 1 응답 없음 → <strong>Node 2 (Replica B)가 대신 응답</strong>', 'exp-info');
-    document.getElementById('ch-node2').classList.add('node-highlight');
+  chTimers.push(setTimeout(function() {
+    chAddExp('① 짝수 데이터: Node 1 응답 없음 → <strong>Node 2가 대신 응답</strong> (같은 데이터 복제본)', 'exp-info');
+    document.getElementById('ch-node2').classList.add('node-selected');
     document.querySelectorAll('#ch-n2-data .ch-data-row').forEach(function(r) { r.classList.add('row-glow'); });
-  }, 2600);
+  }, 2600));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('② Shard 2: Node 3 정상 응답', 'exp-info');
-    document.getElementById('ch-node3').classList.add('node-highlight');
+  chTimers.push(setTimeout(function() {
+    chAddExp('② 홀수 데이터: Node 3 정상 응답', 'exp-info');
+    document.getElementById('ch-node3').classList.add('node-selected');
     document.querySelectorAll('#ch-n3-data .ch-data-row').forEach(function(r) { r.classList.add('row-glow'); });
-  }, 3400);
+  }, 3400));
 
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('✓ 결과: <strong>6건 전체 정상 반환!</strong> — Node 1이 죽어도 Replica B가 같은 데이터를 가지고 있으므로 문제 없음', 'exp-good');
-  }, 4400);
-}
+  chTimers.push(setTimeout(function() {
+    chSetCombo(
+      '<span class="ch-combo-label ch-combo-node">Node 2 (짝수 3건)</span>' +
+      '<span class="ch-combo-plus">+</span>' +
+      '<span class="ch-combo-label ch-combo-node">Node 3 (홀수 3건)</span>' +
+      '<span class="ch-combo-eq">=</span>' +
+      '<span class="ch-combo-label ch-combo-result">완전한 테이블 (6건)</span>'
+    );
+    chAddExp('✓ <strong>6건 전체 정상 반환!</strong> — Node 1이 죽어도 복제본 Node 2가 같은 데이터를 가지고 있으므로 문제 없음', 'exp-good');
+  }, 4400));
 
-/* --- Shard 전체 장애 --- */
-function chScenarioShardFailure() {
-  var shard1 = ['bob (id=2)', 'dave (id=4)', 'frank (id=6)'];
-  var shard2 = ['alice (id=1)', 'charlie (id=3)', 'eve (id=5)'];
-
-  chSetNodeData('ch-n1-data', shard1, '');
-  chSetNodeData('ch-n2-data', shard1, '');
-  chSetNodeData('ch-n3-data', shard2, '');
-  chSetNodeData('ch-n4-data', shard2, '');
-
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('⚡ Node 1 + Node 2 동시 장애! (Shard 1 전체 다운)', 'exp-bad');
-    document.getElementById('ch-node1').classList.add('node-dead');
-    document.getElementById('ch-node2').classList.add('node-dead');
-  }, 600);
-
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('SELECT * FROM users_distributed 실행...', 'exp-send');
-    var dist = document.querySelector('.ch-nodes-dist');
-    if (dist) dist.classList.add('dist-active');
-  }, 1600);
-
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('① Shard 1: Node 1 응답 없음, Node 2도 응답 없음 → <strong>Shard 1 데이터 조회 불가!</strong>', 'exp-bad');
-  }, 2600);
-
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('② Shard 2: Node 3 정상 응답 — alice, charlie, eve (3건만 반환)', 'exp-info');
-    document.getElementById('ch-node3').classList.add('node-highlight');
-    document.querySelectorAll('#ch-n3-data .ch-data-row').forEach(function(r) { r.classList.add('row-glow'); });
-  }, 3400);
-
-  chScenarioTimer = setTimeout(function() {
-    chAddExp('✗ 결과: <strong>3건만 반환 (bob, dave, frank 누락)</strong> — Shard 전체가 죽으면 해당 데이터는 어떤 Replica에도 없음', 'exp-bad');
-    chAddExp('💡 그래서 Replica는 같은 Shard 내 백업이지, 다른 Shard의 백업이 아닙니다', 'exp-info');
-  }, 4400);
+  chTimers.push(setTimeout(function() {
+    chAddExp('💡 Node 1 복구 후 자동으로 데이터 sync. 사용자는 장애를 느끼지 못함', 'exp-info');
+  }, 5400));
 }
 
 // Init on load
