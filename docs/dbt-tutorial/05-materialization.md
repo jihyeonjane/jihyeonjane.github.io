@@ -2,6 +2,49 @@
 
 dbt로 SQL을 실행하면 결과물이 DB에 저장됩니다. 이때 **어떤 방식으로 저장할지**를 `materialization`이라고 부릅니다.
 
+## dbt ↔ DB 상호작용 시각화
+
+아래에서 materialization 타입을 선택하고 **▶ 실행**을 누르면, dbt와 DB가 주고받는 과정을 단계별로 확인할 수 있습니다.
+
+<div class="flow-demo" id="flow-mat" markdown="0">
+  <div class="flow-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Materialization Flow</span>
+  </div>
+  <div class="flow-source">
+    <div class="flow-source-label">dbt 모델 (SQL)</div>
+    <code></code>
+  </div>
+  <div class="flow-panels">
+    <div class="flow-panel flow-panel-dbt">
+      <div class="flow-panel-label label-dbt">🔧 dbt</div>
+      <div class="flow-steps"></div>
+    </div>
+    <div class="flow-panel flow-panel-db">
+      <div class="flow-panel-label label-db">🗄️ Database</div>
+      <div class="flow-steps"></div>
+    </div>
+  </div>
+  <div class="flow-buttons">
+    <button class="mat-btn active" data-type="view" onclick="selectMatType('flow-mat','view')">View</button>
+    <button class="mat-btn" data-type="table" onclick="selectMatType('flow-mat','table')">Table</button>
+    <button class="mat-btn" data-type="incremental" onclick="selectMatType('flow-mat','incremental')">Incremental</button>
+    <button class="mat-btn" data-type="mv" onclick="selectMatType('flow-mat','mv')">Materialized View</button>
+    <button class="btn-play" onclick="playFlow('flow-mat')">▶ 실행</button>
+    <span class="flow-status"></span>
+    <button class="btn-reset" onclick="resetFlow('flow-mat')">Reset</button>
+  </div>
+</div>
+
+!!! tip "사용법"
+    1. 위에서 materialization 타입 버튼을 선택하세요
+    2. **▶ 실행** 버튼을 누르면 dbt와 DB 간의 상호작용이 순서대로 표시됩니다
+    3. 각 단계의 번호 순서대로 따라가면 됩니다
+
+---
+
 ## 1. View — "SQL을 저장해두고, 조회할 때마다 실행"
 
 ```sql

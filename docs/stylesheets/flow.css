@@ -1,0 +1,207 @@
+/* Materialization Flow Visualization */
+.flow-demo {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin: 1.5em 0;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  background: #1e1e2e;
+}
+.flow-header {
+  background: #313244;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.flow-panels {
+  display: flex;
+  min-height: 320px;
+}
+.flow-panel {
+  flex: 1;
+  padding: 12px;
+  position: relative;
+}
+.flow-panel-dbt {
+  border-right: 2px solid #45475a;
+}
+.flow-panel-label {
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.label-dbt {
+  background: #89b4fa33;
+  color: #89b4fa;
+}
+.label-db {
+  background: #a6e3a133;
+  color: #a6e3a1;
+}
+.flow-step {
+  margin: 6px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s, transform 0.4s;
+  line-height: 1.5;
+}
+.flow-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.flow-step.send {
+  background: #89b4fa22;
+  border-left: 3px solid #89b4fa;
+  color: #cdd6f4;
+}
+.flow-step.receive {
+  background: #a6e3a122;
+  border-left: 3px solid #a6e3a1;
+  color: #cdd6f4;
+}
+.flow-step.error {
+  background: #f38ba822;
+  border-left: 3px solid #f38ba8;
+  color: #cdd6f4;
+}
+.flow-step.info {
+  background: #f9e2af22;
+  border-left: 3px solid #f9e2af;
+  color: #cdd6f4;
+}
+.flow-step .step-num {
+  display: inline-block;
+  background: #45475a;
+  color: #cdd6f4;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 10px;
+  margin-right: 6px;
+}
+.flow-step code {
+  display: block;
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: #11111b;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: pre-wrap;
+  color: #a6e3a1;
+  overflow-x: auto;
+}
+.flow-arrow {
+  position: absolute;
+  top: 50%;
+  right: -18px;
+  width: 34px;
+  height: 30px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.flow-arrow.visible {
+  opacity: 1;
+}
+.flow-arrow-right {
+  color: #89b4fa;
+  font-size: 24px;
+  animation: arrowPulse 1s infinite;
+}
+.flow-arrow-left {
+  color: #a6e3a1;
+  font-size: 24px;
+  animation: arrowPulse 1s infinite;
+}
+@keyframes arrowPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.flow-buttons {
+  background: #313244;
+  padding: 10px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.flow-buttons button {
+  background: #585b70;
+  color: #cdd6f4;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+.flow-buttons button:hover {
+  background: #7f849c;
+}
+.flow-buttons button.active {
+  background: #89b4fa;
+  color: #1e1e2e;
+}
+.flow-buttons .btn-play {
+  background: #a6e3a1;
+  color: #1e1e2e;
+  font-weight: bold;
+}
+.flow-buttons .btn-play:hover {
+  background: #94e2d5;
+}
+.flow-buttons .btn-reset {
+  background: #45475a;
+  margin-left: auto;
+}
+.flow-buttons .btn-reset:hover {
+  background: #f38ba8;
+}
+.flow-status {
+  color: #6c7086;
+  font-size: 11px;
+  margin-left: 8px;
+}
+.flow-source {
+  padding: 10px 12px;
+  background: #181825;
+  border-top: 1px solid #313244;
+}
+.flow-source-label {
+  color: #6c7086;
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+.flow-source code {
+  display: block;
+  color: #cdd6f4;
+  font-size: 11px;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+.flow-source .kw { color: #cba6f7; }
+.flow-source .fn { color: #f9e2af; }
+.flow-source .str { color: #a6e3a1; }
+.flow-source .cm { color: #6c7086; }
+
+@media (max-width: 768px) {
+  .flow-panels {
+    flex-direction: column;
+  }
+  .flow-panel-dbt {
+    border-right: none;
+    border-bottom: 2px solid #45475a;
+  }
+}

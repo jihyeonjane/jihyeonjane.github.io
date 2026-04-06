@@ -39,9 +39,11 @@ theme:
 extra_css:
   - stylesheets/custom.css
   - stylesheets/terminal.css
+  - stylesheets/flow.css
 
 extra_javascript:
   - javascripts/terminal.js
+  - javascripts/flow.js
 
 plugins:
   - search:
