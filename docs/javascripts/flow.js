@@ -56,7 +56,21 @@ const SAMPLE = {
     { user_id: 'u1', event_date: '2026-03-31', cnt: 1 },
     { user_id: 'u3', event_date: '2026-03-31', cnt: 1 },
   ],
-  resultIncNew: [
+  resultIncTmp: [
+    { user_id: 'u1', event_date: '2026-03-31', cnt: 1 },
+    { user_id: 'u3', event_date: '2026-03-31', cnt: 1 },
+    { user_id: 'u2', event_date: '2026-04-01', cnt: 1 },
+  ],
+  resultIncFinal: [
+    { user_id: 'u1', event_date: '2026-03-31', cnt: 1 },
+    { user_id: 'u3', event_date: '2026-03-31', cnt: 1 },
+    { user_id: 'u2', event_date: '2026-04-01', cnt: 1 },
+  ],
+  resultIncAll: [
+    { user_id: 'u1', event_date: '2026-03-30', cnt: 1 },
+    { user_id: 'u2', event_date: '2026-03-30', cnt: 1 },
+    { user_id: 'u1', event_date: '2026-03-31', cnt: 1 },
+    { user_id: 'u3', event_date: '2026-03-31', cnt: 1 },
     { user_id: 'u2', event_date: '2026-04-01', cnt: 1 },
   ],
   resultMV: [
@@ -232,29 +246,29 @@ function buildRunSteps(type, demoId) {
     ],
     incremental: [
       {
-        dbt: { num: 1, cls: 'send', text: '테이블 존재 여부 확인' },
+        dbt: { num: 1, cls: 'send', text: '테이블 존재 여부 확인 (current_date = 2026-04-01)' },
         db: null,
         tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.daily_events (기존 데이터)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncOld, { id: tblId }) },
       },
       {
-        dbt: { num: 2, cls: 'info', text: 'is_incremental() = true → WHERE 조건 활성화' },
+        dbt: { num: 2, cls: 'info', text: 'is_incremental() = true → WHERE event_date >= 2026-03-31 활성화' },
         db: null,
         tableAction: null,
       },
       {
-        dbt: { num: 3, cls: 'send', text: '임시 테이블에 새 데이터만 계산하도록 전송' },
-        db: { num: 4, cls: 'receive', text: '새 데이터 → 임시 테이블에 저장', code: 'CREATE TABLE analytics.daily_events__dbt_tmp AS\nSELECT user_id, event_date, count(*) AS cnt\nFROM raw.events\nWHERE event_date >= \'2026-04-01\'\nGROUP BY user_id, event_date' },
+        dbt: { num: 3, cls: 'send', text: '3/31~4/1 데이터를 임시 테이블에 계산하도록 전송' },
+        db: { num: 4, cls: 'receive', text: '3/31 + 4/1 데이터 → 임시 테이블에 저장', code: 'CREATE TABLE analytics.daily_events__dbt_tmp AS\nSELECT user_id, event_date, count(*) AS cnt\nFROM raw.events\nWHERE event_date >= \'2026-03-31\'  -- current_date - 1\nGROUP BY user_id, event_date' },
         tableAction: { type: 'showTmp', target: tmpId + '-wrap', html: '' },
       },
       {
-        dbt: { num: 5, cls: 'send', text: '기존 데이터 중 겹치는 키 삭제 명령' },
-        db: { num: 6, cls: 'receive', text: '해당 날짜 기존 행 삭제', code: 'DELETE FROM analytics.daily_events\nWHERE event_date IN (\n  SELECT DISTINCT event_date\n  FROM analytics.daily_events__dbt_tmp\n)' },
-        tableAction: { type: 'deleteNote', target: tblId, text: '(겹치는 행 없음 — 삭제 대상 0건)' },
+        dbt: { num: 5, cls: 'send', text: '기존 테이블에서 3/31 행 삭제 (unique_key=event_date)' },
+        db: { num: 6, cls: 'receive', text: '기존 3/31 행 2건 삭제', code: 'DELETE FROM analytics.daily_events\nWHERE event_date IN (\n  SELECT DISTINCT event_date\n  FROM analytics.daily_events__dbt_tmp\n)\n-- 3/31 행 2건 삭제됨' },
+        tableAction: { type: 'deleteRows', target: tblId, indices: [2, 3] },
       },
       {
         dbt: { num: 7, cls: 'send', text: '임시 테이블 → 본 테이블로 INSERT' },
-        db: { num: 8, cls: 'receive', text: '1 row inserted' },
-        tableAction: { type: 'addRows', target: tblId, cols: ['user_id', 'event_date', 'cnt'], rows: SAMPLE.resultIncNew },
+        db: { num: 8, cls: 'receive', text: '3 rows inserted (3/31 2건 + 4/1 1건)' },
+        tableAction: { type: 'addRows', target: tblId, cols: ['user_id', 'event_date', 'cnt'], rows: SAMPLE.resultIncFinal },
       },
       {
         dbt: { num: 9, cls: 'send', text: '임시 테이블 정리' },
@@ -262,7 +276,7 @@ function buildRunSteps(type, demoId) {
         tableAction: { type: 'hideTmp', target: tmpId + '-wrap' },
       },
       {
-        dbt: { num: 11, cls: 'info', text: '완료! 새 데이터만 처리하여 기존 테이블에 병합' },
+        dbt: { num: 11, cls: 'info', text: '완료! 3/31은 재계산, 4/1은 신규 추가' },
         db: null,
         tableAction: null,
         note: '새 데이터만 처리 → 대용량 테이블에 효율적',
@@ -357,7 +371,7 @@ function buildQuerySteps(type, demoId) {
       {
         dbt: { num: 1, cls: 'send', text: 'BI 도구 → SELECT * FROM analytics.daily_events' },
         db: null,
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.daily_events (물리 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncOld.concat(SAMPLE.resultIncNew), { id: tblId }) },
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.daily_events (물리 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncAll, { id: tblId }) },
       },
       {
         dbt: null,
@@ -635,7 +649,7 @@ function executeTableActionSync(action, demoId) {
       const wrap = document.getElementById(action.target);
       if (wrap) {
         const tmpTblId = demoId + '-tmp';
-        wrap.innerHTML = buildTable('__dbt_tmp (임시 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncNew, { id: tmpTblId });
+        wrap.innerHTML = buildTable('__dbt_tmp (임시 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncTmp, { id: tmpTblId });
       }
       break;
     }
@@ -701,7 +715,7 @@ async function executeTableAction(action, demoId) {
       const wrap = document.getElementById(action.target);
       if (wrap) {
         const tmpTblId = demoId + '-tmp';
-        wrap.innerHTML = buildTable('__dbt_tmp (임시 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncNew, { id: tmpTblId });
+        wrap.innerHTML = buildTable('__dbt_tmp (임시 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncTmp, { id: tmpTblId });
       }
       await sleep(400);
       break;
