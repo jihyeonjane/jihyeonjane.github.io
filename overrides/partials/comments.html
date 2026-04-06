@@ -1,20 +1,43 @@
 {% if page.meta.comments != false %}
 <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
 
-<script
-  src="https://giscus.app/client.js"
-  data-repo="jihyeonjane/jihyeonjane.github.io"
-  data-repo-id="R_kgDOR6vIUw"
-  data-category="General"
-  data-category-id="DIC_kwDOR6vIU84C6Jkq"
-  data-mapping="pathname"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="bottom"
-  data-theme="preferred_color_scheme"
-  data-lang="ko"
-  crossorigin="anonymous"
-  async>
+<script>
+  // Giscus 테마를 MkDocs 다크/라이트 모드에 맞춰 자동 전환
+  function getGiscusTheme() {
+    const palette = document.body.getAttribute("data-md-color-scheme");
+    return palette === "slate" ? "dark" : "light";
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: getGiscusTheme() } } },
+        "https://giscus.app"
+      );
+    }
+  }
+
+  // 초기 로드
+  var script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", "jihyeonjane/jihyeonjane.github.io");
+  script.setAttribute("data-repo-id", "R_kgDOR6vIUw");
+  script.setAttribute("data-category", "General");
+  script.setAttribute("data-category-id", "DIC_kwDOR6vIU84C6Jkq");
+  script.setAttribute("data-mapping", "pathname");
+  script.setAttribute("data-strict", "0");
+  script.setAttribute("data-reactions-enabled", "1");
+  script.setAttribute("data-emit-metadata", "0");
+  script.setAttribute("data-input-position", "bottom");
+  script.setAttribute("data-theme", getGiscusTheme());
+  script.setAttribute("data-lang", "ko");
+  script.setAttribute("crossorigin", "anonymous");
+  script.async = true;
+  document.currentScript.parentNode.appendChild(script);
+
+  // 다크/라이트 토글 감지
+  var observer = new MutationObserver(function() { setGiscusTheme(); });
+  observer.observe(document.body, { attributes: true, attributeFilter: ["data-md-color-scheme"] });
 </script>
 {% endif %}
