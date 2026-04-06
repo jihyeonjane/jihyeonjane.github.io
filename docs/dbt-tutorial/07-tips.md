@@ -1,4 +1,4 @@
-# 6. 실전 팁
+# 7. 실전 팁
 
 ## 개발 워크플로우
 
@@ -31,13 +31,13 @@ dbt build --select my_model
     <span class="dot green"></span>
     <span class="terminal-title">Terminal</span>
   </div>
-  <div class="terminal-body" id="term-tips">
+  <div class="terminal-body" id="term-tips7">
     <span class="prompt">jane@mac ~/my_project $</span> <span class="cursor">_</span>
   </div>
   <div class="terminal-buttons">
-    <button onclick="runCommand('build', 'term-tips')">dbt build</button>
-    <button onclick="runCommand('compile', 'term-tips')">dbt compile</button>
-    <button onclick="clearTerminal('term-tips')" class="btn-clear">Clear</button>
+    <button onclick="runCommand('build', 'term-tips7')">dbt build</button>
+    <button onclick="runCommand('compile', 'term-tips7')">dbt compile</button>
+    <button onclick="clearTerminal('term-tips7')" class="btn-clear">Clear</button>
   </div>
 </div>
 

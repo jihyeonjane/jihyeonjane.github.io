@@ -1,4 +1,4 @@
-# 8. 인터랙티브 데모
+# 9. 인터랙티브 데모
 
 모든 dbt 명령어를 한곳에서 체험해보세요.
 
@@ -37,16 +37,17 @@
 |------|-------------------|
 | [2. 설치 및 설정](02-setup.md) | `dbt debug` |
 | [4. 모델 작성](04-models.md) | `dbt compile`, `dbt run` |
-| [5. 테스트와 문서화](05-tests-and-docs.md) | `dbt test`, `dbt docs generate` |
-| [6. 실전 팁](06-tips.md) | `dbt build`, `dbt compile` |
+| [5. Materialization 심화](05-materialization.md) | `dbt compile`, `dbt run` |
+| [6. 테스트와 문서화](06-tests-and-docs.md) | `dbt test`, `dbt docs generate` |
+| [7. 실전 팁](07-tips.md) | `dbt build`, `dbt compile` |
 
 ## 명령어 요약
 
 | 명령어 | 설명 | 관련 챕터 |
 |--------|------|----------|
-| `dbt debug` | 연결 상태 및 설정 확인 | [2. 설치 및 설정](02-setup.md#연결-테스트) |
-| `dbt run` | 모든 모델 실행 (테이블/뷰 생성) | [4. 모델 작성](04-models.md#주요-dbt-명령어) |
-| `dbt test` | 데이터 테스트 실행 | [5. 테스트와 문서화](05-tests-and-docs.md#테스트-실행) |
-| `dbt build` | run + test를 의존성 순서대로 실행 | [6. 실전 팁](06-tips.md#개발-워크플로우) |
-| `dbt compile` | SQL 렌더링만 수행 (실행 X) | [4. 모델 작성](04-models.md), [6. 실전 팁](06-tips.md#디버깅-팁) |
-| `dbt docs generate` | 문서 및 카탈로그 생성 | [5. 테스트와 문서화](05-tests-and-docs.md#문서-사이트-생성) |
+| `dbt debug` | 연결 상태 및 설정 확인 | [2. 설치 및 설정](02-setup.md) |
+| `dbt run` | 모든 모델 실행 (테이블/뷰 생성) | [4. 모델 작성](04-models.md) |
+| `dbt test` | 데이터 테스트 실행 | [6. 테스트와 문서화](06-tests-and-docs.md) |
+| `dbt build` | run + test를 의존성 순서대로 실행 | [7. 실전 팁](07-tips.md) |
+| `dbt compile` | SQL 렌더링만 수행 (실행 X) | [4. 모델 작성](04-models.md), [5. Materialization](05-materialization.md) |
+| `dbt docs generate` | 문서 및 카탈로그 생성 | [6. 테스트와 문서화](06-tests-and-docs.md) |

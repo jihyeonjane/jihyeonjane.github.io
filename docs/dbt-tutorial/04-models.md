@@ -195,4 +195,4 @@ dbt run --full-refresh         # incremental 모델 전체 재빌드
 </div>
 
 !!! note "다음 단계"
-    모델을 작성할 수 있게 되었다면, [테스트와 문서화](05-tests-and-docs.md)로 데이터 품질을 관리하는 방법을 배워보세요.
+    모델을 작성할 수 있게 되었다면, [Materialization 심화](05-materialization.md)에서 저장 방식별 차이를 알아보세요.
