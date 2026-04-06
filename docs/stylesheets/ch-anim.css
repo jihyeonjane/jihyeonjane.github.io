@@ -1,8 +1,6 @@
-/* ===== ClickHouse INSERT Distribution Animation ===== */
+/* ===== ClickHouse Node-based Cluster Diagram ===== */
 
-/* Total animation cycle: 12s */
-
-.ch-insert-demo {
+.ch-nodes-diagram {
   background: #1e1e2e;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -11,7 +9,7 @@
   font-size: 12px;
   overflow: hidden;
 }
-.ch-insert-header {
+.ch-nodes-title {
   background: #313244;
   padding: 10px 16px;
   color: #cdd6f4;
@@ -19,238 +17,192 @@
   font-weight: bold;
   text-align: center;
 }
-.ch-insert-body {
+
+/* --- Node grid --- */
+.ch-nodes-grid {
   display: flex;
+  gap: 20px;
   padding: 16px;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-/* --- Source table --- */
-.ch-insert-source {
-  flex: 0 0 200px;
-}
-.ch-insert-source-title {
-  color: #cdd6f4;
-  font-size: 11px;
-  font-weight: bold;
-  margin-bottom: 6px;
-  text-align: center;
-}
-.ch-insert-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #11111b;
-  border-radius: 6px;
-  overflow: hidden;
-}
-.ch-insert-table thead th {
-  background: #313244;
-  color: #89b4fa;
-  padding: 4px 6px;
-  font-size: 10px;
-  text-align: left;
-  border-bottom: 2px solid #45475a;
-}
-.ch-insert-table tbody td {
-  padding: 4px 6px;
-  color: #cdd6f4;
-  font-size: 10px;
-  border-bottom: 1px solid #1e1e2e;
-}
-.ch-key-even { color: #89b4fa; font-weight: bold; }
-.ch-key-odd { color: #f5c0e8; font-weight: bold; }
-
-/* Source row highlight animation — staggered by row */
-.ch-src-row {
-  animation: srcHighlight 12s infinite;
-}
-.ch-src-r1 { animation-delay: 0s; }
-.ch-src-r2 { animation-delay: 1.8s; }
-.ch-src-r3 { animation-delay: 3.6s; }
-.ch-src-r4 { animation-delay: 5.4s; }
-.ch-src-r5 { animation-delay: 7.2s; }
-.ch-src-r6 { animation-delay: 9.0s; }
-
-@keyframes srcHighlight {
-  0%   { background: transparent; }
-  2%   { background: #f9e2af44; }
-  8%   { background: #f9e2af44; }
-  14%  { background: transparent; }
-  100% { background: transparent; }
-}
-
-/* --- Arrow area --- */
-.ch-insert-arrow-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 0 4px;
 }
-.ch-insert-arrow-label {
+.ch-node-group {
+  border: 2px dashed #45475a;
+  border-radius: 12px;
+  padding: 10px 12px;
+  position: relative;
+}
+.ch-shard-group-1 { border-color: #89b4fa55; }
+.ch-shard-group-2 { border-color: #f5c0e855; }
+.ch-shard-label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: #1e1e2e;
+  padding: 0 6px;
+  font-size: 10px;
   color: #6c7086;
-  font-size: 9px;
-  margin-bottom: 4px;
 }
-.ch-insert-arrows {
-  color: #f9e2af;
-  font-size: 20px;
-  animation: arrowPulseInsert 1.5s infinite;
-}
-@keyframes arrowPulseInsert {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+.ch-node-pair {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-/* --- Target shards --- */
-.ch-insert-targets {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.ch-insert-shard {
+/* --- Individual node --- */
+.ch-node {
+  background: #11111b;
+  border: 2px solid #45475a;
   border-radius: 8px;
-  padding: 8px 10px;
+  padding: 8px;
+  width: 140px;
+  min-height: 120px;
+  transition: border-color 0.4s, opacity 0.4s, background 0.4s;
 }
-.ch-insert-shard1 {
-  background: #89b4fa0d;
-  border: 2px solid #89b4fa;
+.ch-node.node-active {
+  border-color: #a6e3a1;
 }
-.ch-insert-shard2 {
-  background: #f5c0e80d;
-  border: 2px solid #f5c0e8;
+.ch-node.node-highlight {
+  border-color: #f9e2af;
+  background: #f9e2af11;
 }
-.ch-insert-shard-title {
-  font-size: 11px;
+.ch-node.node-dead {
+  border-color: #f38ba8;
+  opacity: 0.4;
+  background: #f38ba811;
+}
+.ch-node-header {
+  font-size: 12px;
   font-weight: bold;
+  color: #cdd6f4;
+  margin-bottom: 2px;
+}
+.ch-node-role {
+  font-size: 9px;
+  color: #6c7086;
   margin-bottom: 6px;
 }
-.ch-insert-shard1 .ch-insert-shard-title { color: #89b4fa; }
-.ch-insert-shard2 .ch-insert-shard-title { color: #f5c0e8; }
-
-.ch-insert-replica-group {
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
+.ch-node-data {
+  min-height: 50px;
 }
-.ch-insert-replica {
-  flex: 1;
-  background: #11111b;
-  border-radius: 6px;
-  border: 1px solid #45475a;
-  padding: 6px;
-  min-height: 70px;
-}
-.ch-insert-replica-label {
-  font-size: 9px;
-  font-weight: bold;
-  color: #a6e3a1;
-  text-align: center;
-  margin-bottom: 4px;
-}
-.ch-insert-sync-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-}
-.ch-insert-sync-icon {
-  color: #6c7086;
-  font-size: 14px;
-  animation: syncPulseInsert 2s infinite;
-}
-.ch-insert-sync-text {
-  color: #6c7086;
-  font-size: 8px;
-  white-space: nowrap;
-}
-@keyframes syncPulseInsert {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* --- Destination rows --- */
-.ch-dest-row {
-  padding: 2px 6px;
-  margin: 2px 0;
+.ch-node-data .ch-data-row {
+  padding: 2px 4px;
+  margin: 1px 0;
   border-radius: 3px;
   font-size: 10px;
   color: #cdd6f4;
-  opacity: 0;
+  transition: background 0.3s, opacity 0.3s;
+}
+.ch-data-row.row-new {
+  animation: nodeRowAppear 0.5s ease forwards;
+}
+@keyframes nodeRowAppear {
+  from { opacity: 0; transform: translateX(-6px); background: #a6e3a133; }
+  to { opacity: 1; transform: translateX(0); background: transparent; }
+}
+.ch-data-row.row-sync {
+  animation: nodeRowSync 0.5s ease forwards;
+}
+@keyframes nodeRowSync {
+  from { opacity: 0; transform: translateX(6px); background: #89b4fa33; }
+  to { opacity: 1; transform: translateX(0); background: transparent; }
+}
+.ch-data-row.row-glow {
+  background: #a6e3a122;
+}
+.ch-data-row.row-dim {
+  opacity: 0.3;
 }
 
-/* Shard 1 Replica A rows — appear first */
-.ch-d-s1-r1 { animation: destAppear 12s infinite; animation-delay: 2.0s; }
-.ch-d-s1-r2 { animation: destAppear 12s infinite; animation-delay: 5.6s; }
-.ch-d-s1-r3 { animation: destAppear 12s infinite; animation-delay: 9.2s; }
-
-/* Shard 1 Replica B rows — appear 0.5s after A (sync delay) */
-.ch-d-s1-r1-b { animation: destAppearSync 12s infinite; animation-delay: 2.5s; }
-.ch-d-s1-r2-b { animation: destAppearSync 12s infinite; animation-delay: 6.1s; }
-.ch-d-s1-r3-b { animation: destAppearSync 12s infinite; animation-delay: 9.7s; }
-
-/* Shard 2 Replica A rows */
-.ch-d-s2-r1 { animation: destAppear 12s infinite; animation-delay: 0.2s; }
-.ch-d-s2-r2 { animation: destAppear 12s infinite; animation-delay: 3.8s; }
-.ch-d-s2-r3 { animation: destAppear 12s infinite; animation-delay: 7.4s; }
-
-/* Shard 2 Replica B rows — sync delay */
-.ch-d-s2-r1-b { animation: destAppearSync 12s infinite; animation-delay: 0.7s; }
-.ch-d-s2-r2-b { animation: destAppearSync 12s infinite; animation-delay: 4.3s; }
-.ch-d-s2-r3-b { animation: destAppearSync 12s infinite; animation-delay: 7.9s; }
-
-/* Replica A: row appears with green flash */
-@keyframes destAppear {
-  0%   { opacity: 0; transform: translateX(-6px); }
-  1%   { opacity: 0; transform: translateX(-6px); }
-  3%   { opacity: 1; transform: translateX(0); background: #a6e3a144; }
-  8%   { opacity: 1; background: transparent; }
-  90%  { opacity: 1; }
-  96%  { opacity: 0; }
-  100% { opacity: 0; }
+/* --- Sync arrow between replicas --- */
+.ch-node-sync {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6c7086;
+  font-size: 14px;
+  line-height: 1.2;
+}
+.ch-node-sync span {
+  font-size: 8px;
 }
 
-/* Replica B: row appears with blue flash (slightly after A) */
-@keyframes destAppearSync {
-  0%   { opacity: 0; transform: translateX(6px); }
-  1%   { opacity: 0; transform: translateX(6px); }
-  3%   { opacity: 1; transform: translateX(0); background: #89b4fa44; }
-  8%   { opacity: 1; background: transparent; }
-  90%  { opacity: 1; }
-  96%  { opacity: 0; }
-  100% { opacity: 0; }
+/* --- Distributed table bar --- */
+.ch-nodes-dist {
+  margin: 0 16px;
+  padding: 8px 12px;
+  border: 2px solid #f9e2af;
+  border-radius: 8px;
+  background: #f9e2af0d;
+  text-align: center;
+  transition: border-color 0.4s, background 0.4s;
+}
+.ch-nodes-dist.dist-active {
+  border-color: #a6e3a1;
+  background: #a6e3a10d;
+}
+.ch-dist-label {
+  color: #f9e2af;
+  font-size: 12px;
+  font-weight: bold;
+}
+.ch-dist-desc {
+  color: #6c7086;
+  font-size: 10px;
+  margin-top: 2px;
 }
 
-/* --- Legend --- */
-.ch-insert-legend {
-  background: #313244;
-  padding: 8px 16px;
+/* --- Scenario buttons --- */
+.ch-nodes-scenarios {
+  padding: 10px 16px;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  font-size: 10px;
-  color: #6c7086;
-  border-top: 1px solid #45475a;
+  gap: 8px;
+  align-items: center;
+  border-top: 1px solid #313244;
+  margin-top: 12px;
 }
-.ch-insert-legend strong {
+.ch-scenario-title {
+  color: #6c7086;
+  font-size: 11px;
+  margin-right: 4px;
+}
+.ch-scenario-btn {
+  background: #45475a;
   color: #cdd6f4;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 11px;
+  transition: background 0.2s;
+}
+.ch-scenario-btn:hover { background: #585b70; }
+.ch-scenario-btn.ch-sc-active {
+  background: #89b4fa;
+  color: #1e1e2e;
 }
 
-/* ===== Responsive ===== */
+/* --- Explanation box --- */
+.ch-nodes-explanation {
+  padding: 10px 16px 14px;
+  color: #cdd6f4;
+  font-size: 11px;
+  line-height: 1.8;
+  min-height: 60px;
+}
+.ch-nodes-explanation .ch-exp-step {
+  margin: 4px 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.ch-exp-step.exp-info { background: #f9e2af11; border-left: 3px solid #f9e2af; }
+.ch-exp-step.exp-good { background: #a6e3a111; border-left: 3px solid #a6e3a1; }
+.ch-exp-step.exp-bad { background: #f38ba811; border-left: 3px solid #f38ba8; }
+.ch-exp-step.exp-send { background: #89b4fa11; border-left: 3px solid #89b4fa; }
+
 @media (max-width: 768px) {
-  .ch-insert-body {
-    flex-direction: column;
-  }
-  .ch-insert-source { flex: none; }
-  .ch-insert-arrow-area {
-    flex-direction: row;
-    gap: 8px;
-  }
-  .ch-insert-arrows {
-    transform: rotate(90deg);
-  }
+  .ch-nodes-grid { flex-direction: column; align-items: center; }
+  .ch-node { width: 120px; }
 }

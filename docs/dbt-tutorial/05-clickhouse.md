@@ -37,139 +37,62 @@ ClickHouse는 단일 서버로도 빠르지만, 대규모 데이터를 처리할
 | **Replica (레플리카)** | 같은 데이터를 여러 노드에 복제 (고가용성) |
 | **Distributed Table** | 모든 샤드를 묶어서 조회하는 가상 테이블 |
 
-### INSERT 데이터 분배 과정
+### 클러스터 구조 한눈에 보기
 
-아래 애니메이션은 자동으로 반복됩니다. 원천 테이블의 행이 하나씩 shard key에 따라 분배되고, 각 Shard 내에서 Replica로 복제되는 과정을 보여줍니다.
+!!! info "핵심 개념 정리"
+    - **Node** = 물리 서버 1대. **장애는 노드 단위**로 발생합니다.
+    - **Shard** = 같은 데이터 파티션을 담당하는 노드 그룹. **서로 다른 Shard는 서로 다른 데이터**를 가집니다.
+    - **Replica** = 같은 Shard 내에서 **동일한 데이터의 복사본**. Node 1이 죽으면 Node 2가 대신 응답합니다.
+    - **Distributed Table** = 모든 Shard를 묶어 하나의 테이블처럼 조회하는 **가상 테이블** (데이터 없음, 라우터 역할)
 
-!!! info "Replica는 같은 데이터의 복사본"
-    같은 Shard 내의 Replica A와 B는 **동일한 데이터**를 가집니다. Replica A가 장애 나면 Replica B가 대신 응답합니다. 서로 다른 Shard(1과 2)가 **서로 다른 데이터**를 나눠 가집니다.
-
-<div class="ch-insert-demo" id="ch-insert-demo" markdown="0">
-  <div class="ch-insert-header">INSERT 분배 흐름 (자동 반복 — shard_key: user_id % 2)</div>
-  <div class="ch-insert-body">
-    <div class="ch-insert-source">
-      <div class="ch-insert-source-title">원천 데이터</div>
-      <table class="ch-insert-table">
-        <thead><tr><th>user_id</th><th>name</th><th>shard_key</th></tr></thead>
-        <tbody>
-          <tr class="ch-src-row ch-src-r1"><td>1</td><td>alice</td><td class="ch-key-odd">1 (홀수)</td></tr>
-          <tr class="ch-src-row ch-src-r2"><td>2</td><td>bob</td><td class="ch-key-even">0 (짝수)</td></tr>
-          <tr class="ch-src-row ch-src-r3"><td>3</td><td>charlie</td><td class="ch-key-odd">1 (홀수)</td></tr>
-          <tr class="ch-src-row ch-src-r4"><td>4</td><td>dave</td><td class="ch-key-even">0 (짝수)</td></tr>
-          <tr class="ch-src-row ch-src-r5"><td>5</td><td>eve</td><td class="ch-key-odd">1 (홀수)</td></tr>
-          <tr class="ch-src-row ch-src-r6"><td>6</td><td>frank</td><td class="ch-key-even">0 (짝수)</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="ch-insert-arrow-area">
-      <div class="ch-insert-arrow-label">분배</div>
-      <div class="ch-insert-arrows">→</div>
-    </div>
-    <div class="ch-insert-targets">
-      <div class="ch-insert-shard ch-insert-shard1">
-        <div class="ch-insert-shard-title">Shard 1 (짝수)</div>
-        <div class="ch-insert-replica-group">
-          <div class="ch-insert-replica">
-            <div class="ch-insert-replica-label">Replica A</div>
-            <div class="ch-dest-row ch-d-s1-r1">bob (2)</div>
-            <div class="ch-dest-row ch-d-s1-r2">dave (4)</div>
-            <div class="ch-dest-row ch-d-s1-r3">frank (6)</div>
-          </div>
-          <div class="ch-insert-sync-col">
-            <div class="ch-insert-sync-icon">⟷</div>
-            <div class="ch-insert-sync-text">자동 복제</div>
-          </div>
-          <div class="ch-insert-replica">
-            <div class="ch-insert-replica-label">Replica B</div>
-            <div class="ch-dest-row ch-d-s1-r1-b">bob (2)</div>
-            <div class="ch-dest-row ch-d-s1-r2-b">dave (4)</div>
-            <div class="ch-dest-row ch-d-s1-r3-b">frank (6)</div>
-          </div>
+<div class="ch-nodes-diagram" markdown="0">
+  <div class="ch-nodes-title">ClickHouse 클러스터 — 4 Nodes (2 Shards × 2 Replicas)</div>
+  <div class="ch-nodes-grid">
+    <div class="ch-node-group ch-shard-group-1">
+      <div class="ch-shard-label">Shard 1 (짝수 user_id)</div>
+      <div class="ch-node-pair">
+        <div class="ch-node" id="ch-node1">
+          <div class="ch-node-header">🖥️ Node 1</div>
+          <div class="ch-node-role">Shard 1 · Replica A</div>
+          <div class="ch-node-data" id="ch-n1-data"></div>
+        </div>
+        <div class="ch-node-sync">⟷<br><span>자동 복제</span></div>
+        <div class="ch-node" id="ch-node2">
+          <div class="ch-node-header">🖥️ Node 2</div>
+          <div class="ch-node-role">Shard 1 · Replica B</div>
+          <div class="ch-node-data" id="ch-n2-data"></div>
         </div>
       </div>
-      <div class="ch-insert-shard ch-insert-shard2">
-        <div class="ch-insert-shard-title">Shard 2 (홀수)</div>
-        <div class="ch-insert-replica-group">
-          <div class="ch-insert-replica">
-            <div class="ch-insert-replica-label">Replica A</div>
-            <div class="ch-dest-row ch-d-s2-r1">alice (1)</div>
-            <div class="ch-dest-row ch-d-s2-r2">charlie (3)</div>
-            <div class="ch-dest-row ch-d-s2-r3">eve (5)</div>
-          </div>
-          <div class="ch-insert-sync-col">
-            <div class="ch-insert-sync-icon">⟷</div>
-            <div class="ch-insert-sync-text">자동 복제</div>
-          </div>
-          <div class="ch-insert-replica">
-            <div class="ch-insert-replica-label">Replica B</div>
-            <div class="ch-dest-row ch-d-s2-r1-b">alice (1)</div>
-            <div class="ch-dest-row ch-d-s2-r2-b">charlie (3)</div>
-            <div class="ch-dest-row ch-d-s2-r3-b">eve (5)</div>
-          </div>
+    </div>
+    <div class="ch-node-group ch-shard-group-2">
+      <div class="ch-shard-label">Shard 2 (홀수 user_id)</div>
+      <div class="ch-node-pair">
+        <div class="ch-node" id="ch-node3">
+          <div class="ch-node-header">🖥️ Node 3</div>
+          <div class="ch-node-role">Shard 2 · Replica A</div>
+          <div class="ch-node-data" id="ch-n3-data"></div>
+        </div>
+        <div class="ch-node-sync">⟷<br><span>자동 복제</span></div>
+        <div class="ch-node" id="ch-node4">
+          <div class="ch-node-header">🖥️ Node 4</div>
+          <div class="ch-node-role">Shard 2 · Replica B</div>
+          <div class="ch-node-data" id="ch-n4-data"></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="ch-insert-legend">
-    <span>🔵 <strong>Shard</strong>: 데이터를 나눠 저장</span>
-    <span>🟢 <strong>Replica</strong>: 같은 Shard 내 동일 데이터 복제 (장애 대비)</span>
-    <span>⟷ <strong>sync</strong>: Replica 간 자동 동기화</span>
+  <div class="ch-nodes-dist">
+    <div class="ch-dist-label">🔀 Distributed Table (users_distributed)</div>
+    <div class="ch-dist-desc">데이터 없음 — Shard 1 + Shard 2에 쿼리를 분산하는 라우터 역할</div>
   </div>
-</div>
-
-### 전체 구조 다이어그램
-
-<div class="ch-diagram" markdown="0">
-  <div class="ch-title">ClickHouse 클러스터 — 2 Shards × 2 Replicas</div>
-  <div class="ch-client-box">
-    <div class="ch-box-icon">💻</div>
-    <div class="ch-box-label">Client / BI 도구</div>
+  <div class="ch-nodes-scenarios">
+    <div class="ch-scenario-title">시나리오 선택:</div>
+    <button class="ch-scenario-btn ch-sc-active" onclick="chShowScenario('insert')">INSERT 분배</button>
+    <button class="ch-scenario-btn" onclick="chShowScenario('select')">Distributed 조회</button>
+    <button class="ch-scenario-btn" onclick="chShowScenario('failure')">Node 장애</button>
+    <button class="ch-scenario-btn" onclick="chShowScenario('shard-failure')">Shard 전체 장애</button>
   </div>
-  <div class="ch-arrow-down">▼</div>
-  <div class="ch-dist-box">
-    <div class="ch-box-icon">🔀</div>
-    <div class="ch-box-label">Distributed Table</div>
-    <div class="ch-box-sub">모든 Shard에 쿼리 분산 (데이터 없음, 라우터 역할)</div>
-  </div>
-  <div class="ch-arrow-fork">
-    <div class="ch-arrow-left">◀──────</div>
-    <div class="ch-arrow-right">──────▶</div>
-  </div>
-  <div class="ch-shards">
-    <div class="ch-shard ch-shard1">
-      <div class="ch-shard-title">Shard 1 <span class="ch-shard-key">user_id % 2 = 0 (짝수)</span></div>
-      <div class="ch-replicas">
-        <div class="ch-replica">
-          <div class="ch-replica-title">Replica A</div>
-          <div class="ch-replica-data">bob (2), dave (4), frank (6)</div>
-        </div>
-        <div class="ch-sync">⟷ sync</div>
-        <div class="ch-replica">
-          <div class="ch-replica-title">Replica B</div>
-          <div class="ch-replica-data">bob (2), dave (4), frank (6)</div>
-        </div>
-      </div>
-    </div>
-    <div class="ch-shard ch-shard2">
-      <div class="ch-shard-title">Shard 2 <span class="ch-shard-key">user_id % 2 = 1 (홀수)</span></div>
-      <div class="ch-replicas">
-        <div class="ch-replica">
-          <div class="ch-replica-title">Replica A</div>
-          <div class="ch-replica-data">alice (1), charlie (3), eve (5)</div>
-        </div>
-        <div class="ch-sync">⟷ sync</div>
-        <div class="ch-replica">
-          <div class="ch-replica-title">Replica B</div>
-          <div class="ch-replica-data">alice (1), charlie (3), eve (5)</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="ch-diagram-notes">
-    <div class="ch-note-item">🟢 <strong>장애 대응</strong>: Replica A가 죽어도 Replica B가 즉시 응답</div>
-    <div class="ch-note-item">🔵 <strong>수평 확장</strong>: 데이터가 늘면 Shard를 추가</div>
-    <div class="ch-note-item">🟡 <strong>Distributed</strong>: 클라이언트는 샤딩을 의식하지 않고 전체 데이터 조회 가능</div>
-  </div>
+  <div class="ch-nodes-explanation" id="ch-scenario-text"></div>
 </div>
 
 ### 클러스터 동작 데모
