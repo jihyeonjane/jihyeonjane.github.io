@@ -2,6 +2,40 @@
    Materialization Flow — Step-by-step with visual mini-tables
    ============================================================ */
 
+/* ---------- source SQL per type ---------- */
+const SOURCE_SQL = {
+  view: `<span class="kw">{{</span> <span class="fn">config</span>(<span class="str">materialized='view'</span>) <span class="kw">}}</span>
+
+<span class="kw">SELECT</span> user_id, <span class="fn">count</span>(*) <span class="kw">AS</span> event_count
+<span class="kw">FROM</span> <span class="kw">{{</span> <span class="fn">source</span>(<span class="str">'raw'</span>, <span class="str">'events'</span>) <span class="kw">}}</span>
+<span class="kw">GROUP BY</span> user_id`,
+
+  table: `<span class="kw">{{</span> <span class="fn">config</span>(<span class="str">materialized='table'</span>) <span class="kw">}}</span>
+
+<span class="kw">SELECT</span> user_id, <span class="fn">count</span>(*) <span class="kw">AS</span> event_count
+<span class="kw">FROM</span> <span class="kw">{{</span> <span class="fn">source</span>(<span class="str">'raw'</span>, <span class="str">'events'</span>) <span class="kw">}}</span>
+<span class="kw">GROUP BY</span> user_id`,
+
+  incremental: `<span class="kw">{{</span> <span class="fn">config</span>(
+    <span class="str">materialized='incremental'</span>,
+    <span class="str">unique_key='event_date'</span>
+) <span class="kw">}}</span>
+
+<span class="kw">SELECT</span> user_id, event_date, <span class="fn">count</span>(*) <span class="kw">AS</span> cnt
+<span class="kw">FROM</span> <span class="kw">{{</span> <span class="fn">source</span>(<span class="str">'raw'</span>, <span class="str">'events'</span>) <span class="kw">}}</span>
+<span class="kw">{%</span> <span class="kw">if</span> <span class="fn">is_incremental</span>() <span class="kw">%}</span>
+  <span class="kw">WHERE</span> event_date >= current_date - 1
+<span class="kw">{%</span> <span class="kw">endif</span> <span class="kw">%}</span>
+<span class="kw">GROUP BY</span> user_id, event_date`,
+
+  mv: `<span class="kw">{{</span> <span class="fn">config</span>(<span class="str">materialized='materialized_view'</span>) <span class="kw">}}</span>
+
+<span class="kw">SELECT</span> event_date,
+       <span class="fn">count</span>(<span class="kw">DISTINCT</span> user_id) <span class="kw">AS</span> dau
+<span class="kw">FROM</span> <span class="kw">{{</span> <span class="fn">source</span>(<span class="str">'raw'</span>, <span class="str">'events'</span>) <span class="kw">}}</span>
+<span class="kw">GROUP BY</span> event_date`,
+};
+
 /* ---------- sample data ---------- */
 const SAMPLE = {
   source: [
@@ -407,6 +441,12 @@ function loadFlow(id) {
     state.steps = buildQuerySteps(state.type, id);
   }
   state.currentStep = -1;
+
+  // Update source SQL
+  const sourceCode = container.querySelector('.flow-source-code');
+  if (sourceCode && SOURCE_SQL[state.type]) {
+    sourceCode.innerHTML = SOURCE_SQL[state.type];
+  }
 
   // Clear panels
   const dbtPanel = container.querySelector('.flow-panel-dbt .flow-steps');

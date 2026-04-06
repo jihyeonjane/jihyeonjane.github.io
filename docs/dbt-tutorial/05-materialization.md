@@ -19,6 +19,10 @@ materialization 타입을 선택하고, **다음 ▶** 버튼으로 한 단계�
     <button class="mat-btn" data-type="incremental" onclick="selectFlowType('flow-run','incremental')">Incremental</button>
     <button class="mat-btn" data-type="mv" onclick="selectFlowType('flow-run','mv')">Materialized View</button>
   </div>
+  <div class="flow-source">
+    <div class="flow-source-label">dbt 모델 (SQL)</div>
+    <code class="flow-source-code"></code>
+  </div>
   <div class="flow-panels">
     <div class="flow-panel flow-panel-dbt">
       <div class="flow-panel-label label-dbt">dbt</div>
