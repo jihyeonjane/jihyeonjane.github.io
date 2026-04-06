@@ -246,6 +246,109 @@ GROUP BY event_date
 | 데이터 신선도 | 조회 시점 | 마지막 실행 | 마지막 실행 | 실시간 |
 | 대표 용도 | 프로토타입 | 소규모 dimension | 대형 가공 테이블 | DAU/KPI |
 
+---
+
+## ClickHouse에서 dbt Input 테이블 선택 가이드
+
+!!! note "이 섹션은 ClickHouse + dbt 조합에 해당하는 내용입니다. ClickHouse 자체 개념은 [[참고] ClickHouse 구조의 이해](05-clickhouse.md)를 참고하세요."
+
+dbt 모델을 작성할 때, ClickHouse의 어떤 테이블을 `FROM`에 써야 할까요?
+
+### 세 가지 테이블 역할 복습
+
+| 테이블 | 역할 | 중복 제거 | 전체 데이터 |
+|--------|------|:---------:|:-----------:|
+| `events_local` | 실제 데이터 (샤드별) | X | X (해당 샤드만) |
+| `events_distributed` | 라우터 (전체 샤드) | X | O |
+| `events_view` (FINAL) | 라우터 + 중복 제거 | O | O |
+
+### dbt 모델별 권장 Input
+
+| dbt materialization | 권장 Input | 이유 |
+|:-------------------:|:----------:|------|
+| `view` | View (FINAL) | 중복 제거 + 전체 데이터 필요 |
+| `table` | View (FINAL) | 전체 데이터 기반 재생성 |
+| `incremental` | View (FINAL) | WHERE 조건으로 범위 제한 + 중복 제거 |
+| `materialized_view` | **Local Table** | MV 트리거가 Local INSERT에만 반응 |
+
+!!! warning "materialized_view는 반드시 Local 테이블을 Input으로!"
+    ClickHouse의 Incremental MV는 **Local 테이블에 INSERT가 발생할 때만 트리거**됩니다.
+
+    - Distributed 테이블을 소스로 지정하면 → 트리거가 발생하지 않음
+    - View (FINAL)을 소스로 지정하면 → 뷰이므로 INSERT 이벤트 자체가 없음
+
+    따라서 `materialized='materialized_view'`를 사용할 때는 반드시 Local 테이블을 `FROM`에 지정해야 합니다.
+
+```sql
+-- dbt 모델 예시: materialized_view
+{{ config(materialized='materialized_view') }}
+
+SELECT event_date, count() AS event_count
+FROM {{ source('raw', 'events_local') }}  -- Local 테이블!
+GROUP BY event_date
+```
+
+```sql
+-- dbt 모델 예시: incremental
+{{ config(
+    materialized='incremental',
+    unique_key='event_date'
+) }}
+
+SELECT event_date, uniq(user_id) AS unique_users
+FROM {{ source('raw', 'events_view') }}  -- View (FINAL)!
+{% if is_incremental() %}
+  WHERE event_date >= today() - 1
+{% endif %}
+GROUP BY event_date
+```
+
+---
+
+## FINAL과 WHERE 성능
+
+"FINAL을 쓰면 느리지 않을까?" 라는 걱정이 있을 수 있습니다.
+
+### Partition Pruning은 FINAL과 무관
+
+```sql
+SELECT * FROM events_distributed FINAL
+WHERE event_date = '2026-04-01'
+```
+
+위 쿼리의 동작:
+
+1. **WHERE 조건으로 파티션 선택** → `2026-04-01` 파티션만 읽음 (pruning)
+2. **선택된 파티션 내에서 FINAL 적용** → 해당 파티션의 중복만 제거
+
+!!! note "핵심 포인트"
+    - `WHERE`에 의한 **파티션 pruning은 FINAL 유무와 관계없이** 동일하게 작동합니다
+    - FINAL은 **이미 선택된 파티션 안에서만** 중복 제거 오버헤드를 추가합니다
+    - 전체 테이블을 스캔하는 것이 아닙니다
+
+### dbt incremental + WHERE + FINAL = 효율적이고 정확한 조합
+
+```sql
+-- dbt incremental 모델이 실제로 하는 일
+SELECT event_date, count() AS cnt
+FROM events_view  -- Distributed FINAL
+WHERE event_date >= '2026-04-05'  -- 파티션 pruning
+GROUP BY event_date
+```
+
+| 단계 | 동작 | 성능 영향 |
+|------|------|----------|
+| 1. WHERE | 필요한 파티션만 선택 | 불필요한 파티션 읽기 제거 |
+| 2. FINAL | 선택된 파티션 내 중복 제거 | 소량 오버헤드 (파티션 범위 내) |
+| 3. 집계 | 정확한 데이터로 계산 | 중복 없이 정확한 결과 |
+
+!!! tip "결론"
+    **dbt incremental + WHERE 조건 + Distributed FINAL** 조합은:
+
+    - **효율적**: WHERE로 읽는 범위를 제한하므로 FINAL 비용도 제한됨
+    - **정확**: 중복 제거된 데이터로 계산하므로 결과가 정확함
+    - **안전**: 전체 데이터를 다시 계산하지 않으므로 리소스 절약
+
 ### 직접 체험해보기
 
 `dbt run`으로 모델을 실행하고, `dbt compile`로 렌더링된 SQL을 확인해보세요.

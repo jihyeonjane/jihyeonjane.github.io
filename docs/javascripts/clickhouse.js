@@ -533,41 +533,42 @@ function chLocalDistUpdateUI() {
 
 
 /* ================================================================
-   DEMO 3: Incremental MV vs Refreshable MV
+   DEMO 3: Incremental MV vs Refreshable MV (Case-based)
    ================================================================ */
-var chMVState = { step: -1, playing: false };
+var chMVState = { step: -1, playing: false, caseType: 'simple' };
 
-var chMVSteps = [
+/* --- Case 1: 단순 집계 (실시간 DAU) --- */
+var chMVStepsSimple = [
   {
     action: function() {
+      document.getElementById('ch-mv-source-label').textContent = 'Source: events_local';
+      document.getElementById('ch-mv-source2-area').style.display = 'none';
       document.getElementById('ch-mv-source-area').innerHTML =
         chBuildTable('events_local', ['event_date', 'user_id', 'action'], [
           { event_date: '04-01', user_id: 'u1', action: 'click' },
           { event_date: '04-01', user_id: 'u2', action: 'view' },
         ], { id: 'ch-mv-src' });
       document.getElementById('ch-mv-inc-area').innerHTML =
-        chBuildTable('mv_daily_count', ['event_date', 'cnt'], [
-          { event_date: '04-01', cnt: 2 },
+        chBuildTable('mv_daily_dau (Incremental)', ['event_date', 'dau'], [
+          { event_date: '04-01', dau: 2 },
         ], { id: 'ch-mv-inc' });
       document.getElementById('ch-mv-ref-area').innerHTML =
-        chBuildTable('mv_daily_summary', ['event_date', 'cnt'], [
-          { event_date: '04-01', cnt: 2 },
+        chBuildTable('mv_daily_dau (Refreshable)', ['event_date', 'dau'], [
+          { event_date: '04-01', dau: 2 },
         ], { id: 'ch-mv-ref' });
     },
-    note: '초기 상태: source에 4/1 데이터 2건. 두 MV 모두 동일한 결과(cnt=2)를 가지고 있습니다.',
+    note: '초기 상태: source에 4/1 데이터 2건 (user u1, u2). 두 MV 모두 DAU=2를 표시합니다.',
   },
   {
     action: function() {
-      // Add new rows to source
       var src = document.getElementById('ch-mv-src');
       if (src) {
         var tbody = src.querySelector('tbody');
-        var rows = [
+        [
           { event_date: '04-02', user_id: 'u1', action: 'click' },
           { event_date: '04-02', user_id: 'u3', action: 'signup' },
-          { event_date: '04-02', user_id: 'u2', action: 'click' },
-        ];
-        rows.forEach(function(r, i) {
+          { event_date: '04-02', user_id: 'u1', action: 'view' },
+        ].forEach(function(r, i) {
           setTimeout(function() {
             var tr = document.createElement('tr');
             tr.className = 'row-fadein';
@@ -577,48 +578,30 @@ var chMVSteps = [
         });
       }
     },
-    note: 'source에 4/2 데이터 3건이 INSERT됩니다. 두 MV가 어떻게 반응할까요?',
+    note: 'INSERT: 4/2 데이터 3건 도착 (u1 2번, u3 1번 → unique user 2명). 두 MV가 어떻게 반응할까요?',
   },
   {
     action: function() {
-      // Incremental MV: immediately triggered, add new row
       var inc = document.getElementById('ch-mv-inc');
       if (inc) {
         var tbody = inc.querySelector('tbody');
         var tr = document.createElement('tr');
         tr.className = 'row-fadein';
-        tr.innerHTML = '<td>04-02</td><td>3</td>';
+        tr.innerHTML = '<td>04-02</td><td>2</td>';
         tbody.appendChild(tr);
       }
     },
-    note: '⚡ Incremental MV: INSERT 즉시 트리거! 새 배치(4/2 3건)만 집계해서 행 추가. 기존 4/1 데이터는 건드리지 않음.',
+    note: '⚡ Incremental MV: INSERT 즉시 트리거! 새 배치만 집계 → {04-02, dau: 2} 행 추가. 실시간 반영!',
   },
   {
     action: function() {
-      // Refreshable MV: still old data, show waiting
       var ref = document.getElementById('ch-mv-ref');
-      if (ref) {
-        ref.style.opacity = '0.5';
-      }
+      if (ref) ref.style.opacity = '0.5';
     },
     note: '⏳ Refreshable MV: 아직 변화 없음! 다음 스케줄 시간(예: 매 정시)까지 기다려야 합니다.',
   },
   {
     action: function() {
-      // Refreshable MV: schedule fires, full recalculate
-      var refArea = document.getElementById('ch-mv-ref-area');
-      if (refArea) {
-        refArea.innerHTML = chBuildTable('mv_daily_summary (전체 재계산)', ['event_date', 'cnt'], [
-          { event_date: '04-01', cnt: 2 },
-          { event_date: '04-02', cnt: 3 },
-        ], { id: 'ch-mv-ref2', rowClass: 'row-fadein' });
-      }
-    },
-    note: '🔄 Refreshable MV: 스케줄 시간 도달 → 전체 데이터를 처음부터 재계산! 결과는 같지만 처리 방식이 다릅니다.',
-  },
-  {
-    action: function() {
-      // Add more data
       var src = document.getElementById('ch-mv-src');
       if (src) {
         var tbody = src.querySelector('tbody');
@@ -627,11 +610,13 @@ var chMVSteps = [
         tr.innerHTML = '<td>04-02</td><td>u4</td><td>view</td>';
         tbody.appendChild(tr);
       }
-      // Incremental immediately updates
+    },
+    note: 'INSERT: 4/2에 u4 추가 도착! 이제 4/2 unique user는 u1, u3, u4 = 3명.',
+  },
+  {
+    action: function() {
       var inc = document.getElementById('ch-mv-inc');
       if (inc) {
-        // The existing 04-02 row shows cnt=3, but incremental adds batch separately
-        // In reality with SummingMergeTree it would eventually merge
         var tbody = inc.querySelector('tbody');
         var tr = document.createElement('tr');
         tr.className = 'row-fadein';
@@ -639,13 +624,162 @@ var chMVSteps = [
         tbody.appendChild(tr);
       }
     },
-    note: '⚡ 또 INSERT! Incremental MV는 즉시 반응 — 하지만 이전 배치와 별도 행으로 추가됨 (나중에 merge). Refreshable MV는 아직 반영 안 됨.',
+    note: '⚡ Incremental MV: 즉시 반응 → 새 배치 {04-02, dau: 1} 추가. 배치 단위라 이전 행과 별도 (나중에 merge).',
+  },
+  {
+    action: function() {
+      var refArea = document.getElementById('ch-mv-ref-area');
+      if (refArea) {
+        refArea.innerHTML = chBuildTable('mv_daily_dau (전체 재계산)', ['event_date', 'dau'], [
+          { event_date: '04-01', dau: 2 },
+          { event_date: '04-02', dau: 3 },
+        ], { id: 'ch-mv-ref2', rowClass: 'row-fadein' });
+      }
+    },
+    note: '🔄 Refreshable MV: 스케줄 도달 → 전체 재계산! 4/2의 모든 데이터를 한번에 집계해서 정확한 dau=3 표시.',
   },
   {
     action: function() {},
-    note: '💡 핵심 차이: Incremental은 빠르지만 배치 단위로만 처리(JOIN 불가). Refreshable은 느리지만 전체 재계산이라 복잡한 쿼리도 가능. dbt에서는 Incremental MV만 지원!',
+    note: '✅ 결론: 단순 실시간 집계에는 Incremental MV가 적합! INSERT마다 즉시 반영되고 스케줄링이 필요 없습니다.',
   },
 ];
+
+/* --- Case 2: 복잡한 JOIN 연산 (유저별 매출 리포트) --- */
+var chMVStepsComplex = [
+  {
+    action: function() {
+      document.getElementById('ch-mv-source-label').textContent = 'Source Tables (2개)';
+      document.getElementById('ch-mv-source2-area').style.display = 'block';
+      document.getElementById('ch-mv-source-area').innerHTML =
+        chBuildTable('orders_local', ['order_id', 'user_id', 'amount'], [
+          { order_id: 1, user_id: 'u1', amount: 10000 },
+          { order_id: 2, user_id: 'u2', amount: 25000 },
+          { order_id: 3, user_id: 'u1', amount: 15000 },
+        ], { id: 'ch-mv-src' });
+      document.getElementById('ch-mv-source2-area').innerHTML =
+        chBuildTable('users_local', ['user_id', 'name'], [
+          { user_id: 'u1', name: 'alice' },
+          { user_id: 'u2', name: 'bob' },
+          { user_id: 'u3', name: 'charlie' },
+        ], { id: 'ch-mv-src2' });
+      document.getElementById('ch-mv-inc-area').innerHTML = '';
+      document.getElementById('ch-mv-ref-area').innerHTML = '';
+    },
+    note: '두 개의 source 테이블: orders_local (주문 데이터)과 users_local (유저 정보). 이 둘을 JOIN해야 유저별 매출 리포트를 만들 수 있습니다.',
+  },
+  {
+    action: function() {
+      document.getElementById('ch-mv-inc-area').innerHTML =
+        '<div style="padding:8px;font-size:11px;color:#6c7086;background:#181825;border-radius:6px;margin-bottom:8px;">' +
+        '<code style="color:#89b4fa;font-size:10px;">CREATE MATERIALIZED VIEW mv_user_sales<br>' +
+        'AS SELECT u.name, sum(o.amount)<br>' +
+        'FROM orders_local o<br>' +
+        '<span style="color:#f38ba8;">JOIN users_local u ON o.user_id = u.user_id</span><br>' +
+        'GROUP BY u.name</code></div>';
+    },
+    note: '이 리포트는 orders와 users를 JOIN해야 합니다. Incremental MV로 가능할까요?',
+  },
+  {
+    action: function() {
+      document.getElementById('ch-mv-inc-area').innerHTML =
+        '<div style="padding:10px;background:#f38ba822;border:1px solid #f38ba8;border-radius:6px;margin-bottom:8px;">' +
+        '<div style="color:#f38ba8;font-weight:bold;font-size:12px;">❌ JOIN 불가!</div>' +
+        '<div style="color:#f38ba8;font-size:11px;margin-top:4px;">Incremental MV는 source 1개만 가능합니다.<br>JOIN, Window 함수 사용 불가!</div>' +
+        '<div style="color:#6c7086;font-size:10px;margin-top:6px;">→ INSERT 이벤트는 한 테이블에서만 발생하므로,<br>　 다른 테이블과 JOIN할 수 없습니다.</div>' +
+        '</div>';
+    },
+    note: '❌ Incremental MV: JOIN 불가! INSERT 시 트리거되는 배치 단위 처리이므로, 다른 테이블 참조가 불가능합니다.',
+  },
+  {
+    action: function() {
+      document.getElementById('ch-mv-ref-area').innerHTML =
+        '<div style="padding:8px;font-size:11px;color:#6c7086;background:#181825;border-radius:6px;margin-bottom:8px;">' +
+        '<code style="color:#a6e3a1;font-size:10px;">CREATE MATERIALIZED VIEW mv_user_sales<br>' +
+        '<span style="color:#cba6f7;">REFRESH EVERY 1 HOUR</span><br>' +
+        'AS SELECT u.name, sum(o.amount) as total<br>' +
+        'FROM orders_distributed o<br>' +
+        '<span style="color:#a6e3a1;">JOIN users_distributed u ON o.user_id = u.user_id</span><br>' +
+        'GROUP BY u.name</code></div>';
+    },
+    note: '✅ Refreshable MV: JOIN 가능! 전체 재계산 방식이므로 여러 테이블을 자유롭게 JOIN할 수 있습니다.',
+  },
+  {
+    action: function() {
+      document.getElementById('ch-mv-ref-area').innerHTML =
+        '<div style="padding:8px;font-size:11px;color:#6c7086;background:#181825;border-radius:6px;margin-bottom:4px;">' +
+        '<code style="color:#a6e3a1;font-size:10px;">REFRESH EVERY 1 HOUR — JOIN 실행 완료!</code></div>' +
+        chBuildTable('mv_user_sales (Refreshable)', ['user_name', 'total_amount'], [
+          { user_name: 'alice', total_amount: '25,000' },
+          { user_name: 'bob', total_amount: '25,000' },
+        ], { id: 'ch-mv-ref-join', rowClass: 'row-fadein' });
+    },
+    note: '🔄 Refreshable MV: 스케줄 실행 → orders JOIN users 결과 완성! alice: 10000+15000=25000, bob: 25000.',
+  },
+  {
+    action: function() {
+      var src = document.getElementById('ch-mv-src');
+      if (src) {
+        var tbody = src.querySelector('tbody');
+        var tr = document.createElement('tr');
+        tr.className = 'row-fadein';
+        tr.innerHTML = '<td>4</td><td>u3</td><td>30000</td>';
+        tbody.appendChild(tr);
+      }
+    },
+    note: 'INSERT: 새 주문 추가 (u3, charlie, 30000). Incremental MV는 여전히 처리 불가, Refreshable MV는 다음 스케줄에 반영.',
+  },
+  {
+    action: function() {
+      document.getElementById('ch-mv-ref-area').innerHTML =
+        '<div style="padding:8px;font-size:11px;color:#6c7086;background:#181825;border-radius:6px;margin-bottom:4px;">' +
+        '<code style="color:#a6e3a1;font-size:10px;">REFRESH — 전체 재계산 (새 주문 포함)</code></div>' +
+        chBuildTable('mv_user_sales (재계산 완료)', ['user_name', 'total_amount'], [
+          { user_name: 'alice', total_amount: '25,000' },
+          { user_name: 'bob', total_amount: '25,000' },
+          { user_name: 'charlie', total_amount: '30,000' },
+        ], { id: 'ch-mv-ref-join2', rowClass: 'row-fadein' });
+    },
+    note: '🔄 Refreshable MV: 재계산 완료! charlie의 주문도 JOIN되어 반영됨.',
+  },
+  {
+    action: function() {},
+    note: '✅ 결론: JOIN이 필요한 복잡한 변환에는 Refreshable MV 또는 dbt incremental 모델을 사용하세요. Incremental MV는 source 1개 + 단순 집계 전용!',
+  },
+];
+
+/* Active steps reference */
+var chMVSteps = chMVStepsSimple;
+
+function chMVSelectCase(caseType) {
+  chMVState.caseType = caseType;
+
+  // Update active button
+  var btns = document.querySelectorAll('#ch-mv-compare .mat-btn');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  btns.forEach(function(b) {
+    if (b.getAttribute('data-type') === caseType) b.classList.add('active');
+  });
+
+  // Update case description
+  var descEl = document.getElementById('ch-mv-case-desc');
+  if (descEl) {
+    if (caseType === 'simple') {
+      descEl.innerHTML = '📊 <strong>단순 집계 (실시간 DAU)</strong> — Source 1개, count distinct 집계. Incremental MV가 적합한 케이스.';
+    } else {
+      descEl.innerHTML = '📋 <strong>복잡한 JOIN 연산 (유저별 매출 리포트)</strong> — Source 2개 (orders + users), JOIN 필요. Refreshable MV가 적합한 케이스.';
+    }
+  }
+
+  // Load appropriate steps
+  if (caseType === 'simple') {
+    chMVSteps = chMVStepsSimple;
+  } else {
+    chMVSteps = chMVStepsComplex;
+  }
+
+  // Reset and update UI
+  chMVReset();
+}
 
 function chMVNext() {
   if (chMVState.playing) return;
@@ -678,6 +812,8 @@ function chMVReset() {
   chMVState.step = -1;
   chMVState.playing = false;
   document.getElementById('ch-mv-source-area').innerHTML = '';
+  document.getElementById('ch-mv-source2-area').innerHTML = '';
+  document.getElementById('ch-mv-source2-area').style.display = 'none';
   document.getElementById('ch-mv-inc-area').innerHTML = '';
   document.getElementById('ch-mv-ref-area').innerHTML = '';
   var noteEl = document.getElementById('ch-mv-note');
@@ -712,6 +848,6 @@ document.addEventListener('DOMContentLoaded', function() {
     chLocalDistReset();
   }
   if (document.getElementById('ch-mv-compare')) {
-    chMVReset();
+    chMVSelectCase('simple');
   }
 });
