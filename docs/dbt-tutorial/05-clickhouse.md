@@ -39,67 +39,81 @@ ClickHouse는 단일 서버로도 빠르지만, 대규모 데이터를 처리할
 
 ### INSERT 데이터 분배 과정
 
-아래 애니메이션은 자동으로 반복됩니다. 6명의 사용자 데이터가 shard key(`user_id % 2`)에 따라 각 Shard의 Replica로 분배되는 과정을 보여줍니다.
+아래 애니메이션은 자동으로 반복됩니다. 원천 테이블의 행이 하나씩 shard key에 따라 분배되고, 각 Shard 내에서 Replica로 복제되는 과정을 보여줍니다.
 
-<div class="ch-anim" markdown="0">
-  <div class="ch-anim-title">INSERT 시 데이터 분배 흐름 (자동 반복)</div>
-  <div class="ch-anim-client">
-    <div class="ch-anim-client-box">💻 INSERT INTO users VALUES (...) — shard_key: user_id % 2</div>
-  </div>
-  <div class="ch-anim-packets">
-    <div class="ch-packet ch-packet-s2">user_id=1 alice → 홀수</div>
-    <div class="ch-packet ch-packet-s1">user_id=2 bob → 짝수</div>
-    <div class="ch-packet ch-packet-s2">user_id=3 charlie → 홀수</div>
-    <div class="ch-packet ch-packet-s1">user_id=4 dave → 짝수</div>
-    <div class="ch-packet ch-packet-s2">user_id=5 eve → 홀수</div>
-    <div class="ch-packet ch-packet-s1">user_id=6 frank → 짝수</div>
-  </div>
-  <div class="ch-anim-shards">
-    <div class="ch-anim-shard ch-anim-shard1">
-      <div class="ch-anim-shard-title">Shard 1 (짝수: user_id % 2 = 0)</div>
-      <div class="ch-anim-replicas">
-        <div class="ch-anim-replica">
-          <div class="ch-anim-replica-title">Replica A</div>
-          <div class="ch-anim-row">bob (id=2)</div>
-          <div class="ch-anim-row">dave (id=4)</div>
-          <div class="ch-anim-row">frank (id=6)</div>
+!!! info "Replica는 같은 데이터의 복사본"
+    같은 Shard 내의 Replica A와 B는 **동일한 데이터**를 가집니다. Replica A가 장애 나면 Replica B가 대신 응답합니다. 서로 다른 Shard(1과 2)가 **서로 다른 데이터**를 나눠 가집니다.
+
+<div class="ch-insert-demo" id="ch-insert-demo" markdown="0">
+  <div class="ch-insert-header">INSERT 분배 흐름 (자동 반복 — shard_key: user_id % 2)</div>
+  <div class="ch-insert-body">
+    <div class="ch-insert-source">
+      <div class="ch-insert-source-title">원천 데이터</div>
+      <table class="ch-insert-table">
+        <thead><tr><th>user_id</th><th>name</th><th>shard_key</th></tr></thead>
+        <tbody>
+          <tr class="ch-src-row ch-src-r1"><td>1</td><td>alice</td><td class="ch-key-odd">1 (홀수)</td></tr>
+          <tr class="ch-src-row ch-src-r2"><td>2</td><td>bob</td><td class="ch-key-even">0 (짝수)</td></tr>
+          <tr class="ch-src-row ch-src-r3"><td>3</td><td>charlie</td><td class="ch-key-odd">1 (홀수)</td></tr>
+          <tr class="ch-src-row ch-src-r4"><td>4</td><td>dave</td><td class="ch-key-even">0 (짝수)</td></tr>
+          <tr class="ch-src-row ch-src-r5"><td>5</td><td>eve</td><td class="ch-key-odd">1 (홀수)</td></tr>
+          <tr class="ch-src-row ch-src-r6"><td>6</td><td>frank</td><td class="ch-key-even">0 (짝수)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ch-insert-arrow-area">
+      <div class="ch-insert-arrow-label">분배</div>
+      <div class="ch-insert-arrows">→</div>
+    </div>
+    <div class="ch-insert-targets">
+      <div class="ch-insert-shard ch-insert-shard1">
+        <div class="ch-insert-shard-title">Shard 1 (짝수)</div>
+        <div class="ch-insert-replica-group">
+          <div class="ch-insert-replica">
+            <div class="ch-insert-replica-label">Replica A</div>
+            <div class="ch-dest-row ch-d-s1-r1">bob (2)</div>
+            <div class="ch-dest-row ch-d-s1-r2">dave (4)</div>
+            <div class="ch-dest-row ch-d-s1-r3">frank (6)</div>
+          </div>
+          <div class="ch-insert-sync-col">
+            <div class="ch-insert-sync-icon">⟷</div>
+            <div class="ch-insert-sync-text">자동 복제</div>
+          </div>
+          <div class="ch-insert-replica">
+            <div class="ch-insert-replica-label">Replica B</div>
+            <div class="ch-dest-row ch-d-s1-r1-b">bob (2)</div>
+            <div class="ch-dest-row ch-d-s1-r2-b">dave (4)</div>
+            <div class="ch-dest-row ch-d-s1-r3-b">frank (6)</div>
+          </div>
         </div>
-        <div class="ch-anim-sync">
-          <div class="ch-anim-sync-arrow">⟷ sync</div>
-        </div>
-        <div class="ch-anim-replica">
-          <div class="ch-anim-replica-title">Replica B</div>
-          <div class="ch-anim-row">bob (id=2)</div>
-          <div class="ch-anim-row">dave (id=4)</div>
-          <div class="ch-anim-row">frank (id=6)</div>
+      </div>
+      <div class="ch-insert-shard ch-insert-shard2">
+        <div class="ch-insert-shard-title">Shard 2 (홀수)</div>
+        <div class="ch-insert-replica-group">
+          <div class="ch-insert-replica">
+            <div class="ch-insert-replica-label">Replica A</div>
+            <div class="ch-dest-row ch-d-s2-r1">alice (1)</div>
+            <div class="ch-dest-row ch-d-s2-r2">charlie (3)</div>
+            <div class="ch-dest-row ch-d-s2-r3">eve (5)</div>
+          </div>
+          <div class="ch-insert-sync-col">
+            <div class="ch-insert-sync-icon">⟷</div>
+            <div class="ch-insert-sync-text">자동 복제</div>
+          </div>
+          <div class="ch-insert-replica">
+            <div class="ch-insert-replica-label">Replica B</div>
+            <div class="ch-dest-row ch-d-s2-r1-b">alice (1)</div>
+            <div class="ch-dest-row ch-d-s2-r2-b">charlie (3)</div>
+            <div class="ch-dest-row ch-d-s2-r3-b">eve (5)</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="ch-anim-shard ch-anim-shard2">
-      <div class="ch-anim-shard-title">Shard 2 (홀수: user_id % 2 = 1)</div>
-      <div class="ch-anim-replicas">
-        <div class="ch-anim-replica">
-          <div class="ch-anim-replica-title">Replica A</div>
-          <div class="ch-anim-row">alice (id=1)</div>
-          <div class="ch-anim-row">charlie (id=3)</div>
-          <div class="ch-anim-row">eve (id=5)</div>
-        </div>
-        <div class="ch-anim-sync">
-          <div class="ch-anim-sync-arrow">⟷ sync</div>
-        </div>
-        <div class="ch-anim-replica">
-          <div class="ch-anim-replica-title">Replica B</div>
-          <div class="ch-anim-row">alice (id=1)</div>
-          <div class="ch-anim-row">charlie (id=3)</div>
-          <div class="ch-anim-row">eve (id=5)</div>
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="ch-anim-legend">
-    <div class="ch-anim-legend-item"><strong>Shard</strong>: 데이터를 나눠 저장 (수평 확장)</div>
-    <div class="ch-anim-legend-item"><strong>Replica</strong>: 같은 데이터 복제 (장애 대비)</div>
-    <div class="ch-anim-legend-item"><strong>sync</strong>: Replica 간 자동 동기화</div>
+  <div class="ch-insert-legend">
+    <span>🔵 <strong>Shard</strong>: 데이터를 나눠 저장</span>
+    <span>🟢 <strong>Replica</strong>: 같은 Shard 내 동일 데이터 복제 (장애 대비)</span>
+    <span>⟷ <strong>sync</strong>: Replica 간 자동 동기화</span>
   </div>
 </div>
 
