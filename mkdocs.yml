@@ -1,0 +1,79 @@
+site_name: Jane's Tech Blog
+site_url: https://jihyeonjane.github.io
+site_author: Jane
+site_description: Data Engineering & SRE 기술 블로그
+
+repo_url: https://github.com/jihyeonjane/jihyeonjane.github.io
+repo_name: jihyeonjane.github.io
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 전환
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 전환
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang:
+        - ko
+        - en
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - dbt Tutorial:
+    - dbt-tutorial/index.md
+    - 1. dbt란?: dbt-tutorial/01-what-is-dbt.md
+    - 2. 설치 및 설정: dbt-tutorial/02-setup.md
+    - 3. 프로젝트 구조: dbt-tutorial/03-project-structure.md
+    - 4. 모델 작성: dbt-tutorial/04-models.md
+    - 5. 테스트와 문서화: dbt-tutorial/05-tests-and-docs.md
+    - 6. 실전 팁: dbt-tutorial/06-tips.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jihyeonjane
