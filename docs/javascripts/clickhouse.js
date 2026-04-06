@@ -537,7 +537,7 @@ function chLocalDistUpdateUI() {
    ================================================================ */
 var chMVState = { step: -1, playing: false, caseType: 'simple' };
 
-/* --- Case 1: 단순 집계 (실시간 DAU) --- */
+/* --- Case 1: 단순 집계 (실시간 이벤트 수) --- */
 var chMVStepsSimple = [
   {
     action: function() {
@@ -549,15 +549,15 @@ var chMVStepsSimple = [
           { event_date: '04-01', user_id: 'u2', action: 'view' },
         ], { id: 'ch-mv-src' });
       document.getElementById('ch-mv-inc-area').innerHTML =
-        chBuildTable('mv_daily_dau (Incremental)', ['event_date', 'dau'], [
-          { event_date: '04-01', dau: 2 },
+        chBuildTable('mv_event_count (Incremental)', ['event_date', 'cnt'], [
+          { event_date: '04-01', cnt: 2 },
         ], { id: 'ch-mv-inc' });
       document.getElementById('ch-mv-ref-area').innerHTML =
-        chBuildTable('mv_daily_dau (Refreshable)', ['event_date', 'dau'], [
-          { event_date: '04-01', dau: 2 },
+        chBuildTable('mv_event_count (Refreshable)', ['event_date', 'cnt'], [
+          { event_date: '04-01', cnt: 2 },
         ], { id: 'ch-mv-ref' });
     },
-    note: '초기 상태: source에 4/1 데이터 2건 (user u1, u2). 두 MV 모두 DAU=2를 표시합니다.',
+    note: '초기 상태: source에 4/1 이벤트 2건. 두 MV 모두 cnt=2. (SummingMergeTree로 count 집계)',
   },
   {
     action: function() {
@@ -578,7 +578,7 @@ var chMVStepsSimple = [
         });
       }
     },
-    note: 'INSERT: 4/2 데이터 3건 도착 (u1 2번, u3 1번 → unique user 2명). 두 MV가 어떻게 반응할까요?',
+    note: '첫 번째 INSERT: 4/2 이벤트 3건 도착. 두 MV가 어떻게 반응할까요?',
   },
   {
     action: function() {
@@ -587,11 +587,11 @@ var chMVStepsSimple = [
         var tbody = inc.querySelector('tbody');
         var tr = document.createElement('tr');
         tr.className = 'row-fadein';
-        tr.innerHTML = '<td>04-02</td><td>2</td>';
+        tr.innerHTML = '<td>04-02</td><td>3</td>';
         tbody.appendChild(tr);
       }
     },
-    note: '⚡ Incremental MV: INSERT 즉시 트리거! 새 배치만 집계 → {04-02, dau: 2} 행 추가. 실시간 반영!',
+    note: '⚡ Incremental MV: INSERT 즉시 트리거! 이 배치 3건을 집계 → {04-02, cnt: 3} 추가.',
   },
   {
     action: function() {
@@ -605,13 +605,20 @@ var chMVStepsSimple = [
       var src = document.getElementById('ch-mv-src');
       if (src) {
         var tbody = src.querySelector('tbody');
-        var tr = document.createElement('tr');
-        tr.className = 'row-fadein';
-        tr.innerHTML = '<td>04-02</td><td>u4</td><td>view</td>';
-        tbody.appendChild(tr);
+        [
+          { event_date: '04-02', user_id: 'u4', action: 'view' },
+          { event_date: '04-02', user_id: 'u2', action: 'click' },
+        ].forEach(function(r, i) {
+          setTimeout(function() {
+            var tr = document.createElement('tr');
+            tr.className = 'row-fadein';
+            tr.innerHTML = '<td>' + r.event_date + '</td><td>' + r.user_id + '</td><td>' + r.action + '</td>';
+            tbody.appendChild(tr);
+          }, i * 200);
+        });
       }
     },
-    note: 'INSERT: 4/2에 u4 추가 도착! 이제 4/2 unique user는 u1, u3, u4 = 3명.',
+    note: '두 번째 INSERT: 4/2 이벤트 2건 추가 도착. 이제 4/2 총 이벤트 = 5건.',
   },
   {
     action: function() {
@@ -620,27 +627,32 @@ var chMVStepsSimple = [
         var tbody = inc.querySelector('tbody');
         var tr = document.createElement('tr');
         tr.className = 'row-fadein';
-        tr.innerHTML = '<td>04-02</td><td>1</td>';
+        tr.innerHTML = '<td>04-02</td><td>2</td>';
         tbody.appendChild(tr);
       }
     },
-    note: '⚡ Incremental MV: 즉시 반응 → 새 배치 {04-02, dau: 1} 추가. 배치 단위라 이전 행과 별도 (나중에 merge).',
+    note: '⚡ Incremental MV: 즉시 반응 → 이 배치 2건을 집계 → {04-02, cnt: 2} 별도 행 추가. 배치마다 행이 따로 생김!',
   },
   {
     action: function() {
-      var refArea = document.getElementById('ch-mv-ref-area');
-      if (refArea) {
-        refArea.innerHTML = chBuildTable('mv_daily_dau (전체 재계산)', ['event_date', 'dau'], [
-          { event_date: '04-01', dau: 2 },
-          { event_date: '04-02', dau: 3 },
+      // Show merge explanation for incremental
+      document.getElementById('ch-mv-inc-area').innerHTML =
+        chBuildTable('mv_event_count (merge 후)', ['event_date', 'cnt'], [
+          { event_date: '04-01', cnt: 2 },
+          { event_date: '04-02', cnt: 5 },
+        ], { id: 'ch-mv-inc3', rowClass: 'row-fadein' });
+      // Refreshable recalculates
+      document.getElementById('ch-mv-ref-area').innerHTML =
+        chBuildTable('mv_event_count (전체 재계산)', ['event_date', 'cnt'], [
+          { event_date: '04-01', cnt: 2 },
+          { event_date: '04-02', cnt: 5 },
         ], { id: 'ch-mv-ref2', rowClass: 'row-fadein' });
-      }
     },
-    note: '🔄 Refreshable MV: 스케줄 도달 → 전체 재계산! 4/2의 모든 데이터를 한번에 집계해서 정확한 dau=3 표시.',
+    note: '🔄 SummingMergeTree가 04-02 행들을 merge → cnt: 3+2=5. Refreshable MV도 스케줄 도달 → 전체 재계산으로 동일한 cnt=5. 최종 결과는 같음!',
   },
   {
     action: function() {},
-    note: '✅ 결론: 단순 실시간 집계에는 Incremental MV가 적합! INSERT마다 즉시 반영되고 스케줄링이 필요 없습니다.',
+    note: '✅ 결론: 단순 합산(count, sum) 집계에는 Incremental MV가 적합! INSERT마다 즉시 반영, 스케줄링 불필요. SummingMergeTree가 자동으로 배치 행을 합쳐줌.',
   },
 ];
 
@@ -764,7 +776,7 @@ function chMVSelectCase(caseType) {
   var descEl = document.getElementById('ch-mv-case-desc');
   if (descEl) {
     if (caseType === 'simple') {
-      descEl.innerHTML = '📊 <strong>단순 집계 (실시간 DAU)</strong> — Source 1개, count distinct 집계. Incremental MV가 적합한 케이스.';
+      descEl.innerHTML = '📊 <strong>단순 합산 집계 (실시간 이벤트 수)</strong> — Source 1개, count/sum 집계. Incremental MV가 적합한 케이스. SummingMergeTree로 배치별 행을 자동 합산.';
     } else {
       descEl.innerHTML = '📋 <strong>복잡한 JOIN 연산 (유저별 매출 리포트)</strong> — Source 2개 (orders + users), JOIN 필요. Refreshable MV가 적합한 케이스.';
     }
