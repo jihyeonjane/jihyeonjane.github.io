@@ -75,6 +75,7 @@ nav:
     - 4. 모델 작성: dbt-tutorial/04-models.md
     - 5. 테스트와 문서화: dbt-tutorial/05-tests-and-docs.md
     - 6. 실전 팁: dbt-tutorial/06-tips.md
+    - 7. 데모: dbt-tutorial/07-demo.md
 
 extra:
   social:
