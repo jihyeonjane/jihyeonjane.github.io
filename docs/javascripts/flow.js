@@ -280,15 +280,25 @@ function buildRunSteps(type, demoId) {
         tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.dau (Materialized View)', ['event_date', 'dau'], SAMPLE.resultMV, { id: tblId }) },
       },
       {
-        dbt: { num: 4, cls: 'info', text: '완료! 이후부터 DB가 자동으로 갱신' },
+        dbt: { num: 4, cls: 'info', text: '완료! 이후부터 dbt run 없이 DB가 자동으로 갱신' },
         db: null,
         tableAction: null,
       },
       {
         dbt: null,
-        db: { num: 5, cls: 'receive', text: 'source에 새 INSERT 발생 → MV 자동 트리거!' },
-        tableAction: { type: 'addRows', target: tblId, cols: ['event_date', 'dau'], rows: SAMPLE.resultMVNew },
-        note: 'dbt run은 최초 1회만. 이후는 DB가 알아서 갱신',
+        db: { num: '', cls: 'receive', text: '⚡ source에 4/1 데이터 INSERT → MV 자동 트리거' },
+        tableAction: { type: 'addRows', target: tblId, cols: ['event_date', 'dau'], rows: [{ event_date: '2026-04-01', dau: 1 }] },
+      },
+      {
+        dbt: null,
+        db: { num: '', cls: 'receive', text: '⚡ source에 4/2 데이터 INSERT → MV 자동 갱신' },
+        tableAction: { type: 'addRows', target: tblId, cols: ['event_date', 'dau'], rows: [{ event_date: '2026-04-02', dau: 3 }] },
+      },
+      {
+        dbt: null,
+        db: { num: '', cls: 'receive', text: '⚡ source에 4/3 데이터 INSERT → MV 자동 갱신' },
+        tableAction: { type: 'addRows', target: tblId, cols: ['event_date', 'dau'], rows: [{ event_date: '2026-04-03', dau: 2 }] },
+        note: 'dbt run 없이도 계속 갱신! DB가 INSERT 감지하고 알아서 처리',
       },
     ],
   };
