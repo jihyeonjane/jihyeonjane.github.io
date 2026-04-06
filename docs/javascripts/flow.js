@@ -325,71 +325,88 @@ function buildRunSteps(type, demoId) {
 function buildQuerySteps(type, demoId) {
   const tblId = demoId + '-tbl';
 
+  const biResultId = demoId + '-bi-result';
+
   const flows = {
     view: [
       {
-        dbt: { num: 1, cls: 'send', text: 'BI 도구 → SELECT * FROM analytics.event_count' },
+        dbt: { num: 1, cls: 'send', text: 'SELECT * FROM analytics.event_count', code: '-- BI 도구가 보내는 쿼리는 단순 SELECT' },
         db: null,
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('raw.events (원천 테이블)', ['event_id', 'user_id', 'event_type', 'event_date'], SAMPLE.source, { id: tblId }) },
+        tableAction: null,
       },
       {
         dbt: null,
-        db: { num: 2, cls: 'receive', text: 'VIEW이므로 원천 테이블에서 SQL 실행 시작' },
+        db: { num: 2, cls: 'receive', text: 'event_count는 VIEW → 저장된 SQL 정의를 실행', code: '-- VIEW 내부에 정의된 SQL:\nSELECT user_id, count(*) AS event_count\nFROM raw.events\nGROUP BY user_id' },
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('raw.events (원천 테이블 전체 스캔)', ['event_id', 'user_id', 'event_type', 'event_date'], SAMPLE.source, { id: tblId }) },
+      },
+      {
+        dbt: null,
+        db: { num: 3, cls: 'receive', text: '원천 테이블 전체 스캔 + GROUP BY 집계 수행...' },
         tableAction: { type: 'scan', target: tblId },
       },
       {
         dbt: null,
-        db: { num: 3, cls: 'receive', text: '전체 스캔 + GROUP BY 집계 계산 중...' },
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('쿼리 결과 (매번 계산)', ['user_id', 'event_count'], SAMPLE.result, { id: tblId }) },
+        db: { num: 4, cls: 'receive', text: '집계 완료 → 결과를 BI 도구로 반환' },
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('DB 계산 결과', ['user_id', 'event_count'], SAMPLE.result, { id: tblId }) },
       },
       {
-        dbt: { num: 4, cls: 'warn', text: '결과 수신 완료' },
+        dbt: { num: 5, cls: 'info', text: '결과 수신 → 대시보드에 표시' },
         db: null,
-        tableAction: null,
-        note: '매번 원천 데이터를 다시 계산 → 데이터가 많으면 느림',
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['user_id', 'event_count'], SAMPLE.result, { id: tblId, rowClass: 'row-fadein' }) },
+        note: 'VIEW는 조회할 때마다 원천 데이터를 처음부터 다시 계산 → 데이터가 많으면 느림',
       },
     ],
     table: [
       {
-        dbt: { num: 1, cls: 'send', text: 'BI 도구 → SELECT * FROM analytics.event_count' },
+        dbt: { num: 1, cls: 'send', text: 'SELECT * FROM analytics.event_count', code: '-- BI 도구가 보내는 쿼리는 단순 SELECT' },
         db: null,
         tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.event_count (물리 테이블)', ['user_id', 'event_count'], SAMPLE.result, { id: tblId }) },
       },
       {
         dbt: null,
-        db: { num: 2, cls: 'receive', text: '물리 테이블에서 바로 읽기 (계산 불필요)' },
+        db: { num: 2, cls: 'receive', text: '물리 테이블에서 바로 읽기 (재계산 없음)' },
         tableAction: { type: 'glow', target: tblId },
       },
       {
-        dbt: { num: 3, cls: 'info', text: '결과 즉시 반환!' },
-        db: null,
+        dbt: null,
+        db: { num: 3, cls: 'receive', text: '저장된 데이터 그대로 반환' },
         tableAction: null,
-        note: '이미 계산된 결과를 바로 반환 → 빠름',
+      },
+      {
+        dbt: { num: 4, cls: 'info', text: '결과 즉시 수신 → 대시보드에 표시' },
+        db: null,
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['user_id', 'event_count'], SAMPLE.result, { id: tblId, rowClass: 'row-fadein' }) },
+        note: 'TABLE은 이미 계산된 결과를 바로 반환 → 빠름. 단, 마지막 dbt run 시점의 데이터.',
       },
     ],
     incremental: [
       {
-        dbt: { num: 1, cls: 'send', text: 'BI 도구 → SELECT * FROM analytics.daily_events' },
+        dbt: { num: 1, cls: 'send', text: 'SELECT * FROM analytics.daily_events', code: '-- BI 도구가 보내는 쿼리는 단순 SELECT' },
         db: null,
         tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.daily_events (물리 테이블)', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncAll, { id: tblId }) },
       },
       {
         dbt: null,
-        db: { num: 2, cls: 'receive', text: '물리 테이블에서 바로 읽기 (일반 TABLE과 동일)' },
+        db: { num: 2, cls: 'receive', text: '물리 테이블에서 바로 읽기 (TABLE과 동일)' },
         tableAction: { type: 'glow', target: tblId },
       },
       {
-        dbt: { num: 3, cls: 'info', text: '결과 즉시 반환!' },
-        db: null,
+        dbt: null,
+        db: { num: 3, cls: 'receive', text: '저장된 데이터 그대로 반환' },
         tableAction: null,
-        note: 'incremental도 결국 물리 테이블 → 조회 성능은 table과 동일',
+      },
+      {
+        dbt: { num: 4, cls: 'info', text: '결과 즉시 수신 → 대시보드에 표시' },
+        db: null,
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['user_id', 'event_date', 'cnt'], SAMPLE.resultIncAll, { id: tblId, rowClass: 'row-fadein' }) },
+        note: 'incremental도 물리 테이블 → 조회 성능은 TABLE과 동일. dbt run으로 신규 데이터만 추가됨.',
       },
     ],
     mv: [
       {
-        dbt: { num: 1, cls: 'send', text: 'BI 도구 → SELECT * FROM analytics.dau' },
+        dbt: { num: 1, cls: 'send', text: 'SELECT * FROM analytics.dau', code: '-- BI 도구가 보내는 쿼리는 단순 SELECT' },
         db: null,
-        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.dau (Materialized View)', ['event_date', 'dau'], SAMPLE.resultMV.concat(SAMPLE.resultMVNew), { id: tblId }) },
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('analytics.dau (MV 물리 테이블)', ['event_date', 'dau'], SAMPLE.resultMV.concat(SAMPLE.resultMVNew), { id: tblId }) },
       },
       {
         dbt: null,
@@ -397,10 +414,15 @@ function buildQuerySteps(type, demoId) {
         tableAction: { type: 'glow', target: tblId },
       },
       {
-        dbt: { num: 3, cls: 'info', text: '결과 즉시 반환!' },
-        db: null,
+        dbt: null,
+        db: { num: 3, cls: 'receive', text: '최신 데이터 그대로 반환 (dbt run 불필요)' },
         tableAction: null,
-        note: '실시간 갱신된 결과를 바로 반환',
+      },
+      {
+        dbt: { num: 4, cls: 'info', text: '결과 즉시 수신 → 대시보드에 표시' },
+        db: null,
+        tableAction: { type: 'setHtml', target: tblId + '-wrap', html: buildTable('BI 대시보드 출력', ['event_date', 'dau'], SAMPLE.resultMV.concat(SAMPLE.resultMVNew), { id: tblId, rowClass: 'row-fadein' }) },
+        note: 'MV는 source INSERT 시 자동 갱신 → 항상 최신 데이터를 빠르게 반환',
       },
     ],
   };
