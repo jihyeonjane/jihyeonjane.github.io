@@ -127,5 +127,26 @@ Source raw.events:
   status: PASS (warn_after: 12h, error_after: 24h)
 ```
 
+## 직접 체험해보기
+
+테스트 실행과 문서 생성 결과를 확인해보세요.
+
+<div class="interactive-terminal" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Terminal</span>
+  </div>
+  <div class="terminal-body" id="term-test">
+    <span class="prompt">jane@mac ~/my_project $</span> <span class="cursor">_</span>
+  </div>
+  <div class="terminal-buttons">
+    <button onclick="runCommand('test', 'term-test')">dbt test</button>
+    <button onclick="runCommand('docs', 'term-test')">dbt docs generate</button>
+    <button onclick="clearTerminal('term-test')" class="btn-clear">Clear</button>
+  </div>
+</div>
+
 !!! note "다음 단계"
     테스트와 문서화를 마스터했다면, [실전 팁](06-tips.md)에서 실무에서 유용한 패턴을 배워보세요.

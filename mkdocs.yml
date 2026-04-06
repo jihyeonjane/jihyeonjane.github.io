@@ -38,6 +38,10 @@ theme:
 
 extra_css:
   - stylesheets/custom.css
+  - stylesheets/terminal.css
+
+extra_javascript:
+  - javascripts/terminal.js
 
 plugins:
   - search:
@@ -76,6 +80,7 @@ nav:
     - 5. 테스트와 문서화: dbt-tutorial/05-tests-and-docs.md
     - 6. 실전 팁: dbt-tutorial/06-tips.md
     - 7. 데모: dbt-tutorial/07-demo.md
+    - 8. 인터랙티브 데모: dbt-tutorial/08-interactive-demo.md
 
 extra:
   social:

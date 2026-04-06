@@ -173,5 +173,26 @@ dbt run --select +fct_daily_events  # 해당 모델 + 업스트림 전체
 dbt run --full-refresh         # incremental 모델 전체 재빌드
 ```
 
+## 직접 체험해보기
+
+모델을 작성한 뒤 `dbt compile`로 렌더링된 SQL을 확인하고, `dbt run`으로 실행해보세요.
+
+<div class="interactive-terminal" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Terminal</span>
+  </div>
+  <div class="terminal-body" id="term-models">
+    <span class="prompt">jane@mac ~/my_project $</span> <span class="cursor">_</span>
+  </div>
+  <div class="terminal-buttons">
+    <button onclick="runCommand('compile', 'term-models')">dbt compile</button>
+    <button onclick="runCommand('run', 'term-models')">dbt run</button>
+    <button onclick="clearTerminal('term-models')" class="btn-clear">Clear</button>
+  </div>
+</div>
+
 !!! note "다음 단계"
     모델을 작성할 수 있게 되었다면, [테스트와 문서화](05-tests-and-docs.md)로 데이터 품질을 관리하는 방법을 배워보세요.

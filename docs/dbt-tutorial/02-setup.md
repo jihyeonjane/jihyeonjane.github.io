@@ -113,6 +113,26 @@ $ dbt debug
 #   All checks passed!
 ```
 
+### 직접 체험해보기
+
+아래 버튼을 눌러 `dbt debug` 실행 결과를 확인해보세요.
+
+<div class="interactive-terminal" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Terminal</span>
+  </div>
+  <div class="terminal-body" id="term-setup">
+    <span class="prompt">jane@mac ~/my_project $</span> <span class="cursor">_</span>
+  </div>
+  <div class="terminal-buttons">
+    <button onclick="runCommand('debug', 'term-setup')">dbt debug</button>
+    <button onclick="clearTerminal('term-setup')" class="btn-clear">Clear</button>
+  </div>
+</div>
+
 !!! tip "dev/prod 환경 분리"
     `target`을 `dev`와 `prod`로 나누어 환경별 설정을 관리하세요.
     ```yaml

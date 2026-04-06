@@ -20,6 +20,27 @@ dbt build --select my_model
 !!! tip "`dbt build` = `run` + `test`"
     `dbt build`는 모델 실행과 테스트를 의존성 순서대로 함께 수행합니다.
 
+### 직접 체험해보기
+
+`dbt build`가 run과 test를 어떤 순서로 실행하는지 확인해보세요.
+
+<div class="interactive-terminal" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Terminal</span>
+  </div>
+  <div class="terminal-body" id="term-tips">
+    <span class="prompt">jane@mac ~/my_project $</span> <span class="cursor">_</span>
+  </div>
+  <div class="terminal-buttons">
+    <button onclick="runCommand('build', 'term-tips')">dbt build</button>
+    <button onclick="runCommand('compile', 'term-tips')">dbt compile</button>
+    <button onclick="clearTerminal('term-tips')" class="btn-clear">Clear</button>
+  </div>
+</div>
+
 ## 유용한 선택자 (Selector)
 
 ```bash
