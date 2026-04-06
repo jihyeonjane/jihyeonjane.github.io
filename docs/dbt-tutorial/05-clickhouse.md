@@ -37,6 +37,61 @@ ClickHouse는 단일 서버로도 빠르지만, 대규모 데이터를 처리할
 | **Replica (레플리카)** | 같은 데이터를 여러 노드에 복제 (고가용성) |
 | **Distributed Table** | 모든 샤드를 묶어서 조회하는 가상 테이블 |
 
+### 전체 구조 다이어그램
+
+<div class="ch-diagram" markdown="0">
+  <div class="ch-title">ClickHouse 클러스터 — 2 Shards × 2 Replicas</div>
+  <div class="ch-client-box">
+    <div class="ch-box-icon">💻</div>
+    <div class="ch-box-label">Client / BI 도구</div>
+  </div>
+  <div class="ch-arrow-down">▼</div>
+  <div class="ch-dist-box">
+    <div class="ch-box-icon">🔀</div>
+    <div class="ch-box-label">Distributed Table</div>
+    <div class="ch-box-sub">모든 Shard에 쿼리 분산 (데이터 없음, 라우터 역할)</div>
+  </div>
+  <div class="ch-arrow-fork">
+    <div class="ch-arrow-left">◀──────</div>
+    <div class="ch-arrow-right">──────▶</div>
+  </div>
+  <div class="ch-shards">
+    <div class="ch-shard ch-shard1">
+      <div class="ch-shard-title">Shard 1 <span class="ch-shard-key">user_id % 2 = 0 (짝수)</span></div>
+      <div class="ch-replicas">
+        <div class="ch-replica">
+          <div class="ch-replica-title">Replica A</div>
+          <div class="ch-replica-data">bob (2), dave (4), frank (6)</div>
+        </div>
+        <div class="ch-sync">⟷ sync</div>
+        <div class="ch-replica">
+          <div class="ch-replica-title">Replica B</div>
+          <div class="ch-replica-data">bob (2), dave (4), frank (6)</div>
+        </div>
+      </div>
+    </div>
+    <div class="ch-shard ch-shard2">
+      <div class="ch-shard-title">Shard 2 <span class="ch-shard-key">user_id % 2 = 1 (홀수)</span></div>
+      <div class="ch-replicas">
+        <div class="ch-replica">
+          <div class="ch-replica-title">Replica A</div>
+          <div class="ch-replica-data">alice (1), charlie (3), eve (5)</div>
+        </div>
+        <div class="ch-sync">⟷ sync</div>
+        <div class="ch-replica">
+          <div class="ch-replica-title">Replica B</div>
+          <div class="ch-replica-data">alice (1), charlie (3), eve (5)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ch-diagram-notes">
+    <div class="ch-note-item">🟢 <strong>장애 대응</strong>: Replica A가 죽어도 Replica B가 즉시 응답</div>
+    <div class="ch-note-item">🔵 <strong>수평 확장</strong>: 데이터가 늘면 Shard를 추가</div>
+    <div class="ch-note-item">🟡 <strong>Distributed</strong>: 클라이언트는 샤딩을 의식하지 않고 전체 데이터 조회 가능</div>
+  </div>
+</div>
+
 ### 클러스터 동작 데모
 
 **다음 ▶** 버튼으로 INSERT 데이터 분배와 SELECT 조회 과정을 단계별로 확인하세요.

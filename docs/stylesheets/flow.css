@@ -335,6 +335,132 @@
 .flow-source .str { color: #a6e3a1; }
 .flow-source .cm { color: #6c7086; }
 
+/* ===== ClickHouse Diagram ===== */
+.ch-diagram {
+  background: #1e1e2e;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 1.5em 0;
+  font-family: 'Menlo', 'Consolas', monospace;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.ch-title {
+  text-align: center;
+  color: #cdd6f4;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.ch-client-box, .ch-dist-box {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+.ch-client-box {
+  background: #45475a;
+  border: 2px solid #cdd6f4;
+}
+.ch-dist-box {
+  background: #313244;
+  border: 2px solid #f9e2af;
+}
+.ch-box-icon { font-size: 20px; }
+.ch-box-label {
+  color: #cdd6f4;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+.ch-box-sub {
+  color: #6c7086;
+  font-size: 10px;
+  margin-top: 4px;
+}
+.ch-arrow-down {
+  text-align: center;
+  color: #6c7086;
+  font-size: 18px;
+  margin: 6px 0;
+}
+.ch-arrow-fork {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  color: #f9e2af;
+  font-size: 12px;
+  margin: 6px 0;
+}
+.ch-shards {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+.ch-shard {
+  flex: 1;
+  border-radius: 10px;
+  padding: 12px;
+}
+.ch-shard1 {
+  background: #89b4fa11;
+  border: 2px solid #89b4fa;
+}
+.ch-shard2 {
+  background: #f5c0e811;
+  border: 2px solid #f5c0e8;
+}
+.ch-shard-title {
+  color: #cdd6f4;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.ch-shard-key {
+  font-size: 10px;
+  color: #6c7086;
+  font-weight: normal;
+}
+.ch-replicas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.ch-replica {
+  flex: 1;
+  background: #11111b;
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #45475a;
+}
+.ch-replica-title {
+  color: #a6e3a1;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.ch-replica-data {
+  color: #cdd6f4;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.ch-sync {
+  color: #6c7086;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.ch-diagram-notes {
+  margin-top: 16px;
+  border-top: 1px solid #45475a;
+  padding-top: 12px;
+}
+.ch-note-item {
+  color: #cdd6f4;
+  font-size: 11px;
+  margin: 4px 0;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .flow-panels {
