@@ -1,0 +1,244 @@
+/* ===== ClickHouse Node-based Cluster Diagram ===== */
+
+.ch-nodes-diagram {
+  background: #1e1e2e;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin: 1.5em 0;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  overflow: hidden;
+}
+.ch-nodes-title {
+  background: #313244;
+  padding: 10px 16px;
+  color: #cdd6f4;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* --- Flat node grid (no shard grouping) --- */
+.ch-nodes-flat {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --- Individual node --- */
+.ch-node {
+  background: #11111b;
+  border: 2px solid #45475a;
+  border-radius: 8px;
+  padding: 8px;
+  width: 140px;
+  min-height: 120px;
+  transition: border-color 0.4s, opacity 0.4s, background 0.4s, box-shadow 0.4s;
+}
+.ch-node.node-active {
+  border-color: #a6e3a1;
+  box-shadow: 0 0 8px #a6e3a133;
+}
+.ch-node.node-highlight {
+  border-color: #f9e2af;
+  background: #f9e2af11;
+  box-shadow: 0 0 8px #f9e2af33;
+}
+.ch-node.node-selected {
+  border-color: #89b4fa;
+  background: #89b4fa11;
+  box-shadow: 0 0 12px #89b4fa44;
+}
+.ch-node.node-dead {
+  border-color: #f38ba8;
+  opacity: 0.35;
+  background: #f38ba811;
+}
+.ch-node.node-dim {
+  opacity: 0.4;
+}
+.ch-node-header {
+  font-size: 12px;
+  font-weight: bold;
+  color: #cdd6f4;
+  margin-bottom: 4px;
+}
+.ch-node-tags, .ch-tag-group {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.ch-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: bold;
+}
+.ch-tag-shard {
+  background: #89b4fa22;
+  color: #89b4fa;
+  border: 1px solid #89b4fa55;
+}
+.ch-tag-shard2 {
+  background: #f5c0e822;
+  color: #f5c0e8;
+  border: 1px solid #f5c0e855;
+}
+.ch-tag-replica {
+  background: #a6e3a122;
+  color: #a6e3a1;
+  border: 1px solid #a6e3a155;
+}
+.ch-node-role {
+  font-size: 9px;
+  color: #6c7086;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.ch-node-data {
+  min-height: 50px;
+}
+.ch-node-data .ch-data-row {
+  padding: 2px 4px;
+  margin: 1px 0;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #cdd6f4;
+  transition: background 0.3s, opacity 0.3s;
+}
+.ch-data-row.row-new {
+  animation: nodeRowAppear 0.5s ease forwards;
+}
+@keyframes nodeRowAppear {
+  from { opacity: 0; transform: translateX(-6px); background: #a6e3a133; }
+  to { opacity: 1; transform: translateX(0); background: transparent; }
+}
+.ch-data-row.row-sync {
+  animation: nodeRowSync 0.5s ease forwards;
+}
+@keyframes nodeRowSync {
+  from { opacity: 0; transform: translateX(6px); background: #89b4fa33; }
+  to { opacity: 1; transform: translateX(0); background: transparent; }
+}
+.ch-data-row.row-glow {
+  background: #a6e3a122;
+}
+
+/* --- Combination area --- */
+.ch-nodes-combo {
+  margin: 0 16px;
+  padding: 8px 12px;
+  min-height: 20px;
+  text-align: center;
+  font-size: 11px;
+  color: #6c7086;
+}
+.ch-combo-label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin: 2px;
+  font-size: 11px;
+}
+.ch-combo-plus {
+  color: #6c7086;
+  margin: 0 4px;
+}
+.ch-combo-eq {
+  color: #a6e3a1;
+  margin: 0 6px;
+  font-weight: bold;
+}
+.ch-combo-node {
+  background: #89b4fa22;
+  border: 1px solid #89b4fa;
+  color: #89b4fa;
+}
+.ch-combo-result {
+  background: #a6e3a122;
+  border: 1px solid #a6e3a1;
+  color: #a6e3a1;
+}
+
+/* --- Distributed table bar --- */
+.ch-nodes-dist {
+  margin: 8px 16px;
+  padding: 8px 12px;
+  border: 2px solid #f9e2af;
+  border-radius: 8px;
+  background: #f9e2af0d;
+  text-align: center;
+  transition: border-color 0.4s, background 0.4s;
+}
+.ch-nodes-dist.dist-active {
+  border-color: #a6e3a1;
+  background: #a6e3a10d;
+}
+.ch-dist-label {
+  color: #f9e2af;
+  font-size: 12px;
+  font-weight: bold;
+}
+.ch-dist-desc {
+  color: #6c7086;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+/* --- Scenario buttons --- */
+.ch-nodes-scenarios {
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  border-top: 1px solid #313244;
+  margin-top: 8px;
+}
+.ch-scenario-title {
+  color: #6c7086;
+  font-size: 11px;
+  margin-right: 4px;
+}
+.ch-scenario-btn {
+  background: #45475a;
+  color: #cdd6f4;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 11px;
+  transition: background 0.2s;
+}
+.ch-scenario-btn:hover { background: #585b70; }
+.ch-scenario-btn.ch-sc-active {
+  background: #89b4fa;
+  color: #1e1e2e;
+}
+
+/* --- Explanation box --- */
+.ch-nodes-explanation {
+  padding: 10px 16px 14px;
+  color: #cdd6f4;
+  font-size: 11px;
+  line-height: 1.8;
+  min-height: 60px;
+}
+.ch-nodes-explanation .ch-exp-step {
+  margin: 4px 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.ch-exp-step.exp-info { background: #f9e2af11; border-left: 3px solid #f9e2af; }
+.ch-exp-step.exp-good { background: #a6e3a111; border-left: 3px solid #a6e3a1; }
+.ch-exp-step.exp-bad { background: #f38ba811; border-left: 3px solid #f38ba8; }
+.ch-exp-step.exp-send { background: #89b4fa11; border-left: 3px solid #89b4fa; }
+
+@media (max-width: 768px) {
+  .ch-nodes-flat { gap: 8px; }
+  .ch-node { width: 120px; min-height: 100px; }
+}

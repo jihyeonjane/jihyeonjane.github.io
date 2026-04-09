@@ -1,0 +1,74 @@
+.interactive-terminal {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin: 1.5em 0;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 13px;
+}
+.terminal-header {
+  background: #313244;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot.red { background: #f38ba8; }
+.dot.yellow { background: #f9e2af; }
+.dot.green { background: #a6e3a1; }
+.terminal-title {
+  color: #6c7086;
+  margin-left: 8px;
+  font-size: 13px;
+}
+.terminal-body {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 16px;
+  min-height: 200px;
+  max-height: 450px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+.terminal-buttons {
+  background: #313244;
+  padding: 10px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.terminal-buttons button {
+  background: #585b70;
+  color: #cdd6f4;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+.terminal-buttons button:hover {
+  background: #7f849c;
+}
+.terminal-buttons .btn-clear {
+  background: #45475a;
+  margin-left: auto;
+}
+.terminal-buttons .btn-clear:hover {
+  background: #f38ba8;
+}
+.prompt { color: #6c7086; }
+.cursor { animation: blink 1s infinite; color: #a6e3a1; }
+@keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+.t-green { color: #a6e3a1; }
+.t-red { color: #f38ba8; }
+.t-yellow { color: #f9e2af; }
+.t-gray { color: #6c7086; }
+.t-white { color: #cdd6f4; }
