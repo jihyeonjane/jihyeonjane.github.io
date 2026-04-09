@@ -53,6 +53,11 @@ plugins:
       lang:
         - ko
         - en
+  - git-revision-date-localized:
+      type: date
+      locale: ko
+      enable_creation_date: true
+      fallback_to_build_date: true
 
 markdown_extensions:
   - pymdownx.highlight:

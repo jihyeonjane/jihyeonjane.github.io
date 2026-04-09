@@ -13,11 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 전체 git history 필요 (날짜 표시용)
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - run: pip install mkdocs-material
+      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
 
       - run: mkdocs gh-deploy --force
