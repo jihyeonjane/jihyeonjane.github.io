@@ -92,6 +92,13 @@ nav:
     - "dbt에서 Semantic Layer까지":
       - dbt-tutorial/09-semantic-layer.md
       - "[참고] MCP로 자체 Semantic Layer API": dbt-tutorial/09-semantic-layer-mcp.md
+  - MCP Tutorial:
+    - mcp/index.md
+    - 1. MCP란?: mcp/01-what-is-mcp.md
+    - 2. 아키텍처: mcp/02-architecture.md
+    - 3. 개발 환경 설정: mcp/03-dev-setup.md
+    - 4. 첫 번째 MCP 서버: mcp/04-first-server.md
+    - 5. PoC - DB 조회 서버: mcp/05-poc.md
 
 extra:
   social:
