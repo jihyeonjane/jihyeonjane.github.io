@@ -59,6 +59,41 @@
 !!! note "왜 '온톨로지'라는 단어를 쓰나?"
     철학에서 빌려온 용어입니다. 철학의 온톨로지가 "존재하는 것들의 분류 체계"라면, 데이터 온톨로지는 **"조직이 다루는 데이터의 분류 체계"**입니다. ERD(Entity-Relationship Diagram)와 비슷하지만, 물리적 테이블 구조가 아닌 **비즈니스 개념 간의 관계**에 초점을 맞춥니다.
 
+#### 온톨로지의 3가지 구성 요소
+
+Palantir Foundry 같은 데이터 플랫폼에서는 온톨로지를 다음 3가지로 구성합니다:
+
+| 구성 요소 | 역할 | 예시 |
+|-----------|------|------|
+| **Object (오브젝트)** | 비즈니스 엔티티 표현 | 고객, 주문, 상품, 배송 |
+| **Link (링크)** | 오브젝트 간 관계 정의 | 고객 → "주문함" → 주문 |
+| **Action (액션)** | 오브젝트에 대한 행동 정의 | "환불 처리", "재고 업데이트" |
+
+이 3가지가 합쳐지면 조직의 **디지털 트윈(Digital Twin)** — 현실 세계의 비즈니스 구조를 데이터로 그대로 반영한 모델 — 이 됩니다.
+
+#### 온톨로지의 레이어 구조
+
+온톨로지는 단순한 데이터 카탈로그를 넘어서, 여러 레이어로 확장될 수 있습니다:
+
+```
+┌─────────────────────────────────────────────┐
+│  Dynamic Layer (동적 레이어)                   │
+│  시뮬레이션, 자율 운영, What-if 분석           │
+├─────────────────────────────────────────────┤
+│  Kinetic Layer (키네틱 레이어)                  │
+│  액션, 워크플로우, 프로세스 자동화              │
+├─────────────────────────────────────────────┤
+│  Semantic Layer (의미론적 레이어)               │
+│  Object, Link, 속성, 메트릭 정의              │
+├─────────────────────────────────────────────┤
+│  Data Integration (데이터 통합)                │
+│  원천 데이터 수집, 정제, 파이프라인             │
+└─────────────────────────────────────────────┘
+```
+
+!!! tip "우리가 dbt로 만드는 것은?"
+    dbt로 구축하는 것은 위 구조에서 **Data Integration + Semantic Layer**에 해당합니다. source/staging/marts 모델링이 데이터 통합이고, schema.yml/metrics.yml 정의가 Semantic Layer입니다. 그 위의 Kinetic/Dynamic Layer는 데이터 활용 단계에서 BI 도구, 워크플로우 엔진, LLM 등이 담당합니다.
+
 ---
 
 ### 시멘틱 레이어 (Semantic Layer)
@@ -449,3 +484,13 @@ PM: 결과 확인 (10초)
     - dbt 프로젝트에 `schema.yml` 정리부터 시작하세요
     - 팀에서 가장 자주 쓰는 메트릭 3~5개를 먼저 표준화하세요
     - 완벽한 시멘틱 레이어가 아니어도, **"공식 정의가 코드에 있다"는 사실만으로** 커뮤니케이션 비용이 줄어듭니다
+
+---
+
+## 참고 자료
+
+- [dbt Semantic Layer 공식 문서](https://docs.getdbt.com/docs/build/semantic-layer-overview)
+- [dbt MetricFlow 가이드](https://docs.getdbt.com/docs/build/about-metricflow)
+- [파운드리(Foundry)와 온톨로지(Ontology)란 — 개념 정리](https://velog.io/@cha-suyeon/%ED%8C%8C%EC%9A%B4%EB%93%9C%EB%A6%ACFoundary%EC%99%80-%EC%98%A8%ED%86%A8%EB%A1%9C%EC%A7%80Ontology%EB%9E%80-%EA%B0%9C%EB%85%90) — Palantir Foundry의 온톨로지 레이어(Semantic/Kinetic/Dynamic) 개념
+- [Atlan — What is a Semantic Layer?](https://atlan.com/what-is-a-semantic-layer/)
+- [MCP (Model Context Protocol) 소개](https://modelcontextprotocol.io/)
