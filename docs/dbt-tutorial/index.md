@@ -15,6 +15,7 @@ dbt(data build tool)를 처음 접하는 분들을 위한 튜토리얼입니다.
 | 7 | [실전 팁](07-tips.md) | 실무에서 유용한 패턴과 팁 |
 | 8 | [데모](07-demo.md) | dbt 명령어 실행 화면 (GIF) |
 | 9 | [인터랙티브 데모](08-interactive-demo.md) | 버튼 클릭으로 dbt 명령어 체험 |
+| 10 | [dbt에서 Semantic Layer까지](09-semantic-layer.md) | 왜 dbt가 Semantic Layer, Ontology로 이어지는가 |
 
 !!! tip "사전 준비"
     - SQL 기본 문법 이해
