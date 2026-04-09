@@ -89,7 +89,9 @@ nav:
     - 7. 실전 팁: dbt-tutorial/07-tips.md
     - 8. 데모: dbt-tutorial/07-demo.md
     - 9. 인터랙티브 데모: dbt-tutorial/08-interactive-demo.md
-    - "dbt에서 Semantic Layer까지": dbt-tutorial/09-semantic-layer.md
+    - "dbt에서 Semantic Layer까지":
+      - dbt-tutorial/09-semantic-layer.md
+      - "[참고] MCP로 자체 Semantic Layer API": dbt-tutorial/09-semantic-layer-mcp.md
 
 extra:
   social:
