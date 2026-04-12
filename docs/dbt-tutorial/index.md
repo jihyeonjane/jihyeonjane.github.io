@@ -17,6 +17,7 @@ dbt(data build tool)를 처음 접하는 분들을 위한 튜토리얼입니다.
 | 9 | [인터랙티브 데모](08-interactive-demo.md) | 버튼 클릭으로 dbt 명령어 체험 |
 | 10 | [dbt에서 Semantic Layer까지](09-semantic-layer.md) | 왜 dbt가 Semantic Layer, Ontology로 이어지는가 |
 | - | [참고: Text-to-SQL 심화](09-text-to-sql.md) | RA-SQL, DIN-SQL/DAIL-SQL, 온톨로지 기반 카탈로그 |
+| - | [참고: 자연어 질의 시스템 설계](09-nl-query-design.md) | 역질문 구체화, MCP 서버 설계, Superset 연동 |
 
 !!! tip "사전 준비"
     - SQL 기본 문법 이해
