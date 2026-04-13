@@ -1,0 +1,2836 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Data Engineering & SRE 기술 블로그">
+      
+      
+        <meta name="author" content="Jane">
+      
+      
+        <link rel="canonical" href="https://jihyeonjane.github.io/k8s-tutorial/10-interactive-demo/">
+      
+      
+        <link rel="prev" href="../09-deployment-strategies/">
+      
+      
+        <link rel="next" href="../11-dbt-airflow-on-k8s/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>10. 인터랙티브 데모 - Jane's Tech Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/terminal.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/flow.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ch-anim.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/k8s.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="Jane&#39;s Tech Blog" class="md-header__button md-logo" aria-label="Jane's Tech Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Jane's Tech Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10. 인터랙티브 데모
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jihyeonjane/jihyeonjane.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jihyeonjane.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dbt-tutorial/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  dbt Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Kubernetes Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mcp/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  MCP Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Jane&#39;s Tech Blog" class="md-nav__button md-logo" aria-label="Jane's Tech Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Jane's Tech Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jihyeonjane/jihyeonjane.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jihyeonjane.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dbt-tutorial/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dbt Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    dbt Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/01-what-is-dbt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. dbt란?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/02-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 설치 및 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/03-project-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 프로젝트 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/04-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 모델 작성
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Materialization 심화
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5. Materialization 심화
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/05-materialization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Materialization 심화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/05-clickhouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [참고] ClickHouse 구조의 이해
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/06-tests-and-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 테스트와 문서화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/07-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 실전 팁
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/07-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 데모
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/08-interactive-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 인터랙티브 데모
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dbt에서 Semantic Layer까지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    dbt에서 Semantic Layer까지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/09-semantic-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dbt에서 Semantic Layer까지 — 왜 필요한가
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/09-semantic-layer-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [참고] MCP로 자체 Semantic Layer API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/09-text-to-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [참고] Text-to-SQL 심화 — VectorDB + 온톨로지
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt-tutorial/09-nl-query-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    [참고] 자연어 질의 시스템 설계 — 역질문 구체화
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kubernetes Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-docker-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Docker 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-container-to-k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 컨테이너에서 K8s로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-k8s-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. K8s 아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-kubeconfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. kubeconfig 상세
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-yaml-manifests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. YAML 매니페스트
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-workloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 워크로드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 네트워킹
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-volumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 스토리지와 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-deployment-strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 배포 전략
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 인터랙티브 데모
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 인터랙티브 데모
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        kubectl 명령어 체험
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배포 흐름 데모
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        네트워크 시나리오 데모
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스토리지 바인딩 데모
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        각 챕터별 데모 바로가기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        명령어 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-dbt-airflow-on-k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bonus: dbt + Airflow on K8s
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../mcp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MCP Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcp/01-what-is-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. MCP란?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcp/02-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcp/03-dev-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 개발 환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcp/04-first-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 첫 번째 MCP 서버
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcp/05-poc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. PoC - DB 조회 서버
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        kubectl 명령어 체험
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배포 흐름 데모
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        네트워크 시나리오 데모
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스토리지 바인딩 데모
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        각 챕터별 데모 바로가기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        명령어 요약
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="10">10. 인터랙티브 데모<a class="headerlink" href="#10" title="Permanent link">&para;</a></h1>
+<p>Kubernetes 핵심 개념을 한곳에서 직접 체험해보세요.
+각 데모는 실제 <code>kubectl</code> 출력을 시뮬레이션하며, 버튼을 클릭하면 결과가 터미널에 표시됩니다.</p>
+<hr />
+<h2 id="kubectl">kubectl 명령어 체험<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h2>
+<p>가장 자주 사용하는 <code>kubectl</code> 명령어들을 실행해보세요.</p>
+<div class="interactive-terminal" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">kubectl Terminal</span>
+  </div>
+  <div class="terminal-body" id="k8s-term">
+    <span class="prompt">jane@mac ~ $</span> <span class="cursor">_</span>
+  </div>
+  <div class="terminal-buttons">
+    <button onclick="k8sRun('get-pods', 'k8s-term')">kubectl get pods</button>
+    <button onclick="k8sRun('get-svc', 'k8s-term')">kubectl get svc</button>
+    <button onclick="k8sRun('get-nodes', 'k8s-term')">kubectl get nodes</button>
+    <button onclick="k8sRun('describe-pod', 'k8s-term')">kubectl describe pod</button>
+    <button onclick="k8sRun('get-deploy', 'k8s-term')">kubectl get deployments</button>
+    <button onclick="k8sRun('logs', 'k8s-term')">kubectl logs</button>
+    <button onclick="k8sRun('apply', 'k8s-term')">kubectl apply</button>
+    <button onclick="k8sRun('rollout', 'k8s-term')">kubectl rollout status</button>
+    <button onclick="k8sClear('k8s-term')" class="btn-clear">Clear</button>
+  </div>
+</div>
+
+<div class="admonition info">
+<p class="admonition-title">사용법</p>
+<p>위 버튼을 클릭하면 해당 <code>kubectl</code> 명령어의 실행 결과가 터미널에 표시됩니다.
+여러 명령어를 순서대로 실행해보세요. <strong>Clear</strong> 버튼으로 초기화할 수 있습니다.</p>
+</div>
+<hr />
+<h2 id="_1">배포 흐름 데모<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Deployment를 생성하고 Rolling Update가 진행되는 과정을 단계별로 확인합니다.</p>
+<div class="flow-demo" id="k8s-deploy-flow" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Deployment 배포 흐름</span>
+  </div>
+  <div class="flow-panels">
+    <div class="flow-step" id="deploy-step-area">
+      <div class="flow-step-content" id="deploy-step-content">
+        <p style="color:#6c7086;">아래 <strong>다음 ▶</strong> 버튼을 클릭하여 배포 과정을 시작하세요.</p>
+      </div>
+    </div>
+  </div>
+  <div class="flow-step-indicator" id="deploy-step-indicator">단계: 0 / 7</div>
+  <div class="terminal-buttons">
+    <button onclick="k8sDeployPrev()" id="deploy-prev-btn" disabled>◀ 이전</button>
+    <button onclick="k8sDeployNext()" id="deploy-next-btn">다음 ▶</button>
+    <button onclick="k8sDeployReset()" class="btn-clear">처음으로</button>
+  </div>
+</div>
+
+<div class="admonition tip">
+<p class="admonition-title">배포 과정 요약</p>
+<ol>
+<li>YAML 작성 → 2. <code>kubectl apply</code> → 3. API Server 처리 → 4. Scheduler 배치 →</li>
+<li>ReplicaSet 생성 → 6. Pod 생성 → 7. Rolling Update 완료</li>
+</ol>
+</div>
+<hr />
+<h2 id="_2">네트워크 시나리오 데모<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Kubernetes Service 타입별 네트워크 동작을 시각적으로 확인합니다.
+아래 버튼을 클릭하여 시나리오를 전환하세요.</p>
+<div class="flow-demo" id="k8s-net-demo" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Service 네트워크 시나리오</span>
+  </div>
+  <div class="terminal-buttons" style="border-bottom: 1px solid #313244; padding-bottom: 10px;">
+    <button onclick="k8sNetScenario('clusterip')" class="active" id="net-btn-clusterip">ClusterIP</button>
+    <button onclick="k8sNetScenario('nodeport')" id="net-btn-nodeport">NodePort</button>
+    <button onclick="k8sNetScenario('loadbalancer')" id="net-btn-loadbalancer">LoadBalancer</button>
+    <button onclick="k8sNetScenario('ingress')" id="net-btn-ingress">Ingress</button>
+  </div>
+  <div class="flow-panels">
+    <div class="flow-step" id="net-scenario-area">
+      <div id="net-scenario-content">
+        <div class="k8s-net-diagram" id="net-diagram-clusterip">
+          <div class="k8s-net-box k8s-cluster-box">
+            <div class="k8s-net-label">Kubernetes Cluster</div>
+            <div class="k8s-net-row">
+              <div class="k8s-net-box k8s-svc-box">
+                <div class="k8s-net-label">ClusterIP Service</div>
+                <code>10.96.0.1:80</code>
+              </div>
+            </div>
+            <div class="k8s-net-arrow">&#8595; 내부 트래픽 분배</div>
+            <div class="k8s-net-row">
+              <div class="k8s-net-box k8s-pod-box">Pod A<br/><code>10.244.0.5</code></div>
+              <div class="k8s-net-box k8s-pod-box">Pod B<br/><code>10.244.0.6</code></div>
+              <div class="k8s-net-box k8s-pod-box">Pod C<br/><code>10.244.0.7</code></div>
+            </div>
+          </div>
+          <div class="k8s-net-desc">
+            <strong>ClusterIP</strong>: 클러스터 내부에서만 접근 가능한 기본 Service 타입입니다.<br/>
+            외부에서는 접근할 수 없으며, 다른 Pod에서 Service DNS 이름으로 호출합니다.<br/>
+            <code>kubectl get svc</code>로 확인하면 EXTERNAL-IP가 <code>&lt;none&gt;</code>으로 표시됩니다.
+          </div>
+        </div>
+        <div class="k8s-net-diagram" id="net-diagram-nodeport" style="display:none;">
+          <div class="k8s-net-box k8s-external-box">
+            <div class="k8s-net-label">External Client</div>
+            <code>http://&lt;NodeIP&gt;:30080</code>
+          </div>
+          <div class="k8s-net-arrow">&#8595; NodePort (30080)</div>
+          <div class="k8s-net-box k8s-cluster-box">
+            <div class="k8s-net-label">Kubernetes Cluster</div>
+            <div class="k8s-net-row">
+              <div class="k8s-net-box k8s-node-box">
+                Node 1<br/><code>192.168.1.10:30080</code>
+              </div>
+              <div class="k8s-net-box k8s-node-box">
+                Node 2<br/><code>192.168.1.11:30080</code>
+              </div>
+            </div>
+            <div class="k8s-net-arrow">&#8595; ClusterIP로 전달</div>
+            <div class="k8s-net-row">
+              <div class="k8s-net-box k8s-pod-box">Pod A</div>
+              <div class="k8s-net-box k8s-pod-box">Pod B</div>
+            </div>
+          </div>
+          <div class="k8s-net-desc">
+            <strong>NodePort</strong>: 각 Node의 고정 포트(30000-32767)를 통해 외부에서 접근합니다.<br/>
+            모든 Node에서 동일한 포트로 접근 가능하며, 내부적으로 ClusterIP Service를 경유합니다.<br/>
+            개발/테스트 환경에서 주로 사용됩니다.
+          </div>
+        </div>
+        <div class="k8s-net-diagram" id="net-diagram-loadbalancer" style="display:none;">
+          <div class="k8s-net-box k8s-external-box">
+            <div class="k8s-net-label">External Client</div>
+            <code>http://my-app.example.com</code>
+          </div>
+          <div class="k8s-net-arrow">&#8595; DNS 요청</div>
+          <div class="k8s-net-box k8s-lb-box">
+            <div class="k8s-net-label">Cloud Load Balancer</div>
+            <code>EXTERNAL-IP: 52.xx.xx.xx</code>
+          </div>
+          <div class="k8s-net-arrow">&#8595; 트래픽 분산</div>
+          <div class="k8s-net-box k8s-cluster-box">
+            <div class="k8s-net-label">Kubernetes Cluster</div>
+            <div class="k8s-net-row">
+              <div class="k8s-net-box k8s-pod-box">Pod A</div>
+              <div class="k8s-net-box k8s-pod-box">Pod B</div>
+              <div class="k8s-net-box k8s-pod-box">Pod C</div>
+            </div>
+          </div>
+          <div class="k8s-net-desc">
+            <strong>LoadBalancer</strong>: 클라우드 제공자의 로드밸런서를 자동 프로비저닝합니다.<br/>
+            외부 IP가 할당되어 인터넷에서 직접 접근할 수 있습니다.<br/>
+            AWS ELB, GCP Cloud LB 등이 자동으로 생성됩니다.
+          </div>
+        </div>
+        <div class="k8s-net-diagram" id="net-diagram-ingress" style="display:none;">
+          <div class="k8s-net-box k8s-external-box">
+            <div class="k8s-net-label">External Clients</div>
+            <code>app.example.com</code> / <code>api.example.com</code>
+          </div>
+          <div class="k8s-net-arrow">&#8595; HTTP/HTTPS</div>
+          <div class="k8s-net-box k8s-ingress-box">
+            <div class="k8s-net-label">Ingress Controller (nginx)</div>
+            <code>/app/* → app-svc:80</code><br/>
+            <code>/api/* → api-svc:8080</code>
+          </div>
+          <div class="k8s-net-arrow">&#8595; 경로 기반 라우팅</div>
+          <div class="k8s-net-box k8s-cluster-box">
+            <div class="k8s-net-label">Kubernetes Cluster</div>
+            <div class="k8s-net-row">
+              <div class="k8s-net-box k8s-svc-box">
+                app-svc<br/>
+                <div class="k8s-net-row">
+                  <div class="k8s-net-box k8s-pod-box" style="margin:4px;">App Pod</div>
+                  <div class="k8s-net-box k8s-pod-box" style="margin:4px;">App Pod</div>
+                </div>
+              </div>
+              <div class="k8s-net-box k8s-svc-box">
+                api-svc<br/>
+                <div class="k8s-net-row">
+                  <div class="k8s-net-box k8s-pod-box" style="margin:4px;">API Pod</div>
+                  <div class="k8s-net-box k8s-pod-box" style="margin:4px;">API Pod</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="k8s-net-desc">
+            <strong>Ingress</strong>: L7(HTTP) 레벨의 라우팅을 제공합니다.<br/>
+            호스트/경로 기반으로 여러 Service에 트래픽을 분배할 수 있습니다.<br/>
+            TLS 종료, 가상 호스트, URL 리라이트 등을 지원합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">Service 타입 선택 가이드</p>
+<ul>
+<li><strong>ClusterIP</strong>: 클러스터 내부 통신 (마이크로서비스 간 호출)</li>
+<li><strong>NodePort</strong>: 개발/테스트 환경의 외부 접근</li>
+<li><strong>LoadBalancer</strong>: 프로덕션 외부 노출 (단일 서비스)</li>
+<li><strong>Ingress</strong>: 프로덕션 외부 노출 (다중 서비스, 경로 기반 라우팅)</li>
+</ul>
+</div>
+<hr />
+<h2 id="_3">스토리지 바인딩 데모<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>PersistentVolume(PV) 생성부터 PVC 바인딩, Pod 마운트까지의 과정을 단계별로 확인합니다.</p>
+<div class="flow-demo" id="k8s-storage-flow" markdown="0">
+  <div class="terminal-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="terminal-title">Storage 바인딩 흐름</span>
+  </div>
+  <div class="flow-panels">
+    <div class="flow-step" id="storage-step-area">
+      <div class="flow-step-content" id="storage-step-content">
+        <p style="color:#6c7086;">아래 <strong>다음 ▶</strong> 버튼을 클릭하여 스토리지 바인딩 과정을 시작하세요.</p>
+      </div>
+    </div>
+  </div>
+  <div class="flow-step-indicator" id="storage-step-indicator">단계: 0 / 5</div>
+  <div class="terminal-buttons">
+    <button onclick="k8sStoragePrev()" id="storage-prev-btn" disabled>◀ 이전</button>
+    <button onclick="k8sStorageNext()" id="storage-next-btn">다음 ▶</button>
+    <button onclick="k8sStorageReset()" class="btn-clear">처음으로</button>
+  </div>
+</div>
+
+<div class="admonition tip">
+<p class="admonition-title">스토리지 과정 요약</p>
+<ol>
+<li>PV 생성 (Available) → 2. PVC 생성 (Pending) → 3. PVC-PV 바인딩 (Bound) →</li>
+<li>Pod에서 PVC 마운트 → 5. 컨테이너에서 볼륨 사용</li>
+</ol>
+</div>
+<hr />
+<h2 id="_4">각 챕터별 데모 바로가기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>각 튜토리얼 챕터 안에서도 해당 내용과 관련된 데모를 직접 체험할 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>챕터</th>
+<th>체험 가능한 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../01-docker-basics/">1. Docker 기초</a></td>
+<td>Docker 아키텍처 다이어그램</td>
+</tr>
+<tr>
+<td><a href="../02-container-to-k8s/">2. 컨테이너에서 K8s로</a></td>
+<td>minikube 설치, 첫 Pod 실행</td>
+</tr>
+<tr>
+<td><a href="../03-k8s-architecture/">3. K8s 아키텍처</a></td>
+<td>클러스터 컴포넌트 다이어그램</td>
+</tr>
+<tr>
+<td><a href="../04-kubeconfig/">4. kubeconfig 상세</a></td>
+<td>멀티 클러스터 설정, 컨텍스트 전환</td>
+</tr>
+<tr>
+<td><a href="../05-yaml-manifests/">5. YAML 매니페스트</a></td>
+<td>Pod/Deployment/Service YAML 작성</td>
+</tr>
+<tr>
+<td><a href="../06-workloads/">6. 워크로드</a></td>
+<td>Pod Lifecycle, Deployment 롤링 업데이트</td>
+</tr>
+<tr>
+<td><a href="../07-networking/">7. 네트워킹</a></td>
+<td>Service 타입별 네트워크 구성, NetworkPolicy</td>
+</tr>
+<tr>
+<td><a href="../08-volumes/">8. 스토리지와 설정</a></td>
+<td>PV/PVC 바인딩, ConfigMap/Secret</td>
+</tr>
+<tr>
+<td><a href="../09-deployment-strategies/">9. 배포 전략</a></td>
+<td>Rolling Update, Blue/Green, Canary, HPA</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_5">명령어 요약<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>명령어</th>
+<th>설명</th>
+<th>관련 챕터</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubectl get pods</code></td>
+<td>현재 네임스페이스의 Pod 목록 조회</td>
+<td><a href="../06-workloads/">6. 워크로드</a></td>
+</tr>
+<tr>
+<td><code>kubectl get svc</code></td>
+<td>Service 목록 조회</td>
+<td><a href="../07-networking/">7. 네트워킹</a></td>
+</tr>
+<tr>
+<td><code>kubectl get nodes</code></td>
+<td>클러스터 Node 목록 조회</td>
+<td><a href="../03-k8s-architecture/">3. K8s 아키텍처</a></td>
+</tr>
+<tr>
+<td><code>kubectl get deployments</code></td>
+<td>Deployment 목록 조회</td>
+<td><a href="../06-workloads/">6. 워크로드</a></td>
+</tr>
+<tr>
+<td><code>kubectl describe pod</code></td>
+<td>Pod 상세 정보 확인</td>
+<td><a href="../06-workloads/">6. 워크로드</a></td>
+</tr>
+<tr>
+<td><code>kubectl logs</code></td>
+<td>컨테이너 로그 확인</td>
+<td><a href="../06-workloads/">6. 워크로드</a></td>
+</tr>
+<tr>
+<td><code>kubectl apply -f</code></td>
+<td>YAML 매니페스트 적용 (생성/업데이트)</td>
+<td><a href="../05-yaml-manifests/">5. YAML 매니페스트</a></td>
+</tr>
+<tr>
+<td><code>kubectl rollout status</code></td>
+<td>롤링 업데이트 진행 상태 확인</td>
+<td><a href="../09-deployment-strategies/">9. 배포 전략</a></td>
+</tr>
+<tr>
+<td><code>kubectl exec -it</code></td>
+<td>컨테이너 내부 쉘 접속</td>
+<td><a href="../06-workloads/">6. 워크로드</a></td>
+</tr>
+<tr>
+<td><code>kubectl delete</code></td>
+<td>리소스 삭제</td>
+<td>전체</td>
+</tr>
+<tr>
+<td><code>kubectl scale</code></td>
+<td>Deployment 레플리카 수 조정</td>
+<td><a href="../09-deployment-strategies/">9. 배포 전략</a></td>
+</tr>
+<tr>
+<td><code>kubectl port-forward</code></td>
+<td>로컬 포트를 Pod/Service에 포워딩</td>
+<td><a href="../07-networking/">7. 네트워킹</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<script markdown="0">
+/* ============================================================
+   Kubernetes Interactive Demos
+   ============================================================ */
+
+/* ---------- kubectl 명령어 시뮬레이터 ---------- */
+
+const k8sCommands = {
+  'get-pods': [
+    { text: '$ kubectl get pods\n', cls: 't-white', delay: 0 },
+    { text: 'NAME                          READY   STATUS    RESTARTS   AGE\n', cls: 't-yellow', delay: 400 },
+    { text: 'web-app-6d8f9b7c4-x2k9p      1/1     Running   0          2d\n', cls: 't-green', delay: 200 },
+    { text: 'web-app-6d8f9b7c4-m7j3q      1/1     Running   0          2d\n', cls: 't-green', delay: 200 },
+    { text: 'web-app-6d8f9b7c4-a4n8w      1/1     Running   0          2d\n', cls: 't-green', delay: 200 },
+    { text: 'redis-master-0                1/1     Running   0          5d\n', cls: 't-green', delay: 200 },
+    { text: 'api-server-7f5c8d6b2-p9r2t   1/1     Running   1          3d\n', cls: 't-green', delay: 200 },
+  ],
+  'get-svc': [
+    { text: '$ kubectl get svc\n', cls: 't-white', delay: 0 },
+    { text: 'NAME           TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)        AGE\n', cls: 't-yellow', delay: 400 },
+    { text: 'kubernetes     ClusterIP      10.96.0.1      <none>         443/TCP        30d\n', cls: 't-white', delay: 200 },
+    { text: 'web-app        LoadBalancer   10.96.12.34    52.xx.xx.xx    80:31234/TCP   2d\n', cls: 't-green', delay: 200 },
+    { text: 'redis-master   ClusterIP      10.96.45.67    <none>         6379/TCP       5d\n', cls: 't-white', delay: 200 },
+    { text: 'api-server     NodePort       10.96.78.90    <none>         8080:30080/TCP 3d\n', cls: 't-green', delay: 200 },
+  ],
+  'get-nodes': [
+    { text: '$ kubectl get nodes\n', cls: 't-white', delay: 0 },
+    { text: 'NAME          STATUS   ROLES           AGE   VERSION\n', cls: 't-yellow', delay: 400 },
+    { text: 'master-01     Ready    control-plane   30d   v1.29.2\n', cls: 't-green', delay: 200 },
+    { text: 'worker-01     Ready    <none>          30d   v1.29.2\n', cls: 't-green', delay: 200 },
+    { text: 'worker-02     Ready    <none>          30d   v1.29.2\n', cls: 't-green', delay: 200 },
+    { text: 'worker-03     Ready    <none>          25d   v1.29.2\n', cls: 't-green', delay: 200 },
+  ],
+  'describe-pod': [
+    { text: '$ kubectl describe pod web-app-6d8f9b7c4-x2k9p\n', cls: 't-white', delay: 0 },
+    { text: 'Name:             web-app-6d8f9b7c4-x2k9p\n', cls: 't-white', delay: 300 },
+    { text: 'Namespace:        default\n', cls: 't-white', delay: 100 },
+    { text: 'Priority:         0\n', cls: 't-white', delay: 100 },
+    { text: 'Service Account:  default\n', cls: 't-white', delay: 100 },
+    { text: 'Node:             worker-01/192.168.1.10\n', cls: 't-white', delay: 100 },
+    { text: 'Labels:           app=web-app\n', cls: 't-yellow', delay: 100 },
+    { text: '                  pod-template-hash=6d8f9b7c4\n', cls: 't-yellow', delay: 100 },
+    { text: 'Status:           Running\n', cls: 't-green', delay: 200 },
+    { text: 'IP:               10.244.0.5\n', cls: 't-white', delay: 100 },
+    { text: '\nContainers:\n', cls: 't-white', delay: 200 },
+    { text: '  web-app:\n', cls: 't-yellow', delay: 100 },
+    { text: '    Image:          nginx:1.25\n', cls: 't-white', delay: 100 },
+    { text: '    Port:           80/TCP\n', cls: 't-white', delay: 100 },
+    { text: '    State:          Running\n', cls: 't-green', delay: 100 },
+    { text: '      Started:      Mon, 11 Apr 2026 09:00:00 +0900\n', cls: 't-white', delay: 100 },
+    { text: '    Limits:\n', cls: 't-white', delay: 100 },
+    { text: '      cpu:     500m\n', cls: 't-white', delay: 100 },
+    { text: '      memory:  256Mi\n', cls: 't-white', delay: 100 },
+    { text: '    Requests:\n', cls: 't-white', delay: 100 },
+    { text: '      cpu:     250m\n', cls: 't-white', delay: 100 },
+    { text: '      memory:  128Mi\n', cls: 't-white', delay: 100 },
+    { text: '\nConditions:\n', cls: 't-white', delay: 200 },
+    { text: '  Type              Status\n', cls: 't-yellow', delay: 100 },
+    { text: '  Initialized       True\n', cls: 't-green', delay: 100 },
+    { text: '  Ready             True\n', cls: 't-green', delay: 100 },
+    { text: '  ContainersReady   True\n', cls: 't-green', delay: 100 },
+    { text: '  PodScheduled      True\n', cls: 't-green', delay: 100 },
+  ],
+  'get-deploy': [
+    { text: '$ kubectl get deployments\n', cls: 't-white', delay: 0 },
+    { text: 'NAME         READY   UP-TO-DATE   AVAILABLE   AGE\n', cls: 't-yellow', delay: 400 },
+    { text: 'web-app      3/3     3            3           2d\n', cls: 't-green', delay: 200 },
+    { text: 'api-server   2/2     2            2           3d\n', cls: 't-green', delay: 200 },
+  ],
+  'logs': [
+    { text: '$ kubectl logs web-app-6d8f9b7c4-x2k9p --tail=10\n', cls: 't-white', delay: 0 },
+    { text: '10.244.0.1 - - [13/Apr/2026:10:23:01 +0000] "GET / HTTP/1.1" 200 615\n', cls: 't-white', delay: 300 },
+    { text: '10.244.0.1 - - [13/Apr/2026:10:23:05 +0000] "GET /healthz HTTP/1.1" 200 2\n', cls: 't-white', delay: 200 },
+    { text: '10.244.0.3 - - [13/Apr/2026:10:23:12 +0000] "GET /api/data HTTP/1.1" 200 1024\n', cls: 't-white', delay: 200 },
+    { text: '10.244.0.1 - - [13/Apr/2026:10:23:15 +0000] "GET /healthz HTTP/1.1" 200 2\n', cls: 't-white', delay: 200 },
+    { text: '10.244.0.2 - - [13/Apr/2026:10:23:18 +0000] "POST /api/submit HTTP/1.1" 201 48\n', cls: 't-green', delay: 200 },
+    { text: '10.244.0.1 - - [13/Apr/2026:10:23:25 +0000] "GET /healthz HTTP/1.1" 200 2\n', cls: 't-white', delay: 200 },
+    { text: '10.244.0.4 - - [13/Apr/2026:10:23:30 +0000] "GET /static/style.css HTTP/1.1" 304 0\n', cls: 't-white', delay: 200 },
+    { text: '10.244.0.1 - - [13/Apr/2026:10:23:35 +0000] "GET /healthz HTTP/1.1" 200 2\n', cls: 't-white', delay: 200 },
+    { text: '10.244.0.5 - - [13/Apr/2026:10:23:40 +0000] "GET /api/users HTTP/1.1" 200 512\n', cls: 't-green', delay: 200 },
+    { text: '10.244.0.1 - - [13/Apr/2026:10:23:45 +0000] "GET /healthz HTTP/1.1" 200 2\n', cls: 't-white', delay: 200 },
+  ],
+  'apply': [
+    { text: '$ kubectl apply -f deployment.yaml\n', cls: 't-white', delay: 0 },
+    { text: 'deployment.apps/web-app configured\n', cls: 't-green', delay: 600 },
+    { text: '\n$ kubectl apply -f service.yaml\n', cls: 't-white', delay: 400 },
+    { text: 'service/web-app unchanged\n', cls: 't-yellow', delay: 600 },
+    { text: '\n$ kubectl apply -f configmap.yaml\n', cls: 't-white', delay: 400 },
+    { text: 'configmap/web-app-config created\n', cls: 't-green', delay: 600 },
+  ],
+  'rollout': [
+    { text: '$ kubectl rollout status deployment/web-app\n', cls: 't-white', delay: 0 },
+    { text: 'Waiting for deployment "web-app" rollout to finish:\n', cls: 't-yellow', delay: 500 },
+    { text: '  1 out of 3 new replicas have been updated...\n', cls: 't-white', delay: 800 },
+    { text: '  2 out of 3 new replicas have been updated...\n', cls: 't-white', delay: 800 },
+    { text: '  3 out of 3 new replicas have been updated...\n', cls: 't-white', delay: 800 },
+    { text: '  Waiting for 1 old replicas to be terminated...\n', cls: 't-yellow', delay: 600 },
+    { text: '  All replicas are updated and available.\n', cls: 't-green', delay: 500 },
+    { text: 'deployment "web-app" successfully rolled out\n', cls: 't-green', delay: 300 },
+  ],
+};
+
+const k8sRunning = {};
+
+function k8sClear(id) {
+  const el = document.getElementById(id);
+  el.innerHTML = '<span class="prompt">jane@mac ~ $</span> <span class="cursor">_</span>';
+  k8sRunning[id] = false;
+}
+
+async function k8sRun(cmd, terminalId) {
+  if (k8sRunning[terminalId]) return;
+  k8sRunning[terminalId] = true;
+
+  const el = document.getElementById(terminalId);
+  const cursorEl = el.querySelector('.cursor');
+  if (cursorEl) cursorEl.remove();
+
+  el.innerHTML += '\n';
+
+  const lines = k8sCommands[cmd];
+  for (const line of lines) {
+    if (!k8sRunning[terminalId]) break;
+    await new Promise(r => setTimeout(r, line.delay));
+    const span = document.createElement('span');
+    span.className = line.cls;
+    span.textContent = line.text;
+    el.appendChild(span);
+    el.scrollTop = el.scrollHeight;
+  }
+
+  el.innerHTML += '\n<span class="prompt">jane@mac ~ $</span> <span class="cursor">_</span>';
+  el.scrollTop = el.scrollHeight;
+  k8sRunning[terminalId] = false;
+}
+
+/* ---------- 배포 흐름 데모 ---------- */
+
+const deploySteps = [
+  {
+    title: '1. YAML 매니페스트 작성',
+    html: `<pre style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-size:0.85em;overflow-x:auto;">
+<span style="color:#89b4fa;">apiVersion:</span> apps/v1
+<span style="color:#89b4fa;">kind:</span> Deployment
+<span style="color:#89b4fa;">metadata:</span>
+  <span style="color:#89b4fa;">name:</span> web-app
+<span style="color:#89b4fa;">spec:</span>
+  <span style="color:#89b4fa;">replicas:</span> <span style="color:#f9e2af;">3</span>
+  <span style="color:#89b4fa;">selector:</span>
+    <span style="color:#89b4fa;">matchLabels:</span>
+      <span style="color:#89b4fa;">app:</span> web-app
+  <span style="color:#89b4fa;">template:</span>
+    <span style="color:#89b4fa;">metadata:</span>
+      <span style="color:#89b4fa;">labels:</span>
+        <span style="color:#89b4fa;">app:</span> web-app
+    <span style="color:#89b4fa;">spec:</span>
+      <span style="color:#89b4fa;">containers:</span>
+      - <span style="color:#89b4fa;">name:</span> nginx
+        <span style="color:#89b4fa;">image:</span> nginx:1.25
+        <span style="color:#89b4fa;">ports:</span>
+        - <span style="color:#89b4fa;">containerPort:</span> <span style="color:#f9e2af;">80</span></pre>
+    <p style="color:#a6e3a1;">Deployment YAML을 작성합니다. replicas=3으로 3개의 Pod를 요청합니다.</p>`
+  },
+  {
+    title: '2. kubectl apply 실행',
+    html: `<div style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-family:monospace;font-size:0.85em;">
+      <span style="color:#cdd6f4;">$ kubectl apply -f deployment.yaml</span><br/>
+      <span style="color:#a6e3a1;">deployment.apps/web-app created</span>
+    </div>
+    <p style="color:#a6e3a1;">YAML을 API Server에 제출합니다. API Server가 요청을 검증하고 etcd에 저장합니다.</p>`
+  },
+  {
+    title: '3. API Server → Controller Manager',
+    html: `<div style="text-align:center;padding:16px;">
+      <div style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <div style="background:#89b4fa;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;">API Server</div>
+        <span style="color:#f9e2af;font-size:1.5em;">&#8594;</span>
+        <div style="background:#cba6f7;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;">Controller Manager</div>
+      </div>
+    </div>
+    <p style="color:#a6e3a1;">Deployment Controller가 변경을 감지하고 ReplicaSet을 생성합니다.</p>`
+  },
+  {
+    title: '4. ReplicaSet 생성',
+    html: `<div style="text-align:center;padding:16px;">
+      <div style="background:#cba6f7;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;display:inline-block;">ReplicaSet: web-app-6d8f9b7c4</div>
+      <div style="color:#f9e2af;font-size:1.2em;margin:8px 0;">목표: 3개 Pod 유지</div>
+      <div style="display:inline-flex;gap:12px;margin-top:8px;">
+        <div style="background:#313244;color:#f9e2af;padding:8px 16px;border-radius:6px;border:1px dashed #f9e2af;">Pod (Pending)</div>
+        <div style="background:#313244;color:#f9e2af;padding:8px 16px;border-radius:6px;border:1px dashed #f9e2af;">Pod (Pending)</div>
+        <div style="background:#313244;color:#f9e2af;padding:8px 16px;border-radius:6px;border:1px dashed #f9e2af;">Pod (Pending)</div>
+      </div>
+    </div>
+    <p style="color:#a6e3a1;">ReplicaSet이 생성되었지만, Pod들은 아직 Node에 배치되지 않았습니다 (Pending).</p>`
+  },
+  {
+    title: '5. Scheduler → Node 배치',
+    html: `<div style="text-align:center;padding:16px;">
+      <div style="display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <div style="background:#f9e2af;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;">Scheduler</div>
+        <span style="color:#f9e2af;font-size:1.5em;">&#8594;</span>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="background:#313244;padding:8px 16px;border-radius:6px;color:#89b4fa;border:1px solid #89b4fa;">worker-01: Pod 1 &#x2713;</div>
+          <div style="background:#313244;padding:8px 16px;border-radius:6px;color:#89b4fa;border:1px solid #89b4fa;">worker-02: Pod 2 &#x2713;</div>
+          <div style="background:#313244;padding:8px 16px;border-radius:6px;color:#89b4fa;border:1px solid #89b4fa;">worker-03: Pod 3 &#x2713;</div>
+        </div>
+      </div>
+    </div>
+    <p style="color:#a6e3a1;">Scheduler가 리소스 상태를 확인하고 각 Pod를 적절한 Worker Node에 배치합니다.</p>`
+  },
+  {
+    title: '6. kubelet → 컨테이너 실행',
+    html: `<div style="text-align:center;padding:16px;">
+      <div style="display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <div style="background:#313244;padding:12px;border-radius:8px;border:1px solid #a6e3a1;min-width:140px;">
+          <div style="color:#89b4fa;font-weight:bold;">worker-01</div>
+          <div style="color:#6c7086;font-size:0.85em;">kubelet</div>
+          <div style="background:#a6e3a1;color:#1e1e2e;padding:4px 8px;border-radius:4px;margin-top:4px;font-size:0.85em;">Pod 1: Running</div>
+        </div>
+        <div style="background:#313244;padding:12px;border-radius:8px;border:1px solid #a6e3a1;min-width:140px;">
+          <div style="color:#89b4fa;font-weight:bold;">worker-02</div>
+          <div style="color:#6c7086;font-size:0.85em;">kubelet</div>
+          <div style="background:#a6e3a1;color:#1e1e2e;padding:4px 8px;border-radius:4px;margin-top:4px;font-size:0.85em;">Pod 2: Running</div>
+        </div>
+        <div style="background:#313244;padding:12px;border-radius:8px;border:1px solid #a6e3a1;min-width:140px;">
+          <div style="color:#89b4fa;font-weight:bold;">worker-03</div>
+          <div style="color:#6c7086;font-size:0.85em;">kubelet</div>
+          <div style="background:#a6e3a1;color:#1e1e2e;padding:4px 8px;border-radius:4px;margin-top:4px;font-size:0.85em;">Pod 3: Running</div>
+        </div>
+      </div>
+    </div>
+    <p style="color:#a6e3a1;">각 Node의 kubelet이 컨테이너 런타임을 통해 Pod를 실행합니다.</p>`
+  },
+  {
+    title: '7. 배포 완료',
+    html: `<div style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-family:monospace;font-size:0.85em;">
+      <span style="color:#cdd6f4;">$ kubectl rollout status deployment/web-app</span><br/>
+      <span style="color:#a6e3a1;">deployment "web-app" successfully rolled out</span><br/><br/>
+      <span style="color:#cdd6f4;">$ kubectl get pods</span><br/>
+      <span style="color:#f9e2af;">NAME                       READY   STATUS    RESTARTS   AGE</span><br/>
+      <span style="color:#a6e3a1;">web-app-6d8f9b7c4-x2k9p   1/1     Running   0          45s</span><br/>
+      <span style="color:#a6e3a1;">web-app-6d8f9b7c4-m7j3q   1/1     Running   0          45s</span><br/>
+      <span style="color:#a6e3a1;">web-app-6d8f9b7c4-a4n8w   1/1     Running   0          45s</span>
+    </div>
+    <p style="color:#a6e3a1;">모든 Pod가 Running 상태입니다. Deployment가 성공적으로 완료되었습니다!</p>`
+  },
+];
+
+let deployCurrentStep = 0;
+
+function k8sDeployRender() {
+  const content = document.getElementById('deploy-step-content');
+  const indicator = document.getElementById('deploy-step-indicator');
+  const prevBtn = document.getElementById('deploy-prev-btn');
+  const nextBtn = document.getElementById('deploy-next-btn');
+
+  if (deployCurrentStep === 0) {
+    content.innerHTML = '<p style="color:#6c7086;">아래 <strong>다음 ▶</strong> 버튼을 클릭하여 배포 과정을 시작하세요.</p>';
+  } else {
+    const step = deploySteps[deployCurrentStep - 1];
+    content.innerHTML = '<h4 style="color:#89b4fa;margin-top:0;">' + step.title + '</h4>' + step.html;
+  }
+
+  indicator.textContent = '단계: ' + deployCurrentStep + ' / ' + deploySteps.length;
+  prevBtn.disabled = deployCurrentStep === 0;
+  nextBtn.disabled = deployCurrentStep === deploySteps.length;
+}
+
+function k8sDeployNext() {
+  if (deployCurrentStep < deploySteps.length) {
+    deployCurrentStep++;
+    k8sDeployRender();
+  }
+}
+
+function k8sDeployPrev() {
+  if (deployCurrentStep > 0) {
+    deployCurrentStep--;
+    k8sDeployRender();
+  }
+}
+
+function k8sDeployReset() {
+  deployCurrentStep = 0;
+  k8sDeployRender();
+}
+
+/* ---------- 네트워크 시나리오 데모 ---------- */
+
+function k8sNetScenario(type) {
+  const types = ['clusterip', 'nodeport', 'loadbalancer', 'ingress'];
+  types.forEach(function(t) {
+    const diagram = document.getElementById('net-diagram-' + t);
+    const btn = document.getElementById('net-btn-' + t);
+    if (diagram) diagram.style.display = (t === type) ? 'block' : 'none';
+    if (btn) btn.className = (t === type) ? 'active' : '';
+  });
+}
+
+/* ---------- 스토리지 바인딩 데모 ---------- */
+
+const storageSteps = [
+  {
+    title: '1. PersistentVolume 생성',
+    html: `<pre style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-size:0.85em;overflow-x:auto;">
+<span style="color:#89b4fa;">apiVersion:</span> v1
+<span style="color:#89b4fa;">kind:</span> PersistentVolume
+<span style="color:#89b4fa;">metadata:</span>
+  <span style="color:#89b4fa;">name:</span> my-pv
+<span style="color:#89b4fa;">spec:</span>
+  <span style="color:#89b4fa;">capacity:</span>
+    <span style="color:#89b4fa;">storage:</span> <span style="color:#f9e2af;">10Gi</span>
+  <span style="color:#89b4fa;">accessModes:</span>
+    - <span style="color:#a6e3a1;">ReadWriteOnce</span>
+  <span style="color:#89b4fa;">hostPath:</span>
+    <span style="color:#89b4fa;">path:</span> /data/my-pv</pre>
+    <div style="text-align:center;margin:12px 0;">
+      <div style="display:inline-block;background:#89b4fa;color:#1e1e2e;padding:12px 24px;border-radius:8px;font-weight:bold;">PV: my-pv (10Gi)</div>
+      <div style="color:#f9e2af;margin-top:6px;">Status: <strong>Available</strong></div>
+    </div>
+    <p style="color:#a6e3a1;">PersistentVolume이 생성되었습니다. 아직 바인딩되지 않아 Available 상태입니다.</p>`
+  },
+  {
+    title: '2. PersistentVolumeClaim 생성',
+    html: `<pre style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-size:0.85em;overflow-x:auto;">
+<span style="color:#89b4fa;">apiVersion:</span> v1
+<span style="color:#89b4fa;">kind:</span> PersistentVolumeClaim
+<span style="color:#89b4fa;">metadata:</span>
+  <span style="color:#89b4fa;">name:</span> my-pvc
+<span style="color:#89b4fa;">spec:</span>
+  <span style="color:#89b4fa;">accessModes:</span>
+    - <span style="color:#a6e3a1;">ReadWriteOnce</span>
+  <span style="color:#89b4fa;">resources:</span>
+    <span style="color:#89b4fa;">requests:</span>
+      <span style="color:#89b4fa;">storage:</span> <span style="color:#f9e2af;">5Gi</span></pre>
+    <div style="text-align:center;margin:12px 0;">
+      <div style="display:inline-flex;gap:24px;align-items:center;">
+        <div style="background:#89b4fa;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;">PV: my-pv (10Gi)</div>
+        <div style="background:#f5c0e8;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;">PVC: my-pvc (5Gi)</div>
+      </div>
+      <div style="color:#f9e2af;margin-top:6px;">PVC Status: <strong>Pending</strong> (바인딩 대기 중)</div>
+    </div>
+    <p style="color:#a6e3a1;">PVC가 생성되었습니다. 조건에 맞는 PV를 찾는 중입니다.</p>`
+  },
+  {
+    title: '3. PVC ↔ PV 바인딩',
+    html: `<div style="text-align:center;padding:16px;">
+      <div style="display:inline-flex;gap:12px;align-items:center;">
+        <div style="background:#89b4fa;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;border:2px solid #a6e3a1;">PV: my-pv (10Gi)</div>
+        <span style="color:#a6e3a1;font-size:1.5em;">&#x1F517;</span>
+        <div style="background:#f5c0e8;color:#1e1e2e;padding:12px 20px;border-radius:8px;font-weight:bold;border:2px solid #a6e3a1;">PVC: my-pvc (5Gi)</div>
+      </div>
+      <div style="color:#a6e3a1;margin-top:8px;font-weight:bold;">Status: Bound</div>
+    </div>
+    <div style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-family:monospace;font-size:0.85em;">
+      <span style="color:#cdd6f4;">$ kubectl get pv</span><br/>
+      <span style="color:#f9e2af;">NAME    CAPACITY   ACCESS MODES   STATUS   CLAIM            AGE</span><br/>
+      <span style="color:#a6e3a1;">my-pv   10Gi       RWO            Bound    default/my-pvc   1m</span>
+    </div>
+    <p style="color:#a6e3a1;">PVC의 요청(5Gi, RWO)이 PV의 사양(10Gi, RWO)과 일치하여 바인딩이 완료되었습니다.</p>`
+  },
+  {
+    title: '4. Pod에서 PVC 마운트',
+    html: `<pre style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-size:0.85em;overflow-x:auto;">
+<span style="color:#89b4fa;">apiVersion:</span> v1
+<span style="color:#89b4fa;">kind:</span> Pod
+<span style="color:#89b4fa;">metadata:</span>
+  <span style="color:#89b4fa;">name:</span> my-pod
+<span style="color:#89b4fa;">spec:</span>
+  <span style="color:#89b4fa;">containers:</span>
+  - <span style="color:#89b4fa;">name:</span> app
+    <span style="color:#89b4fa;">image:</span> nginx:1.25
+    <span style="color:#89b4fa;">volumeMounts:</span>
+    - <span style="color:#89b4fa;">mountPath:</span> <span style="color:#a6e3a1;">/usr/share/nginx/html</span>
+      <span style="color:#89b4fa;">name:</span> my-storage
+  <span style="color:#89b4fa;">volumes:</span>
+  - <span style="color:#89b4fa;">name:</span> my-storage
+    <span style="color:#89b4fa;">persistentVolumeClaim:</span>
+      <span style="color:#89b4fa;">claimName:</span> my-pvc</pre>
+    <p style="color:#a6e3a1;">Pod 스펙에서 PVC를 볼륨으로 참조하고, 컨테이너의 <code>/usr/share/nginx/html</code>에 마운트합니다.</p>`
+  },
+  {
+    title: '5. 볼륨 사용 확인',
+    html: `<div style="text-align:center;padding:16px;">
+      <div style="display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;">
+        <div style="background:#313244;padding:12px;border-radius:8px;border:1px solid #a6e3a1;min-width:160px;">
+          <div style="color:#a6e3a1;font-weight:bold;">Pod: my-pod</div>
+          <div style="color:#6c7086;font-size:0.85em;">Container: app</div>
+          <div style="background:#1e1e2e;padding:6px;border-radius:4px;margin-top:6px;font-family:monospace;font-size:0.8em;color:#cdd6f4;">/usr/share/nginx/html</div>
+        </div>
+        <span style="color:#a6e3a1;font-size:1.2em;">&#8596;</span>
+        <div style="background:#f5c0e8;color:#1e1e2e;padding:10px 16px;border-radius:8px;font-weight:bold;">PVC<br/>my-pvc</div>
+        <span style="color:#a6e3a1;font-size:1.2em;">&#8596;</span>
+        <div style="background:#89b4fa;color:#1e1e2e;padding:10px 16px;border-radius:8px;font-weight:bold;">PV<br/>my-pv</div>
+        <span style="color:#a6e3a1;font-size:1.2em;">&#8596;</span>
+        <div style="background:#f9e2af;color:#1e1e2e;padding:10px 16px;border-radius:8px;font-weight:bold;">Disk<br/>/data/my-pv</div>
+      </div>
+    </div>
+    <div style="background:#1e1e2e;color:#cdd6f4;padding:12px;border-radius:8px;font-family:monospace;font-size:0.85em;">
+      <span style="color:#cdd6f4;">$ kubectl exec my-pod -- df -h /usr/share/nginx/html</span><br/>
+      <span style="color:#f9e2af;">Filesystem      Size  Used Avail Use% Mounted on</span><br/>
+      <span style="color:#a6e3a1;">/dev/sda1       10G   24K  10G   1%  /usr/share/nginx/html</span>
+    </div>
+    <p style="color:#a6e3a1;">Pod가 삭제되어도 PV의 데이터는 유지됩니다. 새 Pod에서 같은 PVC를 마운트하면 데이터를 다시 사용할 수 있습니다.</p>`
+  },
+];
+
+let storageCurrentStep = 0;
+
+function k8sStorageRender() {
+  const content = document.getElementById('storage-step-content');
+  const indicator = document.getElementById('storage-step-indicator');
+  const prevBtn = document.getElementById('storage-prev-btn');
+  const nextBtn = document.getElementById('storage-next-btn');
+
+  if (storageCurrentStep === 0) {
+    content.innerHTML = '<p style="color:#6c7086;">아래 <strong>다음 ▶</strong> 버튼을 클릭하여 스토리지 바인딩 과정을 시작하세요.</p>';
+  } else {
+    const step = storageSteps[storageCurrentStep - 1];
+    content.innerHTML = '<h4 style="color:#89b4fa;margin-top:0;">' + step.title + '</h4>' + step.html;
+  }
+
+  indicator.textContent = '단계: ' + storageCurrentStep + ' / ' + storageSteps.length;
+  prevBtn.disabled = storageCurrentStep === 0;
+  nextBtn.disabled = storageCurrentStep === storageSteps.length;
+}
+
+function k8sStorageNext() {
+  if (storageCurrentStep < storageSteps.length) {
+    storageCurrentStep++;
+    k8sStorageRender();
+  }
+}
+
+function k8sStoragePrev() {
+  if (storageCurrentStep > 0) {
+    storageCurrentStep--;
+    k8sStorageRender();
+  }
+}
+
+function k8sStorageReset() {
+  storageCurrentStep = 0;
+  k8sStorageRender();
+}
+</script>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="마지막 업데이트">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 4월 13일 13:54:56 UTC">2026년 4월 13일</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="작성일">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 4월 13일 13:54:56 UTC">2026년 4월 13일</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">댓글</h2>
+
+<script>
+  // Giscus 테마를 MkDocs 다크/라이트 모드에 맞춰 자동 전환
+  function getGiscusTheme() {
+    const palette = document.body.getAttribute("data-md-color-scheme");
+    return palette === "slate" ? "dark" : "light";
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: getGiscusTheme() } } },
+        "https://giscus.app"
+      );
+    }
+  }
+
+  // 초기 로드
+  var script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", "jihyeonjane/jihyeonjane.github.io");
+  script.setAttribute("data-repo-id", "R_kgDOR6vIUw");
+  script.setAttribute("data-category", "General");
+  script.setAttribute("data-category-id", "DIC_kwDOR6vIU84C6Jkq");
+  script.setAttribute("data-mapping", "pathname");
+  script.setAttribute("data-strict", "0");
+  script.setAttribute("data-reactions-enabled", "1");
+  script.setAttribute("data-emit-metadata", "0");
+  script.setAttribute("data-input-position", "bottom");
+  script.setAttribute("data-theme", getGiscusTheme());
+  script.setAttribute("data-lang", "ko");
+  script.setAttribute("crossorigin", "anonymous");
+  script.async = true;
+  document.currentScript.parentNode.appendChild(script);
+
+  // 다크/라이트 토글 감지
+  var observer = new MutationObserver(function() { setGiscusTheme(); });
+  observer.observe(document.body, { attributes: true, attributeFilter: ["data-md-color-scheme"] });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jihyeonjane" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/terminal.js"></script>
+      
+        <script src="../../javascripts/flow.js"></script>
+      
+        <script src="../../javascripts/clickhouse.js"></script>
+      
+        <script src="../../javascripts/k8s.js"></script>
+      
+    
+  </body>
+</html>
