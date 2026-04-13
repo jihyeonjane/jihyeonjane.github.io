@@ -1,0 +1,601 @@
+/* ============================================================
+   Kubernetes Tutorial — Diagrams, Demos & Visualizations
+   Color palette: Catppuccin Mocha
+   ============================================================ */
+
+/* ===== K8s Diagram Container ===== */
+.k8s-diagram {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin: 1.5em 0;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+}
+.k8s-diagram-title {
+  background: #313244;
+  padding: 10px 14px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #cdd6f4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.k8s-diagram-title::before {
+  content: '☸';
+  font-size: 16px;
+}
+
+/* ===== Architecture Grid ===== */
+.k8s-arch-grid {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  flex-wrap: wrap;
+}
+.k8s-arch-section {
+  flex: 1;
+  min-width: 260px;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #45475a;
+}
+.k8s-control-plane {
+  background: #89b4fa11;
+  border-color: #89b4fa44;
+}
+.k8s-worker-node {
+  background: #a6e3a111;
+  border-color: #a6e3a144;
+}
+.k8s-section-label {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.k8s-control-plane .k8s-section-label {
+  background: #89b4fa33;
+  color: #89b4fa;
+}
+.k8s-worker-node .k8s-section-label {
+  background: #a6e3a133;
+  color: #a6e3a1;
+}
+.k8s-component {
+  background: #313244;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin: 6px 0;
+  border-left: 3px solid #585b70;
+  transition: border-color 0.3s, background 0.3s;
+}
+.k8s-component:hover {
+  border-left-color: #89b4fa;
+  background: #31324488;
+}
+.k8s-comp-name {
+  font-weight: bold;
+  color: #89b4fa;
+  font-size: 12px;
+}
+.k8s-comp-desc {
+  color: #6c7086;
+  font-size: 11px;
+  margin-top: 2px;
+}
+.k8s-worker-node .k8s-comp-name {
+  color: #a6e3a1;
+}
+.k8s-worker-node .k8s-component:hover {
+  border-left-color: #a6e3a1;
+}
+
+/* ===== Arrow connectors ===== */
+.k8s-arch-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c7086;
+  font-size: 20px;
+  padding: 0 4px;
+}
+
+/* ===== Network Traffic Flow ===== */
+.k8s-net-flow {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.k8s-net-layer {
+  width: 90%;
+  max-width: 500px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #45475a;
+  transition: transform 0.2s;
+}
+.k8s-net-layer:hover {
+  transform: scale(1.02);
+}
+.k8s-net-external {
+  background: #f38ba822;
+  border-color: #f38ba844;
+  width: 90%;
+  max-width: 500px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #f38ba844;
+}
+.k8s-net-ingress {
+  background: #f9e2af22;
+  border-color: #f9e2af44;
+}
+.k8s-net-service {
+  background: #89b4fa22;
+  border-color: #89b4fa44;
+}
+.k8s-net-proxy {
+  background: #cba6f722;
+  border-color: #cba6f744;
+}
+.k8s-net-pod {
+  background: #a6e3a122;
+  border-color: #a6e3a144;
+}
+.k8s-net-label {
+  font-weight: bold;
+  font-size: 12px;
+}
+.k8s-net-external .k8s-net-label { color: #f38ba8; }
+.k8s-net-ingress .k8s-net-label { color: #f9e2af; }
+.k8s-net-service .k8s-net-label { color: #89b4fa; }
+.k8s-net-proxy .k8s-net-label { color: #cba6f7; }
+.k8s-net-pod .k8s-net-label { color: #a6e3a1; }
+.k8s-net-desc {
+  font-size: 11px;
+  color: #6c7086;
+  margin-top: 4px;
+}
+.k8s-net-arrow {
+  color: #6c7086;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* ===== Storage Flow ===== */
+.k8s-storage-flow {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.k8s-storage-admin,
+.k8s-storage-user {
+  text-align: center;
+}
+.k8s-storage-label {
+  font-size: 11px;
+  color: #6c7086;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.k8s-storage-box {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #45475a;
+}
+.k8s-pv {
+  background: #89b4fa22;
+  border-color: #89b4fa44;
+  color: #89b4fa;
+}
+.k8s-pvc {
+  background: #cba6f722;
+  border-color: #cba6f744;
+  color: #cba6f7;
+}
+.k8s-storage-box.k8s-pod {
+  background: #a6e3a122;
+  border-color: #a6e3a144;
+  color: #a6e3a1;
+}
+.k8s-sc {
+  background: #f9e2af22;
+  border-color: #f9e2af44;
+  color: #f9e2af;
+}
+.k8s-storage-arrow {
+  color: #6c7086;
+  font-size: 14px;
+  padding: 0 6px;
+}
+
+/* ===== Pod Lifecycle ===== */
+.k8s-lifecycle {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.k8s-state {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #45475a;
+}
+.k8s-state-pending {
+  background: #f9e2af33;
+  border-color: #f9e2af66;
+  color: #f9e2af;
+}
+.k8s-state-running {
+  background: #89b4fa33;
+  border-color: #89b4fa66;
+  color: #89b4fa;
+}
+.k8s-state-succeeded {
+  background: #a6e3a133;
+  border-color: #a6e3a166;
+  color: #a6e3a1;
+}
+.k8s-state-failed {
+  background: #f38ba833;
+  border-color: #f38ba866;
+  color: #f38ba8;
+}
+.k8s-state-unknown {
+  background: #6c708633;
+  border-color: #6c708666;
+  color: #6c7086;
+}
+.k8s-arrow {
+  color: #6c7086;
+  font-size: 16px;
+}
+
+/* ===== Deployment Strategy Diagrams ===== */
+.k8s-deploy-stages {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.k8s-deploy-stage {
+  background: #313244;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.k8s-stage-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #6c7086;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 60px;
+}
+.k8s-pods-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.k8s-pod-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 11px;
+  transition: all 0.3s;
+}
+.k8s-pod-old {
+  background: #89b4fa33;
+  border: 1px solid #89b4fa66;
+  color: #89b4fa;
+}
+.k8s-pod-new {
+  background: #a6e3a133;
+  border: 1px solid #a6e3a166;
+  color: #a6e3a1;
+}
+.k8s-pod-removing {
+  background: #f38ba822;
+  border: 1px solid #f38ba844;
+  color: #f38ba8;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+.k8s-pod-canary {
+  background: #f9e2af33;
+  border: 1px solid #f9e2af66;
+  color: #f9e2af;
+}
+
+/* ===== Docker Architecture ===== */
+.k8s-docker-arch {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.k8s-docker-layer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #45475a;
+}
+.k8s-docker-layer-name {
+  font-weight: bold;
+  font-size: 12px;
+  min-width: 120px;
+}
+.k8s-docker-layer-desc {
+  font-size: 11px;
+  color: #6c7086;
+}
+.k8s-docker-host {
+  background: #89b4fa11;
+  border-color: #89b4fa44;
+}
+.k8s-docker-host .k8s-docker-layer-name { color: #89b4fa; }
+.k8s-docker-engine {
+  background: #cba6f711;
+  border-color: #cba6f744;
+}
+.k8s-docker-engine .k8s-docker-layer-name { color: #cba6f7; }
+.k8s-docker-container {
+  background: #a6e3a111;
+  border-color: #a6e3a144;
+}
+.k8s-docker-container .k8s-docker-layer-name { color: #a6e3a1; }
+
+/* ===== Network Policy Diagram ===== */
+.k8s-netpol-grid {
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.k8s-netpol-ns {
+  border: 2px dashed #45475a;
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 180px;
+  text-align: center;
+}
+.k8s-netpol-ns-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #6c7086;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.k8s-netpol-pod {
+  background: #313244;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 4px 0;
+  font-size: 11px;
+}
+.k8s-netpol-allowed {
+  border-left: 3px solid #a6e3a1;
+}
+.k8s-netpol-denied {
+  border-left: 3px solid #f38ba8;
+}
+.k8s-netpol-arrow-allowed {
+  color: #a6e3a1;
+  font-size: 20px;
+}
+.k8s-netpol-arrow-denied {
+  color: #f38ba8;
+  font-size: 20px;
+}
+
+/* ===== Scenario Buttons (reuse ch pattern) ===== */
+.k8s-scenarios {
+  background: #313244;
+  padding: 10px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid #45475a;
+}
+.k8s-scenario-title {
+  color: #6c7086;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
+.k8s-scenario-btn {
+  background: #585b70;
+  color: #cdd6f4;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+.k8s-scenario-btn:hover {
+  background: #7f849c;
+}
+.k8s-scenario-btn.k8s-sc-active {
+  background: #89b4fa;
+  color: #1e1e2e;
+}
+
+/* ===== Scenario Explanation ===== */
+.k8s-scenario-text {
+  padding: 12px 14px;
+  min-height: 60px;
+}
+.k8s-exp-step {
+  padding: 4px 8px;
+  margin: 3px 0;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.6;
+  animation: k8sFadeIn 0.3s ease;
+}
+@keyframes k8sFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.k8s-exp-send {
+  background: #89b4fa22;
+  color: #89b4fa;
+}
+.k8s-exp-info {
+  color: #cdd6f4;
+}
+.k8s-exp-good {
+  background: #a6e3a122;
+  color: #a6e3a1;
+}
+.k8s-exp-warn {
+  background: #f9e2af22;
+  color: #f9e2af;
+}
+.k8s-exp-bad {
+  background: #f38ba822;
+  color: #f38ba8;
+}
+
+/* ===== Interactive Deploy Flow (reuse flow-demo pattern) ===== */
+.k8s-flow-controls {
+  background: #313244;
+  padding: 10px 14px;
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid #45475a;
+}
+.k8s-flow-btn {
+  background: #585b70;
+  color: #cdd6f4;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Menlo', 'Consolas', monospace;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+.k8s-flow-btn:hover {
+  background: #7f849c;
+}
+.k8s-flow-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.k8s-flow-btn.k8s-btn-primary {
+  background: #89b4fa;
+  color: #1e1e2e;
+}
+.k8s-flow-btn.k8s-btn-primary:hover {
+  background: #74c7ec;
+}
+
+/* ===== Node visualization (for network demos) ===== */
+.k8s-nodes-vis {
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.k8s-vis-node {
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 140px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.k8s-vis-node.active {
+  border-color: #89b4fa;
+  box-shadow: 0 0 12px #89b4fa33;
+}
+.k8s-vis-node.highlight {
+  border-color: #a6e3a1;
+  box-shadow: 0 0 12px #a6e3a133;
+}
+.k8s-vis-node-name {
+  font-weight: bold;
+  font-size: 12px;
+  color: #cdd6f4;
+  margin-bottom: 6px;
+}
+.k8s-vis-pod {
+  background: #1e1e2e;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 3px 0;
+  font-size: 11px;
+  color: #a6e3a1;
+  border: 1px solid #a6e3a133;
+}
+.k8s-vis-svc {
+  background: #89b4fa22;
+  border: 1px solid #89b4fa44;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 3px 0;
+  font-size: 11px;
+  color: #89b4fa;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .k8s-arch-grid {
+    flex-direction: column;
+  }
+  .k8s-storage-flow {
+    flex-direction: column;
+    align-items: center;
+  }
+  .k8s-storage-arrow {
+    transform: rotate(90deg);
+  }
+  .k8s-deploy-stage {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .k8s-netpol-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

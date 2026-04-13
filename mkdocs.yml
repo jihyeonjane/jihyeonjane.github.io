@@ -42,11 +42,13 @@ extra_css:
   - stylesheets/terminal.css
   - stylesheets/flow.css
   - stylesheets/ch-anim.css
+  - stylesheets/k8s.css
 
 extra_javascript:
   - javascripts/terminal.js
   - javascripts/flow.js
   - javascripts/clickhouse.js
+  - javascripts/k8s.js
 
 plugins:
   - search:
@@ -99,6 +101,19 @@ nav:
       - "[참고] MCP로 자체 Semantic Layer API": dbt-tutorial/09-semantic-layer-mcp.md
       - "[참고] Text-to-SQL 심화 — VectorDB + 온톨로지": dbt-tutorial/09-text-to-sql.md
       - "[참고] 자연어 질의 시스템 설계 — 역질문 구체화": dbt-tutorial/09-nl-query-design.md
+  - Kubernetes Tutorial:
+    - k8s-tutorial/index.md
+    - 1. Docker 기초: k8s-tutorial/01-docker-basics.md
+    - 2. 컨테이너에서 K8s로: k8s-tutorial/02-container-to-k8s.md
+    - 3. K8s 아키텍처: k8s-tutorial/03-k8s-architecture.md
+    - 4. kubeconfig 상세: k8s-tutorial/04-kubeconfig.md
+    - 5. YAML 매니페스트: k8s-tutorial/05-yaml-manifests.md
+    - 6. 워크로드: k8s-tutorial/06-workloads.md
+    - 7. 네트워킹: k8s-tutorial/07-networking.md
+    - 8. 스토리지와 설정: k8s-tutorial/08-volumes.md
+    - 9. 배포 전략: k8s-tutorial/09-deployment-strategies.md
+    - 10. 인터랙티브 데모: k8s-tutorial/10-interactive-demo.md
+    - "Bonus: dbt + Airflow on K8s": k8s-tutorial/11-dbt-airflow-on-k8s.md
   - MCP Tutorial:
     - mcp/index.md
     - 1. MCP란?: mcp/01-what-is-mcp.md
