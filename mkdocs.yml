@@ -107,7 +107,9 @@ nav:
     - 2. 컨테이너에서 K8s로: k8s-tutorial/02-container-to-k8s.md
     - 3. K8s 아키텍처: k8s-tutorial/03-k8s-architecture.md
     - 4. kubeconfig 상세: k8s-tutorial/04-kubeconfig.md
-    - 5. YAML 매니페스트: k8s-tutorial/05-yaml-manifests.md
+    - 5. YAML 매니페스트:
+      - k8s-tutorial/05-yaml-manifests.md
+      - "Helm 심화": k8s-tutorial/05-helm.md
     - 6. 워크로드: k8s-tutorial/06-workloads.md
     - 7. 네트워킹: k8s-tutorial/07-networking.md
     - 8. 스토리지와 설정: k8s-tutorial/08-volumes.md

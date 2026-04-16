@@ -11,6 +11,7 @@ Docker 기초부터 Kubernetes 실전 배포까지, 컨테이너 오케스트레
 | 3 | [K8s 아키텍처](03-k8s-architecture.md) | Control Plane, Worker Node, 핵심 컴포넌트 |
 | 4 | [kubeconfig 상세](04-kubeconfig.md) | 클러스터 접속 설정, 멀티 클러스터, 인증 방식 |
 | 5 | [YAML 매니페스트](05-yaml-manifests.md) | 매니페스트 구조, Labels/Selectors, Kustomize/Helm |
+| 5+ | [Helm 심화](05-helm.md) | Chart 구조, values.yaml 렌더링 원리, Airflow Chart 실전 |
 | 6 | [워크로드](06-workloads.md) | Pod, Deployment, StatefulSet, DaemonSet, Job |
 | 7 | [네트워킹](07-networking.md) | Service, Ingress, NetworkPolicy, DNS |
 | 8 | [스토리지와 설정](08-volumes.md) | PV/PVC, StorageClass, ConfigMap, Secret |
