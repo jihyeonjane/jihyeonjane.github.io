@@ -2,138 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jihyeonjane.github.io/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/01-what-is-dbt/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/02-setup/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/03-project-structure/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/04-models/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/05-clickhouse/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/05-materialization/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/06-tests-and-docs/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/07-demo/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/07-tips/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/08-interactive-demo/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/09-nl-query-design/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/09-semantic-layer-mcp/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/09-semantic-layer/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/09-text-to-sql/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/01-docker-basics/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/02-container-to-k8s/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/03-k8s-architecture/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/04-kubeconfig/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://jihyeonjane.github.io/k8s-tutorial/05-helm/</loc>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/05-yaml-manifests/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/06-workloads/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/07-networking/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/08-volumes/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/09-deployment-strategies/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/10-interactive-demo/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/k8s-tutorial/11-dbt-airflow-on-k8s/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/mcp/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/mcp/01-what-is-mcp/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/mcp/02-architecture/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/mcp/03-dev-setup/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/mcp/04-first-server/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://jihyeonjane.github.io/mcp/05-poc/</loc>
-         <lastmod>2026-04-13</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
 </urlset>
