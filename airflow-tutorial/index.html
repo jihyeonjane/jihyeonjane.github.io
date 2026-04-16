@@ -12,31 +12,31 @@
         <meta name="author" content="Jane">
       
       
-        <link rel="canonical" href="https://jihyeonjane.github.io/dbt-tutorial/07-tips/">
+        <link rel="canonical" href="https://jihyeonjane.github.io/airflow-tutorial/">
       
       
-        <link rel="prev" href="../06-tests-and-docs/">
+        <link rel="prev" href="../mcp/05-poc/">
       
       
-        <link rel="next" href="../07-demo/">
+        <link rel="next" href="01-what-is-airflow/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>7. 실전 팁 - Jane's Tech Blog</title>
+        <title>Airflow Tutorial - Jane's Tech Blog</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,17 +55,17 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/custom.css">
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
-      <link rel="stylesheet" href="../../stylesheets/terminal.css">
+      <link rel="stylesheet" href="../stylesheets/terminal.css">
     
-      <link rel="stylesheet" href="../../stylesheets/flow.css">
+      <link rel="stylesheet" href="../stylesheets/flow.css">
     
-      <link rel="stylesheet" href="../../stylesheets/ch-anim.css">
+      <link rel="stylesheet" href="../stylesheets/ch-anim.css">
     
-      <link rel="stylesheet" href="../../stylesheets/k8s.css">
+      <link rel="stylesheet" href="../stylesheets/k8s.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#7" class="md-skip">
+        <a href="#airflow-tutorial" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -104,7 +104,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href="../.." title="Jane&#39;s Tech Blog" class="md-header__button md-logo" aria-label="Jane's Tech Blog" data-md-component="logo">
+    <a href=".." title="Jane&#39;s Tech Blog" class="md-header__button md-logo" aria-label="Jane's Tech Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. 실전 팁
+              Airflow Tutorial
             
           </span>
         </div>
@@ -237,7 +237,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -254,13 +254,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../dbt-tutorial/" class="md-tabs__link">
           
   
   
@@ -282,7 +280,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../k8s-tutorial/" class="md-tabs__link">
+        <a href="../k8s-tutorial/" class="md-tabs__link">
           
   
   
@@ -304,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../mcp/" class="md-tabs__link">
+        <a href="../mcp/" class="md-tabs__link">
           
   
   
@@ -322,11 +320,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../airflow-tutorial/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -362,7 +362,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Jane&#39;s Tech Blog" class="md-nav__button md-logo" aria-label="Jane's Tech Blog" data-md-component="logo">
+    <a href=".." title="Jane&#39;s Tech Blog" class="md-nav__button md-logo" aria-label="Jane's Tech Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -392,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -416,8 +416,6 @@
       
   
   
-    
-  
   
   
     
@@ -451,21 +449,18 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../dbt-tutorial/" class="md-nav__link ">
               
   
   
@@ -483,13 +478,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -509,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-what-is-dbt/" class="md-nav__link">
+      <a href="../dbt-tutorial/01-what-is-dbt/" class="md-nav__link">
         
   
   
@@ -537,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-setup/" class="md-nav__link">
+      <a href="../dbt-tutorial/02-setup/" class="md-nav__link">
         
   
   
@@ -565,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-project-structure/" class="md-nav__link">
+      <a href="../dbt-tutorial/03-project-structure/" class="md-nav__link">
         
   
   
@@ -593,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-models/" class="md-nav__link">
+      <a href="../dbt-tutorial/04-models/" class="md-nav__link">
         
   
   
@@ -677,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-materialization/" class="md-nav__link">
+      <a href="../dbt-tutorial/05-materialization/" class="md-nav__link">
         
   
   
@@ -705,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-clickhouse/" class="md-nav__link">
+      <a href="../dbt-tutorial/05-clickhouse/" class="md-nav__link">
         
   
   
@@ -741,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06-tests-and-docs/" class="md-nav__link">
+      <a href="../dbt-tutorial/06-tests-and-docs/" class="md-nav__link">
         
   
   
@@ -766,37 +761,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    7. 실전 팁
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../dbt-tutorial/07-tips/" class="md-nav__link">
         
   
   
@@ -812,182 +780,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개발 워크플로우
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="개발 워크플로우">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        직접 체험해보기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#selector" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        유용한 선택자 (Selector)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        자주 쓰는 매크로 패턴
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="자주 쓰는 매크로 패턴">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#date-spine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        날짜 스파인 (Date Spine)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        환경별 분기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packagesyml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        packages.yml 활용
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="packages.yml 활용">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dbt_utils" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        dbt_utils 유용 매크로
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        디버깅 팁
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="디버깅 팁">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        컴파일된 SQL 확인
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        로그 확인
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        흔한 실수들
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1000,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-demo/" class="md-nav__link">
+      <a href="../dbt-tutorial/07-demo/" class="md-nav__link">
         
   
   
@@ -1028,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-interactive-demo/" class="md-nav__link">
+      <a href="../dbt-tutorial/08-interactive-demo/" class="md-nav__link">
         
   
   
@@ -1116,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-semantic-layer/" class="md-nav__link">
+      <a href="../dbt-tutorial/09-semantic-layer/" class="md-nav__link">
         
   
   
@@ -1144,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-semantic-layer-mcp/" class="md-nav__link">
+      <a href="../dbt-tutorial/09-semantic-layer-mcp/" class="md-nav__link">
         
   
   
@@ -1172,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-text-to-sql/" class="md-nav__link">
+      <a href="../dbt-tutorial/09-text-to-sql/" class="md-nav__link">
         
   
   
@@ -1200,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-nl-query-design/" class="md-nav__link">
+      <a href="../dbt-tutorial/09-nl-query-design/" class="md-nav__link">
         
   
   
@@ -1286,7 +1078,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../k8s-tutorial/" class="md-nav__link ">
+            <a href="../k8s-tutorial/" class="md-nav__link ">
               
   
   
@@ -1330,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/01-docker-basics/" class="md-nav__link">
+      <a href="../k8s-tutorial/01-docker-basics/" class="md-nav__link">
         
   
   
@@ -1358,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/02-container-to-k8s/" class="md-nav__link">
+      <a href="../k8s-tutorial/02-container-to-k8s/" class="md-nav__link">
         
   
   
@@ -1386,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/03-k8s-architecture/" class="md-nav__link">
+      <a href="../k8s-tutorial/03-k8s-architecture/" class="md-nav__link">
         
   
   
@@ -1414,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/04-kubeconfig/" class="md-nav__link">
+      <a href="../k8s-tutorial/04-kubeconfig/" class="md-nav__link">
         
   
   
@@ -1498,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/05-yaml-manifests/" class="md-nav__link">
+      <a href="../k8s-tutorial/05-yaml-manifests/" class="md-nav__link">
         
   
   
@@ -1526,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/05-helm/" class="md-nav__link">
+      <a href="../k8s-tutorial/05-helm/" class="md-nav__link">
         
   
   
@@ -1562,7 +1354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/06-workloads/" class="md-nav__link">
+      <a href="../k8s-tutorial/06-workloads/" class="md-nav__link">
         
   
   
@@ -1590,7 +1382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/07-networking/" class="md-nav__link">
+      <a href="../k8s-tutorial/07-networking/" class="md-nav__link">
         
   
   
@@ -1618,7 +1410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/08-volumes/" class="md-nav__link">
+      <a href="../k8s-tutorial/08-volumes/" class="md-nav__link">
         
   
   
@@ -1646,7 +1438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/09-deployment-strategies/" class="md-nav__link">
+      <a href="../k8s-tutorial/09-deployment-strategies/" class="md-nav__link">
         
   
   
@@ -1674,7 +1466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/10-interactive-demo/" class="md-nav__link">
+      <a href="../k8s-tutorial/10-interactive-demo/" class="md-nav__link">
         
   
   
@@ -1702,7 +1494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s-tutorial/11-dbt-airflow-on-k8s/" class="md-nav__link">
+      <a href="../k8s-tutorial/11-dbt-airflow-on-k8s/" class="md-nav__link">
         
   
   
@@ -1768,7 +1560,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../mcp/" class="md-nav__link ">
+            <a href="../mcp/" class="md-nav__link ">
               
   
   
@@ -1812,7 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mcp/01-what-is-mcp/" class="md-nav__link">
+      <a href="../mcp/01-what-is-mcp/" class="md-nav__link">
         
   
   
@@ -1840,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mcp/02-architecture/" class="md-nav__link">
+      <a href="../mcp/02-architecture/" class="md-nav__link">
         
   
   
@@ -1868,7 +1660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mcp/03-dev-setup/" class="md-nav__link">
+      <a href="../mcp/03-dev-setup/" class="md-nav__link">
         
   
   
@@ -1896,7 +1688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mcp/04-first-server/" class="md-nav__link">
+      <a href="../mcp/04-first-server/" class="md-nav__link">
         
   
   
@@ -1924,7 +1716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mcp/05-poc/" class="md-nav__link">
+      <a href="../mcp/05-poc/" class="md-nav__link">
         
   
   
@@ -1956,6 +1748,8 @@
       
   
   
+    
+  
   
   
     
@@ -1979,18 +1773,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../airflow-tutorial/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -2008,13 +1805,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2034,7 +1831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../airflow-tutorial/01-what-is-airflow/" class="md-nav__link">
+      <a href="01-what-is-airflow/" class="md-nav__link">
         
   
   
@@ -2062,7 +1859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../airflow-tutorial/02-dag-basics/" class="md-nav__link">
+      <a href="02-dag-basics/" class="md-nav__link">
         
   
   
@@ -2090,7 +1887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../airflow-tutorial/03-operators/" class="md-nav__link">
+      <a href="03-operators/" class="md-nav__link">
         
   
   
@@ -2118,7 +1915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../airflow-tutorial/04-custom-operators/" class="md-nav__link">
+      <a href="04-custom-operators/" class="md-nav__link">
         
   
   
@@ -2146,7 +1943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../airflow-tutorial/05-hooks-connections/" class="md-nav__link">
+      <a href="05-hooks-connections/" class="md-nav__link">
         
   
   
@@ -2204,155 +2001,10 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        개발 워크플로우
+        목차
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="개발 워크플로우">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        직접 체험해보기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#selector" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        유용한 선택자 (Selector)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        자주 쓰는 매크로 패턴
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="자주 쓰는 매크로 패턴">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#date-spine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        날짜 스파인 (Date Spine)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        환경별 분기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packagesyml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        packages.yml 활용
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="packages.yml 활용">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dbt_utils" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        dbt_utils 유용 매크로
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        디버깅 팁
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="디버깅 팁">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        컴파일된 SQL 확인
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        로그 확인
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        흔한 실수들
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2376,135 +2028,64 @@
   
 
 
-<h1 id="7">7. 실전 팁<a class="headerlink" href="#7" title="Permanent link">&para;</a></h1>
-<h2 id="_1">개발 워크플로우<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. 모델 작성/수정</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 2. 컴파일해서 SQL 확인</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>dbt<span class="w"> </span>compile<span class="w"> </span>--select<span class="w"> </span>my_model
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 3. 실행</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>my_model
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># 4. 테스트</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>dbt<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--select<span class="w"> </span>my_model
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># 5. 한 번에 실행 + 테스트</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>dbt<span class="w"> </span>build<span class="w"> </span>--select<span class="w"> </span>my_model
-</span></code></pre></div>
+<h1 id="airflow-tutorial">Airflow Tutorial<a class="headerlink" href="#airflow-tutorial" title="Permanent link">&para;</a></h1>
+<p>Apache Airflow는 데이터 파이프라인을 <strong>코드(Python)로 작성하고 스케줄링·모니터링</strong>할 수 있는 대표적인 워크플로우 오케스트레이션 도구입니다.</p>
+<p>이 튜토리얼은 <strong>Airflow 3.x</strong>를 기준으로, 기본 개념부터 Operator의 내부 동작과 Custom Operator 제작까지 단계별로 정리합니다.</p>
+<h2 id="_1">목차<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>순서</th>
+<th>주제</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="01-what-is-airflow/">Airflow란?</a></td>
+<td>개념, 아키텍처, Airflow 3의 변화</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="02-dag-basics/">DAG 작성 기초</a></td>
+<td>DAG/Task, schedule, 의존성, XCom, Assets</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="03-operators/">Operator 완전정복</a></td>
+<td>개념, 종류, 대표 Operator 상세, TaskFlow API</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="04-custom-operators/">Custom Operator 만들기</a></td>
+<td>plugins 구조, BaseOperator 상속, 실전 예제</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="05-hooks-connections/">Hook &amp; Connection</a></td>
+<td>Hook의 역할, Connection 관리, Custom Hook</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition tip">
-<p class="admonition-title"><code>dbt build</code> = <code>run</code> + <code>test</code></p>
-<p><code>dbt build</code>는 모델 실행과 테스트를 의존성 순서대로 함께 수행합니다.</p>
+<p class="admonition-title">사전 준비</p>
+<ul>
+<li>Python 기본 문법 (클래스, 데코레이터, 타입 힌트)</li>
+<li>터미널(CLI) 사용 경험</li>
+<li>Docker / Docker Compose (로컬 실습용)</li>
+<li>(선택) Kubernetes 기초 — K8s Executor 파트 이해에 도움</li>
+</ul>
 </div>
-<h3 id="_2">직접 체험해보기<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><code>dbt build</code>가 run과 test를 어떤 순서로 실행하는지 확인해보세요.</p>
-<div class="interactive-terminal" markdown="0">
-  <div class="terminal-header">
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="terminal-title">Terminal</span>
-  </div>
-  <div class="terminal-body" id="term-tips7">
-    <span class="prompt">jane@mac ~/my_project $</span> <span class="cursor">_</span>
-  </div>
-  <div class="terminal-buttons">
-    <button onclick="runCommand('build', 'term-tips7')">dbt build</button>
-    <button onclick="runCommand('compile', 'term-tips7')">dbt compile</button>
-    <button onclick="clearTerminal('term-tips7')" class="btn-clear">Clear</button>
-  </div>
+<div class="admonition info">
+<p class="admonition-title">Airflow 버전 안내</p>
+<p>이 튜토리얼은 <strong>Airflow 3.0+</strong>을 기준으로 작성되었습니다.
+Airflow 2.x와 차이가 큰 부분(Task SDK, Asset, DAG Versioning, <code>execution_date</code> → <code>logical_date</code> 등)은 본문에서 별도로 표시합니다.</p>
 </div>
-
-<h2 id="selector">유용한 선택자 (Selector)<a class="headerlink" href="#selector" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 특정 모델과 모든 업스트림</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>+my_model
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 특정 모델과 모든 다운스트림</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>my_model+
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># 특정 모델의 직접 업스트림만 (1단계)</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span><span class="m">1</span>+my_model
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># 태그로 선택</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>tag:daily
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># 폴더 전체</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>path:models/staging
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># 변경된 모델만 (CI에서 유용)</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>dbt<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>state:modified+
-</span></code></pre></div>
-<h2 id="_3">자주 쓰는 매크로 패턴<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="date-spine">날짜 스파인 (Date Spine)<a class="headerlink" href="#date-spine" title="Permanent link">&para;</a></h3>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- macros/date_spine.sql</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">macro</span><span class="w"> </span><span class="n">date_spine</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">end_date</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">WITH</span><span class="w"> </span><span class="n">dates</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="k">SELECT</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">            </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="s1">&#39;{{ start_date }}&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">date_day</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="k">UNNEST</span><span class="p">(</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="n">GENERATE_ARRAY</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_DIFF</span><span class="p">(</span><span class="s1">&#39;{{ end_date }}&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;{{ start_date }}&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">DAY</span><span class="p">))</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">seq</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">)</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dates</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">endmacro</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
-</span></code></pre></div>
-<h3 id="_4">환경별 분기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">macro</span><span class="w"> </span><span class="n">limit_data_in_dev</span><span class="p">(</span><span class="k">column_name</span><span class="p">,</span><span class="w"> </span><span class="n">dev_days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;dev&#39;</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="err">{{</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="err">}}</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="err">{{</span><span class="w"> </span><span class="n">dev_days</span><span class="w"> </span><span class="err">}}</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">endif</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">endmacro</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">-- 사용:</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">{{</span><span class="w"> </span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;stg_events&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="err">{{</span><span class="w"> </span><span class="n">limit_data_in_dev</span><span class="p">(</span><span class="s1">&#39;event_at&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
-</span></code></pre></div>
-<h2 id="packagesyml">packages.yml 활용<a class="headerlink" href="#packagesyml" title="Permanent link">&para;</a></h2>
-<p>커뮤니티 패키지를 활용하면 생산성이 올라갑니다.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># packages.yml</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">packages</span><span class="p">:</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbt-labs/dbt_utils</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.1.1&quot;</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbt-labs/codegen</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12.1&quot;</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dbt<span class="w"> </span>deps<span class="w">   </span><span class="c1"># 패키지 설치</span>
-</span></code></pre></div>
-<h3 id="dbt_utils">dbt_utils 유용 매크로<a class="headerlink" href="#dbt_utils" title="Permanent link">&para;</a></h3>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- surrogate key 생성</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">generate_surrogate_key</span><span class="p">([</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;event_date&#39;</span><span class="p">])</span><span class="w"> </span><span class="err">}}</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">-- pivot</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;event_type&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">get_column_values</span><span class="p">(</span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;stg_events&#39;</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;event_type&#39;</span><span class="p">))</span><span class="w"> </span><span class="err">}}</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1">-- union 여러 소스</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">union_relations</span><span class="p">(</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">relations</span><span class="o">=</span><span class="p">[</span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;events_web&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;events_app&#39;</span><span class="p">)]</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
-</span></code></pre></div>
-<h2 id="_5">디버깅 팁<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="sql">컴파일된 SQL 확인<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>dbt<span class="w"> </span>compile<span class="w"> </span>--select<span class="w"> </span>my_model
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># target/compiled/ 에서 렌더링된 SQL 확인</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>cat<span class="w"> </span>target/compiled/my_project/models/marts/my_model.sql
-</span></code></pre></div>
-<h3 id="_6">로그 확인<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dbt<span class="w"> </span>--debug<span class="w"> </span>run<span class="w"> </span>--select<span class="w"> </span>my_model<span class="w">   </span><span class="c1"># 상세 로그</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># logs/dbt.log 에서도 확인 가능</span>
-</span></code></pre></div>
-<h3 id="_7">흔한 실수들<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">주의할 점</p>
-<ol>
-<li><strong>ref() 안 쓰고 테이블명 직접 쓰기</strong> → 의존성 꼬임</li>
-<li><strong>staging에서 비즈니스 로직 넣기</strong> → 유지보수 어려움</li>
-<li><strong>incremental 모델에서 <code>is_incremental()</code> 빼먹기</strong> → 첫 실행 에러</li>
-<li><strong>profiles.yml을 Git에 커밋하기</strong> → 비밀번호 노출 위험</li>
-</ol>
-</div>
-<hr />
-<div class="admonition success">
-<p class="admonition-title">튜토리얼 완료!</p>
-<p>dbt의 기본기를 모두 다뤘습니다. 실제 프로젝트에 적용하면서 더 깊이 학습해보세요!</p>
+<div class="admonition note">
+<p class="admonition-title">학습 순서 안내</p>
+<p>Operator 개념(챕터 3)과 Custom Operator(챕터 4)가 이 튜토리얼의 핵심입니다.
+Airflow를 처음 접한다면 1~2장을 꼼꼼히 읽고, 이미 2.x 경험이 있다면 1장의 "Airflow 3에서 달라진 점"만 훑어본 뒤 3장부터 시작해도 좋습니다.</p>
 </div>
 
 
@@ -2528,7 +2109,7 @@
     <span class="md-icon" title="마지막 업데이트">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 4월 6일 03:44:25 UTC">2026년 4월 6일</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 4월 16일 10:23:01 UTC">2026년 4월 16일</span>
   </span>
 
     
@@ -2538,7 +2119,7 @@
     <span class="md-icon" title="작성일">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 4월 6일 02:59:24 UTC">2026년 4월 6일</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 4월 16일 10:23:01 UTC">2026년 4월 16일</span>
   </span>
 
     
@@ -2651,18 +2232,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../javascripts/terminal.js"></script>
+        <script src="../javascripts/terminal.js"></script>
       
-        <script src="../../javascripts/flow.js"></script>
+        <script src="../javascripts/flow.js"></script>
       
-        <script src="../../javascripts/clickhouse.js"></script>
+        <script src="../javascripts/clickhouse.js"></script>
       
-        <script src="../../javascripts/k8s.js"></script>
+        <script src="../javascripts/k8s.js"></script>
       
     
   </body>

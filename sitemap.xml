@@ -5,6 +5,30 @@
          <lastmod>2026-04-16</lastmod>
     </url>
     <url>
+         <loc>https://jihyeonjane.github.io/airflow-tutorial/</loc>
+         <lastmod>2026-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://jihyeonjane.github.io/airflow-tutorial/01-what-is-airflow/</loc>
+         <lastmod>2026-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://jihyeonjane.github.io/airflow-tutorial/02-dag-basics/</loc>
+         <lastmod>2026-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://jihyeonjane.github.io/airflow-tutorial/03-operators/</loc>
+         <lastmod>2026-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://jihyeonjane.github.io/airflow-tutorial/04-custom-operators/</loc>
+         <lastmod>2026-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://jihyeonjane.github.io/airflow-tutorial/05-hooks-connections/</loc>
+         <lastmod>2026-04-16</lastmod>
+    </url>
+    <url>
          <loc>https://jihyeonjane.github.io/dbt-tutorial/</loc>
          <lastmod>2026-04-16</lastmod>
     </url>
