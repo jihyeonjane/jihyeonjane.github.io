@@ -1,4 +1,4 @@
-# Kafka & Debezium
+# Kafka
 
 > 원본 재생목록:
 > [JSCODE — Kafka 입문·실전](https://www.youtube.com/playlist?list=PLtUgHNmvcs6p3304vUg6ywvUIAIe5K4WP) (2025.08, 17편) ·
@@ -51,21 +51,15 @@
 |---|------|------|--------|------|
 | 18 | [3.1 실패한 메시지 재시도 (JSCODE)](https://youtu.be/GAd4ptn26Aw) ⭐ | 8:28 | 재시도 설계 | |
 | 19 | [3.2~3.3 재시도도 실패한 메시지 보관·사후 처리 (JSCODE, 2편)](https://youtu.be/87XG-c84gno) ⭐ | 14:48 | DLQ 패턴 — 파이프라인 신뢰성의 핵심 | |
-| 20 | [Kafka Connect — 데이터 파이프라인을 가장 효율적으로 (데브원영)](https://youtu.be/UURmOj6Eaoo) ⭐ | 7:11 | **Debezium의 기반이 되는 프레임워크** | |
+| 20 | [Kafka Connect — 데이터 파이프라인을 가장 효율적으로 (데브원영)](https://youtu.be/UURmOj6Eaoo) ⭐ | 7:11 | **[Debezium](debezium.md)의 기반이 되는 프레임워크** | |
 | 21 | [Kafka Streams — 실시간 데이터 처리 (데브원영)](https://youtu.be/vKxhPUUEDmM) | 8:31 | 스트림 처리 개요 | |
 | 22 | [람다 아키텍처? 카파 아키텍처? (데브원영)](https://youtu.be/U5G-i73Wb6U) ⭐ | 6:46 | 빅데이터 플랫폼 아키텍처 관점 | |
 
-## Phase 5. Debezium (CDC) — 자료 확정 예정
-
-두 재생목록 모두 Debezium을 직접 다루지 않습니다. Phase 4의 Kafka Connect 영상이 선수 지식이고,
-이후는 공식 자료 중심으로 진행합니다.
-
-| # | 자료 | 포인트 | 정리 |
-|---|------|--------|------|
-| 23 | [Debezium 공식 튜토리얼](https://debezium.io/documentation/reference/stable/tutorial.html) | Docker Compose로 MySQL CDC 실습 | |
-| 24 | (좋은 한국어 영상/자료 찾으면 추가) | CDC 개념, 스냅샷 vs 스트리밍, 스키마 변경 대응 | |
-
 ---
+
+!!! info "다음 단계: Debezium"
+    Kafka 커리큘럼을 마치면 [Debezium (CDC) 커리큘럼](debezium.md)으로 이어집니다.
+    Phase 4의 Kafka Connect 영상이 선수 지식입니다.
 
 ## 제외한 영상과 이유
 

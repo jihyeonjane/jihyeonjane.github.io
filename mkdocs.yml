@@ -134,7 +134,8 @@ nav:
     - study/index.md
     - 개발자 개념 장착: study/dev-concepts.md
     - 아키텍처: study/architecture.md
-    - Kafka & Debezium: study/kafka.md
+    - Kafka: study/kafka.md
+    - Debezium: study/debezium.md
 
 extra:
   social:

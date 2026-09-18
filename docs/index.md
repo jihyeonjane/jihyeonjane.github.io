@@ -85,4 +85,5 @@ Apache Airflow 3.x 기준의 학습 자료입니다. 기본 개념부터 Operato
 |----------|------|------|
 | 1 | [개발자 개념 장착](study/dev-concepts.md) | CS 기초·DB·분산 시스템 — 28편 선별 커리큘럼 |
 | 2 | [아키텍처](study/architecture.md) | 데이터 툴 설계를 위한 아키텍처 지식 — 27편 선별 커리큘럼 |
-| 3 | [Kafka & Debezium](study/kafka.md) | Kafka 이론·실습 + CDC — 24편 커리큘럼 |
+| 3 | [Kafka](study/kafka.md) | Kafka 이론·개념 심화·실습 — 22편 커리큘럼 |
+| 4 | [Debezium (CDC)](study/debezium.md) | CDC 개념부터 Docker 실습, 운영 관점까지 — 8단계 |
