@@ -18,12 +18,14 @@
         <link rel="prev" href="../04-custom-operators/">
       
       
+        <link rel="next" href="../../study/">
+      
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -331,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2327,6 +2351,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2690,7 +2876,7 @@
 <h2 id="1-hook">1. Hook이란?<a class="headerlink" href="#1-hook" title="Permanent link">&para;</a></h2>
 <p><strong>Hook</strong>은 외부 시스템(DB, 클라우드, API 등)에 대한 연결을 <strong>캡슐화한 Python 클래스</strong>입니다.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>DAG ──▶ Operator ──▶ Hook ──▶ 외부 시스템 (Postgres, S3, Slack 등)
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>          &quot;무엇을&quot;    &quot;어떻게 붙나&quot;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>          "무엇을"    "어떻게 붙나"
 </span></code></pre></div>
 <p>Hook이 맡는 일:</p>
 <ul>
@@ -2706,13 +2892,13 @@
 <hr />
 <h2 id="2-connection">2. Connection이란?<a class="headerlink" href="#2-connection" title="Permanent link">&para;</a></h2>
 <p><strong>Connection</strong>은 외부 시스템의 <strong>접속 정보(호스트, 포트, 유저, 비밀번호, 추가 옵션 등)를 Airflow에 저장해두는 객체</strong>입니다. Metadata DB 또는 Secret Backend에 저장되고, Hook이 <code>conn_id</code> 문자열로 참조합니다.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Connection &quot;warehouse_postgres&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Connection "warehouse_postgres"
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── host: postgres.internal
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── port: 5432
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── login: etl_user
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── password: ****
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── schema: analytics
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>└── extra: {&quot;sslmode&quot;: &quot;require&quot;}
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>└── extra: {"sslmode": "require"}
 </span></code></pre></div>
 <h3 id="connection">Connection의 장점<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2726,21 +2912,21 @@
 <h3 id="a-ui">(a) 웹 UI<a class="headerlink" href="#a-ui" title="Permanent link">&para;</a></h3>
 <p><code>Admin &gt; Connections</code>에서 GUI로 추가/수정. 소규모 팀에서 간편.</p>
 <h3 id="b-cli">(b) CLI<a class="headerlink" href="#b-cli" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>airflow<span class="w"> </span>connections<span class="w"> </span>add<span class="w"> </span><span class="s1">&#39;warehouse_postgres&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--conn-type<span class="w"> </span><span class="s1">&#39;postgres&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--conn-host<span class="w"> </span><span class="s1">&#39;postgres.internal&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--conn-login<span class="w"> </span><span class="s1">&#39;etl_user&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--conn-password<span class="w"> </span><span class="s1">&#39;secret&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>airflow<span class="w"> </span>connections<span class="w"> </span>add<span class="w"> </span><span class="s1">'warehouse_postgres'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--conn-type<span class="w"> </span><span class="s1">'postgres'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--conn-host<span class="w"> </span><span class="s1">'postgres.internal'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--conn-login<span class="w"> </span><span class="s1">'etl_user'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--conn-password<span class="w"> </span><span class="s1">'secret'</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>--conn-port<span class="w"> </span><span class="m">5432</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>--conn-schema<span class="w"> </span><span class="s1">&#39;analytics&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>--conn-extra<span class="w"> </span><span class="s1">&#39;{&quot;sslmode&quot;:&quot;require&quot;}&#39;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>--conn-schema<span class="w"> </span><span class="s1">'analytics'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>--conn-extra<span class="w"> </span><span class="s1">'{"sslmode":"require"}'</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>airflow<span class="w"> </span>connections<span class="w"> </span>list
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>airflow<span class="w"> </span>connections<span class="w"> </span>delete<span class="w"> </span>warehouse_postgres
 </span></code></pre></div>
 <h3 id="c">(c) 환경변수<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
 <p><code>AIRFLOW_CONN_&lt;CONN_ID&gt;</code> 규칙으로 OS 환경변수를 지정하면, 그 값이 해당 <code>conn_id</code>로 해석됩니다.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AIRFLOW_CONN_WAREHOUSE_POSTGRES</span><span class="o">=</span><span class="s1">&#39;postgresql://etl_user:secret@postgres.internal:5432/analytics?sslmode=require&#39;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AIRFLOW_CONN_WAREHOUSE_POSTGRES</span><span class="o">=</span><span class="s1">'postgresql://etl_user:secret@postgres.internal:5432/analytics?sslmode=require'</span>
 </span></code></pre></div>
 <p>컨테이너/K8s 환경에서 자주 쓰이는 방식.</p>
 <h3 id="d-secret-backend">(d) Secret Backend<a class="headerlink" href="#d-secret-backend" title="Permanent link">&para;</a></h3>
@@ -2748,7 +2934,7 @@
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># airflow.cfg</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">[secrets]</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">airflow.providers.amazon.aws.secrets.secrets_manager.SecretsManagerBackend</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">backend_kwargs = {&quot;connections_prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;airflow/connections&quot;</span><span class="na">}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">backend_kwargs = {"connections_prefix"</span><span class="o">:</span><span class="w"> </span><span class="s">"airflow/connections"</span><span class="na">}</span>
 </span></code></pre></div>
 <p>이러면 <code>AWS Secrets Manager</code>의 <code>airflow/connections/warehouse_postgres</code>에 저장된 값이 자동으로 Connection으로 쓰입니다. <strong>프로덕션에서 가장 권장되는 방식</strong>.</p>
 <h3 id="_1">우선순위<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
@@ -2764,8 +2950,8 @@
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nd">@task</span>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_query</span><span class="p">():</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">hook</span> <span class="o">=</span> <span class="n">PostgresHook</span><span class="p">(</span><span class="n">postgres_conn_id</span><span class="o">=</span><span class="s2">&quot;warehouse_postgres&quot;</span><span class="p">)</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="k">return</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_first</span><span class="p">(</span><span class="s2">&quot;SELECT count(*) FROM mart.users&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">hook</span> <span class="o">=</span> <span class="n">PostgresHook</span><span class="p">(</span><span class="n">postgres_conn_id</span><span class="o">=</span><span class="s2">"warehouse_postgres"</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="k">return</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_first</span><span class="p">(</span><span class="s2">"SELECT count(*) FROM mart.users"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </span></code></pre></div>
 <ul>
 <li>간단한 1회성 쿼리에 편함</li>
@@ -2775,9 +2961,9 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.common.sql.operators.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLExecuteQueryOperator</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">SQLExecuteQueryOperator</span><span class="p">(</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;aggregate&quot;</span><span class="p">,</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">conn_id</span><span class="o">=</span><span class="s2">&quot;warehouse_postgres&quot;</span><span class="p">,</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">sql</span><span class="o">=</span><span class="s2">&quot;INSERT INTO mart.daily SELECT ... FROM raw.events WHERE date=&#39;{{ ds }}&#39;&quot;</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"aggregate"</span><span class="p">,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">conn_id</span><span class="o">=</span><span class="s2">"warehouse_postgres"</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">sql</span><span class="o">=</span><span class="s2">"INSERT INTO mart.daily SELECT ... FROM raw.events WHERE date='{{ ds }}'"</span><span class="p">,</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">)</span>
 </span></code></pre></div>
 <ul>
@@ -2858,40 +3044,40 @@
 <hr />
 <h2 id="6-hook-api">6. 자주 쓰는 Hook API 패턴<a class="headerlink" href="#6-hook-api" title="Permanent link">&para;</a></h2>
 <h3 id="postgreshook">PostgresHook 예시<a class="headerlink" href="#postgreshook" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">hook</span> <span class="o">=</span> <span class="n">PostgresHook</span><span class="p">(</span><span class="n">postgres_conn_id</span><span class="o">=</span><span class="s2">&quot;warehouse_postgres&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">hook</span> <span class="o">=</span> <span class="n">PostgresHook</span><span class="p">(</span><span class="n">postgres_conn_id</span><span class="o">=</span><span class="s2">"warehouse_postgres"</span><span class="p">)</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># 1) 한 줄 결과만</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">row</span> <span class="o">=</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_first</span><span class="p">(</span><span class="s2">&quot;SELECT count(*) FROM users&quot;</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">row</span> <span class="o">=</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_first</span><span class="p">(</span><span class="s2">"SELECT count(*) FROM users"</span><span class="p">)</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># 2) 여러 행</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_records</span><span class="p">(</span><span class="s2">&quot;SELECT id, name FROM users LIMIT 100&quot;</span><span class="p">)</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_records</span><span class="p">(</span><span class="s2">"SELECT id, name FROM users LIMIT 100"</span><span class="p">)</span>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># 3) pandas DataFrame</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">df</span> <span class="o">=</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_pandas_df</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE created_at &gt; </span><span class="si">%(since)s</span><span class="s2">&quot;</span><span class="p">,</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>                       <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;since&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-01-01&quot;</span><span class="p">})</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">df</span> <span class="o">=</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_pandas_df</span><span class="p">(</span><span class="s2">"SELECT * FROM users WHERE created_at &gt; </span><span class="si">%(since)s</span><span class="s2">"</span><span class="p">,</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>                       <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">"since"</span><span class="p">:</span> <span class="s2">"2026-01-01"</span><span class="p">})</span>
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c1"># 4) 실행만 (INSERT/UPDATE/DDL)</span>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">hook</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;TRUNCATE TABLE raw.events;&quot;</span><span class="p">)</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">hook</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"TRUNCATE TABLE raw.events;"</span><span class="p">)</span>
 </span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
 </span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="c1"># 5) bulk insert</span>
-</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">hook</span><span class="o">.</span><span class="n">insert_rows</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;raw.events&quot;</span><span class="p">,</span>
-</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>                 <span class="n">rows</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span>
-</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>                 <span class="n">target_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">])</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">hook</span><span class="o">.</span><span class="n">insert_rows</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">"raw.events"</span><span class="p">,</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>                 <span class="n">rows</span><span class="o">=</span><span class="p">[(</span><span class="s2">"a"</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">"b"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>                 <span class="n">target_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"key"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">])</span>
 </span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
 </span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="c1"># 6) raw connection 필요 시</span>
 </span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="k">with</span> <span class="n">hook</span><span class="o">.</span><span class="n">get_conn</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
 </span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>    <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
-</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="s3hook">S3Hook 예시<a class="headerlink" href="#s3hook" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.amazon.aws.hooks.s3</span><span class="w"> </span><span class="kn">import</span> <span class="n">S3Hook</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">s3</span> <span class="o">=</span> <span class="n">S3Hook</span><span class="p">(</span><span class="n">aws_conn_id</span><span class="o">=</span><span class="s2">&quot;aws_default&quot;</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">s3</span> <span class="o">=</span> <span class="n">S3Hook</span><span class="p">(</span><span class="n">aws_conn_id</span><span class="o">=</span><span class="s2">"aws_default"</span><span class="p">)</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">s3</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;/tmp/data.csv&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;raw/data.csv&quot;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">)</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">exists</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">check_for_key</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;raw/data.csv&quot;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">)</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;raw/data.csv&quot;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">)</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">keys</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_keys</span><span class="p">(</span><span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;raw/&quot;</span><span class="p">)</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">s3</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"/tmp/data.csv"</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"raw/data.csv"</span><span class="p">,</span> <span class="n">bucket_name</span><span class="o">=</span><span class="s2">"my-bucket"</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">exists</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">check_for_key</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"raw/data.csv"</span><span class="p">,</span> <span class="n">bucket_name</span><span class="o">=</span><span class="s2">"my-bucket"</span><span class="p">)</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"raw/data.csv"</span><span class="p">,</span> <span class="n">bucket_name</span><span class="o">=</span><span class="s2">"my-bucket"</span><span class="p">)</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">keys</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_keys</span><span class="p">(</span><span class="n">bucket_name</span><span class="o">=</span><span class="s2">"my-bucket"</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">"raw/"</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
 <h2 id="7-custom-hook">7. Custom Hook 간단 예시<a class="headerlink" href="#7-custom-hook" title="Permanent link">&para;</a></h2>
@@ -2902,12 +3088,12 @@
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">InternalApiHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;사내 API 호출 Hook.&quot;&quot;&quot;</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="sd">"""사내 API 호출 Hook."""</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">conn_name_attr</span> <span class="o">=</span> <span class="s2">&quot;conn_id&quot;</span>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">default_conn_name</span> <span class="o">=</span> <span class="s2">&quot;internal_api_default&quot;</span>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">conn_type</span> <span class="o">=</span> <span class="s2">&quot;http&quot;</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="n">hook_name</span> <span class="o">=</span> <span class="s2">&quot;Internal API&quot;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">conn_name_attr</span> <span class="o">=</span> <span class="s2">"conn_id"</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">default_conn_name</span> <span class="o">=</span> <span class="s2">"internal_api_default"</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">conn_type</span> <span class="o">=</span> <span class="s2">"http"</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="n">hook_name</span> <span class="o">=</span> <span class="s2">"Internal API"</span>
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
 </span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conn_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">default_conn_name</span><span class="p">):</span>
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -2918,14 +3104,14 @@
 </span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>            <span class="n">conn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conn_id</span><span class="p">)</span>
 </span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>            <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>            <span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">conn</span><span class="o">.</span><span class="n">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">})</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>            <span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">conn</span><span class="o">.</span><span class="n">password</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
 </span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>            <span class="n">session</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">host</span>
 </span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">session</span>
 </span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span>
 </span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>
 </span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">refresh_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 </span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_conn</span><span class="p">()</span>
-</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>        <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/reports/</span><span class="si">{</span><span class="n">report_id</span><span class="si">}</span><span class="s2">/refresh&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>        <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/reports/</span><span class="si">{</span><span class="n">report_id</span><span class="si">}</span><span class="s2">/refresh"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>        <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 </span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </span></code></pre></div>
@@ -2978,7 +3164,7 @@
 </table>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Variable</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">threshold</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Variable</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ALERT_THRESHOLD&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;1000&quot;</span><span class="p">))</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">threshold</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Variable</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"ALERT_THRESHOLD"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"1000"</span><span class="p">))</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Variable에 비밀번호 넣지 말기</p>
@@ -3189,7 +3375,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       

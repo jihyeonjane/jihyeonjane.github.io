@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -333,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2174,6 +2196,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2439,9 +2623,9 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">macro</span><span class="w"> </span><span class="n">date_spine</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">end_date</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">WITH</span><span class="w"> </span><span class="n">dates</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="k">SELECT</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">            </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="s1">&#39;{{ start_date }}&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">date_day</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">            </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="s1">'{{ start_date }}'</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">date_day</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="k">UNNEST</span><span class="p">(</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="n">GENERATE_ARRAY</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_DIFF</span><span class="p">(</span><span class="s1">&#39;{{ end_date }}&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;{{ start_date }}&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">DAY</span><span class="p">))</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="n">GENERATE_ARRAY</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_DIFF</span><span class="p">(</span><span class="s1">'{{ end_date }}'</span><span class="p">,</span><span class="w"> </span><span class="s1">'{{ start_date }}'</span><span class="p">,</span><span class="w"> </span><span class="k">DAY</span><span class="p">))</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">seq</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">)</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dates</span>
@@ -2449,36 +2633,36 @@
 </span></code></pre></div>
 <h3 id="_4">환경별 분기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">macro</span><span class="w"> </span><span class="n">limit_data_in_dev</span><span class="p">(</span><span class="k">column_name</span><span class="p">,</span><span class="w"> </span><span class="n">dev_days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;dev&#39;</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'dev'</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="err">{{</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="err">}}</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="err">{{</span><span class="w"> </span><span class="n">dev_days</span><span class="w"> </span><span class="err">}}</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">endif</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="err">{</span><span class="o">%</span><span class="w"> </span><span class="n">endmacro</span><span class="w"> </span><span class="o">%</span><span class="err">}</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">-- 사용:</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">{{</span><span class="w"> </span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;stg_events&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="err">{{</span><span class="w"> </span><span class="n">limit_data_in_dev</span><span class="p">(</span><span class="s1">&#39;event_at&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">{{</span><span class="w"> </span><span class="k">ref</span><span class="p">(</span><span class="s1">'stg_events'</span><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="err">{{</span><span class="w"> </span><span class="n">limit_data_in_dev</span><span class="p">(</span><span class="s1">'event_at'</span><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
 </span></code></pre></div>
 <h2 id="packagesyml">packages.yml 활용<a class="headerlink" href="#packagesyml" title="Permanent link">&para;</a></h2>
 <p>커뮤니티 패키지를 활용하면 생산성이 올라갑니다.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># packages.yml</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">packages</span><span class="p">:</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbt-labs/dbt_utils</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.1.1&quot;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"1.1.1"</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dbt-labs/codegen</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12.1&quot;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"0.12.1"</span>
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dbt<span class="w"> </span>deps<span class="w">   </span><span class="c1"># 패키지 설치</span>
 </span></code></pre></div>
 <h3 id="dbt_utils">dbt_utils 유용 매크로<a class="headerlink" href="#dbt_utils" title="Permanent link">&para;</a></h3>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- surrogate key 생성</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">generate_surrogate_key</span><span class="p">([</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;event_date&#39;</span><span class="p">])</span><span class="w"> </span><span class="err">}}</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">generate_surrogate_key</span><span class="p">([</span><span class="s1">'user_id'</span><span class="p">,</span><span class="w"> </span><span class="s1">'event_date'</span><span class="p">])</span><span class="w"> </span><span class="err">}}</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">-- pivot</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;event_type&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">get_column_values</span><span class="p">(</span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;stg_events&#39;</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;event_type&#39;</span><span class="p">))</span><span class="w"> </span><span class="err">}}</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">'event_type'</span><span class="p">,</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">get_column_values</span><span class="p">(</span><span class="k">ref</span><span class="p">(</span><span class="s1">'stg_events'</span><span class="p">),</span><span class="w"> </span><span class="s1">'event_type'</span><span class="p">))</span><span class="w"> </span><span class="err">}}</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1">-- union 여러 소스</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="err">{{</span><span class="w"> </span><span class="n">dbt_utils</span><span class="p">.</span><span class="n">union_relations</span><span class="p">(</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">relations</span><span class="o">=</span><span class="p">[</span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;events_web&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="p">(</span><span class="s1">&#39;events_app&#39;</span><span class="p">)]</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">relations</span><span class="o">=</span><span class="p">[</span><span class="k">ref</span><span class="p">(</span><span class="s1">'events_web'</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="p">(</span><span class="s1">'events_app'</span><span class="p">)]</span>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">)</span><span class="w"> </span><span class="err">}}</span>
 </span></code></pre></div>
 <h2 id="_5">디버깅 팁<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
@@ -2654,7 +2838,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       

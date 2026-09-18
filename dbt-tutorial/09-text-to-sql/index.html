@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -333,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2342,6 +2364,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2716,11 +2900,11 @@
 <hr />
 <h2 id="1-text-to-sql">1. Text-to-SQL이 어려운 이유<a class="headerlink" href="#1-text-to-sql" title="Permanent link">&para;</a></h2>
 <p>LLM에게 "지난달 일본 매출 알려줘"라고 하면, LLM은 다음을 <strong>동시에</strong> 알아야 합니다:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1. &quot;매출&quot;이 어떤 테이블의 어떤 컬럼인지
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>2. &quot;일본&quot;이 country_code = &#39;JP&#39;인지, country_name = &#39;일본&#39;인지
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>3. &quot;지난달&quot;이 revenue_date 기준인지, created_at 기준인지
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1. "매출"이 어떤 테이블의 어떤 컬럼인지
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>2. "일본"이 country_code = 'JP'인지, country_name = '일본'인지
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>3. "지난달"이 revenue_date 기준인지, created_at 기준인지
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>4. 어떤 JOIN이 필요한지
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>5. 조직에서 &quot;매출&quot;을 어떻게 정의하는지 (gross? net?)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>5. 조직에서 "매출"을 어떻게 정의하는지 (gross? net?)
 </span></code></pre></div>
 <p>LLM은 범용 지식은 있지만, <strong>우리 조직의 스키마와 비즈니스 정의</strong>는 모릅니다.
 이 갭을 메우는 세 가지 접근법을 살펴봅니다.</p>
@@ -2732,14 +2916,14 @@
 <p>사용자 질문과 유사한 <strong>과거 쿼리 + 스키마 정보</strong>를 VectorDB에서 검색해서,
 LLM의 컨텍스트에 함께 넣어주는 방식</p>
 </blockquote>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>사용자: &quot;지난달 일본 매출 알려줘&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>사용자: "지난달 일본 매출 알려줘"
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                ↓
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>┌────────────────────────────────────────────┐
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  1. Retrieval (검색)                         │
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│                                              │
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  VectorDB에서 유사 쿼리 검색:                  │
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  → &quot;2025년 1월 한국 매출 조회&quot; (유사도 0.92)    │
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│  → &quot;분기별 국가 매출 집계&quot; (유사도 0.87)        │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  → "2025년 1월 한국 매출 조회" (유사도 0.92)    │
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│  → "분기별 국가 매출 집계" (유사도 0.87)        │
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│                                              │
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│  해당 쿼리의 실제 SQL도 함께 가져옴             │
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>└────────────────┬───────────────────────────┘
@@ -2758,9 +2942,9 @@ LLM의 컨텍스트에 함께 넣어주는 방식</p>
 </span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>                 ↓
 </span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>SELECT SUM(amount - refund_amount - platform_fee) AS net_revenue
 </span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>FROM analytics.fct_daily_revenue
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>WHERE country_code = &#39;JP&#39;
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>  AND revenue_date &gt;= &#39;2026-03-01&#39;
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>  AND revenue_date &lt; &#39;2026-04-01&#39;
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>WHERE country_code = 'JP'
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>  AND revenue_date &gt;= '2026-03-01'
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>  AND revenue_date &lt; '2026-04-01'
 </span></code></pre></div>
 <h3 id="_2">왜 효과적인가<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
@@ -2794,7 +2978,7 @@ LLM의 컨텍스트에 함께 넣어주는 방식</p>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│  임베딩 대상 (VectorDB에 저장)                  │
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│                                               │
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│  1. 과거 쿼리 + 자연어 설명                     │
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│     &quot;일별 국가별 매출 조회&quot;                      │
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│     "일별 국가별 매출 조회"                      │
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│     → SELECT ... FROM fct_daily_revenue ...    │
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│                                               │
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│  2. dbt 모델 정의 (schema.yml)                  │
@@ -2807,8 +2991,8 @@ LLM의 컨텍스트에 함께 넣어주는 방식</p>
 </span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>│     gross_revenue: 환불 전 총 결제액             │
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>│                                               │
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>│  4. 비즈니스 용어집 (Glossary)                   │
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│     &quot;매출&quot; → net_revenue (재무 기준)             │
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>│     &quot;활성 유저&quot; → DAU (최근 7일 로그인)           │
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│     "매출" → net_revenue (재무 기준)             │
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>│     "활성 유저" → DAU (최근 7일 로그인)           │
 </span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>└─────────────────────────────────────────────┘
 </span></code></pre></div>
 <h3 id="dbt">dbt와의 시너지<a class="headerlink" href="#dbt" title="Permanent link">&para;</a></h3>
@@ -2828,32 +3012,32 @@ LLM의 컨텍스트에 함께 넣어주는 방식</p>
 <blockquote>
 <p>복잡한 질문을 <strong>단계별로 분해</strong>하여 SQL을 생성하는 방식</p>
 </blockquote>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>질문: &quot;매출이 가장 높은 국가의 신규 유저 수는?&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>질문: "매출이 가장 높은 국가의 신규 유저 수는?"
 </span></code></pre></div>
 <p><strong>일반 LLM</strong>: 한 번에 복잡한 SQL을 생성 → 실수 확률 높음</p>
 <p><strong>DIN-SQL 접근</strong>: 4단계로 분해</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Step 1. 질문 분류
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  → &quot;이건 서브쿼리가 필요한 복잡한 질문이다&quot;
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  → "이건 서브쿼리가 필요한 복잡한 질문이다"
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Step 2. 스키마 링킹 (Schema Linking)
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  → &quot;매출&quot; → fct_daily_revenue.net_revenue
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  → &quot;국가&quot; → fct_daily_revenue.country_code
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  → &quot;신규 유저&quot; → dim_users.created_at
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  → "매출" → fct_daily_revenue.net_revenue
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  → "국가" → fct_daily_revenue.country_code
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  → "신규 유저" → dim_users.created_at
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>Step 3. 중간 SQL 생성
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  → 서브쿼리: &quot;매출이 가장 높은 국가&quot; 먼저 구함
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  → 서브쿼리: "매출이 가장 높은 국가" 먼저 구함
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>  → 메인쿼리: 해당 국가의 신규 유저 수 집계
 </span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
 </span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>Step 4. 자기 검증 (Self-Correction)
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>  → 생성된 SQL을 다시 LLM에게 검토 요청
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>  → &quot;이 SQL이 원래 질문에 정확히 답하는가?&quot;
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>  → "이 SQL이 원래 질문에 정확히 답하는가?"
 </span></code></pre></div>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- DIN-SQL이 생성하는 최종 SQL</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">WITH</span><span class="w"> </span><span class="n">top_country</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">country_code</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">analytics</span><span class="p">.</span><span class="n">fct_daily_revenue</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">revenue_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2026-03-01&#39;</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">revenue_date</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2026-04-01&#39;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">revenue_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">'2026-03-01'</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">revenue_date</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">'2026-04-01'</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">country_code</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">net_revenue</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span>
@@ -2861,8 +3045,8 @@ LLM의 컨텍스트에 함께 넣어주는 방식</p>
 </span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">new_user_count</span>
 </span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">FROM</span><span class="w"> </span><span class="n">analytics</span><span class="p">.</span><span class="n">dim_users</span><span class="w"> </span><span class="n">u</span>
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="k">JOIN</span><span class="w"> </span><span class="n">top_country</span><span class="w"> </span><span class="n">tc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">country_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tc</span><span class="p">.</span><span class="n">country_code</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">created_at</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2026-03-01&#39;</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">created_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2026-04-01&#39;</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">created_at</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">'2026-03-01'</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">created_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">'2026-04-01'</span>
 </span></code></pre></div>
 <h4 id="_3">차용할 아이디어<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <table>
@@ -2897,7 +3081,7 @@ DAIL-SQL은 <strong>"어떤 예시를 보여줄 것인가"</strong>에 집중합
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>│  DAIL-SQL의 예시 선택 전략                      │
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│                                               │
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│  1. 질문 유사도 (Question Similarity)           │
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│     &quot;일본 매출&quot; ↔ &quot;한국 매출&quot; → 높은 유사도      │
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│     "일본 매출" ↔ "한국 매출" → 높은 유사도      │
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│                                               │
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>│  2. SQL 구조 유사도 (Query Similarity)          │
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>│     GROUP BY + SUM ↔ GROUP BY + COUNT          │
@@ -2905,29 +3089,29 @@ DAIL-SQL은 <strong>"어떤 예시를 보여줄 것인가"</strong>에 집중합
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>│                                               │
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>│  3. 마스킹 (Masking)                           │
 </span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>│     구체적 값을 추상화:                          │
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>│     &quot;한국 매출&quot; → &quot;{country} 매출&quot;               │
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>│     WHERE country_code = &#39;KR&#39;                  │
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>│       → WHERE country_code = &#39;{value}&#39;         │
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>│     "한국 매출" → "{country} 매출"               │
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>│     WHERE country_code = 'KR'                  │
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>│       → WHERE country_code = '{value}'         │
 </span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>│                                               │
 </span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>│  → 이 세 가지를 조합해 최적의 few-shot 선택      │
 </span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>└─────────────────────────────────────────────┘
 </span></code></pre></div>
 <h4 id="_4">실전 적용 예시<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>사용자 질문: &quot;지난달 일본 매출 알려줘&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>사용자 질문: "지난달 일본 매출 알려줘"
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>VectorDB 검색 → 유사 예시 2개 선택:
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>예시 1:
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  Q: &quot;2025년 1월 한국 순매출을 알려줘&quot;
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  Q: "2025년 1월 한국 순매출을 알려줘"
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  A: SELECT SUM(net_revenue) FROM analytics.fct_daily_revenue
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>     WHERE country_code = &#39;KR&#39;
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       AND revenue_date BETWEEN &#39;2025-01-01&#39; AND &#39;2025-01-31&#39;
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>     WHERE country_code = 'KR'
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>       AND revenue_date BETWEEN '2025-01-01' AND '2025-01-31'
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
 </span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>예시 2:
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  Q: &quot;지난 분기 미국 총매출을 알려줘&quot;
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  Q: "지난 분기 미국 총매출을 알려줘"
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  A: SELECT SUM(gross_revenue) FROM analytics.fct_daily_revenue
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>     WHERE country_code = &#39;US&#39;
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>       AND revenue_date BETWEEN &#39;2025-10-01&#39; AND &#39;2025-12-31&#39;
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>     WHERE country_code = 'US'
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>       AND revenue_date BETWEEN '2025-10-01' AND '2025-12-31'
 </span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
 </span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>→ LLM에게 이 예시들과 함께 질문 전달
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>→ LLM이 패턴을 참고해 새 SQL 생성
@@ -3015,11 +3199,11 @@ LLM이 "우리 데이터 세계의 지도"를 이해할 수 있게 만드는 것
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>[온톨로지 기반 카탈로그]
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>  fct_daily_revenue
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    - country_code: VARCHAR
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>      → &quot;국가&quot; 엔티티의 식별자
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>      → "국가" 엔티티의 식별자
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>      → dim_countries.code와 조인 가능
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>      → 허용값: KR, JP, US, TW
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    - net_revenue: DECIMAL
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>      → 메트릭 &quot;순매출&quot;의 물리적 컬럼
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>      → 메트릭 "순매출"의 물리적 컬럼
 </span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>      → 계산식: amount - refund_amount - platform_fee
 </span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>      → 재무팀 공식 매출 기준
 </span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>      → 관련 메트릭: gross_revenue, arpu
@@ -3087,51 +3271,51 @@ LLM이 "우리 데이터 세계의 지도"를 이해할 수 있게 만드는 것
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">embeddings</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># 1. 모델 단위 임베딩</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;resource_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;model&quot;</span><span class="p">:</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">"nodes"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="s2">"resource_type"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"model"</span><span class="p">:</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="k">continue</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s2">    테이블: </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s2">    설명: </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s2">    컬럼: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s2">    테이블: </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s2">    설명: </span><span class="si">{</span><span class="n">model</span><span class="p">[</span><span class="s1">'description'</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s2">    컬럼: </span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'description'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'columns'</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="p">)</span><span class="si">}</span>
-</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s2">    의존성: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;depends_on&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span>
-</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s2">    &quot;&quot;&quot;</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s2">    의존성: </span><span class="si">{</span><span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'depends_on'</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'nodes'</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s2">    """</span>
 </span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>    <span class="n">embeddings</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
-</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]},</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>        <span class="s2">"text"</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>        <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"model"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]},</span>
 </span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>    <span class="p">})</span>
 </span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
 </span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="c1"># 2. 메트릭 단위 임베딩</span>
-</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">&quot;metrics&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="s2">    메트릭: </span><span class="si">{</span><span class="n">metric</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="s2">    레이블: </span><span class="si">{</span><span class="n">metric</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span>
-</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="s2">    설명: </span><span class="si">{</span><span class="n">metric</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="s2">    계산 방식: </span><span class="si">{</span><span class="n">metric</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type_params&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="si">}</span>
-</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="s2">    &quot;&quot;&quot;</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">"metrics"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="s2">    메트릭: </span><span class="si">{</span><span class="n">metric</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="s2">    레이블: </span><span class="si">{</span><span class="n">metric</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'label'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="s2">    설명: </span><span class="si">{</span><span class="n">metric</span><span class="p">[</span><span class="s1">'description'</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="s2">    계산 방식: </span><span class="si">{</span><span class="n">metric</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'type_params'</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="si">}</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="s2">    """</span>
 </span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>    <span class="n">embeddings</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
-</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;metric&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">metric</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]},</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>        <span class="s2">"text"</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>        <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"metric"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">:</span> <span class="n">metric</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]},</span>
 </span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a>    <span class="p">})</span>
 </span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a>
 </span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="c1"># 3. 과거 쿼리 + 자연어 설명 임베딩</span>
 </span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="k">for</span> <span class="n">query_log</span> <span class="ow">in</span> <span class="n">approved_queries</span><span class="p">:</span>
-</span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-</span><span id="__span-10-39"><a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="s2">    질문: </span><span class="si">{</span><span class="n">query_log</span><span class="p">[</span><span class="s1">&#39;natural_language&#39;</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-10-40"><a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="s2">    SQL: </span><span class="si">{</span><span class="n">query_log</span><span class="p">[</span><span class="s1">&#39;sql&#39;</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-10-41"><a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="s2">    사용 테이블: </span><span class="si">{</span><span class="n">query_log</span><span class="p">[</span><span class="s1">&#39;tables&#39;</span><span class="p">]</span><span class="si">}</span>
-</span><span id="__span-10-42"><a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="s2">    &quot;&quot;&quot;</span>
+</span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
+</span><span id="__span-10-39"><a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="s2">    질문: </span><span class="si">{</span><span class="n">query_log</span><span class="p">[</span><span class="s1">'natural_language'</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-10-40"><a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="s2">    SQL: </span><span class="si">{</span><span class="n">query_log</span><span class="p">[</span><span class="s1">'sql'</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-10-41"><a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="s2">    사용 테이블: </span><span class="si">{</span><span class="n">query_log</span><span class="p">[</span><span class="s1">'tables'</span><span class="p">]</span><span class="si">}</span>
+</span><span id="__span-10-42"><a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="s2">    """</span>
 </span><span id="__span-10-43"><a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a>    <span class="n">embeddings</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span id="__span-10-44"><a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a>        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
-</span><span id="__span-10-45"><a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a>        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">query_log</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]},</span>
+</span><span id="__span-10-44"><a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a>        <span class="s2">"text"</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+</span><span id="__span-10-45"><a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a>        <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"query"</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">:</span> <span class="n">query_log</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]},</span>
 </span><span id="__span-10-46"><a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a>    <span class="p">})</span>
 </span></code></pre></div>
 <h3 id="_7">전체 아키텍처<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>┌─────────────────────────────────────────────────────┐
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>│  사용자 질문: &quot;지난달 일본 매출 알려줘&quot;                   │
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>│  사용자 질문: "지난달 일본 매출 알려줘"                   │
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>└─────────────────────┬───────────────────────────────┘
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>                      ↓
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>┌─────────────────────────────────────────────────────┐
@@ -3172,12 +3356,12 @@ LLM이 "우리 데이터 세계의 지도"를 이해할 수 있게 만드는 것
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 이 정도 수준의 설명이 있어야 LLM이 이해할 수 있음</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">models</span><span class="p">:</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fct_daily_revenue</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;일별</span><span class="nv"> </span><span class="s">국가별</span><span class="nv"> </span><span class="s">매출</span><span class="nv"> </span><span class="s">집계</span><span class="nv"> </span><span class="s">팩트</span><span class="nv"> </span><span class="s">테이블.</span><span class="nv"> </span><span class="s">재무</span><span class="nv"> </span><span class="s">보고의</span><span class="nv"> </span><span class="s">기준</span><span class="nv"> </span><span class="s">테이블.&quot;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"일별</span><span class="nv"> </span><span class="s">국가별</span><span class="nv"> </span><span class="s">매출</span><span class="nv"> </span><span class="s">집계</span><span class="nv"> </span><span class="s">팩트</span><span class="nv"> </span><span class="s">테이블.</span><span class="nv"> </span><span class="s">재무</span><span class="nv"> </span><span class="s">보고의</span><span class="nv"> </span><span class="s">기준</span><span class="nv"> </span><span class="s">테이블."</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="nt">columns</span><span class="p">:</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">country_code</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ISO</span><span class="nv"> </span><span class="s">3166-1</span><span class="nv"> </span><span class="s">alpha-2</span><span class="nv"> </span><span class="s">국가</span><span class="nv"> </span><span class="s">코드.</span><span class="nv"> </span><span class="s">KR=한국,</span><span class="nv"> </span><span class="s">JP=일본,</span><span class="nv"> </span><span class="s">US=미국,</span><span class="nv"> </span><span class="s">TW=대만&quot;</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"ISO</span><span class="nv"> </span><span class="s">3166-1</span><span class="nv"> </span><span class="s">alpha-2</span><span class="nv"> </span><span class="s">국가</span><span class="nv"> </span><span class="s">코드.</span><span class="nv"> </span><span class="s">KR=한국,</span><span class="nv"> </span><span class="s">JP=일본,</span><span class="nv"> </span><span class="s">US=미국,</span><span class="nv"> </span><span class="s">TW=대만"</span>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">net_revenue</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;순매출.</span><span class="nv"> </span><span class="s">계산:</span><span class="nv"> </span><span class="s">amount</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">refund_amount</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">platform_fee.</span><span class="nv"> </span><span class="s">재무팀</span><span class="nv"> </span><span class="s">공식</span><span class="nv"> </span><span class="s">매출.&quot;</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"순매출.</span><span class="nv"> </span><span class="s">계산:</span><span class="nv"> </span><span class="s">amount</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">refund_amount</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">platform_fee.</span><span class="nv"> </span><span class="s">재무팀</span><span class="nv"> </span><span class="s">공식</span><span class="nv"> </span><span class="s">매출."</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">garbage in, garbage out</p>
@@ -3191,7 +3375,7 @@ LLM이 "우리 데이터 세계의 지도"를 이해할 수 있게 만드는 것
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  - Airflow DAG의 SQL
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>각 쿼리에 자연어 설명을 태깅:
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  &quot;일별 국가별 순매출 조회&quot; → SELECT ... FROM fct_daily_revenue ...
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  "일별 국가별 순매출 조회" → SELECT ... FROM fct_daily_revenue ...
 </span></code></pre></div>
 <h3 id="phase-3-vectordb">Phase 3: VectorDB 구축<a class="headerlink" href="#phase-3-vectordb" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>임베딩 대상:
@@ -3211,22 +3395,22 @@ LLM이 "우리 데이터 세계의 지도"를 이해할 수 있게 만드는 것
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">find_similar_queries</span><span class="p">(</span><span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;자연어 질문과 유사한 과거 쿼리를 검색합니다.</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="sd">"""자연어 질문과 유사한 과거 쿼리를 검색합니다.</span>
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="sd">    VectorDB에서 질문과 유사한 쿼리-SQL 쌍을 찾아</span>
 </span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="sd">    few-shot 예시로 활용할 수 있습니다.</span>
 </span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
 </span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="sd">    Args:</span>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="sd">        question: 자연어 질문 (예: &quot;일본 매출 알려줘&quot;)</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="sd">        question: 자연어 질문 (예: "일본 매출 알려줘")</span>
 </span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="sd">        top_k: 반환할 유사 쿼리 수</span>
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="sd">    """</span>
 </span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">vectordb</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">top_k</span><span class="p">)</span>
 </span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>    <span class="k">return</span> <span class="p">[</span>
 </span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>        <span class="p">{</span>
-</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>            <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">],</span>
-</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>            <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;sql&quot;</span><span class="p">],</span>
-</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>            <span class="s2">&quot;tables&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;tables&quot;</span><span class="p">],</span>
-</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>            <span class="s2">&quot;similarity&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>            <span class="s2">"question"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"question"</span><span class="p">],</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>            <span class="s2">"sql"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"sql"</span><span class="p">],</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>            <span class="s2">"tables"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"tables"</span><span class="p">],</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>            <span class="s2">"similarity"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
 </span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>        <span class="p">}</span>
 </span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span>
 </span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>    <span class="p">]</span>
@@ -3234,27 +3418,27 @@ LLM이 "우리 데이터 세계의 지도"를 이해할 수 있게 만드는 것
 </span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>
 </span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 </span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="k">def</span><span class="w"> </span><span class="nf">find_relevant_schema</span><span class="p">(</span><span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;질문과 관련된 테이블/컬럼 스키마를 검색합니다.</span>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">    </span><span class="sd">"""질문과 관련된 테이블/컬럼 스키마를 검색합니다.</span>
 </span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>
 </span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="sd">    dbt schema.yml 기반의 테이블 설명, 컬럼 설명,</span>
 </span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="sd">    메트릭 정의를 VectorDB에서 검색합니다.</span>
 </span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>
 </span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="sd">    Args:</span>
 </span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="sd">        question: 자연어 질문</span>
-</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="sd">    """</span>
 </span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">vectordb</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span>
-</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a>        <span class="n">question</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$in&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;metric&quot;</span><span class="p">]}}</span>
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a>        <span class="n">question</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"$in"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"model"</span><span class="p">,</span> <span class="s2">"metric"</span><span class="p">]}}</span>
 </span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a>    <span class="p">)</span>
-</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a>    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">page_content</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">}</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a>    <span class="k">return</span> <span class="p">[{</span><span class="s2">"content"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">page_content</span><span class="p">,</span> <span class="s2">"metadata"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">metadata</span><span class="p">}</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
 </span></code></pre></div>
 <hr />
 <h2 id="6">6. 정리<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>dbt (온톨로지 기반)
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  │
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  ├── schema.yml    → &quot;데이터가 뭔지&quot; 정의
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  ├── metrics.yml   → &quot;메트릭이 뭔지&quot; 정의
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>  ├── SQL 모델      → &quot;어떻게 만들어지는지&quot; 정의
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>  └── lineage       → &quot;어떻게 연결되는지&quot; 정의
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  ├── schema.yml    → "데이터가 뭔지" 정의
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  ├── metrics.yml   → "메트릭이 뭔지" 정의
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>  ├── SQL 모델      → "어떻게 만들어지는지" 정의
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>  └── lineage       → "어떻게 연결되는지" 정의
 </span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>          │
 </span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>          ↓  VectorDB에 임베딩
 </span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>          │
@@ -3436,7 +3620,7 @@ schema.yml의 설명, metrics.yml의 정의, SQL 모델의 가공 로직 —
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       

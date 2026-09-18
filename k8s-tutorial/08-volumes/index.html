@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -333,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2817,6 +2839,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -3670,7 +3854,7 @@
 </span></code></pre></div>
 <p>이것은 컨테이너의 파일시스템이 <strong>이미지 레이어 위에 쓰기 가능한 얇은 레이어(writable layer)</strong>로 구성되기 때문입니다. 컨테이너가 삭제되면 이 레이어도 함께 삭제됩니다.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 컨테이너 내부에서 파일 생성</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>my-pod<span class="w"> </span>--<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo &#39;important data&#39; &gt; /tmp/data.txt&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>my-pod<span class="w"> </span>--<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"echo 'important data' &gt; /tmp/data.txt"</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 컨테이너가 재시작되면...</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>my-pod
@@ -3703,13 +3887,13 @@
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">writer</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;echo</span><span class="nv"> </span><span class="s">&#39;shared</span><span class="nv"> </span><span class="s">data&#39;</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">/data/message.txt</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sh"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"echo</span><span class="nv"> </span><span class="s">'shared</span><span class="nv"> </span><span class="s">data'</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">/data/message.txt</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600"</span><span class="p p-Indicator">]</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-data</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data</span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reader</span>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sleep</span><span class="nv"> </span><span class="s">5</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">cat</span><span class="nv"> </span><span class="s">/data/message.txt</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sh"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"sleep</span><span class="nv"> </span><span class="s">5</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">cat</span><span class="nv"> </span><span class="s">/data/message.txt</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600"</span><span class="p p-Indicator">]</span>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-data</span>
 </span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data</span>
@@ -3735,7 +3919,7 @@
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ls</span><span class="nv"> </span><span class="s">/host-logs</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sh"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"ls</span><span class="nv"> </span><span class="s">/host-logs</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600"</span><span class="p p-Indicator">]</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host-logs</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/host-logs</span>
@@ -3980,8 +4164,8 @@
 </div>
 <h3 id="storageclassname">storageClassName 연동<a class="headerlink" href="#storageclassname" title="Permanent link">&para;</a></h3>
 <p><code>storageClassName</code>은 PV와 PVC를 매칭시키는 핵심 필드입니다.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>storageClassName: &quot;fast-ssd&quot;인 PVC → storageClassName: &quot;fast-ssd&quot;인 PV와 매칭
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>storageClassName: &quot;&quot;인 PVC         → storageClassName: &quot;&quot;인 PV와 매칭 (정적 프로비저닝)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>storageClassName: "fast-ssd"인 PVC → storageClassName: "fast-ssd"인 PV와 매칭
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>storageClassName: ""인 PVC         → storageClassName: ""인 PV와 매칭 (정적 프로비저닝)
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>storageClassName 생략한 PVC        → 기본 StorageClass 사용 (동적 프로비저닝)
 </span></code></pre></div>
 <h3 id="pvc-yaml">완전한 PVC YAML<a class="headerlink" href="#pvc-yaml" title="Permanent link">&para;</a></h3>
@@ -4063,9 +4247,9 @@
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs.csi.aws.com</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nt">parameters</span><span class="p">:</span>
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp3</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">  </span><span class="nt">iops</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5000&quot;</span>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="nt">throughput</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;250&quot;</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">  </span><span class="nt">iops</span><span class="p">:</span><span class="w"> </span><span class="s">"5000"</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="nt">throughput</span><span class="p">:</span><span class="w"> </span><span class="s">"250"</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">  </span><span class="nt">fsType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ext4</span>
 </span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retain</span>
 </span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
@@ -4145,7 +4329,7 @@
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># annotation으로 기본 StorageClass 설정</span>
 </span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>storageclass<span class="w"> </span>fast-ebs<span class="w"> </span>-p<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span><span class="s1">&#39;{&quot;metadata&quot;: {&quot;annotations&quot;: {&quot;storageclass.kubernetes.io/is-default-class&quot;: &quot;true&quot;}}}&#39;</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span><span class="s1">'{"metadata": {"annotations": {"storageclass.kubernetes.io/is-default-class": "true"}}}'</span>
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">기본 StorageClass</p>
@@ -4158,13 +4342,13 @@
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production-fast</span>
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="nt">storageclass.kubernetes.io/is-default-class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="nt">storageclass.kubernetes.io/is-default-class</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs.csi.aws.com</span>
 </span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nt">parameters</span><span class="p">:</span>
 </span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp3</span>
-</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">  </span><span class="nt">iops</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10000&quot;</span>
-</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">  </span><span class="nt">throughput</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;500&quot;</span>
-</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">  </span><span class="nt">iops</span><span class="p">:</span><span class="w"> </span><span class="s">"10000"</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">  </span><span class="nt">throughput</span><span class="p">:</span><span class="w"> </span><span class="s">"500"</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retain</span>
 </span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
 </span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -4175,11 +4359,11 @@
 </span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-standard</span>
 </span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">    </span><span class="nt">storageclass.kubernetes.io/is-default-class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">    </span><span class="nt">storageclass.kubernetes.io/is-default-class</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs.csi.aws.com</span>
 </span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="nt">parameters</span><span class="p">:</span>
 </span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp3</span>
-</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete</span>
 </span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
 </span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -4207,7 +4391,7 @@
 </span></code></pre></div>
 <h4 id="2-file">2. 파일(file)로 생성<a class="headerlink" href="#2-file" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 설정 파일 생성</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>nginx.conf<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>nginx.conf<span class="w"> </span><span class="s">&lt;&lt; 'EOF'</span>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="s">server {</span>
 </span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="s">    listen 80;</span>
 </span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="s">    server_name localhost;</span>
@@ -4218,7 +4402,7 @@
 </span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="s">    }</span>
 </span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>
 </span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="s">    location /health {</span>
-</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="s">        return 200 &#39;ok&#39;;</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="s">        return 200 'ok';</span>
 </span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="s">        add_header Content-Type text/plain;</span>
 </span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="s">    }</span>
 </span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="s">}</span>
@@ -4230,8 +4414,8 @@
 <h4 id="3-directory">3. 디렉토리(directory)로 생성<a class="headerlink" href="#3-directory" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 설정 파일이 있는 디렉토리</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>mkdir<span class="w"> </span>config-dir
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;key1=value1&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>config-dir/app.env
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;key2=value2&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>config-dir/db.env
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"key1=value1"</span><span class="w"> </span>&gt;<span class="w"> </span>config-dir/app.env
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"key2=value2"</span><span class="w"> </span>&gt;<span class="w"> </span>config-dir/db.env
 </span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
 </span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c1"># 디렉토리의 모든 파일을 ConfigMap으로</span>
 </span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>kubectl<span class="w"> </span>create<span class="w"> </span>configmap<span class="w"> </span>dir-config<span class="w"> </span>--from-file<span class="o">=</span>config-dir/
@@ -4244,10 +4428,10 @@
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nt">data</span><span class="p">:</span>
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">  </span><span class="c1"># 단순 키-값 쌍</span>
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">  </span><span class="nt">DATABASE_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;db.example.com&quot;</span>
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">  </span><span class="nt">DATABASE_PORT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5432&quot;</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">  </span><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;info&quot;</span>
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">  </span><span class="nt">CACHE_TTL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;300&quot;</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">  </span><span class="nt">DATABASE_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">"db.example.com"</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">  </span><span class="nt">DATABASE_PORT</span><span class="p">:</span><span class="w"> </span><span class="s">"5432"</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">  </span><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="s">"info"</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">  </span><span class="nt">CACHE_TTL</span><span class="p">:</span><span class="w"> </span><span class="s">"300"</span>
 </span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
 </span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">  </span><span class="c1"># 파일 형태의 설정 (멀티라인)</span>
 </span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">  </span><span class="nt">application.properties</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -4404,7 +4588,7 @@
 </span><span id="__span-27-29"><a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a>
 </span><span id="__span-27-30"><a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="w">        </span><span class="no"># 헬스체크</span>
 </span><span id="__span-27-31"><a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a><span class="w">        </span><span class="no">location /healthz {</span>
-</span><span id="__span-27-32"><a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a><span class="w">            </span><span class="no">return 200 &#39;ok&#39;;</span>
+</span><span id="__span-27-32"><a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a><span class="w">            </span><span class="no">return 200 'ok';</span>
 </span><span id="__span-27-33"><a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a><span class="w">            </span><span class="no">add_header Content-Type text/plain;</span>
 </span><span id="__span-27-34"><a id="__codelineno-27-34" name="__codelineno-27-34" href="#__codelineno-27-34"></a><span class="w">        </span><span class="no">}</span>
 </span><span id="__span-27-35"><a id="__codelineno-27-35" name="__codelineno-27-35" href="#__codelineno-27-35"></a><span class="w">    </span><span class="no">}</span>
@@ -4485,13 +4669,13 @@
 </span><span id="__span-28-44"><a id="__codelineno-28-44" name="__codelineno-28-44" href="#__codelineno-28-44"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 </span><span id="__span-28-45"><a id="__codelineno-28-45" name="__codelineno-28-45" href="#__codelineno-28-45"></a><span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 </span><span id="__span-28-46"><a id="__codelineno-28-46" name="__codelineno-28-46" href="#__codelineno-28-46"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB_HOST</span>
-</span><span id="__span-28-47"><a id="__codelineno-28-47" name="__codelineno-28-47" href="#__codelineno-28-47"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres-svc&quot;</span>
+</span><span id="__span-28-47"><a id="__codelineno-28-47" name="__codelineno-28-47" href="#__codelineno-28-47"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"postgres-svc"</span>
 </span><span id="__span-28-48"><a id="__codelineno-28-48" name="__codelineno-28-48" href="#__codelineno-28-48"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB_PORT</span>
-</span><span id="__span-28-49"><a id="__codelineno-28-49" name="__codelineno-28-49" href="#__codelineno-28-49"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5432&quot;</span>
+</span><span id="__span-28-49"><a id="__codelineno-28-49" name="__codelineno-28-49" href="#__codelineno-28-49"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"5432"</span>
 </span><span id="__span-28-50"><a id="__codelineno-28-50" name="__codelineno-28-50" href="#__codelineno-28-50"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB_NAME</span>
-</span><span id="__span-28-51"><a id="__codelineno-28-51" name="__codelineno-28-51" href="#__codelineno-28-51"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;myapp&quot;</span>
+</span><span id="__span-28-51"><a id="__codelineno-28-51" name="__codelineno-28-51" href="#__codelineno-28-51"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"myapp"</span>
 </span><span id="__span-28-52"><a id="__codelineno-28-52" name="__codelineno-28-52" href="#__codelineno-28-52"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REDIS_HOST</span>
-</span><span id="__span-28-53"><a id="__codelineno-28-53" name="__codelineno-28-53" href="#__codelineno-28-53"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;redis-svc&quot;</span>
+</span><span id="__span-28-53"><a id="__codelineno-28-53" name="__codelineno-28-53" href="#__codelineno-28-53"></a><span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"redis-svc"</span>
 </span><span id="__span-28-54"><a id="__codelineno-28-54" name="__codelineno-28-54" href="#__codelineno-28-54"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
 </span><span id="__span-28-55"><a id="__codelineno-28-55" name="__codelineno-28-55" href="#__codelineno-28-55"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-config</span>
 </span><span id="__span-28-56"><a id="__codelineno-28-56" name="__codelineno-28-56" href="#__codelineno-28-56"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/config</span>
@@ -4561,11 +4745,11 @@
 <h3 id="base64">base64 인코딩 주의사항<a class="headerlink" href="#base64" title="Permanent link">&para;</a></h3>
 <p>Secret YAML에서 <code>data</code> 필드의 값은 반드시 <strong>base64로 인코딩</strong>해야 합니다.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># 인코딩</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;my-password&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s1">'my-password'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="c1"># bXktcGFzc3dvcmQ=</span>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
 </span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="c1"># 디코딩 (확인용)</span>
-</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;bXktcGFzc3dvcmQ=&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'bXktcGFzc3dvcmQ='</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d
 </span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="c1"># my-password</span>
 </span></code></pre></div>
 <div class="admonition warning">
@@ -4587,7 +4771,7 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># 리터럴로 생성</span>
 </span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>db-credentials<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span>admin<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s1">&#39;S3cur3P@ss!&#39;</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s1">'S3cur3P@ss!'</span>
 </span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
 </span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="c1"># 파일로 생성</span>
 </span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>tls-secret<span class="w"> </span><span class="se">\</span>
@@ -4598,7 +4782,7 @@
 </span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>docker-registry<span class="w"> </span>my-registry<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">  </span>--docker-server<span class="o">=</span>registry.example.com<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="w">  </span>--docker-username<span class="o">=</span>user<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">  </span>--docker-password<span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">  </span>--docker-password<span class="o">=</span><span class="s1">'password'</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="w">  </span>--docker-email<span class="o">=</span>user@example.com
 </span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>
 </span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="c1"># TLS 시크릿 생성</span>
@@ -4614,8 +4798,8 @@
 </span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
 </span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="nt">data</span><span class="p">:</span>
-</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YWRtaW4=</span><span class="w">          </span><span class="c1"># echo -n &#39;admin&#39; | base64</span>
-</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UzNjdXIzUEBzcyE=</span><span class="w">  </span><span class="c1"># echo -n &#39;S3cur3P@ss!&#39; | base64</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YWRtaW4=</span><span class="w">          </span><span class="c1"># echo -n 'admin' | base64</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UzNjdXIzUEBzcyE=</span><span class="w">  </span><span class="c1"># echo -n 'S3cur3P@ss!' | base64</span>
 </span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="w">  </span><span class="nt">connection-string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cG9zdGdyZXNxbDovL2FkbWluOlMzY3VyM1BAc3MhQGRiLmV4YW1wbGUuY29tOjU0MzIvbXlkYg==</span>
 </span></code></pre></div>
 <h4 id="pod-secret">Pod에서 Secret 사용<a class="headerlink" href="#pod-secret" title="Permanent link">&para;</a></h4>
@@ -4671,7 +4855,7 @@
 </span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
 </span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># Secret을 SealedSecret으로 변환</span>
 </span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>db-credentials<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s1">&#39;S3cur3P@ss!&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s1">'S3cur3P@ss!'</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">  </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">  </span>kubeseal<span class="w"> </span>--format<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>sealed-secret.yaml
 </span></code></pre></div>
@@ -4728,7 +4912,7 @@
 </span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
 </span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="nt">stringData</span><span class="p">:</span>
 </span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="w">  </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app_user</span>
-</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="w">  </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;V3ryS3cur3P@ssw0rd&quot;</span>
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="w">  </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="s">"V3ryS3cur3P@ssw0rd"</span>
 </span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="w">  </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production_db</span>
 </span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="nn">---</span>
 </span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a><span class="c1"># 2. ConfigMap: DB 설정 (비밀이 아닌 정보)</span>
@@ -4737,9 +4921,9 @@
 </span><span id="__span-38-15"><a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-38-16"><a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres-config</span>
 </span><span id="__span-38-17"><a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a><span class="nt">data</span><span class="p">:</span>
-</span><span id="__span-38-18"><a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a><span class="w">  </span><span class="nt">POSTGRES_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres-svc&quot;</span>
-</span><span id="__span-38-19"><a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a><span class="w">  </span><span class="nt">POSTGRES_PORT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5432&quot;</span>
-</span><span id="__span-38-20"><a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a><span class="w">  </span><span class="nt">POSTGRES_SSL_MODE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;require&quot;</span>
+</span><span id="__span-38-18"><a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a><span class="w">  </span><span class="nt">POSTGRES_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">"postgres-svc"</span>
+</span><span id="__span-38-19"><a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a><span class="w">  </span><span class="nt">POSTGRES_PORT</span><span class="p">:</span><span class="w"> </span><span class="s">"5432"</span>
+</span><span id="__span-38-20"><a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a><span class="w">  </span><span class="nt">POSTGRES_SSL_MODE</span><span class="p">:</span><span class="w"> </span><span class="s">"require"</span>
 </span><span id="__span-38-21"><a id="__codelineno-38-21" name="__codelineno-38-21" href="#__codelineno-38-21"></a><span class="nn">---</span>
 </span><span id="__span-38-22"><a id="__codelineno-38-22" name="__codelineno-38-22" href="#__codelineno-38-22"></a><span class="c1"># 3. StatefulSet: PostgreSQL</span>
 </span><span id="__span-38-23"><a id="__codelineno-38-23" name="__codelineno-38-23" href="#__codelineno-38-23"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -4826,7 +5010,7 @@
 </span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-ingress</span>
 </span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/ssl-redirect</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/ssl-redirect</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-39-14"><a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
 </span><span id="__span-39-15"><a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span>
@@ -4895,7 +5079,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Released 상태의 PV 재사용</p>
 <p><code>Retain</code> 정책으로 <code>Released</code> 상태가 된 PV는 바로 재사용할 수 없습니다. PV의 <code>spec.claimRef</code>를 제거해야 다시 <code>Available</code> 상태로 전환됩니다.
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>pv<span class="w"> </span>my-pv<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot;:{&quot;claimRef&quot;: null}}&#39;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>pv<span class="w"> </span>my-pv<span class="w"> </span>-p<span class="w"> </span><span class="s1">'{"spec":{"claimRef": null}}'</span>
 </span></code></pre></div></p>
 </div>
 <h3 id="pv_1">PV 상태 전이<a class="headerlink" href="#pv_1" title="Permanent link">&para;</a></h3>
@@ -5002,7 +5186,7 @@
 </span><span id="__span-45-20"><a id="__codelineno-45-20" name="__codelineno-45-20" href="#__codelineno-45-20"></a><span class="c1"># Secret 관리</span>
 </span><span id="__span-45-21"><a id="__codelineno-45-21" name="__codelineno-45-21" href="#__codelineno-45-21"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w">                      </span><span class="c1"># Secret 목록</span>
 </span><span id="__span-45-22"><a id="__codelineno-45-22" name="__codelineno-45-22" href="#__codelineno-45-22"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>secret<span class="w"> </span>&lt;secret-name&gt;<span class="w">   </span><span class="c1"># Secret 상세 (값은 숨김)</span>
-</span><span id="__span-45-23"><a id="__codelineno-45-23" name="__codelineno-45-23" href="#__codelineno-45-23"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>&lt;secret-name&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.data.password}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d
+</span><span id="__span-45-23"><a id="__codelineno-45-23" name="__codelineno-45-23" href="#__codelineno-45-23"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>&lt;secret-name&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.data.password}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d
 </span><span id="__span-45-24"><a id="__codelineno-45-24" name="__codelineno-45-24" href="#__codelineno-45-24"></a><span class="w">                                        </span><span class="c1"># Secret 값 디코딩 조회</span>
 </span></code></pre></div>
 <div class="admonition info">
@@ -5157,7 +5341,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       

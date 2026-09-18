@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -333,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2342,6 +2364,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2715,7 +2899,7 @@
 이 페이지에서는 한 단계 더 나아가, <strong>사용자의 모호한 질문을 역질문으로 구체화하는 시스템</strong>을 설계합니다.</p>
 <hr />
 <h2 id="1">1. 문제 — "그래서 뭘 원하는 거야?"<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>사용자: &quot;이번달 활성 사용자 알려줘&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>사용자: "이번달 활성 사용자 알려줘"
 </span></code></pre></div>
 <p>이 한 문장에 모호한 부분이 최소 4가지 있습니다:</p>
 <table>
@@ -2748,11 +2932,11 @@
 결과는 나오지만 <strong>사용자가 원한 답이 아닐 확률이 높습니다</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">모호한 채로 실행하면 생기는 일</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>사용자: &quot;이번달 활성 사용자 알려줘&quot;
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>시스템: (DAU 합산으로 해석) → &quot;4,230,000명입니다&quot;
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>사용자: &quot;아니 그게 아니라 MAU... 그리고 한국만...&quot;
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>시스템: (재실행) → &quot;312,000명입니다&quot;
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>사용자: &quot;UTC 기준이야? KST로 다시...&quot;
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>사용자: "이번달 활성 사용자 알려줘"
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>시스템: (DAU 합산으로 해석) → "4,230,000명입니다"
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>사용자: "아니 그게 아니라 MAU... 그리고 한국만..."
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>시스템: (재실행) → "312,000명입니다"
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>사용자: "UTC 기준이야? KST로 다시..."
 </span></code></pre></div>
 3번 왕복. 차라리 처음에 물어보는 게 빠릅니다.</p>
 </div>
@@ -2762,30 +2946,30 @@
 <blockquote>
 <p>LLM이 SQL을 생성하기 <strong>전에</strong>, 모호한 부분을 감지하고 역질문으로 구체화한다.</p>
 </blockquote>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>사용자: &quot;이번달 활성 사용자 알려줘&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>사용자: "이번달 활성 사용자 알려줘"
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>          ↓
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>시스템: &quot;다음을 확인할게요:
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>시스템: "다음을 확인할게요:
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        1. 기간: KST 기준 2026-04-01 ~ 2026-04-30 맞나요?
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        2. &#39;활성 사용자&#39;는 해당 월에 1회 이상 로그인한
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        2. '활성 사용자'는 해당 월에 1회 이상 로그인한
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>           유저 수(MAU)인가요?
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        3. 전체 국가 기준인가요, 특정 국가만 볼까요?&quot;
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        3. 전체 국가 기준인가요, 특정 국가만 볼까요?"
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>          ↓
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>사용자: &quot;네 맞아요, 한국만요&quot;
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>사용자: "네 맞아요, 한국만요"
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>          ↓
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>시스템: → SQL 생성 → 실행 → &quot;312,000명입니다&quot;
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>시스템: → SQL 생성 → 실행 → "312,000명입니다"
 </span></code></pre></div>
 <p>한 번의 역질문으로 3번의 재실행을 줄입니다.</p>
 <h3 id="_3">흐름도<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌────────────────────────────────────────────────────┐
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│  사용자 입력: &quot;이번달 활성 사용자 알려줘&quot;                │
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│  사용자 입력: "이번달 활성 사용자 알려줘"                │
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>└───────────────────────┬────────────────────────────┘
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>                        ↓
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>┌────────────────────────────────────────────────────┐
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│  Step 1. 의도 분석 (Intent Analysis)                  │
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│                                                      │
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│  LLM이 질문에서 추출:                                  │
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│  - 기간: &quot;이번달&quot; (모호)                               │
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│  - 메트릭: &quot;활성 사용자&quot; (모호 — DAU? MAU?)             │
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│  - 기간: "이번달" (모호)                               │
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│  - 메트릭: "활성 사용자" (모호 — DAU? MAU?)             │
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>│  - 필터: 없음 (모호 — 국가 미지정)                      │
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>│  - 결과 형태: 미지정                                   │
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>└───────────────────────┬────────────────────────────┘
@@ -2795,12 +2979,12 @@
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>│                                                      │
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>│  dbt 메타데이터와 대조:                                 │
 </span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>│                                                      │
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>│  &quot;활성 사용자&quot; → metrics.yml 검색                       │
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>│    → dau: &quot;해당 일자에 1회 이상 로그인한 유저 수&quot;         │
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>│    → mau: &quot;해당 월에 1회 이상 로그인한 유저 수&quot;          │
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>│  "활성 사용자" → metrics.yml 검색                       │
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>│    → dau: "해당 일자에 1회 이상 로그인한 유저 수"         │
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>│    → mau: "해당 월에 1회 이상 로그인한 유저 수"          │
 </span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>│    → 2개 매칭 → 모호함 감지!                            │
 </span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>│                                                      │
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>│  &quot;이번달&quot; → 기간 파라미터                               │
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>│  "이번달" → 기간 파라미터                               │
 </span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>│    → 서버 타임존 확인 필요 → 모호함 감지!                 │
 </span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>│                                                      │
 </span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>│  국가 필터 → schema.yml의 country_code                  │
@@ -2831,7 +3015,7 @@
 </span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>┌────────────────────────────────────────────────────┐
 </span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>│  Step 5. 결과 반환                                    │
 </span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a>│                                                      │
-</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>│  &quot;2026년 4월 한국 MAU는 312,000명입니다.&quot;               │
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>│  "2026년 4월 한국 MAU는 312,000명입니다."               │
 </span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a>│  (+ 사용한 조건 명시)                                  │
 </span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a>└────────────────────────────────────────────────────┘
 </span></code></pre></div>
@@ -2876,49 +3060,49 @@
 </tbody>
 </table>
 <h3 id="_5">메트릭 매칭 예시<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># dbt metrics.yml — &quot;매출&quot; 관련 메트릭이 3개</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># dbt metrics.yml — "매출" 관련 메트릭이 3개</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">metrics</span><span class="p">:</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gross_revenue</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;총</span><span class="nv"> </span><span class="s">매출</span><span class="nv"> </span><span class="s">(Gross)&quot;</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;환불/수수료</span><span class="nv"> </span><span class="s">차감</span><span class="nv"> </span><span class="s">전</span><span class="nv"> </span><span class="s">총</span><span class="nv"> </span><span class="s">결제액&quot;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">"총</span><span class="nv"> </span><span class="s">매출</span><span class="nv"> </span><span class="s">(Gross)"</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"환불/수수료</span><span class="nv"> </span><span class="s">차감</span><span class="nv"> </span><span class="s">전</span><span class="nv"> </span><span class="s">총</span><span class="nv"> </span><span class="s">결제액"</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">net_revenue</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;순</span><span class="nv"> </span><span class="s">매출</span><span class="nv"> </span><span class="s">(Net)&quot;</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;결제액</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">환불</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">수수료.</span><span class="nv"> </span><span class="s">재무</span><span class="nv"> </span><span class="s">보고</span><span class="nv"> </span><span class="s">기준.&quot;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">"순</span><span class="nv"> </span><span class="s">매출</span><span class="nv"> </span><span class="s">(Net)"</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"결제액</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">환불</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">수수료.</span><span class="nv"> </span><span class="s">재무</span><span class="nv"> </span><span class="s">보고</span><span class="nv"> </span><span class="s">기준."</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arpu</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ARPU&quot;</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;유저당</span><span class="nv"> </span><span class="s">평균</span><span class="nv"> </span><span class="s">매출&quot;</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">"ARPU"</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"유저당</span><span class="nv"> </span><span class="s">평균</span><span class="nv"> </span><span class="s">매출"</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>사용자: &quot;이번달 매출 알려줘&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>사용자: "이번달 매출 알려줘"
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>시스템 내부:
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  &quot;매출&quot; → VectorDB 검색 → 3개 메트릭 매칭
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  "매출" → VectorDB 검색 → 3개 메트릭 매칭
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  → 모호함 감지!
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>역질문:
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  &quot;&#39;매출&#39;에 대해 다음 중 어떤 기준인가요?
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  "'매출'에 대해 다음 중 어떤 기준인가요?
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>   1. 총 매출 (gross_revenue) — 환불/수수료 차감 전
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>   2. 순 매출 (net_revenue) — 재무 보고 기준
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>   3. ARPU — 유저당 평균 매출&quot;
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>   3. ARPU — 유저당 평균 매출"
 </span></code></pre></div>
 <h3 id="_6">모호하지 않으면 바로 실행<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># metrics.yml — &quot;신규 가입자&quot;는 1개만 정의</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># metrics.yml — "신규 가입자"는 1개만 정의</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">metrics</span><span class="p">:</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new_signups</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;신규</span><span class="nv"> </span><span class="s">가입자&quot;</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;해당</span><span class="nv"> </span><span class="s">일자에</span><span class="nv"> </span><span class="s">가입</span><span class="nv"> </span><span class="s">완료한</span><span class="nv"> </span><span class="s">유저</span><span class="nv"> </span><span class="s">수&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">"신규</span><span class="nv"> </span><span class="s">가입자"</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"해당</span><span class="nv"> </span><span class="s">일자에</span><span class="nv"> </span><span class="s">가입</span><span class="nv"> </span><span class="s">완료한</span><span class="nv"> </span><span class="s">유저</span><span class="nv"> </span><span class="s">수"</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>사용자: &quot;어제 신규 가입자 몇 명이야?&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>사용자: "어제 신규 가입자 몇 명이야?"
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>시스템 내부:
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  &quot;신규 가입자&quot; → 1개 매칭 (new_signups)
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  &quot;어제&quot; → 명확한 날짜 (2026-04-11)
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  "신규 가입자" → 1개 매칭 (new_signups)
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  "어제" → 명확한 날짜 (2026-04-11)
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  국가 필터 → 이 메트릭은 국가별 분리 없음
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  → 모호함 없음!
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>→ 역질문 없이 바로 SQL 생성 &amp; 실행
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>→ &quot;어제(4/11) 신규 가입자는 1,847명입니다.&quot;
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>→ "어제(4/11) 신규 가입자는 1,847명입니다."
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">핵심 원칙</p>
@@ -2930,42 +3114,42 @@
 <h3 id="default-suggestion">기본값 제안 (Default Suggestion)<a class="headerlink" href="#default-suggestion" title="Permanent link">&para;</a></h3>
 <p>열린 질문보다 <strong>기본값을 제안하고 확인받는</strong> 방식이 사용자 경험에 좋습니다.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a># 나쁜 역질문 (열린 질문)
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&quot;기간을 지정해주세요.&quot;
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>&quot;어떤 메트릭을 원하시나요?&quot;
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>"기간을 지정해주세요."
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>"어떤 메트릭을 원하시나요?"
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a># 좋은 역질문 (기본값 제안)
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>&quot;기간: KST 기준 2026-04-01 ~ 2026-04-30 맞나요?&quot;
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>&quot;&#39;활성 사용자&#39;는 MAU(월간 로그인 유저 수) 기준이 맞나요?&quot;
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>"기간: KST 기준 2026-04-01 ~ 2026-04-30 맞나요?"
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>"'활성 사용자'는 MAU(월간 로그인 유저 수) 기준이 맞나요?"
 </span></code></pre></div>
 <h3 id="_7">한 번에 모아서 질문<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>모호한 점이 여러 개면 <strong>한 번에 모아서</strong> 질문합니다.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># 나쁜 패턴 (핑퐁)
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>시스템: &quot;기간이 언제인가요?&quot;
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>사용자: &quot;이번달&quot;
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>시스템: &quot;국가는요?&quot;
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>사용자: &quot;한국&quot;
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>시스템: &quot;메트릭은요?&quot;
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>사용자: &quot;...&quot;  ← 이쯤 되면 귀찮음
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>시스템: "기간이 언제인가요?"
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>사용자: "이번달"
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>시스템: "국가는요?"
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>사용자: "한국"
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>시스템: "메트릭은요?"
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>사용자: "..."  ← 이쯤 되면 귀찮음
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a># 좋은 패턴 (한 번에)
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>시스템: &quot;다음을 확인할게요:
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>시스템: "다음을 확인할게요:
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        1. 기간: KST 기준 2026-04-01 ~ 2026-04-30 (맞나요?)
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        2. 메트릭: MAU — 월간 1회 이상 로그인 유저 수 (맞나요?)
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        3. 국가: 전체 (특정 국가만 볼까요?)
 </span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>        맞으면 &#39;확인&#39;, 수정할 부분이 있으면 알려주세요.&quot;
-</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>사용자: &quot;한국만요&quot;  ← 한 번에 끝
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>        맞으면 '확인', 수정할 부분이 있으면 알려주세요."
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>사용자: "한국만요"  ← 한 번에 끝
 </span></code></pre></div>
 <h3 id="_8">학습하는 역질문<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>같은 사용자가 반복적으로 같은 조건을 지정하면, <strong>다음부터 기본값으로 적용</strong>합니다.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a># 첫 번째 질의
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>사용자: &quot;이번달 매출&quot;
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>시스템: &quot;국가는 전체인가요?&quot;
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>사용자: &quot;한국만&quot;
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>사용자: "이번달 매출"
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>시스템: "국가는 전체인가요?"
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>사용자: "한국만"
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a># 두 번째 질의 (학습된 기본값 적용)
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>사용자: &quot;지난달 매출&quot;
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>시스템: &quot;지난달(3월) 한국 순매출 기준으로 조회할까요?&quot;
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>사용자: "지난달 매출"
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>시스템: "지난달(3월) 한국 순매출 기준으로 조회할까요?"
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        ← 이전 선택을 기본값으로 제안
 </span></code></pre></div>
 <hr />
@@ -2974,14 +3158,14 @@
 <p>기존 <a href="../09-semantic-layer-mcp/">MCP 서버</a>에 역질문 기능을 추가합니다.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">analyze_question</span><span class="p">(</span><span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;사용자의 자연어 질문을 분석하고, 모호한 부분을 식별합니다.</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="sd">"""사용자의 자연어 질문을 분석하고, 모호한 부분을 식별합니다.</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="sd">    반환값에 clarifications가 있으면 사용자에게 역질문이 필요하고,</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="sd">    없으면 바로 SQL을 생성해도 됩니다.</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="sd">    Args:</span>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="sd">        question: 사용자의 자연어 질문</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="sd">    """</span>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="c1"># 1. 질문에서 의도 추출</span>
 </span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="n">intent</span> <span class="o">=</span> <span class="n">extract_intent</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>  <span class="c1"># 메트릭, 기간, 필터 등</span>
 </span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
@@ -2990,17 +3174,17 @@
 </span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
 </span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="c1"># 3. 결과 반환</span>
 </span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>    <span class="k">return</span> <span class="p">{</span>
-</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>        <span class="s2">&quot;intent&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>            <span class="s2">&quot;metrics&quot;</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">metrics</span><span class="p">,</span>       <span class="c1"># [&quot;활성 사용자&quot;]</span>
-</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>            <span class="s2">&quot;time_range&quot;</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">time_range</span><span class="p">,</span>  <span class="c1"># &quot;이번달&quot;</span>
-</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>            <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span>        <span class="c1"># []</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>        <span class="s2">"intent"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>            <span class="s2">"metrics"</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">metrics</span><span class="p">,</span>       <span class="c1"># ["활성 사용자"]</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>            <span class="s2">"time_range"</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">time_range</span><span class="p">,</span>  <span class="c1"># "이번달"</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>            <span class="s2">"filters"</span><span class="p">:</span> <span class="n">intent</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span>        <span class="c1"># []</span>
 </span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>        <span class="p">},</span>
-</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>        <span class="s2">&quot;clarifications&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>        <span class="s2">"clarifications"</span><span class="p">:</span> <span class="p">[</span>
 </span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>            <span class="p">{</span>
-</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>                <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">field</span><span class="p">,</span>
-</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>                <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span>
-</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>                <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
-</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>                <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">default</span><span class="p">,</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>                <span class="s2">"field"</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">field</span><span class="p">,</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>                <span class="s2">"reason"</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>                <span class="s2">"options"</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>                <span class="s2">"default"</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">default</span><span class="p">,</span>
 </span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>            <span class="p">}</span>
 </span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ambiguities</span>
 </span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>        <span class="p">],</span>
@@ -3012,16 +3196,16 @@
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">resolved_params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;구체화된 파라미터로 SQL을 생성합니다.</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="sd">"""구체화된 파라미터로 SQL을 생성합니다.</span>
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="sd">    analyze_question의 역질문이 해소된 후 호출합니다.</span>
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
 </span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="sd">    Args:</span>
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="sd">        question: 원래 자연어 질문</span>
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="sd">        resolved_params: 구체화된 파라미터</span>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="sd">            예: {&quot;metric&quot;: &quot;mau&quot;, &quot;time_range&quot;: &quot;2026-04-01~2026-04-30&quot;,</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="sd">                 &quot;country&quot;: &quot;KR&quot;, &quot;granularity&quot;: &quot;total&quot;}</span>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="sd">            예: {"metric": "mau", "time_range": "2026-04-01~2026-04-30",</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="sd">                 "country": "KR", "granularity": "total"}</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="sd">    """</span>
 </span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="c1"># 1. VectorDB에서 유사 쿼리 검색 (few-shot)</span>
 </span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>    <span class="n">similar</span> <span class="o">=</span> <span class="n">find_similar_queries</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>
@@ -3029,7 +3213,7 @@
 </span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>    <span class="n">schema</span> <span class="o">=</span> <span class="n">find_relevant_schema</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
 </span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>
 </span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>    <span class="c1"># 3. 메트릭 정의 조회</span>
-</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>    <span class="n">metric_def</span> <span class="o">=</span> <span class="n">get_metric_definition</span><span class="p">(</span><span class="n">resolved_params</span><span class="p">[</span><span class="s2">&quot;metric&quot;</span><span class="p">])</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>    <span class="n">metric_def</span> <span class="o">=</span> <span class="n">get_metric_definition</span><span class="p">(</span><span class="n">resolved_params</span><span class="p">[</span><span class="s2">"metric"</span><span class="p">])</span>
 </span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>
 </span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>    <span class="c1"># 4. LLM에게 SQL 생성 요청 (few-shot + 스키마 + 메트릭 + 파라미터)</span>
 </span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>    <span class="n">sql</span> <span class="o">=</span> <span class="n">llm_generate_sql</span><span class="p">(</span>
@@ -3044,37 +3228,37 @@
 </span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>    <span class="n">validation</span> <span class="o">=</span> <span class="n">validate_sql</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
 </span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>
 </span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>    <span class="k">return</span> <span class="p">{</span>
-</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>        <span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="n">sql</span><span class="p">,</span>
-</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>        <span class="s2">&quot;validation&quot;</span><span class="p">:</span> <span class="n">validation</span><span class="p">,</span>
-</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>        <span class="s2">&quot;used_metric&quot;</span><span class="p">:</span> <span class="n">metric_def</span><span class="p">,</span>
-</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>        <span class="s2">&quot;used_tables&quot;</span><span class="p">:</span> <span class="n">extract_tables</span><span class="p">(</span><span class="n">sql</span><span class="p">),</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>        <span class="s2">"sql"</span><span class="p">:</span> <span class="n">sql</span><span class="p">,</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>        <span class="s2">"validation"</span><span class="p">:</span> <span class="n">validation</span><span class="p">,</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>        <span class="s2">"used_metric"</span><span class="p">:</span> <span class="n">metric_def</span><span class="p">,</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>        <span class="s2">"used_tables"</span><span class="p">:</span> <span class="n">extract_tables</span><span class="p">(</span><span class="n">sql</span><span class="p">),</span>
 </span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>    <span class="p">}</span>
 </span></code></pre></div>
 <h3 id="tool_1">Tool 호출 흐름<a class="headerlink" href="#tool_1" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>LLM Agent의 동작:
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>1. 사용자: &quot;이번달 활성 사용자 알려줘&quot;
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>1. 사용자: "이번달 활성 사용자 알려줘"
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>2. LLM → analyze_question(&quot;이번달 활성 사용자 알려줘&quot;)
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>2. LLM → analyze_question("이번달 활성 사용자 알려줘")
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>   응답: {
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>     &quot;intent&quot;: {&quot;metrics&quot;: [&quot;활성 사용자&quot;], &quot;time_range&quot;: &quot;이번달&quot;},
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>     &quot;clarifications&quot;: [
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>       {&quot;field&quot;: &quot;metric&quot;, &quot;options&quot;: [&quot;dau&quot;, &quot;mau&quot;], &quot;default&quot;: &quot;mau&quot;},
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>       {&quot;field&quot;: &quot;time_range&quot;, &quot;default&quot;: &quot;2026-04-01~2026-04-30&quot;},
-</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>       {&quot;field&quot;: &quot;country&quot;, &quot;options&quot;: [&quot;전체&quot;,&quot;KR&quot;,&quot;JP&quot;,&quot;US&quot;,&quot;TW&quot;]}
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>     "intent": {"metrics": ["활성 사용자"], "time_range": "이번달"},
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>     "clarifications": [
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>       {"field": "metric", "options": ["dau", "mau"], "default": "mau"},
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>       {"field": "time_range", "default": "2026-04-01~2026-04-30"},
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>       {"field": "country", "options": ["전체","KR","JP","US","TW"]}
 </span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>     ]
 </span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>   }
 </span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
 </span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>3. LLM → 사용자에게 역질문 (clarifications 기반)
 </span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
-</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>4. 사용자: &quot;MAU 맞고, 한국만&quot;
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>4. 사용자: "MAU 맞고, 한국만"
 </span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>
 </span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>5. LLM → generate_sql(
-</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>     question=&quot;이번달 활성 사용자 알려줘&quot;,
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>     question="이번달 활성 사용자 알려줘",
 </span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>     resolved_params={
-</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>       &quot;metric&quot;: &quot;mau&quot;,
-</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>       &quot;time_range&quot;: &quot;2026-04-01~2026-04-30&quot;,
-</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>       &quot;country&quot;: &quot;KR&quot;,
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>       "metric": "mau",
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>       "time_range": "2026-04-01~2026-04-30",
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>       "country": "KR",
 </span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>     }
 </span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>   )
 </span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>
@@ -3166,7 +3350,7 @@
 </span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>  경로 B: Superset 연동
 </span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>    → Superset SQL Lab API 호출
 </span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>      POST /api/v1/sqllab/execute/
-</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>      { &quot;database_id&quot;: 1, &quot;sql&quot;: &quot;SELECT ...&quot; }
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>      { "database_id": 1, "sql": "SELECT ..." }
 </span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>    → 결과를 Superset 차트로 렌더링
 </span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>    → 또는 Superset 대시보드 링크 생성
 </span></code></pre></div>
@@ -3388,7 +3572,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       

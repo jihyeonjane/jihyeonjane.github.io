@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -333,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2151,6 +2173,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2334,22 +2518,22 @@
 <p>이번 챕터에서는 <strong>SQLite DB를 조회하는 MCP 서버</strong>를 구축합니다.
 "자연어로 DB를 조회한다"는 실전 시나리오를 직접 체험합니다.</p>
 <h2 id="_1">목표<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>사용자: &quot;최근 주문 5건 보여줘&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>사용자: "최근 주문 5건 보여줘"
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Claude: → query_orders Tool 호출 → DB 조회 → 결과 반환
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        &quot;최근 주문 5건입니다:
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        "최근 주문 5건입니다:
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>         1. #1001 - 노트북 (₩1,200,000)
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>         2. #1002 - 키보드 (₩89,000)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>         ...&quot;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>         ..."
 </span></code></pre></div>
 <h2 id="_2">사전 준비<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="db">샘플 DB 생성<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># setup_db.py — 한 번만 실행</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;shop.db&quot;</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"shop.db"</span><span class="p">)</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s2">    CREATE TABLE IF NOT EXISTS products (</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s2">        id INTEGER PRIMARY KEY,</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s2">        name TEXT NOT NULL,</span>
@@ -2357,41 +2541,41 @@
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s2">        category TEXT NOT NULL,</span>
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s2">        stock INTEGER DEFAULT 0</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s2">    )</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s2">"""</span><span class="p">)</span>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s2">    CREATE TABLE IF NOT EXISTS orders (</span>
 </span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s2">        id INTEGER PRIMARY KEY,</span>
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s2">        product_id INTEGER REFERENCES products(id),</span>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s2">        quantity INTEGER NOT NULL,</span>
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s2">        order_date TEXT NOT NULL,</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s2">        status TEXT DEFAULT &#39;pending&#39;</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s2">        status TEXT DEFAULT 'pending'</span>
 </span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s2">    )</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s2">"""</span><span class="p">)</span>
 </span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
 </span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="c1"># 샘플 데이터</span>
 </span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="n">products</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;노트북&quot;</span><span class="p">,</span> <span class="mi">1200000</span><span class="p">,</span> <span class="s2">&quot;전자기기&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;무선 키보드&quot;</span><span class="p">,</span> <span class="mi">89000</span><span class="p">,</span> <span class="s2">&quot;주변기기&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;모니터 27인치&quot;</span><span class="p">,</span> <span class="mi">350000</span><span class="p">,</span> <span class="s2">&quot;전자기기&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
-</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;USB-C 허브&quot;</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="s2">&quot;주변기기&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
-</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;마우스패드&quot;</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="s2">&quot;주변기기&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"노트북"</span><span class="p">,</span> <span class="mi">1200000</span><span class="p">,</span> <span class="s2">"전자기기"</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"무선 키보드"</span><span class="p">,</span> <span class="mi">89000</span><span class="p">,</span> <span class="s2">"주변기기"</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">"모니터 27인치"</span><span class="p">,</span> <span class="mi">350000</span><span class="p">,</span> <span class="s2">"전자기기"</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">"USB-C 허브"</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="s2">"주변기기"</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"마우스패드"</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="s2">"주변기기"</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
 </span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="p">]</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT OR IGNORE INTO products VALUES (?,?,?,?,?)&quot;</span><span class="p">,</span> <span class="n">products</span><span class="p">)</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">"INSERT OR IGNORE INTO products VALUES (?,?,?,?,?)"</span><span class="p">,</span> <span class="n">products</span><span class="p">)</span>
 </span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>
 </span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="n">orders</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>    <span class="p">(</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;2025-01-15&quot;</span><span class="p">,</span> <span class="s2">&quot;delivered&quot;</span><span class="p">),</span>
-</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>    <span class="p">(</span><span class="mi">1002</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;2025-01-16&quot;</span><span class="p">,</span> <span class="s2">&quot;delivered&quot;</span><span class="p">),</span>
-</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>    <span class="p">(</span><span class="mi">1003</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;2025-01-17&quot;</span><span class="p">,</span> <span class="s2">&quot;shipped&quot;</span><span class="p">),</span>
-</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>    <span class="p">(</span><span class="mi">1004</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;2025-01-18&quot;</span><span class="p">,</span> <span class="s2">&quot;pending&quot;</span><span class="p">),</span>
-</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>    <span class="p">(</span><span class="mi">1005</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;2025-01-19&quot;</span><span class="p">,</span> <span class="s2">&quot;pending&quot;</span><span class="p">),</span>
-</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>    <span class="p">(</span><span class="mi">1006</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;2025-01-20&quot;</span><span class="p">,</span> <span class="s2">&quot;pending&quot;</span><span class="p">),</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>    <span class="p">(</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"2025-01-15"</span><span class="p">,</span> <span class="s2">"delivered"</span><span class="p">),</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>    <span class="p">(</span><span class="mi">1002</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"2025-01-16"</span><span class="p">,</span> <span class="s2">"delivered"</span><span class="p">),</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>    <span class="p">(</span><span class="mi">1003</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"2025-01-17"</span><span class="p">,</span> <span class="s2">"shipped"</span><span class="p">),</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>    <span class="p">(</span><span class="mi">1004</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"2025-01-18"</span><span class="p">,</span> <span class="s2">"pending"</span><span class="p">),</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>    <span class="p">(</span><span class="mi">1005</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"2025-01-19"</span><span class="p">,</span> <span class="s2">"pending"</span><span class="p">),</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>    <span class="p">(</span><span class="mi">1006</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"2025-01-20"</span><span class="p">,</span> <span class="s2">"pending"</span><span class="p">),</span>
 </span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="p">]</span>
-</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT OR IGNORE INTO orders VALUES (?,?,?,?,?)&quot;</span><span class="p">,</span> <span class="n">orders</span><span class="p">)</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">"INSERT OR IGNORE INTO orders VALUES (?,?,?,?,?)"</span><span class="p">,</span> <span class="n">orders</span><span class="p">)</span>
 </span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>
 </span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;shop.db 생성 완료!&quot;</span><span class="p">)</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"shop.db 생성 완료!"</span><span class="p">)</span>
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>setup_db.py
 </span></code></pre></div>
@@ -2400,13 +2584,13 @@
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mcp.server.fastmcp</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastMCP</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">DB_PATH</span> <span class="o">=</span> <span class="s2">&quot;shop.db&quot;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">DB_PATH</span> <span class="o">=</span> <span class="s2">"shop.db"</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">mcp</span> <span class="o">=</span> <span class="n">FastMCP</span><span class="p">(</span><span class="s2">&quot;Shop DB Server&quot;</span><span class="p">)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">mcp</span> <span class="o">=</span> <span class="n">FastMCP</span><span class="p">(</span><span class="s2">"Shop DB Server"</span><span class="p">)</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_conn</span><span class="p">():</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;DB 연결을 반환합니다.&quot;&quot;&quot;</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="sd">"""DB 연결을 반환합니다."""</span>
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">DB_PATH</span><span class="p">)</span>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
 </span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="k">return</span> <span class="n">conn</span>
@@ -2415,155 +2599,155 @@
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># ── Tools ──────────────────────────────────────</span>
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
 </span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">query_products</span><span class="p">(</span><span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">min_stock</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;상품을 조회합니다. 카테고리와 최소 재고로 필터링할 수 있습니다.&quot;&quot;&quot;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="k">def</span><span class="w"> </span><span class="nf">query_products</span><span class="p">(</span><span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">min_stock</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="sd">"""상품을 조회합니다. 카테고리와 최소 재고로 필터링할 수 있습니다."""</span>
 </span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_conn</span><span class="p">()</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM products WHERE stock &gt;= ?&quot;</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="n">query</span> <span class="o">=</span> <span class="s2">"SELECT * FROM products WHERE stock &gt;= ?"</span>
 </span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="n">params</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">min_stock</span><span class="p">]</span>
 </span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
 </span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    <span class="k">if</span> <span class="n">category</span><span class="p">:</span>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>        <span class="n">query</span> <span class="o">+=</span> <span class="s2">&quot; AND category = ?&quot;</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>        <span class="n">query</span> <span class="o">+=</span> <span class="s2">" AND category = ?"</span>
 </span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>        <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
 </span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
-</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    <span class="n">query</span> <span class="o">+=</span> <span class="s2">&quot; ORDER BY name&quot;</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    <span class="n">query</span> <span class="o">+=</span> <span class="s2">" ORDER BY name"</span>
 </span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>    <span class="n">rows</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
 </span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">rows</span><span class="p">:</span>
-</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>        <span class="k">return</span> <span class="s2">&quot;조건에 맞는 상품이 없습니다.&quot;</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>        <span class="k">return</span> <span class="s2">"조건에 맞는 상품이 없습니다."</span>
 </span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>
 </span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
 </span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>            <span class="sa">f</span><span class="s2">&quot;- [</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | &quot;</span>
-</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>            <span class="sa">f</span><span class="s2">&quot;₩</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> | &quot;</span>
-</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>            <span class="sa">f</span><span class="s2">&quot;카테고리: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | &quot;</span>
-</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>            <span class="sa">f</span><span class="s2">&quot;재고: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;stock&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">개&quot;</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>            <span class="sa">f</span><span class="s2">"- [</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | "</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>            <span class="sa">f</span><span class="s2">"₩</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'price'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> | "</span>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>            <span class="sa">f</span><span class="s2">"카테고리: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'category'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | "</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>            <span class="sa">f</span><span class="s2">"재고: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'stock'</span><span class="p">]</span><span class="si">}</span><span class="s2">개"</span>
 </span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>        <span class="p">)</span>
-</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;상품 목록 (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2">건):</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"상품 목록 (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2">건):</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 </span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>
 </span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>
 </span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
-</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="k">def</span><span class="w"> </span><span class="nf">query_orders</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;최근 주문을 조회합니다. 건수와 상태로 필터링할 수 있습니다.&quot;&quot;&quot;</span>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="k">def</span><span class="w"> </span><span class="nf">query_orders</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">    </span><span class="sd">"""최근 주문을 조회합니다. 건수와 상태로 필터링할 수 있습니다."""</span>
 </span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_conn</span><span class="p">()</span>
-</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>    <span class="n">query</span> <span class="o">=</span> <span class="s2">"""</span>
 </span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="s2">        SELECT o.id as order_id, p.name, o.quantity,</span>
 </span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="s2">               o.order_date, o.status,</span>
 </span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="s2">               (p.price * o.quantity) as total</span>
 </span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="s2">        FROM orders o</span>
 </span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="s2">        JOIN products p ON o.product_id = p.id</span>
-</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="s2">    &quot;&quot;&quot;</span>
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="s2">    """</span>
 </span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>    <span class="n">params</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>
 </span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>    <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
-</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a>        <span class="n">query</span> <span class="o">+=</span> <span class="s2">&quot; WHERE o.status = ?&quot;</span>
+</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a>        <span class="n">query</span> <span class="o">+=</span> <span class="s2">" WHERE o.status = ?"</span>
 </span><span id="__span-3-63"><a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a>        <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
 </span><span id="__span-3-64"><a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a>
-</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a>    <span class="n">query</span> <span class="o">+=</span> <span class="s2">&quot; ORDER BY o.order_date DESC LIMIT ?&quot;</span>
+</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a>    <span class="n">query</span> <span class="o">+=</span> <span class="s2">" ORDER BY o.order_date DESC LIMIT ?"</span>
 </span><span id="__span-3-66"><a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a>    <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
 </span><span id="__span-3-67"><a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a>
 </span><span id="__span-3-68"><a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a>    <span class="n">rows</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </span><span id="__span-3-69"><a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="__span-3-70"><a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a>
 </span><span id="__span-3-71"><a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">rows</span><span class="p">:</span>
-</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a>        <span class="k">return</span> <span class="s2">&quot;조건에 맞는 주문이 없습니다.&quot;</span>
+</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a>        <span class="k">return</span> <span class="s2">"조건에 맞는 주문이 없습니다."</span>
 </span><span id="__span-3-73"><a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a>
 </span><span id="__span-3-74"><a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a>    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-3-75"><a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a>    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
 </span><span id="__span-3-76"><a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-</span><span id="__span-3-77"><a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a>            <span class="sa">f</span><span class="s2">&quot;- #</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;order_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> x</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;quantity&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | &quot;</span>
-</span><span id="__span-3-78"><a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a>            <span class="sa">f</span><span class="s2">&quot;₩</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;order_date&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-3-77"><a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a>            <span class="sa">f</span><span class="s2">"- #</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'order_id'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> x</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'quantity'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | "</span>
+</span><span id="__span-3-78"><a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a>            <span class="sa">f</span><span class="s2">"₩</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'total'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'order_date'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
 </span><span id="__span-3-79"><a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a>        <span class="p">)</span>
-</span><span id="__span-3-80"><a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;주문 목록 (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2">건):</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</span><span id="__span-3-80"><a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"주문 목록 (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2">건):</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 </span><span id="__span-3-81"><a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a>
 </span><span id="__span-3-82"><a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a>
 </span><span id="__span-3-83"><a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">tool</span><span class="p">()</span>
 </span><span id="__span-3-84"><a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_sales_summary</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-3-85"><a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;매출 요약 정보를 반환합니다.&quot;&quot;&quot;</span>
+</span><span id="__span-3-85"><a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="w">    </span><span class="sd">"""매출 요약 정보를 반환합니다."""</span>
 </span><span id="__span-3-86"><a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a>    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_conn</span><span class="p">()</span>
 </span><span id="__span-3-87"><a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a>
-</span><span id="__span-3-88"><a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a>    <span class="n">total</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-3-88"><a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a>    <span class="n">total</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
 </span><span id="__span-3-89"><a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a><span class="s2">        SELECT COUNT(*) as cnt,</span>
 </span><span id="__span-3-90"><a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a><span class="s2">               SUM(p.price * o.quantity) as revenue</span>
 </span><span id="__span-3-91"><a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a><span class="s2">        FROM orders o JOIN products p ON o.product_id = p.id</span>
-</span><span id="__span-3-92"><a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a><span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span><span id="__span-3-92"><a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a><span class="s2">    """</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 </span><span id="__span-3-93"><a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a>
-</span><span id="__span-3-94"><a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a>    <span class="n">by_status</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-3-94"><a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a>    <span class="n">by_status</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
 </span><span id="__span-3-95"><a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a><span class="s2">        SELECT status, COUNT(*) as cnt</span>
 </span><span id="__span-3-96"><a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a><span class="s2">        FROM orders GROUP BY status</span>
-</span><span id="__span-3-97"><a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a><span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="__span-3-97"><a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a><span class="s2">    """</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </span><span id="__span-3-98"><a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a>
-</span><span id="__span-3-99"><a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a>    <span class="n">by_category</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-3-99"><a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a>    <span class="n">by_category</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
 </span><span id="__span-3-100"><a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a><span class="s2">        SELECT p.category,</span>
 </span><span id="__span-3-101"><a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a><span class="s2">               COUNT(*) as cnt,</span>
 </span><span id="__span-3-102"><a id="__codelineno-3-102" name="__codelineno-3-102" href="#__codelineno-3-102"></a><span class="s2">               SUM(p.price * o.quantity) as revenue</span>
 </span><span id="__span-3-103"><a id="__codelineno-3-103" name="__codelineno-3-103" href="#__codelineno-3-103"></a><span class="s2">        FROM orders o JOIN products p ON o.product_id = p.id</span>
 </span><span id="__span-3-104"><a id="__codelineno-3-104" name="__codelineno-3-104" href="#__codelineno-3-104"></a><span class="s2">        GROUP BY p.category</span>
-</span><span id="__span-3-105"><a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a><span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="__span-3-105"><a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a><span class="s2">    """</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </span><span id="__span-3-106"><a id="__codelineno-3-106" name="__codelineno-3-106" href="#__codelineno-3-106"></a>
 </span><span id="__span-3-107"><a id="__codelineno-3-107" name="__codelineno-3-107" href="#__codelineno-3-107"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="__span-3-108"><a id="__codelineno-3-108" name="__codelineno-3-108" href="#__codelineno-3-108"></a>
 </span><span id="__span-3-109"><a id="__codelineno-3-109" name="__codelineno-3-109" href="#__codelineno-3-109"></a>    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-3-110"><a id="__codelineno-3-110" name="__codelineno-3-110" href="#__codelineno-3-110"></a>        <span class="sa">f</span><span class="s2">&quot;=== 매출 요약 ===&quot;</span><span class="p">,</span>
-</span><span id="__span-3-111"><a id="__codelineno-3-111" name="__codelineno-3-111" href="#__codelineno-3-111"></a>        <span class="sa">f</span><span class="s2">&quot;총 주문: </span><span class="si">{</span><span class="n">total</span><span class="p">[</span><span class="s1">&#39;cnt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">건&quot;</span><span class="p">,</span>
-</span><span id="__span-3-112"><a id="__codelineno-3-112" name="__codelineno-3-112" href="#__codelineno-3-112"></a>        <span class="sa">f</span><span class="s2">&quot;총 매출: ₩</span><span class="si">{</span><span class="n">total</span><span class="p">[</span><span class="s1">&#39;revenue&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-</span><span id="__span-3-113"><a id="__codelineno-3-113" name="__codelineno-3-113" href="#__codelineno-3-113"></a>        <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span id="__span-3-114"><a id="__codelineno-3-114" name="__codelineno-3-114" href="#__codelineno-3-114"></a>        <span class="s2">&quot;--- 상태별 ---&quot;</span><span class="p">,</span>
+</span><span id="__span-3-110"><a id="__codelineno-3-110" name="__codelineno-3-110" href="#__codelineno-3-110"></a>        <span class="sa">f</span><span class="s2">"=== 매출 요약 ==="</span><span class="p">,</span>
+</span><span id="__span-3-111"><a id="__codelineno-3-111" name="__codelineno-3-111" href="#__codelineno-3-111"></a>        <span class="sa">f</span><span class="s2">"총 주문: </span><span class="si">{</span><span class="n">total</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span><span class="si">}</span><span class="s2">건"</span><span class="p">,</span>
+</span><span id="__span-3-112"><a id="__codelineno-3-112" name="__codelineno-3-112" href="#__codelineno-3-112"></a>        <span class="sa">f</span><span class="s2">"총 매출: ₩</span><span class="si">{</span><span class="n">total</span><span class="p">[</span><span class="s1">'revenue'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+</span><span id="__span-3-113"><a id="__codelineno-3-113" name="__codelineno-3-113" href="#__codelineno-3-113"></a>        <span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-3-114"><a id="__codelineno-3-114" name="__codelineno-3-114" href="#__codelineno-3-114"></a>        <span class="s2">"--- 상태별 ---"</span><span class="p">,</span>
 </span><span id="__span-3-115"><a id="__codelineno-3-115" name="__codelineno-3-115" href="#__codelineno-3-115"></a>    <span class="p">]</span>
 </span><span id="__span-3-116"><a id="__codelineno-3-116" name="__codelineno-3-116" href="#__codelineno-3-116"></a>    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">by_status</span><span class="p">:</span>
-</span><span id="__span-3-117"><a id="__codelineno-3-117" name="__codelineno-3-117" href="#__codelineno-3-117"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;cnt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">건&quot;</span><span class="p">)</span>
+</span><span id="__span-3-117"><a id="__codelineno-3-117" name="__codelineno-3-117" href="#__codelineno-3-117"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span><span class="si">}</span><span class="s2">건"</span><span class="p">)</span>
 </span><span id="__span-3-118"><a id="__codelineno-3-118" name="__codelineno-3-118" href="#__codelineno-3-118"></a>
-</span><span id="__span-3-119"><a id="__codelineno-3-119" name="__codelineno-3-119" href="#__codelineno-3-119"></a>    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span id="__span-3-120"><a id="__codelineno-3-120" name="__codelineno-3-120" href="#__codelineno-3-120"></a>    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--- 카테고리별 ---&quot;</span><span class="p">)</span>
+</span><span id="__span-3-119"><a id="__codelineno-3-119" name="__codelineno-3-119" href="#__codelineno-3-119"></a>    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+</span><span id="__span-3-120"><a id="__codelineno-3-120" name="__codelineno-3-120" href="#__codelineno-3-120"></a>    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"--- 카테고리별 ---"</span><span class="p">)</span>
 </span><span id="__span-3-121"><a id="__codelineno-3-121" name="__codelineno-3-121" href="#__codelineno-3-121"></a>    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">by_category</span><span class="p">:</span>
-</span><span id="__span-3-122"><a id="__codelineno-3-122" name="__codelineno-3-122" href="#__codelineno-3-122"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;cnt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">건 (₩</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;revenue&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</span><span id="__span-3-122"><a id="__codelineno-3-122" name="__codelineno-3-122" href="#__codelineno-3-122"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'category'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'cnt'</span><span class="p">]</span><span class="si">}</span><span class="s2">건 (₩</span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'revenue'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
 </span><span id="__span-3-123"><a id="__codelineno-3-123" name="__codelineno-3-123" href="#__codelineno-3-123"></a>
-</span><span id="__span-3-124"><a id="__codelineno-3-124" name="__codelineno-3-124" href="#__codelineno-3-124"></a>    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</span><span id="__span-3-124"><a id="__codelineno-3-124" name="__codelineno-3-124" href="#__codelineno-3-124"></a>    <span class="k">return</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 </span><span id="__span-3-125"><a id="__codelineno-3-125" name="__codelineno-3-125" href="#__codelineno-3-125"></a>
 </span><span id="__span-3-126"><a id="__codelineno-3-126" name="__codelineno-3-126" href="#__codelineno-3-126"></a>
 </span><span id="__span-3-127"><a id="__codelineno-3-127" name="__codelineno-3-127" href="#__codelineno-3-127"></a><span class="c1"># ── Resources ──────────────────────────────────</span>
 </span><span id="__span-3-128"><a id="__codelineno-3-128" name="__codelineno-3-128" href="#__codelineno-3-128"></a>
-</span><span id="__span-3-129"><a id="__codelineno-3-129" name="__codelineno-3-129" href="#__codelineno-3-129"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">&quot;shop://schema&quot;</span><span class="p">)</span>
+</span><span id="__span-3-129"><a id="__codelineno-3-129" name="__codelineno-3-129" href="#__codelineno-3-129"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">"shop://schema"</span><span class="p">)</span>
 </span><span id="__span-3-130"><a id="__codelineno-3-130" name="__codelineno-3-130" href="#__codelineno-3-130"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_schema</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-3-131"><a id="__codelineno-3-131" name="__codelineno-3-131" href="#__codelineno-3-131"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;DB 테이블 스키마 정보를 반환합니다.&quot;&quot;&quot;</span>
+</span><span id="__span-3-131"><a id="__codelineno-3-131" name="__codelineno-3-131" href="#__codelineno-3-131"></a><span class="w">    </span><span class="sd">"""DB 테이블 스키마 정보를 반환합니다."""</span>
 </span><span id="__span-3-132"><a id="__codelineno-3-132" name="__codelineno-3-132" href="#__codelineno-3-132"></a>    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_conn</span><span class="p">()</span>
 </span><span id="__span-3-133"><a id="__codelineno-3-133" name="__codelineno-3-133" href="#__codelineno-3-133"></a>    <span class="n">tables</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-</span><span id="__span-3-134"><a id="__codelineno-3-134" name="__codelineno-3-134" href="#__codelineno-3-134"></a>        <span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;&quot;</span>
+</span><span id="__span-3-134"><a id="__codelineno-3-134" name="__codelineno-3-134" href="#__codelineno-3-134"></a>        <span class="s2">"SELECT name FROM sqlite_master WHERE type='table'"</span>
 </span><span id="__span-3-135"><a id="__codelineno-3-135" name="__codelineno-3-135" href="#__codelineno-3-135"></a>    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </span><span id="__span-3-136"><a id="__codelineno-3-136" name="__codelineno-3-136" href="#__codelineno-3-136"></a>
-</span><span id="__span-3-137"><a id="__codelineno-3-137" name="__codelineno-3-137" href="#__codelineno-3-137"></a>    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;=== Database Schema ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">]</span>
+</span><span id="__span-3-137"><a id="__codelineno-3-137" name="__codelineno-3-137" href="#__codelineno-3-137"></a>    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"=== Database Schema ===</span><span class="se">\n</span><span class="s2">"</span><span class="p">]</span>
 </span><span id="__span-3-138"><a id="__codelineno-3-138" name="__codelineno-3-138" href="#__codelineno-3-138"></a>    <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
-</span><span id="__span-3-139"><a id="__codelineno-3-139" name="__codelineno-3-139" href="#__codelineno-3-139"></a>        <span class="n">name</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
-</span><span id="__span-3-140"><a id="__codelineno-3-140" name="__codelineno-3-140" href="#__codelineno-3-140"></a>        <span class="n">cols</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PRAGMA table_info(</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-</span><span id="__span-3-141"><a id="__codelineno-3-141" name="__codelineno-3-141" href="#__codelineno-3-141"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;## </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-3-139"><a id="__codelineno-3-139" name="__codelineno-3-139" href="#__codelineno-3-139"></a>        <span class="n">name</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+</span><span id="__span-3-140"><a id="__codelineno-3-140" name="__codelineno-3-140" href="#__codelineno-3-140"></a>        <span class="n">cols</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PRAGMA table_info(</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</span><span id="__span-3-141"><a id="__codelineno-3-141" name="__codelineno-3-141" href="#__codelineno-3-141"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"## </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-3-142"><a id="__codelineno-3-142" name="__codelineno-3-142" href="#__codelineno-3-142"></a>        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
-</span><span id="__span-3-143"><a id="__codelineno-3-143" name="__codelineno-3-143" href="#__codelineno-3-143"></a>            <span class="n">nullable</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">col</span><span class="p">[</span><span class="s2">&quot;notnull&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot; (nullable)&quot;</span>
-</span><span id="__span-3-144"><a id="__codelineno-3-144" name="__codelineno-3-144" href="#__codelineno-3-144"></a>            <span class="n">pk</span> <span class="o">=</span> <span class="s2">&quot; [PK]&quot;</span> <span class="k">if</span> <span class="n">col</span><span class="p">[</span><span class="s2">&quot;pk&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
-</span><span id="__span-3-145"><a id="__codelineno-3-145" name="__codelineno-3-145" href="#__codelineno-3-145"></a>            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">col</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">col</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}{</span><span class="n">pk</span><span class="si">}{</span><span class="n">nullable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-3-146"><a id="__codelineno-3-146" name="__codelineno-3-146" href="#__codelineno-3-146"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-3-143"><a id="__codelineno-3-143" name="__codelineno-3-143" href="#__codelineno-3-143"></a>            <span class="n">nullable</span> <span class="o">=</span> <span class="s2">""</span> <span class="k">if</span> <span class="n">col</span><span class="p">[</span><span class="s2">"notnull"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">" (nullable)"</span>
+</span><span id="__span-3-144"><a id="__codelineno-3-144" name="__codelineno-3-144" href="#__codelineno-3-144"></a>            <span class="n">pk</span> <span class="o">=</span> <span class="s2">" [PK]"</span> <span class="k">if</span> <span class="n">col</span><span class="p">[</span><span class="s2">"pk"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">""</span>
+</span><span id="__span-3-145"><a id="__codelineno-3-145" name="__codelineno-3-145" href="#__codelineno-3-145"></a>            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  - </span><span class="si">{</span><span class="n">col</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">col</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="si">}{</span><span class="n">pk</span><span class="si">}{</span><span class="n">nullable</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-3-146"><a id="__codelineno-3-146" name="__codelineno-3-146" href="#__codelineno-3-146"></a>        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
 </span><span id="__span-3-147"><a id="__codelineno-3-147" name="__codelineno-3-147" href="#__codelineno-3-147"></a>
 </span><span id="__span-3-148"><a id="__codelineno-3-148" name="__codelineno-3-148" href="#__codelineno-3-148"></a>    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="__span-3-149"><a id="__codelineno-3-149" name="__codelineno-3-149" href="#__codelineno-3-149"></a>    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</span><span id="__span-3-149"><a id="__codelineno-3-149" name="__codelineno-3-149" href="#__codelineno-3-149"></a>    <span class="k">return</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
 </span><span id="__span-3-150"><a id="__codelineno-3-150" name="__codelineno-3-150" href="#__codelineno-3-150"></a>
 </span><span id="__span-3-151"><a id="__codelineno-3-151" name="__codelineno-3-151" href="#__codelineno-3-151"></a>
 </span><span id="__span-3-152"><a id="__codelineno-3-152" name="__codelineno-3-152" href="#__codelineno-3-152"></a><span class="c1"># ── Prompts ────────────────────────────────────</span>
 </span><span id="__span-3-153"><a id="__codelineno-3-153" name="__codelineno-3-153" href="#__codelineno-3-153"></a>
 </span><span id="__span-3-154"><a id="__codelineno-3-154" name="__codelineno-3-154" href="#__codelineno-3-154"></a><span class="nd">@mcp</span><span class="o">.</span><span class="n">prompt</span><span class="p">()</span>
 </span><span id="__span-3-155"><a id="__codelineno-3-155" name="__codelineno-3-155" href="#__codelineno-3-155"></a><span class="k">def</span><span class="w"> </span><span class="nf">analyze_sales</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-3-156"><a id="__codelineno-3-156" name="__codelineno-3-156" href="#__codelineno-3-156"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;매출 데이터를 분석하는 프롬프트를 생성합니다.&quot;&quot;&quot;</span>
-</span><span id="__span-3-157"><a id="__codelineno-3-157" name="__codelineno-3-157" href="#__codelineno-3-157"></a>    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-3-156"><a id="__codelineno-3-156" name="__codelineno-3-156" href="#__codelineno-3-156"></a><span class="w">    </span><span class="sd">"""매출 데이터를 분석하는 프롬프트를 생성합니다."""</span>
+</span><span id="__span-3-157"><a id="__codelineno-3-157" name="__codelineno-3-157" href="#__codelineno-3-157"></a>    <span class="k">return</span> <span class="s2">"""</span>
 </span><span id="__span-3-158"><a id="__codelineno-3-158" name="__codelineno-3-158" href="#__codelineno-3-158"></a><span class="s2">    매출 데이터를 분석해주세요:</span>
 </span><span id="__span-3-159"><a id="__codelineno-3-159" name="__codelineno-3-159" href="#__codelineno-3-159"></a><span class="s2">    1. get_sales_summary Tool로 전체 요약을 확인하고</span>
 </span><span id="__span-3-160"><a id="__codelineno-3-160" name="__codelineno-3-160" href="#__codelineno-3-160"></a><span class="s2">    2. 카테고리별 매출 비중을 분석하고</span>
 </span><span id="__span-3-161"><a id="__codelineno-3-161" name="__codelineno-3-161" href="#__codelineno-3-161"></a><span class="s2">    3. 주문 상태별 현황을 정리하고</span>
 </span><span id="__span-3-162"><a id="__codelineno-3-162" name="__codelineno-3-162" href="#__codelineno-3-162"></a><span class="s2">    4. 개선 제안을 해주세요</span>
-</span><span id="__span-3-163"><a id="__codelineno-3-163" name="__codelineno-3-163" href="#__codelineno-3-163"></a><span class="s2">    &quot;&quot;&quot;</span>
+</span><span id="__span-3-163"><a id="__codelineno-3-163" name="__codelineno-3-163" href="#__codelineno-3-163"></a><span class="s2">    """</span>
 </span><span id="__span-3-164"><a id="__codelineno-3-164" name="__codelineno-3-164" href="#__codelineno-3-164"></a>
 </span><span id="__span-3-165"><a id="__codelineno-3-165" name="__codelineno-3-165" href="#__codelineno-3-165"></a>
 </span><span id="__span-3-166"><a id="__codelineno-3-166" name="__codelineno-3-166" href="#__codelineno-3-166"></a><span class="c1"># ── 실행 ───────────────────────────────────────</span>
 </span><span id="__span-3-167"><a id="__codelineno-3-167" name="__codelineno-3-167" href="#__codelineno-3-167"></a>
-</span><span id="__span-3-168"><a id="__codelineno-3-168" name="__codelineno-3-168" href="#__codelineno-3-168"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-3-168"><a id="__codelineno-3-168" name="__codelineno-3-168" href="#__codelineno-3-168"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 </span><span id="__span-3-169"><a id="__codelineno-3-169" name="__codelineno-3-169" href="#__codelineno-3-169"></a>    <span class="n">mcp</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span></code></pre></div>
 <h2 id="_4">프로젝트 구조<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
@@ -2579,14 +2763,14 @@
 </span></code></pre></div>
 <p>Inspector에서 테스트:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Tool: query_products
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Input: { &quot;category&quot;: &quot;전자기기&quot; }
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Input: { "category": "전자기기" }
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Output:
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  상품 목록 (2건):
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  - [1] 노트북 | ₩1,200,000 | 카테고리: 전자기기 | 재고: 15개
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  - [3] 모니터 27인치 | ₩350,000 | 카테고리: 전자기기 | 재고: 8개
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Tool: query_orders
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Input: { &quot;limit&quot;: 3, &quot;status&quot;: &quot;pending&quot; }
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Input: { "limit": 3, "status": "pending" }
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Output:
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  주문 목록 (3건):
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  - #1006 | 노트북 x1 | ₩1,200,000 | 2025-01-20 | pending
@@ -2603,24 +2787,24 @@
 </span></code></pre></div>
 <h3 id="step-2-claude-desktop">Step 2 — Claude Desktop 연동<a class="headerlink" href="#step-2-claude-desktop" title="Permanent link">&para;</a></h3>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">&quot;shop-db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uv&quot;</span><span class="p">,</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--directory&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/path/to/my-shop-mcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;server.py&quot;</span><span class="p">]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">"shop-db"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">      </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uv"</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"run"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--directory"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/path/to/my-shop-mcp"</span><span class="p">,</span><span class="w"> </span><span class="s2">"server.py"</span><span class="p">]</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="step-3">Step 3 — 자연어로 조회<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>사용자: &quot;재고가 10개 이상인 상품만 보여줘&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>사용자: "재고가 10개 이상인 상품만 보여줘"
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Claude: → query_products(min_stock=10) 호출
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        &quot;재고 10개 이상 상품 4건입니다: ...&quot;
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        "재고 10개 이상 상품 4건입니다: ..."
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>사용자: &quot;배송 중인 주문이 있어?&quot;
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Claude: → query_orders(status=&quot;shipped&quot;) 호출
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        &quot;배송 중인 주문 1건: #1003 모니터 27인치...&quot;
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>사용자: "배송 중인 주문이 있어?"
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Claude: → query_orders(status="shipped") 호출
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        "배송 중인 주문 1건: #1003 모니터 27인치..."
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>사용자: &quot;전체 매출 현황을 분석해줘&quot;
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>사용자: "전체 매출 현황을 분석해줘"
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>Claude: → get_sales_summary() 호출 → 분석 결과 정리
 </span></code></pre></div>
 <h2 id="_6">확장 아이디어<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
@@ -2823,7 +3007,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       

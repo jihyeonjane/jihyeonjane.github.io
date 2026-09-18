@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -333,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2385,6 +2407,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2810,15 +2994,15 @@
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pendulum</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">&quot;minimal_dag&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">"minimal_dag"</span><span class="p">,</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">,</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tutorial&quot;</span><span class="p">],</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">"tutorial"</span><span class="p">],</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">BashOperator</span><span class="p">(</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;echo &#39;Hello from Airflow 3&#39;&quot;</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">"hello"</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="n">bash_command</span><span class="o">=</span><span class="s2">"echo 'Hello from Airflow 3'"</span><span class="p">,</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="p">)</span>
 </span></code></pre></div>
 <p>구성 요소:</p>
@@ -2837,28 +3021,28 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <h2 id="2-dag-3">2. DAG 선언 방식 3가지<a class="headerlink" href="#2-dag-3" title="Permanent link">&para;</a></h2>
 <p>DAG를 정의하는 방법은 세 가지입니다. 기능 차이는 없고 스타일 차이입니다.</p>
 <h3 id="a-context-manager">(a) Context Manager (권장)<a class="headerlink" href="#a-context-manager" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">&quot;my_dag&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">task1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;t1&quot;</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;echo A&quot;</span><span class="p">)</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">task2</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;t2&quot;</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;echo B&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">"my_dag"</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">task1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"t1"</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">"echo A"</span><span class="p">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">task2</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"t2"</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">"echo B"</span><span class="p">)</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">task1</span> <span class="o">&gt;&gt;</span> <span class="n">task2</span>
 </span></code></pre></div>
 <p><code>with</code> 블록 안에서 생성된 Task는 자동으로 이 DAG에 속하게 됩니다. 가장 보편적인 방식.</p>
 <h3 id="b">(b) 명시적 파라미터 (예전 스타일)<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">&quot;my_dag&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">"my_dag"</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">)</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">task1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;t1&quot;</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;echo A&quot;</span><span class="p">,</span> <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">task2</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;t2&quot;</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;echo B&quot;</span><span class="p">,</span> <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">task1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"t1"</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">"echo A"</span><span class="p">,</span> <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">task2</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"t2"</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">"echo B"</span><span class="p">,</span> <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">task1</span> <span class="o">&gt;&gt;</span> <span class="n">task2</span>
 </span></code></pre></div>
 <p>모든 Task에 <code>dag=dag</code>를 넘겨야 해서 번거로움.</p>
 <h3 id="c-dag-taskflow">(c) @dag 데코레이터 (TaskFlow 스타일)<a class="headerlink" href="#c-dag-taskflow" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">dag</span><span class="p">,</span> <span class="n">task</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nd">@dag</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nd">@dag</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_dag</span><span class="p">():</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nd">@task</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"hi"</span><span class="p">)</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">hello</span><span class="p">()</span>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
@@ -2868,18 +3052,18 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <hr />
 <h2 id="3-dag">3. DAG의 핵심 파라미터<a class="headerlink" href="#3-dag" title="Permanent link">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">DAG</span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">&quot;my_dag&quot;</span><span class="p">,</span>                  <span class="c1"># 유일한 식별자</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;일간 사용자 집계&quot;</span><span class="p">,</span>     <span class="c1"># 설명</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">"my_dag"</span><span class="p">,</span>                  <span class="c1"># 유일한 식별자</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"일간 사용자 집계"</span><span class="p">,</span>     <span class="c1"># 설명</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># 언제부터 스케줄링할지</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>                    <span class="c1"># 언제 이후로 스케줄링 중단할지</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;0 9 * * *&quot;</span><span class="p">,</span>             <span class="c1"># 실행 주기</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">"0 9 * * *"</span><span class="p">,</span>             <span class="c1"># 실행 주기</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                    <span class="c1"># 과거 밀린 Run을 자동 실행할지</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">max_active_runs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                <span class="c1"># 동시에 돌 수 있는 DAG Run 수</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">max_active_tasks</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>              <span class="c1"># DAG 내 동시 실행 Task 수</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">default_args</span><span class="o">=</span><span class="p">{</span><span class="o">...</span><span class="p">},</span>               <span class="c1"># 모든 Task에 공통 적용될 기본값</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="o">...</span><span class="p">},</span>                     <span class="c1"># DAG Run 파라미터 (UI에서 수정 가능)</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;etl&quot;</span><span class="p">,</span> <span class="s2">&quot;daily&quot;</span><span class="p">],</span>            <span class="c1"># 검색/필터용 태그</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">doc_md</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>                     <span class="c1"># UI에 표시될 DAG 문서 (마크다운)</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">"etl"</span><span class="p">,</span> <span class="s2">"daily"</span><span class="p">],</span>            <span class="c1"># 검색/필터용 태그</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">doc_md</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>                     <span class="c1"># UI에 표시될 DAG 문서 (마크다운)</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="start_date-catchup">start_date와 catchup<a class="headerlink" href="#start_date-catchup" title="Permanent link">&para;</a></h3>
@@ -2947,18 +3131,18 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;data-team&quot;</span><span class="p">,</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="s2">&quot;retries&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="s2">&quot;retry_delay&quot;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="s2">&quot;email_on_failure&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="s2">&quot;execution_timeout&quot;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="s2">"owner"</span><span class="p">:</span> <span class="s2">"data-team"</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="s2">"retries"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="s2">"retry_delay"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="s2">"email_on_failure"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="s2">"execution_timeout"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">}</span>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="s2">&quot;daily_etl&quot;</span><span class="p">,</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="s2">"daily_etl"</span><span class="p">,</span>
 </span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">,</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">,</span>
 </span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
 </span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="o">...</span>
 </span></code></pre></div>
@@ -3017,9 +3201,9 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <hr />
 <h2 id="5-task">5. Task 의존성<a class="headerlink" href="#5-task" title="Permanent link">&para;</a></h2>
 <p>Task들 사이의 실행 순서는 <strong><code>&gt;&gt;</code> / <code>&lt;&lt;</code> 연산자</strong>로 선언합니다.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;extract&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">t3</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"extract"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"transform"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">t3</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"load"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 직렬</span>
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">t1</span> <span class="o">&gt;&gt;</span> <span class="n">t2</span> <span class="o">&gt;&gt;</span> <span class="n">t3</span>
@@ -3045,14 +3229,14 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">task_group</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">extract</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;extract&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">extract</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"extract"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="nd">@task_group</span><span class="p">(</span><span class="n">group_id</span><span class="o">=</span><span class="s2">&quot;validations&quot;</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="nd">@task_group</span><span class="p">(</span><span class="n">group_id</span><span class="o">=</span><span class="s2">"validations"</span><span class="p">)</span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">validations</span><span class="p">():</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;check_row_count&quot;</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;check_nulls&quot;</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"check_row_count"</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"check_nulls"</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="n">load</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="n">load</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"load"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="n">extract</span> <span class="o">&gt;&gt;</span> <span class="n">validations</span><span class="p">()</span> <span class="o">&gt;&gt;</span> <span class="n">load</span>
 </span></code></pre></div>
@@ -3117,8 +3301,8 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 </table>
 <h3 id="bashoperator">BashOperator에서 템플릿 사용<a class="headerlink" href="#bashoperator" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">BashOperator</span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;run_etl&quot;</span><span class="p">,</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;python /scripts/etl.py --date {{ ds }}&quot;</span><span class="p">,</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"run_etl"</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">"python /scripts/etl.py --date {{ ds }}"</span><span class="p">,</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="pythonoperatortaskflow-context">PythonOperator/TaskFlow에서 Context 가져오기<a class="headerlink" href="#pythonoperatortaskflow-context" title="Permanent link">&para;</a></h3>
@@ -3127,8 +3311,8 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nd">@task</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_etl</span><span class="p">():</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_current_context</span><span class="p">()</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">ds</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">[</span><span class="s2">&quot;ds&quot;</span><span class="p">]</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;logical date = </span><span class="si">{</span><span class="n">ds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">ds</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">[</span><span class="s2">"ds"</span><span class="p">]</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"logical date = </span><span class="si">{</span><span class="n">ds</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Airflow 3에서 사라진 컨텍스트 변수</p>
@@ -3142,16 +3326,16 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">dag</span><span class="p">,</span> <span class="n">task</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pendulum</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nd">@dag</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nd">@dag</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">xcom_example</span><span class="p">():</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="nd">@task</span>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">extract</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">}</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">"rows"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"ok"</span><span class="p">}</span>
 </span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="nd">@task</span>
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loaded </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;rows&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"loaded </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'rows'</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows"</span><span class="p">)</span>
 </span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
 </span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>    <span class="n">load</span><span class="p">(</span><span class="n">extract</span><span class="p">())</span>
 </span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
@@ -3160,10 +3344,10 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <p><code>extract()</code>의 리턴값은 자동으로 XCom에 저장되고, <code>load(extract())</code> 연결만으로 의존성과 데이터 전달이 동시에 이뤄집니다.</p>
 <h3 id="_4">전통적인 방식<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">context</span><span class="p">[</span><span class="s2">&quot;ti&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_push</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;row_count&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">context</span><span class="p">[</span><span class="s2">"ti"</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_push</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"row_count"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;ti&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;row_count&quot;</span><span class="p">,</span> <span class="n">task_ids</span><span class="o">=</span><span class="s2">&quot;push&quot;</span><span class="p">)</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s2">"ti"</span><span class="p">]</span><span class="o">.</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">"row_count"</span><span class="p">,</span> <span class="n">task_ids</span><span class="o">=</span><span class="s2">"push"</span><span class="p">)</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="xcom">XCom 사용 시 주의<a class="headerlink" href="#xcom" title="Permanent link">&para;</a></h3>
@@ -3179,21 +3363,21 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pendulum</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># 자산 정의: URI로 식별</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">users_table</span> <span class="o">=</span> <span class="n">Asset</span><span class="p">(</span><span class="s2">&quot;s3://mybucket/users.parquet&quot;</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">users_table</span> <span class="o">=</span> <span class="n">Asset</span><span class="p">(</span><span class="s2">"s3://mybucket/users.parquet"</span><span class="p">)</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 생산자 DAG: 이 Asset을 업데이트</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">&quot;producer&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">d1</span><span class="p">:</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">"producer"</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">)</span> <span class="k">as</span> <span class="n">d1</span><span class="p">:</span>
 </span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="nd">@task</span><span class="p">(</span><span class="n">outlets</span><span class="o">=</span><span class="p">[</span><span class="n">users_table</span><span class="p">])</span>
 </span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">build_users</span><span class="p">():</span>
 </span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>        <span class="c1"># ... 실제 작업 ...</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;users.parquet 갱신&quot;</span><span class="p">)</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"users.parquet 갱신"</span><span class="p">)</span>
 </span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    <span class="n">build_users</span><span class="p">()</span>
 </span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
 </span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="c1"># 소비자 DAG: users_table이 업데이트되면 자동 실행</span>
-</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">&quot;consumer&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="p">[</span><span class="n">users_table</span><span class="p">])</span> <span class="k">as</span> <span class="n">d2</span><span class="p">:</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s2">"consumer"</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="p">[</span><span class="n">users_table</span><span class="p">])</span> <span class="k">as</span> <span class="n">d2</span><span class="p">:</span>
 </span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>    <span class="nd">@task</span>
 </span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">downstream_analysis</span><span class="p">():</span>
-</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;users.parquet 기반 분석 실행&quot;</span><span class="p">)</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"users.parquet 기반 분석 실행"</span><span class="p">)</span>
 </span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>    <span class="n">downstream_analysis</span><span class="p">()</span>
 </span></code></pre></div>
 <h3 id="asset">Asset의 장점<a class="headerlink" href="#asset" title="Permanent link">&para;</a></h3>
@@ -3212,8 +3396,8 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 <div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">BashOperator</span><span class="p">(</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;my_task&quot;</span><span class="p">,</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"my_task"</span><span class="p">,</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="n">retries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                 <span class="c1"># 실패 시 3번 재시도</span>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="n">retry_delay</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>          <span class="c1"># 5분 간격</span>
 </span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="n">retry_exponential_backoff</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>            <span class="c1"># 5분 → 10분 → 20분 순으로</span>
@@ -3224,8 +3408,8 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 </span></code></pre></div>
 <h3 id="callback">Callback 예시<a class="headerlink" href="#callback" title="Permanent link">&para;</a></h3>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">notify_slack</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">ti</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;task_instance&quot;</span><span class="p">]</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;:x: </span><span class="si">{</span><span class="n">ti</span><span class="o">.</span><span class="n">dag_id</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">ti</span><span class="o">.</span><span class="n">task_id</span><span class="si">}</span><span class="s2"> failed at </span><span class="si">{</span><span class="n">ti</span><span class="o">.</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">ti</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s2">"task_instance"</span><span class="p">]</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">":x: </span><span class="si">{</span><span class="n">ti</span><span class="o">.</span><span class="n">dag_id</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">ti</span><span class="o">.</span><span class="n">task_id</span><span class="si">}</span><span class="s2"> failed at </span><span class="si">{</span><span class="n">ti</span><span class="o">.</span><span class="n">start_date</span><span class="si">}</span><span class="s2">"</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="c1"># ... Slack 전송 로직 ...</span>
 </span></code></pre></div>
 <div class="admonition warning">
@@ -3263,18 +3447,18 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 </table>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Variable</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">db_name</span> <span class="o">=</span> <span class="n">Variable</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TARGET_DB&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;analytics&quot;</span><span class="p">)</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">db_name</span> <span class="o">=</span> <span class="n">Variable</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TARGET_DB"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"analytics"</span><span class="p">)</span>
 </span></code></pre></div>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="o">...</span><span class="p">,</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>        <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;kr&quot;</span><span class="p">,</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="s2">&quot;dry_run&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>        <span class="s2">"country"</span><span class="p">:</span> <span class="s2">"kr"</span><span class="p">,</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="s2">"dry_run"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="p">},</span>
 </span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
 </span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="n">BashOperator</span><span class="p">(</span>
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;run&quot;</span><span class="p">,</span>
-</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>        <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;python etl.py --country {{ params.country }}&quot;</span><span class="p">,</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">"run"</span><span class="p">,</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>        <span class="n">bash_command</span><span class="o">=</span><span class="s2">"python etl.py --country {{ params.country }}"</span><span class="p">,</span>
 </span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="p">)</span>
 </span></code></pre></div>
 <hr />
@@ -3290,53 +3474,53 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
 </span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
 </span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
 </span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;analytics&quot;</span><span class="p">,</span>
-</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="s2">&quot;retries&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="s2">&quot;retry_delay&quot;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    <span class="s2">&quot;execution_timeout&quot;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="s2">"owner"</span><span class="p">:</span> <span class="s2">"analytics"</span><span class="p">,</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="s2">"retries"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="s2">"retry_delay"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    <span class="s2">"execution_timeout"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
 </span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="p">}</span>
 </span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>
 </span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
-</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">&quot;daily_sales_etl&quot;</span><span class="p">,</span>
-</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;일간 매출 집계 파이프라인 (예시)&quot;</span><span class="p">,</span>
-</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Asia/Seoul&quot;</span><span class="p">),</span>
-</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;0 3 * * *&quot;</span><span class="p">,</span>             <span class="c1"># 매일 03:00 KST</span>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">"daily_sales_etl"</span><span class="p">,</span>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"일간 매출 집계 파이프라인 (예시)"</span><span class="p">,</span>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Asia/Seoul"</span><span class="p">),</span>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">"0 3 * * *"</span><span class="p">,</span>             <span class="c1"># 매일 03:00 KST</span>
 </span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>    <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>    <span class="n">max_active_runs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 </span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
-</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;etl&quot;</span><span class="p">,</span> <span class="s2">&quot;sales&quot;</span><span class="p">,</span> <span class="s2">&quot;daily&quot;</span><span class="p">],</span>
-</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>    <span class="n">doc_md</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">"etl"</span><span class="p">,</span> <span class="s2">"sales"</span><span class="p">,</span> <span class="s2">"daily"</span><span class="p">],</span>
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>    <span class="n">doc_md</span><span class="o">=</span><span class="s2">"""</span>
 </span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="s2">    ### daily_sales_etl</span>
 </span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="s2">    매일 새벽 3시에 전일 매출 데이터를 집계합니다.</span>
 </span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="s2">    - 입력: `raw.sales_events`</span>
 </span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="s2">    - 출력: `mart.daily_sales`</span>
-</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="s2">    """</span><span class="p">,</span>
 </span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
 </span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>
-</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a>    <span class="n">start</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
-</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a>    <span class="n">end</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">)</span>
+</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a>    <span class="n">start</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"start"</span><span class="p">)</span>
+</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a>    <span class="n">end</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"end"</span><span class="p">)</span>
 </span><span id="__span-19-36"><a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a>
 </span><span id="__span-19-37"><a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a>    <span class="nd">@task</span>
 </span><span id="__span-19-38"><a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">extract</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 </span><span id="__span-19-39"><a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a>        <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_current_context</span><span class="p">()</span>
-</span><span id="__span-19-40"><a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a>        <span class="n">ds</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">[</span><span class="s2">&quot;ds&quot;</span><span class="p">]</span>
+</span><span id="__span-19-40"><a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a>        <span class="n">ds</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">[</span><span class="s2">"ds"</span><span class="p">]</span>
 </span><span id="__span-19-41"><a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a>        <span class="c1"># 실제로는 쿼리/다운로드 수행, 여기서는 메타만 반환</span>
-</span><span id="__span-19-42"><a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">}</span>
+</span><span id="__span-19-42"><a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">"date"</span><span class="p">:</span> <span class="n">ds</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">}</span>
 </span><span id="__span-19-43"><a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a>
-</span><span id="__span-19-44"><a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a>    <span class="nd">@task_group</span><span class="p">(</span><span class="n">group_id</span><span class="o">=</span><span class="s2">&quot;validate&quot;</span><span class="p">)</span>
+</span><span id="__span-19-44"><a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a>    <span class="nd">@task_group</span><span class="p">(</span><span class="n">group_id</span><span class="o">=</span><span class="s2">"validate"</span><span class="p">)</span>
 </span><span id="__span-19-45"><a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 </span><span id="__span-19-46"><a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a>        <span class="nd">@task</span>
 </span><span id="__span-19-47"><a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">check_rows</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-</span><span id="__span-19-48"><a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a>            <span class="k">assert</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;rows&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;no rows&quot;</span>
+</span><span id="__span-19-48"><a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a>            <span class="k">assert</span> <span class="n">d</span><span class="p">[</span><span class="s2">"rows"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"no rows"</span>
 </span><span id="__span-19-49"><a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a>        <span class="nd">@task</span>
 </span><span id="__span-19-50"><a id="__codelineno-19-50" name="__codelineno-19-50" href="#__codelineno-19-50"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">check_freshness</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-</span><span id="__span-19-51"><a id="__codelineno-19-51" name="__codelineno-19-51" href="#__codelineno-19-51"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data for </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> ok&quot;</span><span class="p">)</span>
+</span><span id="__span-19-51"><a id="__codelineno-19-51" name="__codelineno-19-51" href="#__codelineno-19-51"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"data for </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span><span class="si">}</span><span class="s2"> ok"</span><span class="p">)</span>
 </span><span id="__span-19-52"><a id="__codelineno-19-52" name="__codelineno-19-52" href="#__codelineno-19-52"></a>        <span class="n">check_rows</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span><span id="__span-19-53"><a id="__codelineno-19-53" name="__codelineno-19-53" href="#__codelineno-19-53"></a>        <span class="n">check_freshness</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span><span id="__span-19-54"><a id="__codelineno-19-54" name="__codelineno-19-54" href="#__codelineno-19-54"></a>
 </span><span id="__span-19-55"><a id="__codelineno-19-55" name="__codelineno-19-55" href="#__codelineno-19-55"></a>    <span class="nd">@task</span>
 </span><span id="__span-19-56"><a id="__codelineno-19-56" name="__codelineno-19-56" href="#__codelineno-19-56"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-</span><span id="__span-19-57"><a id="__codelineno-19-57" name="__codelineno-19-57" href="#__codelineno-19-57"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loaded </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;rows&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows for </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-19-57"><a id="__codelineno-19-57" name="__codelineno-19-57" href="#__codelineno-19-57"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"loaded </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'rows'</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows for </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'date'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-19-58"><a id="__codelineno-19-58" name="__codelineno-19-58" href="#__codelineno-19-58"></a>
 </span><span id="__span-19-59"><a id="__codelineno-19-59" name="__codelineno-19-59" href="#__codelineno-19-59"></a>    <span class="n">extracted</span> <span class="o">=</span> <span class="n">extract</span><span class="p">()</span>
 </span><span id="__span-19-60"><a id="__codelineno-19-60" name="__codelineno-19-60" href="#__codelineno-19-60"></a>    <span class="n">start</span> <span class="o">&gt;&gt;</span> <span class="n">extracted</span>
@@ -3548,7 +3732,7 @@ Python 표준 <code>datetime</code>도 동작하지만, pendulum을 쓰면 timez
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       

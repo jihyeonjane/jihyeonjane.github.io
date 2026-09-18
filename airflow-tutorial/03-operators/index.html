@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -333,6 +333,28 @@
     
   
   Airflow Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../study/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Study
 
         </a>
       </li>
@@ -2517,6 +2539,168 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../study/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Study
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/dev-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개발자 개념 장착
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    아키텍처
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../study/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kafka & Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -3077,7 +3261,7 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    │
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    │ 인스턴스화
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ▼
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Task (DAG 안의 노드)         — 예: BashOperator(task_id=&quot;hello&quot;, ...)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Task (DAG 안의 노드)         — 예: BashOperator(task_id="hello", ...)
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    │ DAG Run 실행 시점
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ▼
@@ -3128,14 +3312,14 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseOperator</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">HelloOperator</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">template_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,)</span>   <span class="c1"># Jinja 템플릿을 허용할 인자 선언</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">template_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"name"</span><span class="p">,)</span>   <span class="c1"># Jinja 템플릿을 허용할 인자 선언</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>   <span class="c1"># task_id, retries 등 상위에 위임</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Hello </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="k">return</span> <span class="n">message</span>              <span class="c1"># 리턴값은 자동으로 XCom에 저장</span>
 </span></code></pre></div>
@@ -3209,11 +3393,11 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.standard.operators.bash</span><span class="w"> </span><span class="kn">import</span> <span class="n">BashOperator</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">task</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;run_script&quot;</span><span class="p">,</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;python /opt/scripts/etl.py --date {{ ds }}&quot;</span><span class="p">,</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;PYTHONPATH&quot;</span><span class="p">:</span> <span class="s2">&quot;/opt/scripts&quot;</span><span class="p">},</span>   <span class="c1"># 추가 환경변수</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"run_script"</span><span class="p">,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">"python /opt/scripts/etl.py --date {{ ds }}"</span><span class="p">,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"PYTHONPATH"</span><span class="p">:</span> <span class="s2">"/opt/scripts"</span><span class="p">},</span>   <span class="c1"># 추가 환경변수</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">append_env</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                      <span class="c1"># 기본 env에 덧붙임</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">cwd</span><span class="o">=</span><span class="s2">&quot;/opt/scripts&quot;</span><span class="p">,</span>                   <span class="c1"># 작업 디렉토리</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">cwd</span><span class="o">=</span><span class="s2">"/opt/scripts"</span><span class="p">,</span>                   <span class="c1"># 작업 디렉토리</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">retries</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">)</span>
 </span></code></pre></div>
@@ -3227,8 +3411,8 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="admonition tip">
 <p class="admonition-title">스크립트 파일을 템플릿으로 불러오기</p>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">BashOperator</span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;run_sql_script&quot;</span><span class="p">,</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;scripts/etl.sh &quot;</span><span class="p">,</span>  <span class="c1"># 끝에 공백 → 파일을 템플릿으로 렌더링</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"run_sql_script"</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">bash_command</span><span class="o">=</span><span class="s2">"scripts/etl.sh "</span><span class="p">,</span>  <span class="c1"># 끝에 공백 → 파일을 템플릿으로 렌더링</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span>
 </span></code></pre></div>
 <code>scripts/etl.sh</code> 안의 <code>{{ ds }}</code> 등도 치환됩니다.</p>
@@ -3240,14 +3424,14 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.standard.operators.python</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonOperator</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">extract</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">ds</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;ds&quot;</span><span class="p">]</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;extracting for </span><span class="si">{</span><span class="n">ds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">ds</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s2">"ds"</span><span class="p">]</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"extracting for </span><span class="si">{</span><span class="n">ds</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"rows"</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">task</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;extract&quot;</span><span class="p">,</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"extract"</span><span class="p">,</span>
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="n">python_callable</span><span class="o">=</span><span class="n">extract</span><span class="p">,</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="n">op_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>   <span class="c1"># 함수에 넘길 추가 인자</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="n">op_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"threshold"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>   <span class="c1"># 함수에 넘길 추가 인자</span>
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">)</span>
 </span></code></pre></div>
 <ul>
@@ -3260,20 +3444,20 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">dag</span><span class="p">,</span> <span class="n">task</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pendulum</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nd">@dag</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;@daily&quot;</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nd">@dag</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">schedule</span><span class="o">=</span><span class="s2">"@daily"</span><span class="p">,</span> <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">pipeline</span><span class="p">():</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="nd">@task</span>
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">extract</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">"rows"</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="nd">@task</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;rows&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s2">"rows"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
 </span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
 </span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>    <span class="nd">@task</span>
 </span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">rows</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loaded </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"loaded </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
 </span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>    <span class="n">load</span><span class="p">(</span><span class="n">transform</span><span class="p">(</span><span class="n">extract</span><span class="p">()))</span>
 </span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
@@ -3334,7 +3518,7 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 </tr>
 </tbody>
 </table>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@task</span><span class="o">.</span><span class="n">virtualenv</span><span class="p">(</span><span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pandas==2.2.0&quot;</span><span class="p">])</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@task</span><span class="o">.</span><span class="n">virtualenv</span><span class="p">(</span><span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">"pandas==2.2.0"</span><span class="p">])</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">analyze</span><span class="p">():</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="o">...</span>
@@ -3345,14 +3529,14 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.common.sql.operators.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLExecuteQueryOperator</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">SQLExecuteQueryOperator</span><span class="p">(</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;aggregate_daily&quot;</span><span class="p">,</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="n">conn_id</span><span class="o">=</span><span class="s2">&quot;warehouse_postgres&quot;</span><span class="p">,</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">sql</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"aggregate_daily"</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="n">conn_id</span><span class="o">=</span><span class="s2">"warehouse_postgres"</span><span class="p">,</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">sql</span><span class="o">=</span><span class="s2">"""</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="s2">        INSERT INTO mart.daily_sales</span>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="s2">        SELECT date, sum(amount) FROM raw.sales</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s2">        WHERE date = &#39;{{ ds }}&#39;</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="s2">        WHERE date = '{{ ds }}'</span>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="s2">        GROUP BY date</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="s2">    """</span><span class="p">,</span>
 </span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="n">autocommit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="p">)</span>
 </span></code></pre></div>
@@ -3369,10 +3553,10 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.smtp.operators.smtp</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmailOperator</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">EmailOperator</span><span class="p">(</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;notify_done&quot;</span><span class="p">,</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">to</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;team@example.com&quot;</span><span class="p">],</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;[ETL] {{ ds }} 완료&quot;</span><span class="p">,</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">html_content</span><span class="o">=</span><span class="s2">&quot;&lt;p&gt;일간 ETL이 정상 종료되었습니다.&lt;/p&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"notify_done"</span><span class="p">,</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">to</span><span class="o">=</span><span class="p">[</span><span class="s2">"team@example.com"</span><span class="p">],</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="n">subject</span><span class="o">=</span><span class="s2">"[ETL] {{ ds }} 완료"</span><span class="p">,</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">html_content</span><span class="o">=</span><span class="s2">"&lt;p&gt;일간 ETL이 정상 종료되었습니다.&lt;/p&gt;"</span><span class="p">,</span>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">)</span>
 </span></code></pre></div>
 <p>실패 알림용으로는 <code>on_failure_callback</code>에 SmtpNotifier/SlackNotifier를 거는 패턴이 더 일반적입니다.</p>
@@ -3382,12 +3566,12 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.http.operators.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">HttpOperator</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">HttpOperator</span><span class="p">(</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;call_api&quot;</span><span class="p">,</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">http_conn_id</span><span class="o">=</span><span class="s2">&quot;my_api&quot;</span><span class="p">,</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;/v1/refresh&quot;</span><span class="p">,</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="n">data</span><span class="o">=</span><span class="s1">&#39;{&quot;full&quot;: true}&#39;</span><span class="p">,</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"call_api"</span><span class="p">,</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">http_conn_id</span><span class="o">=</span><span class="s2">"my_api"</span><span class="p">,</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">endpoint</span><span class="o">=</span><span class="s2">"/v1/refresh"</span><span class="p">,</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">method</span><span class="o">=</span><span class="s2">"POST"</span><span class="p">,</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="n">data</span><span class="o">=</span><span class="s1">'{"full": true}'</span><span class="p">,</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">},</span>
 </span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="n">response_check</span><span class="o">=</span><span class="k">lambda</span> <span class="n">resp</span><span class="p">:</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">,</span>
 </span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="n">log_response</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="p">)</span>
@@ -3421,8 +3605,8 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 </tr>
 </tbody>
 </table>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">start</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">end</span>   <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">start</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"start"</span><span class="p">)</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">end</span>   <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"end"</span><span class="p">)</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">start</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
 </span></code></pre></div>
@@ -3434,15 +3618,15 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nd">@task</span><span class="o">.</span><span class="n">branch</span>
 </span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">choose</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="k">if</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;ds&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;-01&quot;</span><span class="p">):</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="k">return</span> <span class="s2">&quot;monthly_path&quot;</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="k">return</span> <span class="s2">&quot;daily_path&quot;</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="k">if</span> <span class="n">context</span><span class="p">[</span><span class="s2">"ds"</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-01"</span><span class="p">):</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="k">return</span> <span class="s2">"monthly_path"</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="k">return</span> <span class="s2">"daily_path"</span>
 </span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
 </span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
 </span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">branch</span> <span class="o">=</span> <span class="n">choose</span><span class="p">()</span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="n">daily</span>   <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;daily_path&quot;</span><span class="p">)</span>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="n">monthly</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;monthly_path&quot;</span><span class="p">)</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="n">done</span>    <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;done&quot;</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">&quot;none_failed_min_one_success&quot;</span><span class="p">)</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="n">daily</span>   <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"daily_path"</span><span class="p">)</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="n">monthly</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"monthly_path"</span><span class="p">)</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="n">done</span>    <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"done"</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">"none_failed_min_one_success"</span><span class="p">)</span>
 </span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
 </span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>    <span class="n">branch</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">daily</span><span class="p">,</span> <span class="n">monthly</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">done</span>
 </span></code></pre></div>
@@ -3471,9 +3655,9 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.standard.operators.trigger_dagrun</span><span class="w"> </span><span class="kn">import</span> <span class="n">TriggerDagRunOperator</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">TriggerDagRunOperator</span><span class="p">(</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;trigger_downstream&quot;</span><span class="p">,</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="n">trigger_dag_id</span><span class="o">=</span><span class="s2">&quot;analytics_dag&quot;</span><span class="p">,</span>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">conf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ ds }}&quot;</span><span class="p">},</span>       <span class="c1"># 다른 DAG에 넘길 파라미터</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"trigger_downstream"</span><span class="p">,</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="n">trigger_dag_id</span><span class="o">=</span><span class="s2">"analytics_dag"</span><span class="p">,</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">conf</span><span class="o">=</span><span class="p">{</span><span class="s2">"date"</span><span class="p">:</span> <span class="s2">"{{ ds }}"</span><span class="p">},</span>       <span class="c1"># 다른 DAG에 넘길 파라미터</span>
 </span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="n">wait_for_completion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>        <span class="c1"># 끝날 때까지 대기</span>
 </span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="n">poke_interval</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
 </span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="p">)</span>
@@ -3523,11 +3707,11 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.standard.sensors.filesystem</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileSensor</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">FileSensor</span><span class="p">(</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;wait_for_file&quot;</span><span class="p">,</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/data/input/today.csv&quot;</span><span class="p">,</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"wait_for_file"</span><span class="p">,</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="n">filepath</span><span class="o">=</span><span class="s2">"/data/input/today.csv"</span><span class="p">,</span>
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="n">poke_interval</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>                 <span class="c1"># 1분마다 체크</span>
 </span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>              <span class="c1"># 2시간 대기 후 실패</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reschedule&quot;</span><span class="p">,</span>                <span class="c1"># ⭐ 중요</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="n">mode</span><span class="o">=</span><span class="s2">"reschedule"</span><span class="p">,</span>                <span class="c1"># ⭐ 중요</span>
 </span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="p">)</span>
 </span></code></pre></div>
 <h4 id="sensor-3-mode">Sensor의 3가지 mode<a class="headerlink" href="#sensor-3-mode" title="Permanent link">&para;</a></h4>
@@ -3567,17 +3751,17 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.cncf.kubernetes.operators.pod</span><span class="w"> </span><span class="kn">import</span> <span class="n">KubernetesPodOperator</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">KubernetesPodOperator</span><span class="p">(</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;ml_training&quot;</span><span class="p">,</span>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;train-model&quot;</span><span class="p">,</span>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;airflow-jobs&quot;</span><span class="p">,</span>
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">image</span><span class="o">=</span><span class="s2">&quot;myrepo/ml-trainer:1.2.3&quot;</span><span class="p">,</span>
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="n">cmds</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">],</span>
-</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;train.py&quot;</span><span class="p">,</span> <span class="s2">&quot;--date&quot;</span><span class="p">,</span> <span class="s2">&quot;{{ ds }}&quot;</span><span class="p">],</span>
-</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="n">env_vars</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;MODEL_NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;churn-v2&quot;</span><span class="p">},</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"ml_training"</span><span class="p">,</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"train-model"</span><span class="p">,</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="n">namespace</span><span class="o">=</span><span class="s2">"airflow-jobs"</span><span class="p">,</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">image</span><span class="o">=</span><span class="s2">"myrepo/ml-trainer:1.2.3"</span><span class="p">,</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="n">cmds</span><span class="o">=</span><span class="p">[</span><span class="s2">"python"</span><span class="p">],</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">arguments</span><span class="o">=</span><span class="p">[</span><span class="s2">"train.py"</span><span class="p">,</span> <span class="s2">"--date"</span><span class="p">,</span> <span class="s2">"{{ ds }}"</span><span class="p">],</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="n">env_vars</span><span class="o">=</span><span class="p">{</span><span class="s2">"MODEL_NAME"</span><span class="p">:</span> <span class="s2">"churn-v2"</span><span class="p">},</span>
 </span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="n">resources</span><span class="o">=</span><span class="p">{</span>
-</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>        <span class="s2">&quot;request_cpu&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>        <span class="s2">&quot;request_memory&quot;</span><span class="p">:</span> <span class="s2">&quot;8Gi&quot;</span><span class="p">,</span>
-</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>        <span class="s2">&quot;limit_memory&quot;</span><span class="p">:</span> <span class="s2">&quot;16Gi&quot;</span><span class="p">,</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>        <span class="s2">"request_cpu"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>        <span class="s2">"request_memory"</span><span class="p">:</span> <span class="s2">"8Gi"</span><span class="p">,</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>        <span class="s2">"limit_memory"</span><span class="p">:</span> <span class="s2">"16Gi"</span><span class="p">,</span>
 </span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>    <span class="p">},</span>
 </span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>    <span class="n">get_logs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>    <span class="n">is_delete_operator_pod</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -3600,12 +3784,12 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.docker.operators.docker</span><span class="w"> </span><span class="kn">import</span> <span class="n">DockerOperator</span>
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
 </span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">DockerOperator</span><span class="p">(</span>
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;run_in_docker&quot;</span><span class="p">,</span>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">image</span><span class="o">=</span><span class="s2">&quot;myrepo/etl:1.0&quot;</span><span class="p">,</span>
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="n">command</span><span class="o">=</span><span class="s2">&quot;python etl.py --date {{ ds }}&quot;</span><span class="p">,</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"run_in_docker"</span><span class="p">,</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">image</span><span class="o">=</span><span class="s2">"myrepo/etl:1.0"</span><span class="p">,</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="n">command</span><span class="o">=</span><span class="s2">"python etl.py --date {{ ds }}"</span><span class="p">,</span>
 </span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="n">auto_remove</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="n">mount_tmp_dir</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="n">network_mode</span><span class="o">=</span><span class="s2">&quot;bridge&quot;</span><span class="p">,</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="n">network_mode</span><span class="o">=</span><span class="s2">"bridge"</span><span class="p">,</span>
 </span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="p">)</span>
 </span></code></pre></div>
 <hr />
@@ -3645,14 +3829,14 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.amazon.aws.transfers.s3_to_redshift</span><span class="w"> </span><span class="kn">import</span> <span class="n">S3ToRedshiftOperator</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">S3ToRedshiftOperator</span><span class="p">(</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;load_to_redshift&quot;</span><span class="p">,</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="n">table</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="n">s3_bucket</span><span class="o">=</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span>
-</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="n">s3_key</span><span class="o">=</span><span class="s2">&quot;events/{{ ds }}/&quot;</span><span class="p">,</span>
-</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="n">copy_options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CSV&quot;</span><span class="p">,</span> <span class="s2">&quot;IGNOREHEADER 1&quot;</span><span class="p">],</span>
-</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="n">redshift_conn_id</span><span class="o">=</span><span class="s2">&quot;redshift&quot;</span><span class="p">,</span>
-</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>    <span class="n">aws_conn_id</span><span class="o">=</span><span class="s2">&quot;aws_default&quot;</span><span class="p">,</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"load_to_redshift"</span><span class="p">,</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="n">schema</span><span class="o">=</span><span class="s2">"public"</span><span class="p">,</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="n">table</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="n">s3_bucket</span><span class="o">=</span><span class="s2">"my-bucket"</span><span class="p">,</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="n">s3_key</span><span class="o">=</span><span class="s2">"events/{{ ds }}/"</span><span class="p">,</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="n">copy_options</span><span class="o">=</span><span class="p">[</span><span class="s2">"CSV"</span><span class="p">,</span> <span class="s2">"IGNOREHEADER 1"</span><span class="p">],</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="n">redshift_conn_id</span><span class="o">=</span><span class="s2">"redshift"</span><span class="p">,</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>    <span class="n">aws_conn_id</span><span class="o">=</span><span class="s2">"aws_default"</span><span class="p">,</span>
 </span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="p">)</span>
 </span></code></pre></div>
 <p>Transfer Operator가 없으면 BashOperator나 PythonOperator로 직접 구현해야 하므로, 가능한 기존 Transfer Operator를 찾아 쓰는 게 효율적입니다.</p>
@@ -3683,9 +3867,9 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.providers.amazon.aws.sensors.s3</span><span class="w"> </span><span class="kn">import</span> <span class="n">S3KeySensor</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">S3KeySensor</span><span class="p">(</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;wait_data&quot;</span><span class="p">,</span>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;my-bucket&quot;</span><span class="p">,</span>
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="n">bucket_key</span><span class="o">=</span><span class="s2">&quot;raw/{{ ds }}/&quot;</span><span class="p">,</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"wait_data"</span><span class="p">,</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="n">bucket_name</span><span class="o">=</span><span class="s2">"my-bucket"</span><span class="p">,</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="n">bucket_key</span><span class="o">=</span><span class="s2">"raw/{{ ds }}/"</span><span class="p">,</span>
 </span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="n">deferrable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                 <span class="c1"># ⭐</span>
 </span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>    <span class="n">poke_interval</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
 </span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="p">)</span>
@@ -3709,7 +3893,7 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <h2 id="7-template_fields">7. 템플릿 렌더링 (template_fields)<a class="headerlink" href="#7-template_fields" title="Permanent link">&para;</a></h2>
 <p>Operator 파라미터가 <strong>Jinja 템플릿</strong>으로 처리되려면, 해당 Operator 클래스가 <code>template_fields</code>에 그 속성을 선언해야 합니다.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyOperator</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="n">template_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;output_path&quot;</span><span class="p">)</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="n">template_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"query"</span><span class="p">,</span> <span class="s2">"output_path"</span><span class="p">)</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
 </span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -3748,9 +3932,9 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 </tbody>
 </table>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MySqlRunner</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="n">template_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sql&quot;</span><span class="p">,)</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="n">template_fields_renderers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sql&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span><span class="p">}</span>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">template_ext</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;.sql&quot;</span><span class="p">,)</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="n">template_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"sql"</span><span class="p">,)</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="n">template_fields_renderers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"sql"</span><span class="p">:</span> <span class="s2">"sql"</span><span class="p">}</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">template_ext</span> <span class="o">=</span> <span class="p">(</span><span class="s2">".sql"</span><span class="p">,)</span>
 </span></code></pre></div>
 <hr />
 <h2 id="8-trigger_rule-task">8. trigger_rule: Task 실행 조건 세밀 제어<a class="headerlink" href="#8-trigger_rule-task" title="Permanent link">&para;</a></h2>
@@ -3804,11 +3988,11 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <h3 id="_6">대표 사용 패턴<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><strong>1) 실패 시 알림 Task</strong> — <code>one_failed</code></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">t1</span> <span class="o">&gt;&gt;</span> <span class="n">t2</span> <span class="o">&gt;&gt;</span> <span class="n">t3</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">notify_failure</span> <span class="o">=</span> <span class="n">EmailOperator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">&quot;one_failed&quot;</span><span class="p">)</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">notify_failure</span> <span class="o">=</span> <span class="n">EmailOperator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">"one_failed"</span><span class="p">)</span>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="p">[</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">notify_failure</span>
 </span></code></pre></div>
 <p><strong>2) 무조건 돌아야 하는 정리 Task</strong> — <code>all_done</code></p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">cleanup</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;cleanup&quot;</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;rm -rf /tmp/job&quot;</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">&quot;all_done&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">cleanup</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"cleanup"</span><span class="p">,</span> <span class="n">bash_command</span><span class="o">=</span><span class="s2">"rm -rf /tmp/job"</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">"all_done"</span><span class="p">)</span>
 </span></code></pre></div>
 <p><strong>3) 분기 합류 지점</strong> — <code>none_failed_min_one_success</code></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">branch</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">pathA</span><span class="p">,</span> <span class="n">pathB</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">merge</span>  <span class="c1"># merge에 none_failed_min_one_success 지정</span>
@@ -3817,13 +4001,13 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 <h2 id="9-pool-priority-concurrency">9. Pool / Priority / Concurrency<a class="headerlink" href="#9-pool-priority-concurrency" title="Permanent link">&para;</a></h2>
 <h3 id="pool">Pool: 리소스별 동시 실행 제한<a class="headerlink" href="#pool" title="Permanent link">&para;</a></h3>
 <p>외부 시스템에 부하를 줄 수 있는 Task를 그룹화해 동시 실행 수를 제한합니다.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># UI &gt; Admin &gt; Pools에서 pool 생성: &quot;snowflake_pool&quot; with 4 slots</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># UI &gt; Admin &gt; Pools에서 pool 생성: "snowflake_pool" with 4 slots</span>
 </span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
 </span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">SQLExecuteQueryOperator</span><span class="p">(</span>
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;heavy_query&quot;</span><span class="p">,</span>
-</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="n">conn_id</span><span class="o">=</span><span class="s2">&quot;snowflake&quot;</span><span class="p">,</span>
-</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="n">sql</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="n">pool</span><span class="o">=</span><span class="s2">&quot;snowflake_pool&quot;</span><span class="p">,</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="n">task_id</span><span class="o">=</span><span class="s2">"heavy_query"</span><span class="p">,</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="n">conn_id</span><span class="o">=</span><span class="s2">"snowflake"</span><span class="p">,</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="n">sql</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="n">pool</span><span class="o">=</span><span class="s2">"snowflake_pool"</span><span class="p">,</span>
 </span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="n">pool_slots</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 </span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="p">)</span>
 </span></code></pre></div>
@@ -3908,33 +4092,33 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 </span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
 </span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>
 </span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="k">with</span> <span class="n">DAG</span><span class="p">(</span>
-</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">&quot;mixed_operators_demo&quot;</span><span class="p">,</span>
-</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Asia/Seoul&quot;</span><span class="p">),</span>
-</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">&quot;0 4 * * *&quot;</span><span class="p">,</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>    <span class="n">dag_id</span><span class="o">=</span><span class="s2">"mixed_operators_demo"</span><span class="p">,</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>    <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Asia/Seoul"</span><span class="p">),</span>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>    <span class="n">schedule</span><span class="o">=</span><span class="s2">"0 4 * * *"</span><span class="p">,</span>
 </span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>    <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>    <span class="n">default_args</span><span class="o">=</span><span class="p">{</span>
-</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>        <span class="s2">&quot;retries&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>        <span class="s2">&quot;retry_delay&quot;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>        <span class="s2">&quot;execution_timeout&quot;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>        <span class="s2">"retries"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>        <span class="s2">"retry_delay"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>        <span class="s2">"execution_timeout"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
 </span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>    <span class="p">},</span>
-</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;demo&quot;</span><span class="p">],</span>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">"demo"</span><span class="p">],</span>
 </span><span id="__span-34-23"><a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
 </span><span id="__span-34-24"><a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a>
-</span><span id="__span-34-25"><a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a>    <span class="n">start</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
+</span><span id="__span-34-25"><a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a>    <span class="n">start</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"start"</span><span class="p">)</span>
 </span><span id="__span-34-26"><a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a>
 </span><span id="__span-34-27"><a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a>    <span class="c1"># Sensor — 파일 도착 대기 (deferrable)</span>
 </span><span id="__span-34-28"><a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a>    <span class="n">wait_file</span> <span class="o">=</span> <span class="n">FileSensor</span><span class="p">(</span>
-</span><span id="__span-34-29"><a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;wait_file&quot;</span><span class="p">,</span>
-</span><span id="__span-34-30"><a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a>        <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/data/input/{{ ds }}.csv&quot;</span><span class="p">,</span>
+</span><span id="__span-34-29"><a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">"wait_file"</span><span class="p">,</span>
+</span><span id="__span-34-30"><a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a>        <span class="n">filepath</span><span class="o">=</span><span class="s2">"/data/input/{{ ds }}.csv"</span><span class="p">,</span>
 </span><span id="__span-34-31"><a id="__codelineno-34-31" name="__codelineno-34-31" href="#__codelineno-34-31"></a>        <span class="n">poke_interval</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
 </span><span id="__span-34-32"><a id="__codelineno-34-32" name="__codelineno-34-32" href="#__codelineno-34-32"></a>        <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">,</span>
-</span><span id="__span-34-33"><a id="__codelineno-34-33" name="__codelineno-34-33" href="#__codelineno-34-33"></a>        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reschedule&quot;</span><span class="p">,</span>
+</span><span id="__span-34-33"><a id="__codelineno-34-33" name="__codelineno-34-33" href="#__codelineno-34-33"></a>        <span class="n">mode</span><span class="o">=</span><span class="s2">"reschedule"</span><span class="p">,</span>
 </span><span id="__span-34-34"><a id="__codelineno-34-34" name="__codelineno-34-34" href="#__codelineno-34-34"></a>    <span class="p">)</span>
 </span><span id="__span-34-35"><a id="__codelineno-34-35" name="__codelineno-34-35" href="#__codelineno-34-35"></a>
 </span><span id="__span-34-36"><a id="__codelineno-34-36" name="__codelineno-34-36" href="#__codelineno-34-36"></a>    <span class="c1"># BashOperator — 간단한 전처리</span>
 </span><span id="__span-34-37"><a id="__codelineno-34-37" name="__codelineno-34-37" href="#__codelineno-34-37"></a>    <span class="n">preprocess</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
-</span><span id="__span-34-38"><a id="__codelineno-34-38" name="__codelineno-34-38" href="#__codelineno-34-38"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;preprocess&quot;</span><span class="p">,</span>
-</span><span id="__span-34-39"><a id="__codelineno-34-39" name="__codelineno-34-39" href="#__codelineno-34-39"></a>        <span class="n">bash_command</span><span class="o">=</span><span class="s2">&quot;python /scripts/clean.py --date {{ ds }}&quot;</span><span class="p">,</span>
+</span><span id="__span-34-38"><a id="__codelineno-34-38" name="__codelineno-34-38" href="#__codelineno-34-38"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">"preprocess"</span><span class="p">,</span>
+</span><span id="__span-34-39"><a id="__codelineno-34-39" name="__codelineno-34-39" href="#__codelineno-34-39"></a>        <span class="n">bash_command</span><span class="o">=</span><span class="s2">"python /scripts/clean.py --date {{ ds }}"</span><span class="p">,</span>
 </span><span id="__span-34-40"><a id="__codelineno-34-40" name="__codelineno-34-40" href="#__codelineno-34-40"></a>    <span class="p">)</span>
 </span><span id="__span-34-41"><a id="__codelineno-34-41" name="__codelineno-34-41" href="#__codelineno-34-41"></a>
 </span><span id="__span-34-42"><a id="__codelineno-34-42" name="__codelineno-34-42" href="#__codelineno-34-42"></a>    <span class="c1"># TaskFlow — Python 변환 로직</span>
@@ -3942,31 +4126,31 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
 </span><span id="__span-34-44"><a id="__codelineno-34-44" name="__codelineno-34-44" href="#__codelineno-34-44"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 </span><span id="__span-34-45"><a id="__codelineno-34-45" name="__codelineno-34-45" href="#__codelineno-34-45"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">airflow.sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_context</span>
 </span><span id="__span-34-46"><a id="__codelineno-34-46" name="__codelineno-34-46" href="#__codelineno-34-46"></a>        <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_current_context</span><span class="p">()</span>
-</span><span id="__span-34-47"><a id="__codelineno-34-47" name="__codelineno-34-47" href="#__codelineno-34-47"></a>        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span> <span class="ow">or</span> <span class="n">ctx</span><span class="p">[</span><span class="s2">&quot;ds&quot;</span><span class="p">]</span>
-</span><span id="__span-34-48"><a id="__codelineno-34-48" name="__codelineno-34-48" href="#__codelineno-34-48"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">}</span>
+</span><span id="__span-34-47"><a id="__codelineno-34-47" name="__codelineno-34-47" href="#__codelineno-34-47"></a>        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span> <span class="ow">or</span> <span class="n">ctx</span><span class="p">[</span><span class="s2">"ds"</span><span class="p">]</span>
+</span><span id="__span-34-48"><a id="__codelineno-34-48" name="__codelineno-34-48" href="#__codelineno-34-48"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">"date"</span><span class="p">:</span> <span class="n">ds</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">}</span>
 </span><span id="__span-34-49"><a id="__codelineno-34-49" name="__codelineno-34-49" href="#__codelineno-34-49"></a>
 </span><span id="__span-34-50"><a id="__codelineno-34-50" name="__codelineno-34-50" href="#__codelineno-34-50"></a>    <span class="n">summary</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">()</span>
 </span><span id="__span-34-51"><a id="__codelineno-34-51" name="__codelineno-34-51" href="#__codelineno-34-51"></a>
 </span><span id="__span-34-52"><a id="__codelineno-34-52" name="__codelineno-34-52" href="#__codelineno-34-52"></a>    <span class="c1"># SQL 실행</span>
 </span><span id="__span-34-53"><a id="__codelineno-34-53" name="__codelineno-34-53" href="#__codelineno-34-53"></a>    <span class="n">load_sql</span> <span class="o">=</span> <span class="n">SQLExecuteQueryOperator</span><span class="p">(</span>
-</span><span id="__span-34-54"><a id="__codelineno-34-54" name="__codelineno-34-54" href="#__codelineno-34-54"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;load_sql&quot;</span><span class="p">,</span>
-</span><span id="__span-34-55"><a id="__codelineno-34-55" name="__codelineno-34-55" href="#__codelineno-34-55"></a>        <span class="n">conn_id</span><span class="o">=</span><span class="s2">&quot;warehouse&quot;</span><span class="p">,</span>
-</span><span id="__span-34-56"><a id="__codelineno-34-56" name="__codelineno-34-56" href="#__codelineno-34-56"></a>        <span class="n">sql</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-34-54"><a id="__codelineno-34-54" name="__codelineno-34-54" href="#__codelineno-34-54"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">"load_sql"</span><span class="p">,</span>
+</span><span id="__span-34-55"><a id="__codelineno-34-55" name="__codelineno-34-55" href="#__codelineno-34-55"></a>        <span class="n">conn_id</span><span class="o">=</span><span class="s2">"warehouse"</span><span class="p">,</span>
+</span><span id="__span-34-56"><a id="__codelineno-34-56" name="__codelineno-34-56" href="#__codelineno-34-56"></a>        <span class="n">sql</span><span class="o">=</span><span class="s2">"""</span>
 </span><span id="__span-34-57"><a id="__codelineno-34-57" name="__codelineno-34-57" href="#__codelineno-34-57"></a><span class="s2">            INSERT INTO mart.daily_summary (date, rows)</span>
-</span><span id="__span-34-58"><a id="__codelineno-34-58" name="__codelineno-34-58" href="#__codelineno-34-58"></a><span class="s2">            VALUES (&#39;{{ ds }}&#39;, {{ ti.xcom_pull(task_ids=&#39;summarize&#39;)[&#39;rows&#39;] }})</span>
-</span><span id="__span-34-59"><a id="__codelineno-34-59" name="__codelineno-34-59" href="#__codelineno-34-59"></a><span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-34-58"><a id="__codelineno-34-58" name="__codelineno-34-58" href="#__codelineno-34-58"></a><span class="s2">            VALUES ('{{ ds }}', {{ ti.xcom_pull(task_ids='summarize')['rows'] }})</span>
+</span><span id="__span-34-59"><a id="__codelineno-34-59" name="__codelineno-34-59" href="#__codelineno-34-59"></a><span class="s2">        """</span><span class="p">,</span>
 </span><span id="__span-34-60"><a id="__codelineno-34-60" name="__codelineno-34-60" href="#__codelineno-34-60"></a>    <span class="p">)</span>
 </span><span id="__span-34-61"><a id="__codelineno-34-61" name="__codelineno-34-61" href="#__codelineno-34-61"></a>
 </span><span id="__span-34-62"><a id="__codelineno-34-62" name="__codelineno-34-62" href="#__codelineno-34-62"></a>    <span class="c1"># 외부 API 통지</span>
 </span><span id="__span-34-63"><a id="__codelineno-34-63" name="__codelineno-34-63" href="#__codelineno-34-63"></a>    <span class="n">notify_api</span> <span class="o">=</span> <span class="n">HttpOperator</span><span class="p">(</span>
-</span><span id="__span-34-64"><a id="__codelineno-34-64" name="__codelineno-34-64" href="#__codelineno-34-64"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;notify_api&quot;</span><span class="p">,</span>
-</span><span id="__span-34-65"><a id="__codelineno-34-65" name="__codelineno-34-65" href="#__codelineno-34-65"></a>        <span class="n">http_conn_id</span><span class="o">=</span><span class="s2">&quot;notifier_api&quot;</span><span class="p">,</span>
-</span><span id="__span-34-66"><a id="__codelineno-34-66" name="__codelineno-34-66" href="#__codelineno-34-66"></a>        <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;/etl/done&quot;</span><span class="p">,</span>
-</span><span id="__span-34-67"><a id="__codelineno-34-67" name="__codelineno-34-67" href="#__codelineno-34-67"></a>        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-</span><span id="__span-34-68"><a id="__codelineno-34-68" name="__codelineno-34-68" href="#__codelineno-34-68"></a>        <span class="n">data</span><span class="o">=</span><span class="s1">&#39;{&quot;dag&quot;: &quot;mixed_operators_demo&quot;, &quot;date&quot;: &quot;{{ ds }}&quot;}&#39;</span><span class="p">,</span>
+</span><span id="__span-34-64"><a id="__codelineno-34-64" name="__codelineno-34-64" href="#__codelineno-34-64"></a>        <span class="n">task_id</span><span class="o">=</span><span class="s2">"notify_api"</span><span class="p">,</span>
+</span><span id="__span-34-65"><a id="__codelineno-34-65" name="__codelineno-34-65" href="#__codelineno-34-65"></a>        <span class="n">http_conn_id</span><span class="o">=</span><span class="s2">"notifier_api"</span><span class="p">,</span>
+</span><span id="__span-34-66"><a id="__codelineno-34-66" name="__codelineno-34-66" href="#__codelineno-34-66"></a>        <span class="n">endpoint</span><span class="o">=</span><span class="s2">"/etl/done"</span><span class="p">,</span>
+</span><span id="__span-34-67"><a id="__codelineno-34-67" name="__codelineno-34-67" href="#__codelineno-34-67"></a>        <span class="n">method</span><span class="o">=</span><span class="s2">"POST"</span><span class="p">,</span>
+</span><span id="__span-34-68"><a id="__codelineno-34-68" name="__codelineno-34-68" href="#__codelineno-34-68"></a>        <span class="n">data</span><span class="o">=</span><span class="s1">'{"dag": "mixed_operators_demo", "date": "{{ ds }}"}'</span><span class="p">,</span>
 </span><span id="__span-34-69"><a id="__codelineno-34-69" name="__codelineno-34-69" href="#__codelineno-34-69"></a>    <span class="p">)</span>
 </span><span id="__span-34-70"><a id="__codelineno-34-70" name="__codelineno-34-70" href="#__codelineno-34-70"></a>
-</span><span id="__span-34-71"><a id="__codelineno-34-71" name="__codelineno-34-71" href="#__codelineno-34-71"></a>    <span class="n">end</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">&quot;none_failed_min_one_success&quot;</span><span class="p">)</span>
+</span><span id="__span-34-71"><a id="__codelineno-34-71" name="__codelineno-34-71" href="#__codelineno-34-71"></a>    <span class="n">end</span> <span class="o">=</span> <span class="n">EmptyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s2">"end"</span><span class="p">,</span> <span class="n">trigger_rule</span><span class="o">=</span><span class="s2">"none_failed_min_one_success"</span><span class="p">)</span>
 </span><span id="__span-34-72"><a id="__codelineno-34-72" name="__codelineno-34-72" href="#__codelineno-34-72"></a>
 </span><span id="__span-34-73"><a id="__codelineno-34-73" name="__codelineno-34-73" href="#__codelineno-34-73"></a>    <span class="n">start</span> <span class="o">&gt;&gt;</span> <span class="n">wait_file</span> <span class="o">&gt;&gt;</span> <span class="n">preprocess</span> <span class="o">&gt;&gt;</span> <span class="n">summary</span> <span class="o">&gt;&gt;</span> <span class="n">load_sql</span> <span class="o">&gt;&gt;</span> <span class="n">notify_api</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
 </span></code></pre></div>
@@ -4133,7 +4317,7 @@ Operator의 개념, 내부 동작, 대표 Operator 사용법, 그리고 Airflow 
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../javascripts/terminal.js"></script>
       
