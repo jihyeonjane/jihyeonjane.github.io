@@ -73,3 +73,16 @@ Apache Airflow 3.x 기준의 학습 자료입니다. 기본 개념부터 Operato
 | 3 | [Operator 완전정복](airflow-tutorial/03-operators.md) | Operator 개념/종류, 대표 Operator 상세, TaskFlow API |
 | 4 | [Custom Operator 만들기](airflow-tutorial/04-custom-operators.md) | plugins 구조, BaseOperator 상속, 실전 예제 |
 | 5 | [Hook & Connection](airflow-tutorial/05-hooks-connections.md) | Hook의 역할, Connection 관리, Custom Hook |
+
+---
+
+### :material-school: Study
+
+유튜브 [코딩하는 아키텍트](https://www.youtube.com/@codingpe) 채널 등을 활용한 개인 스터디입니다.
+재생목록에서 데이터 엔지니어링에 필요한 영상만 선별해 커리큘럼으로 만들고, 공부한 내용을 정리합니다.
+
+| 커리큘럼 | 주제 | 설명 |
+|----------|------|------|
+| 1 | [개발자 개념 장착](study/dev-concepts.md) | CS 기초·DB·분산 시스템 — 28편 선별 커리큘럼 |
+| 2 | [아키텍처](study/architecture.md) | 데이터 툴 설계를 위한 아키텍처 지식 — 27편 선별 커리큘럼 |
+| 3 | [Kafka & Debezium](study/kafka.md) | Kafka 이론·실습 + CDC — 24편 커리큘럼 |

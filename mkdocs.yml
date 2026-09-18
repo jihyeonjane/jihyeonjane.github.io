@@ -130,6 +130,11 @@ nav:
     - 3. Operator 완전정복: airflow-tutorial/03-operators.md
     - 4. Custom Operator 만들기: airflow-tutorial/04-custom-operators.md
     - 5. Hook & Connection: airflow-tutorial/05-hooks-connections.md
+  - Study:
+    - study/index.md
+    - 개발자 개념 장착: study/dev-concepts.md
+    - 아키텍처: study/architecture.md
+    - Kafka & Debezium: study/kafka.md
 
 extra:
   social:
