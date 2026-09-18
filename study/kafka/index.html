@@ -18,6 +18,8 @@
         <link rel="prev" href="../architecture/">
       
       
+        <link rel="next" href="../debezium/">
+      
       
         
       
@@ -27,7 +29,7 @@
     
     
       
-        <title>Kafka & Debezium - Jane's Tech Blog</title>
+        <title>Kafka - Jane's Tech Blog</title>
       
     
     
@@ -88,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kafka-debezium" class="md-skip">
+        <a href="#kafka" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -122,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kafka & Debezium
+              Kafka
             
           </span>
         </div>
@@ -2007,6 +2009,8 @@
       
         
       
+        
+      
     
     
     
@@ -2141,7 +2145,7 @@
   <span class="md-ellipsis">
     
   
-    Kafka & Debezium
+    Kafka
   
 
     
@@ -2159,7 +2163,7 @@
   <span class="md-ellipsis">
     
   
-    Kafka & Debezium
+    Kafka
   
 
     
@@ -2229,17 +2233,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phase-5-debezium-cdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Phase 5. Debezium (CDC) — 자료 확정 예정
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2254,6 +2247,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debezium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debezium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2337,17 +2358,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phase-5-debezium-cdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Phase 5. Debezium (CDC) — 자료 확정 예정
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2378,7 +2388,7 @@
   
 
 
-<h1 id="kafka-debezium">Kafka &amp; Debezium<a class="headerlink" href="#kafka-debezium" title="Permanent link">&para;</a></h1>
+<h1 id="kafka">Kafka<a class="headerlink" href="#kafka" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>원본 재생목록:
 <a href="https://www.youtube.com/playlist?list=PLtUgHNmvcs6p3304vUg6ywvUIAIe5K4WP">JSCODE — Kafka 입문·실전</a> (2025.08, 17편) ·
@@ -2584,7 +2594,7 @@ Kafka는 4.0(2025)부터 ZooKeeper가 완전히 제거되어(KRaft 전환) 설�
 <td>20</td>
 <td><a href="https://youtu.be/UURmOj6Eaoo">Kafka Connect — 데이터 파이프라인을 가장 효율적으로 (데브원영)</a> ⭐</td>
 <td>7:11</td>
-<td><strong>Debezium의 기반이 되는 프레임워크</strong></td>
+<td><strong><a href="../debezium/">Debezium</a>의 기반이 되는 프레임워크</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -2603,34 +2613,12 @@ Kafka는 4.0(2025)부터 ZooKeeper가 완전히 제거되어(KRaft 전환) 설�
 </tr>
 </tbody>
 </table>
-<h2 id="phase-5-debezium-cdc">Phase 5. Debezium (CDC) — 자료 확정 예정<a class="headerlink" href="#phase-5-debezium-cdc" title="Permanent link">&para;</a></h2>
-<p>두 재생목록 모두 Debezium을 직접 다루지 않습니다. Phase 4의 Kafka Connect 영상이 선수 지식이고,
-이후는 공식 자료 중심으로 진행합니다.</p>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>자료</th>
-<th>포인트</th>
-<th>정리</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>23</td>
-<td><a href="https://debezium.io/documentation/reference/stable/tutorial.html">Debezium 공식 튜토리얼</a></td>
-<td>Docker Compose로 MySQL CDC 실습</td>
-<td></td>
-</tr>
-<tr>
-<td>24</td>
-<td>(좋은 한국어 영상/자료 찾으면 추가)</td>
-<td>CDC 개념, 스냅샷 vs 스트리밍, 스키마 변경 대응</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <hr />
+<div class="admonition info">
+<p class="admonition-title">다음 단계: Debezium</p>
+<p>Kafka 커리큘럼을 마치면 <a href="../debezium/">Debezium (CDC) 커리큘럼</a>으로 이어집니다.
+Phase 4의 Kafka Connect 영상이 선수 지식입니다.</p>
+</div>
 <h2 id="_1">제외한 영상과 이유<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>데브원영 설치·실행·CLI·앱 개발 실습</strong> (homebrew 설치, AWS 클러스터 설치, T아카데미 CLI/프로듀서/컨슈머/파이프라인 실습 4편, 2019~2020) — ZooKeeper 기반 Kafka 2.x 명령이라 최신 버전과 불일치. 같은 내용을 JSCODE(2025)가 최신 기준으로 커버</li>
@@ -2659,7 +2647,7 @@ Kafka는 4.0(2025)부터 ZooKeeper가 완전히 제거되어(KRaft 전환) 설�
     <span class="md-icon" title="마지막 업데이트">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 9월 18일 00:26:42 UTC">2026년 9월 18일</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026년 9월 18일 00:44:56 UTC">2026년 9월 18일</span>
   </span>
 
     
